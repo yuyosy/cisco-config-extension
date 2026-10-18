@@ -1,0 +1,3 @@
+; Cisco config
+
+("hello") @keyword

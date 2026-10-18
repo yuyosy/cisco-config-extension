@@ -1,0 +1,12 @@
+id = "cisco-config"
+name = "Cisco Config"
+version = "0.1.0"
+schema_version = 1
+authors = ["yuyosy <yuyosy@outlook.com>"]
+description = "Syntax highlighting for Cisco configuration files"
+repository = "https://github.com/yuyosy/cisco-config-extension"
+
+[grammars.cisco]
+repository = "https://github.com/yuyosy/cisco-config-extension"
+path = "grammars/cisco"
+rev = "4f32824e65817e24943dd37bfb87206d5c2870c6"
