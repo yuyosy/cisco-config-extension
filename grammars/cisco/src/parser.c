@@ -7,33 +7,168 @@
 #endif
 
 #define LANGUAGE_VERSION 15
-#define STATE_COUNT 4
-#define LARGE_STATE_COUNT 2
-#define SYMBOL_COUNT 3
+#define STATE_COUNT 62
+#define LARGE_STATE_COUNT 7
+#define SYMBOL_COUNT 48
 #define ALIAS_COUNT 0
-#define TOKEN_COUNT 2
-#define EXTERNAL_TOKEN_COUNT 0
-#define FIELD_COUNT 0
-#define MAX_ALIAS_SEQUENCE_LENGTH 1
+#define TOKEN_COUNT 19
+#define EXTERNAL_TOKEN_COUNT 6
+#define FIELD_COUNT 11
+#define MAX_ALIAS_SEQUENCE_LENGTH 4
 #define MAX_RESERVED_WORD_SET_SIZE 0
-#define PRODUCTION_ID_COUNT 1
-#define SUPERTYPE_COUNT 0
+#define PRODUCTION_ID_COUNT 21
+#define SUPERTYPE_COUNT 2
 
 enum ts_symbol_identifiers {
-  anon_sym_hello = 1,
-  sym_source_file = 2,
+  sym_word = 1,
+  sym__keyword_interface = 2,
+  sym__keyword_router = 3,
+  sym__keyword_address_family = 4,
+  sym_no_modifier = 5,
+  sym_default_modifier = 6,
+  sym_text_keyword = 7,
+  sym_line_comment = 8,
+  sym__trailing_comment = 9,
+  sym_quoted_string = 10,
+  sym_text_value = 11,
+  sym_token_type_cisco_interface_ethernet = 12,
+  sym_prompt = 13,
+  sym__newline = 14,
+  sym__definition_start = 15,
+  sym__ordinary_start = 16,
+  sym__bgp_start = 17,
+  sym__address_family_start = 18,
+  sym_source_file = 19,
+  sym_prompt_block = 20,
+  sym_prompt_record = 21,
+  sym_prompt_body_line = 22,
+  sym_prompt_line = 23,
+  sym_top_level_line = 24,
+  sym_line = 25,
+  sym__command_record = 26,
+  sym__command = 27,
+  sym__argument = 28,
+  sym_generic_command = 29,
+  sym_text = 30,
+  sym_command_modifier = 31,
+  sym_ordinary_line = 32,
+  sym_orphan_child_line = 33,
+  sym__definition = 34,
+  sym_simple_definition = 35,
+  sym_definition_line = 36,
+  sym_definition_body_line = 37,
+  sym_address_family_definition_line = 38,
+  sym_interface_command = 39,
+  sym_router_command = 40,
+  sym_address_family_command = 41,
+  sym__cisco_atom = 42,
+  sym__cisco_interface_token = 43,
+  aux_sym_source_file_repeat1 = 44,
+  aux_sym_prompt_block_repeat1 = 45,
+  aux_sym_generic_command_repeat1 = 46,
+  aux_sym_simple_definition_repeat1 = 47,
 };
 
 static const char * const ts_symbol_names[] = {
   [ts_builtin_sym_end] = "end",
-  [anon_sym_hello] = "hello",
+  [sym_word] = "word",
+  [sym__keyword_interface] = "command_keyword",
+  [sym__keyword_router] = "command_keyword",
+  [sym__keyword_address_family] = "command_keyword",
+  [sym_no_modifier] = "no_modifier",
+  [sym_default_modifier] = "default_modifier",
+  [sym_text_keyword] = "text_keyword",
+  [sym_line_comment] = "line_comment",
+  [sym__trailing_comment] = "line_comment",
+  [sym_quoted_string] = "quoted_string",
+  [sym_text_value] = "text_value",
+  [sym_token_type_cisco_interface_ethernet] = "token_type_cisco_interface_ethernet",
+  [sym_prompt] = "prompt",
+  [sym__newline] = "_newline",
+  [sym__definition_start] = "_definition_start",
+  [sym__ordinary_start] = "_ordinary_start",
+  [sym__bgp_start] = "_bgp_start",
+  [sym__address_family_start] = "_address_family_start",
   [sym_source_file] = "source_file",
+  [sym_prompt_block] = "prompt_block",
+  [sym_prompt_record] = "prompt_record",
+  [sym_prompt_body_line] = "prompt_body_line",
+  [sym_prompt_line] = "line",
+  [sym_top_level_line] = "top_level_line",
+  [sym_line] = "line",
+  [sym__command_record] = "_command_record",
+  [sym__command] = "_command",
+  [sym__argument] = "_argument",
+  [sym_generic_command] = "generic_command",
+  [sym_text] = "text",
+  [sym_command_modifier] = "command_modifier",
+  [sym_ordinary_line] = "ordinary_line",
+  [sym_orphan_child_line] = "orphan_child_line",
+  [sym__definition] = "_definition",
+  [sym_simple_definition] = "simple_definition",
+  [sym_definition_line] = "definition_line",
+  [sym_definition_body_line] = "definition_body_line",
+  [sym_address_family_definition_line] = "address_family_definition_line",
+  [sym_interface_command] = "interface_command",
+  [sym_router_command] = "router_command",
+  [sym_address_family_command] = "address_family_command",
+  [sym__cisco_atom] = "_cisco_atom",
+  [sym__cisco_interface_token] = "_cisco_interface_token",
+  [aux_sym_source_file_repeat1] = "source_file_repeat1",
+  [aux_sym_prompt_block_repeat1] = "prompt_block_repeat1",
+  [aux_sym_generic_command_repeat1] = "generic_command_repeat1",
+  [aux_sym_simple_definition_repeat1] = "simple_definition_repeat1",
 };
 
 static const TSSymbol ts_symbol_map[] = {
   [ts_builtin_sym_end] = ts_builtin_sym_end,
-  [anon_sym_hello] = anon_sym_hello,
+  [sym_word] = sym_word,
+  [sym__keyword_interface] = sym__keyword_interface,
+  [sym__keyword_router] = sym__keyword_interface,
+  [sym__keyword_address_family] = sym__keyword_interface,
+  [sym_no_modifier] = sym_no_modifier,
+  [sym_default_modifier] = sym_default_modifier,
+  [sym_text_keyword] = sym_text_keyword,
+  [sym_line_comment] = sym_line_comment,
+  [sym__trailing_comment] = sym_line_comment,
+  [sym_quoted_string] = sym_quoted_string,
+  [sym_text_value] = sym_text_value,
+  [sym_token_type_cisco_interface_ethernet] = sym_token_type_cisco_interface_ethernet,
+  [sym_prompt] = sym_prompt,
+  [sym__newline] = sym__newline,
+  [sym__definition_start] = sym__definition_start,
+  [sym__ordinary_start] = sym__ordinary_start,
+  [sym__bgp_start] = sym__bgp_start,
+  [sym__address_family_start] = sym__address_family_start,
   [sym_source_file] = sym_source_file,
+  [sym_prompt_block] = sym_prompt_block,
+  [sym_prompt_record] = sym_prompt_record,
+  [sym_prompt_body_line] = sym_prompt_body_line,
+  [sym_prompt_line] = sym_line,
+  [sym_top_level_line] = sym_top_level_line,
+  [sym_line] = sym_line,
+  [sym__command_record] = sym__command_record,
+  [sym__command] = sym__command,
+  [sym__argument] = sym__argument,
+  [sym_generic_command] = sym_generic_command,
+  [sym_text] = sym_text,
+  [sym_command_modifier] = sym_command_modifier,
+  [sym_ordinary_line] = sym_ordinary_line,
+  [sym_orphan_child_line] = sym_orphan_child_line,
+  [sym__definition] = sym__definition,
+  [sym_simple_definition] = sym_simple_definition,
+  [sym_definition_line] = sym_definition_line,
+  [sym_definition_body_line] = sym_definition_body_line,
+  [sym_address_family_definition_line] = sym_address_family_definition_line,
+  [sym_interface_command] = sym_interface_command,
+  [sym_router_command] = sym_router_command,
+  [sym_address_family_command] = sym_address_family_command,
+  [sym__cisco_atom] = sym__cisco_atom,
+  [sym__cisco_interface_token] = sym__cisco_interface_token,
+  [aux_sym_source_file_repeat1] = aux_sym_source_file_repeat1,
+  [aux_sym_prompt_block_repeat1] = aux_sym_prompt_block_repeat1,
+  [aux_sym_generic_command_repeat1] = aux_sym_generic_command_repeat1,
+  [aux_sym_simple_definition_repeat1] = aux_sym_simple_definition_repeat1,
 };
 
 static const TSSymbolMetadata ts_symbol_metadata[] = {
@@ -41,14 +176,312 @@ static const TSSymbolMetadata ts_symbol_metadata[] = {
     .visible = false,
     .named = true,
   },
-  [anon_sym_hello] = {
+  [sym_word] = {
     .visible = true,
-    .named = false,
+    .named = true,
+  },
+  [sym__keyword_interface] = {
+    .visible = true,
+    .named = true,
+  },
+  [sym__keyword_router] = {
+    .visible = true,
+    .named = true,
+  },
+  [sym__keyword_address_family] = {
+    .visible = true,
+    .named = true,
+  },
+  [sym_no_modifier] = {
+    .visible = true,
+    .named = true,
+  },
+  [sym_default_modifier] = {
+    .visible = true,
+    .named = true,
+  },
+  [sym_text_keyword] = {
+    .visible = true,
+    .named = true,
+  },
+  [sym_line_comment] = {
+    .visible = true,
+    .named = true,
+  },
+  [sym__trailing_comment] = {
+    .visible = true,
+    .named = true,
+  },
+  [sym_quoted_string] = {
+    .visible = true,
+    .named = true,
+  },
+  [sym_text_value] = {
+    .visible = true,
+    .named = true,
+  },
+  [sym_token_type_cisco_interface_ethernet] = {
+    .visible = true,
+    .named = true,
+  },
+  [sym_prompt] = {
+    .visible = true,
+    .named = true,
+  },
+  [sym__newline] = {
+    .visible = false,
+    .named = true,
+  },
+  [sym__definition_start] = {
+    .visible = false,
+    .named = true,
+  },
+  [sym__ordinary_start] = {
+    .visible = false,
+    .named = true,
+  },
+  [sym__bgp_start] = {
+    .visible = false,
+    .named = true,
+  },
+  [sym__address_family_start] = {
+    .visible = false,
+    .named = true,
   },
   [sym_source_file] = {
     .visible = true,
     .named = true,
   },
+  [sym_prompt_block] = {
+    .visible = true,
+    .named = true,
+  },
+  [sym_prompt_record] = {
+    .visible = true,
+    .named = true,
+  },
+  [sym_prompt_body_line] = {
+    .visible = true,
+    .named = true,
+  },
+  [sym_prompt_line] = {
+    .visible = true,
+    .named = true,
+  },
+  [sym_top_level_line] = {
+    .visible = true,
+    .named = true,
+  },
+  [sym_line] = {
+    .visible = true,
+    .named = true,
+  },
+  [sym__command_record] = {
+    .visible = false,
+    .named = true,
+  },
+  [sym__command] = {
+    .visible = false,
+    .named = true,
+  },
+  [sym__argument] = {
+    .visible = false,
+    .named = true,
+  },
+  [sym_generic_command] = {
+    .visible = true,
+    .named = true,
+  },
+  [sym_text] = {
+    .visible = true,
+    .named = true,
+  },
+  [sym_command_modifier] = {
+    .visible = true,
+    .named = true,
+  },
+  [sym_ordinary_line] = {
+    .visible = true,
+    .named = true,
+  },
+  [sym_orphan_child_line] = {
+    .visible = true,
+    .named = true,
+  },
+  [sym__definition] = {
+    .visible = false,
+    .named = true,
+  },
+  [sym_simple_definition] = {
+    .visible = true,
+    .named = true,
+  },
+  [sym_definition_line] = {
+    .visible = true,
+    .named = true,
+  },
+  [sym_definition_body_line] = {
+    .visible = true,
+    .named = true,
+  },
+  [sym_address_family_definition_line] = {
+    .visible = true,
+    .named = true,
+  },
+  [sym_interface_command] = {
+    .visible = true,
+    .named = true,
+  },
+  [sym_router_command] = {
+    .visible = true,
+    .named = true,
+  },
+  [sym_address_family_command] = {
+    .visible = true,
+    .named = true,
+  },
+  [sym__cisco_atom] = {
+    .visible = false,
+    .named = true,
+    .supertype = true,
+  },
+  [sym__cisco_interface_token] = {
+    .visible = false,
+    .named = true,
+    .supertype = true,
+  },
+  [aux_sym_source_file_repeat1] = {
+    .visible = false,
+    .named = false,
+  },
+  [aux_sym_prompt_block_repeat1] = {
+    .visible = false,
+    .named = false,
+  },
+  [aux_sym_generic_command_repeat1] = {
+    .visible = false,
+    .named = false,
+  },
+  [aux_sym_simple_definition_repeat1] = {
+    .visible = false,
+    .named = false,
+  },
+};
+
+enum ts_field_identifiers {
+  field_argument = 1,
+  field_command = 2,
+  field_comment = 3,
+  field_head = 4,
+  field_header = 5,
+  field_keyword = 6,
+  field_modifier = 7,
+  field_name = 8,
+  field_prompt = 9,
+  field_protocol = 10,
+  field_value = 11,
+};
+
+static const char * const ts_field_names[] = {
+  [0] = NULL,
+  [field_argument] = "argument",
+  [field_command] = "command",
+  [field_comment] = "comment",
+  [field_head] = "head",
+  [field_header] = "header",
+  [field_keyword] = "keyword",
+  [field_modifier] = "modifier",
+  [field_name] = "name",
+  [field_prompt] = "prompt",
+  [field_protocol] = "protocol",
+  [field_value] = "value",
+};
+
+static const TSMapSlice ts_field_map_slices[PRODUCTION_ID_COUNT] = {
+  [1] = {.index = 0, .length = 1},
+  [2] = {.index = 1, .length = 1},
+  [3] = {.index = 2, .length = 1},
+  [4] = {.index = 3, .length = 1},
+  [5] = {.index = 4, .length = 3},
+  [6] = {.index = 7, .length = 1},
+  [7] = {.index = 8, .length = 1},
+  [8] = {.index = 9, .length = 2},
+  [9] = {.index = 11, .length = 2},
+  [10] = {.index = 13, .length = 2},
+  [11] = {.index = 15, .length = 2},
+  [12] = {.index = 17, .length = 1},
+  [13] = {.index = 18, .length = 2},
+  [14] = {.index = 20, .length = 4},
+  [15] = {.index = 24, .length = 2},
+  [16] = {.index = 26, .length = 3},
+  [17] = {.index = 29, .length = 3},
+  [18] = {.index = 32, .length = 3},
+  [19] = {.index = 35, .length = 2},
+  [20] = {.index = 37, .length = 4},
+};
+
+static const TSFieldMapEntry ts_field_map_entries[] = {
+  [0] =
+    {field_prompt, 0},
+  [1] =
+    {field_header, 0},
+  [2] =
+    {field_keyword, 0},
+  [3] =
+    {field_head, 0},
+  [4] =
+    {field_command, 1, .inherited = true},
+    {field_modifier, 1, .inherited = true},
+    {field_prompt, 0},
+  [7] =
+    {field_command, 0},
+  [8] =
+    {field_modifier, 0},
+  [9] =
+    {field_command, 0, .inherited = true},
+    {field_modifier, 0, .inherited = true},
+  [11] =
+    {field_keyword, 0},
+    {field_name, 1},
+  [13] =
+    {field_keyword, 0},
+    {field_protocol, 1},
+  [15] =
+    {field_keyword, 0},
+    {field_value, 1},
+  [17] =
+    {field_argument, 0},
+  [18] =
+    {field_argument, 1, .inherited = true},
+    {field_head, 0},
+  [20] =
+    {field_command, 1, .inherited = true},
+    {field_comment, 2},
+    {field_modifier, 1, .inherited = true},
+    {field_prompt, 0},
+  [24] =
+    {field_command, 1},
+    {field_modifier, 0},
+  [26] =
+    {field_command, 0, .inherited = true},
+    {field_comment, 1},
+    {field_modifier, 0, .inherited = true},
+  [29] =
+    {field_argument, 2, .inherited = true},
+    {field_keyword, 0},
+    {field_name, 1},
+  [32] =
+    {field_keyword, 0},
+    {field_name, 2},
+    {field_protocol, 1},
+  [35] =
+    {field_argument, 0, .inherited = true},
+    {field_argument, 1, .inherited = true},
+  [37] =
+    {field_argument, 3, .inherited = true},
+    {field_keyword, 0},
+    {field_name, 2},
+    {field_protocol, 1},
 };
 
 static const TSSymbol ts_alias_sequences[PRODUCTION_ID_COUNT][MAX_ALIAS_SEQUENCE_LENGTH] = {
@@ -64,6 +497,82 @@ static const TSStateId ts_primary_state_ids[STATE_COUNT] = {
   [1] = 1,
   [2] = 2,
   [3] = 3,
+  [4] = 4,
+  [5] = 5,
+  [6] = 6,
+  [7] = 7,
+  [8] = 8,
+  [9] = 9,
+  [10] = 10,
+  [11] = 11,
+  [12] = 12,
+  [13] = 13,
+  [14] = 14,
+  [15] = 15,
+  [16] = 16,
+  [17] = 17,
+  [18] = 18,
+  [19] = 19,
+  [20] = 20,
+  [21] = 21,
+  [22] = 22,
+  [23] = 23,
+  [24] = 24,
+  [25] = 25,
+  [26] = 26,
+  [27] = 27,
+  [28] = 28,
+  [29] = 29,
+  [30] = 30,
+  [31] = 31,
+  [32] = 32,
+  [33] = 33,
+  [34] = 34,
+  [35] = 29,
+  [36] = 31,
+  [37] = 37,
+  [38] = 38,
+  [39] = 39,
+  [40] = 40,
+  [41] = 41,
+  [42] = 42,
+  [43] = 43,
+  [44] = 44,
+  [45] = 45,
+  [46] = 46,
+  [47] = 47,
+  [48] = 48,
+  [49] = 49,
+  [50] = 50,
+  [51] = 51,
+  [52] = 52,
+  [53] = 53,
+  [54] = 54,
+  [55] = 55,
+  [56] = 56,
+  [57] = 57,
+  [58] = 58,
+  [59] = 59,
+  [60] = 60,
+  [61] = 61,
+};
+
+static const TSSymbol ts_supertype_symbols[SUPERTYPE_COUNT] = {
+  sym__cisco_atom,
+  sym__cisco_interface_token,
+};
+
+static const TSMapSlice ts_supertype_map_slices[] = {
+  [sym__cisco_atom] = {.index = 0, .length = 2},
+  [sym__cisco_interface_token] = {.index = 2, .length = 1},
+};
+
+static const TSSymbol ts_supertype_map_entries[] = {
+  [0] =
+    sym__cisco_interface_token,
+    sym_word,
+  [2] =
+    sym_token_type_cisco_interface_ethernet,
 };
 
 static bool ts_lex(TSLexer *lexer, TSStateId state) {
@@ -71,28 +580,686 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
   eof = lexer->eof(lexer);
   switch (state) {
     case 0:
-      if (eof) ADVANCE(5);
-      if (lookahead == 'h') ADVANCE(1);
-      if (('\t' <= lookahead && lookahead <= '\r') ||
+      if (eof) ADVANCE(8);
+      if (lookahead == '"') ADVANCE(15);
+      if (lookahead == '\t' ||
           lookahead == ' ') SKIP(0);
+      if (('!' <= lookahead && lookahead <= '#')) ADVANCE(9);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(19);
       END_STATE();
     case 1:
-      if (lookahead == 'e') ADVANCE(3);
+      if (lookahead == '"') ADVANCE(14);
+      if (lookahead == '\\') ADVANCE(2);
+      if (lookahead != 0 &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(1);
       END_STATE();
     case 2:
-      if (lookahead == 'l') ADVANCE(4);
+      if (lookahead != 0 &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(1);
       END_STATE();
     case 3:
-      if (lookahead == 'l') ADVANCE(2);
+      if (eof) ADVANCE(8);
+      if (lookahead == '"') ADVANCE(15);
+      if (lookahead == '\t' ||
+          lookahead == ' ') SKIP(3);
+      if (('!' <= lookahead && lookahead <= '#')) ADVANCE(18);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(19);
       END_STATE();
     case 4:
-      if (lookahead == 'o') ADVANCE(6);
+      if (eof) ADVANCE(8);
+      if (lookahead == '"') ADVANCE(22);
+      if (lookahead == '\t' ||
+          lookahead == ' ') SKIP(4);
+      if (('!' <= lookahead && lookahead <= '#')) ADVANCE(10);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(24);
       END_STATE();
     case 5:
-      ACCEPT_TOKEN(ts_builtin_sym_end);
+      if (eof) ADVANCE(8);
+      if (lookahead == '"') ADVANCE(22);
+      if (lookahead == '\t' ||
+          lookahead == ' ') SKIP(5);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(24);
       END_STATE();
     case 6:
-      ACCEPT_TOKEN(anon_sym_hello);
+      if (eof) ADVANCE(8);
+      if (lookahead == '"') ADVANCE(22);
+      if (lookahead == '\t' ||
+          lookahead == ' ') SKIP(6);
+      if (('!' <= lookahead && lookahead <= '#')) ADVANCE(12);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(24);
+      END_STATE();
+    case 7:
+      if (eof) ADVANCE(8);
+      if (lookahead == '\t' ||
+          lookahead == ' ') SKIP(7);
+      if (lookahead == '!' ||
+          lookahead == '#') ADVANCE(12);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(24);
+      END_STATE();
+    case 8:
+      ACCEPT_TOKEN(ts_builtin_sym_end);
+      END_STATE();
+    case 9:
+      ACCEPT_TOKEN(sym_line_comment);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(11);
+      if (lookahead == '!' ||
+          lookahead == '#') ADVANCE(9);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(10);
+      END_STATE();
+    case 10:
+      ACCEPT_TOKEN(sym_line_comment);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(11);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(10);
+      END_STATE();
+    case 11:
+      ACCEPT_TOKEN(sym_line_comment);
+      if (lookahead != 0 &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(11);
+      END_STATE();
+    case 12:
+      ACCEPT_TOKEN(sym__trailing_comment);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(13);
+      if (lookahead == '!' ||
+          lookahead == '#') ADVANCE(12);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(24);
+      END_STATE();
+    case 13:
+      ACCEPT_TOKEN(sym__trailing_comment);
+      if (lookahead != 0 &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(13);
+      END_STATE();
+    case 14:
+      ACCEPT_TOKEN(sym_quoted_string);
+      END_STATE();
+    case 15:
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '"') ADVANCE(14);
+      if (lookahead == '\\') ADVANCE(17);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(16);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(15);
+      END_STATE();
+    case 16:
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '"') ADVANCE(14);
+      if (lookahead == '\\') ADVANCE(20);
+      if (lookahead != 0 &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(16);
+      END_STATE();
+    case 17:
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(16);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(15);
+      END_STATE();
+    case 18:
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(21);
+      if (lookahead == '!' ||
+          lookahead == '#') ADVANCE(18);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(19);
+      END_STATE();
+    case 19:
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(21);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(19);
+      END_STATE();
+    case 20:
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead != 0 &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(16);
+      END_STATE();
+    case 21:
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead != 0 &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(21);
+      END_STATE();
+    case 22:
+      ACCEPT_TOKEN(sym_word);
+      if (lookahead == '"') ADVANCE(14);
+      if (lookahead == '\\') ADVANCE(23);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(1);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(22);
+      END_STATE();
+    case 23:
+      ACCEPT_TOKEN(sym_word);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(1);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(22);
+      END_STATE();
+    case 24:
+      ACCEPT_TOKEN(sym_word);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(24);
+      END_STATE();
+    default:
+      return false;
+  }
+}
+
+static bool ts_lex_keywords(TSLexer *lexer, TSStateId state) {
+  START_LEXER();
+  eof = lexer->eof(lexer);
+  switch (state) {
+    case 0:
+      if (lookahead == 'F') ADVANCE(1);
+      if (lookahead == 'G') ADVANCE(2);
+      if (lookahead == 'T') ADVANCE(3);
+      if (lookahead == 'f') ADVANCE(4);
+      if (lookahead == 'g') ADVANCE(5);
+      if (lookahead == 't') ADVANCE(6);
+      if (lookahead == '\t' ||
+          lookahead == ' ') SKIP(0);
+      if (lookahead == 'A' ||
+          lookahead == 'a') ADVANCE(7);
+      if (lookahead == 'D' ||
+          lookahead == 'd') ADVANCE(8);
+      if (lookahead == 'E' ||
+          lookahead == 'e') ADVANCE(9);
+      if (lookahead == 'H' ||
+          lookahead == 'h') ADVANCE(10);
+      if (lookahead == 'I' ||
+          lookahead == 'i') ADVANCE(11);
+      if (lookahead == 'N' ||
+          lookahead == 'n') ADVANCE(12);
+      if (lookahead == 'R' ||
+          lookahead == 'r') ADVANCE(13);
+      END_STATE();
+    case 1:
+      if (lookahead == 'a') ADVANCE(14);
+      if (lookahead == 'i') ADVANCE(15);
+      if (lookahead == 'o') ADVANCE(16);
+      END_STATE();
+    case 2:
+      if (lookahead == 'a') ADVANCE(17);
+      if (lookahead == 'i') ADVANCE(18);
+      if (lookahead == 'E' ||
+          lookahead == 'e') ADVANCE(19);
+      END_STATE();
+    case 3:
+      if (lookahead == 'e') ADVANCE(20);
+      if (lookahead == 'w') ADVANCE(21);
+      END_STATE();
+    case 4:
+      if (lookahead == 'a') ADVANCE(22);
+      if (lookahead == 'i') ADVANCE(23);
+      if (lookahead == 'o') ADVANCE(24);
+      END_STATE();
+    case 5:
+      if (lookahead == 'a') ADVANCE(17);
+      if (lookahead == 'i') ADVANCE(25);
+      if (lookahead == 'E' ||
+          lookahead == 'e') ADVANCE(19);
+      END_STATE();
+    case 6:
+      if (lookahead == 'e') ADVANCE(26);
+      if (lookahead == 'w') ADVANCE(21);
+      END_STATE();
+    case 7:
+      if (lookahead == 'D' ||
+          lookahead == 'd') ADVANCE(27);
+      END_STATE();
+    case 8:
+      if (lookahead == 'E' ||
+          lookahead == 'e') ADVANCE(28);
+      END_STATE();
+    case 9:
+      if (lookahead == 't') ADVANCE(29);
+      END_STATE();
+    case 10:
+      if (lookahead == 'u') ADVANCE(30);
+      END_STATE();
+    case 11:
+      if (lookahead == 'N' ||
+          lookahead == 'n') ADVANCE(31);
+      END_STATE();
+    case 12:
+      if (lookahead == 'O' ||
+          lookahead == 'o') ADVANCE(32);
+      END_STATE();
+    case 13:
+      if (lookahead == 'E' ||
+          lookahead == 'e') ADVANCE(33);
+      if (lookahead == 'O' ||
+          lookahead == 'o') ADVANCE(34);
+      END_STATE();
+    case 14:
+      ACCEPT_TOKEN(sym_token_type_cisco_interface_ethernet);
+      if (lookahead == 's') ADVANCE(35);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(36);
+      END_STATE();
+    case 15:
+      ACCEPT_TOKEN(sym_token_type_cisco_interface_ethernet);
+      if (lookahead == 'f') ADVANCE(37);
+      if (lookahead == 'v') ADVANCE(38);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(36);
+      END_STATE();
+    case 16:
+      ACCEPT_TOKEN(sym_token_type_cisco_interface_ethernet);
+      if (lookahead == 'r') ADVANCE(39);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(36);
+      END_STATE();
+    case 17:
+      if (lookahead == 'b') ADVANCE(40);
+      END_STATE();
+    case 18:
+      ACCEPT_TOKEN(sym_token_type_cisco_interface_ethernet);
+      if (lookahead == 'g') ADVANCE(41);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(36);
+      END_STATE();
+    case 19:
+      ACCEPT_TOKEN(sym_token_type_cisco_interface_ethernet);
+      if (lookahead == 't') ADVANCE(42);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(36);
+      END_STATE();
+    case 20:
+      ACCEPT_TOKEN(sym_token_type_cisco_interface_ethernet);
+      if (lookahead == 'n') ADVANCE(43);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(36);
+      END_STATE();
+    case 21:
+      if (lookahead == 'e') ADVANCE(44);
+      if (lookahead == 'o') ADVANCE(45);
+      END_STATE();
+    case 22:
+      if (lookahead == 's') ADVANCE(35);
+      END_STATE();
+    case 23:
+      if (lookahead == 'f') ADVANCE(37);
+      if (lookahead == 'v') ADVANCE(38);
+      END_STATE();
+    case 24:
+      if (lookahead == 'r') ADVANCE(39);
+      END_STATE();
+    case 25:
+      if (lookahead == 'g') ADVANCE(41);
+      END_STATE();
+    case 26:
+      if (lookahead == 'n') ADVANCE(43);
+      END_STATE();
+    case 27:
+      if (lookahead == 'D' ||
+          lookahead == 'd') ADVANCE(46);
+      END_STATE();
+    case 28:
+      if (lookahead == 'F' ||
+          lookahead == 'f') ADVANCE(47);
+      if (lookahead == 'S' ||
+          lookahead == 's') ADVANCE(48);
+      END_STATE();
+    case 29:
+      if (lookahead == 'h') ADVANCE(49);
+      END_STATE();
+    case 30:
+      if (lookahead == 'n') ADVANCE(50);
+      END_STATE();
+    case 31:
+      if (lookahead == 'T' ||
+          lookahead == 't') ADVANCE(51);
+      END_STATE();
+    case 32:
+      ACCEPT_TOKEN(sym_no_modifier);
+      END_STATE();
+    case 33:
+      if (lookahead == 'M' ||
+          lookahead == 'm') ADVANCE(52);
+      END_STATE();
+    case 34:
+      if (lookahead == 'U' ||
+          lookahead == 'u') ADVANCE(53);
+      END_STATE();
+    case 35:
+      if (lookahead == 't') ADVANCE(54);
+      END_STATE();
+    case 36:
+      ACCEPT_TOKEN(sym_token_type_cisco_interface_ethernet);
+      if (lookahead == '.') ADVANCE(55);
+      if (lookahead == '/') ADVANCE(56);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(36);
+      END_STATE();
+    case 37:
+      if (lookahead == 't') ADVANCE(57);
+      END_STATE();
+    case 38:
+      if (lookahead == 'e') ADVANCE(43);
+      END_STATE();
+    case 39:
+      if (lookahead == 't') ADVANCE(58);
+      END_STATE();
+    case 40:
+      if (lookahead == 'i') ADVANCE(59);
+      END_STATE();
+    case 41:
+      if (lookahead == 'a') ADVANCE(17);
+      if (lookahead == 'E' ||
+          lookahead == 'e') ADVANCE(19);
+      END_STATE();
+    case 42:
+      if (lookahead == 'h') ADVANCE(60);
+      END_STATE();
+    case 43:
+      if (lookahead == 'G' ||
+          lookahead == 'g') ADVANCE(5);
+      END_STATE();
+    case 44:
+      if (lookahead == 'n') ADVANCE(61);
+      END_STATE();
+    case 45:
+      if (lookahead == 'H' ||
+          lookahead == 'h') ADVANCE(10);
+      END_STATE();
+    case 46:
+      if (lookahead == 'R' ||
+          lookahead == 'r') ADVANCE(62);
+      END_STATE();
+    case 47:
+      if (lookahead == 'A' ||
+          lookahead == 'a') ADVANCE(63);
+      END_STATE();
+    case 48:
+      if (lookahead == 'C' ||
+          lookahead == 'c') ADVANCE(64);
+      END_STATE();
+    case 49:
+      ACCEPT_TOKEN(sym_token_type_cisco_interface_ethernet);
+      if (lookahead == 'e') ADVANCE(65);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(36);
+      END_STATE();
+    case 50:
+      if (lookahead == 'd') ADVANCE(66);
+      END_STATE();
+    case 51:
+      if (lookahead == 'E' ||
+          lookahead == 'e') ADVANCE(67);
+      END_STATE();
+    case 52:
+      if (lookahead == 'A' ||
+          lookahead == 'a') ADVANCE(68);
+      END_STATE();
+    case 53:
+      if (lookahead == 'T' ||
+          lookahead == 't') ADVANCE(69);
+      END_STATE();
+    case 54:
+      if (lookahead == 'E' ||
+          lookahead == 'e') ADVANCE(19);
+      END_STATE();
+    case 55:
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(70);
+      END_STATE();
+    case 56:
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(36);
+      END_STATE();
+    case 57:
+      if (lookahead == 'y') ADVANCE(43);
+      END_STATE();
+    case 58:
+      if (lookahead == 'y') ADVANCE(43);
+      END_STATE();
+    case 59:
+      if (lookahead == 't') ADVANCE(54);
+      END_STATE();
+    case 60:
+      ACCEPT_TOKEN(sym_token_type_cisco_interface_ethernet);
+      if (lookahead == 'e') ADVANCE(71);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(36);
+      END_STATE();
+    case 61:
+      if (lookahead == 't') ADVANCE(72);
+      END_STATE();
+    case 62:
+      if (lookahead == 'E' ||
+          lookahead == 'e') ADVANCE(73);
+      END_STATE();
+    case 63:
+      if (lookahead == 'U' ||
+          lookahead == 'u') ADVANCE(74);
+      END_STATE();
+    case 64:
+      if (lookahead == 'R' ||
+          lookahead == 'r') ADVANCE(75);
+      END_STATE();
+    case 65:
+      if (lookahead == 'r') ADVANCE(76);
+      END_STATE();
+    case 66:
+      if (lookahead == 'r') ADVANCE(77);
+      END_STATE();
+    case 67:
+      if (lookahead == 'R' ||
+          lookahead == 'r') ADVANCE(78);
+      END_STATE();
+    case 68:
+      if (lookahead == 'R' ||
+          lookahead == 'r') ADVANCE(79);
+      END_STATE();
+    case 69:
+      if (lookahead == 'E' ||
+          lookahead == 'e') ADVANCE(80);
+      END_STATE();
+    case 70:
+      ACCEPT_TOKEN(sym_token_type_cisco_interface_ethernet);
+      if (lookahead == '.') ADVANCE(55);
+      if (lookahead == '/') ADVANCE(56);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(70);
+      END_STATE();
+    case 71:
+      if (lookahead == 'r') ADVANCE(81);
+      END_STATE();
+    case 72:
+      if (lookahead == 'y') ADVANCE(82);
+      END_STATE();
+    case 73:
+      if (lookahead == 'S' ||
+          lookahead == 's') ADVANCE(83);
+      END_STATE();
+    case 74:
+      if (lookahead == 'L' ||
+          lookahead == 'l') ADVANCE(84);
+      END_STATE();
+    case 75:
+      if (lookahead == 'I' ||
+          lookahead == 'i') ADVANCE(85);
+      END_STATE();
+    case 76:
+      if (lookahead == 'n') ADVANCE(86);
+      END_STATE();
+    case 77:
+      if (lookahead == 'e') ADVANCE(87);
+      END_STATE();
+    case 78:
+      if (lookahead == 'F' ||
+          lookahead == 'f') ADVANCE(88);
+      END_STATE();
+    case 79:
+      if (lookahead == 'K' ||
+          lookahead == 'k') ADVANCE(89);
+      END_STATE();
+    case 80:
+      if (lookahead == 'R' ||
+          lookahead == 'r') ADVANCE(90);
+      END_STATE();
+    case 81:
+      if (lookahead == 'n') ADVANCE(91);
+      END_STATE();
+    case 82:
+      if (lookahead == 'F' ||
+          lookahead == 'f') ADVANCE(92);
+      END_STATE();
+    case 83:
+      if (lookahead == 'S' ||
+          lookahead == 's') ADVANCE(93);
+      END_STATE();
+    case 84:
+      if (lookahead == 'T' ||
+          lookahead == 't') ADVANCE(94);
+      END_STATE();
+    case 85:
+      if (lookahead == 'P' ||
+          lookahead == 'p') ADVANCE(95);
+      END_STATE();
+    case 86:
+      if (lookahead == 'e') ADVANCE(96);
+      END_STATE();
+    case 87:
+      if (lookahead == 'd') ADVANCE(43);
+      END_STATE();
+    case 88:
+      if (lookahead == 'A' ||
+          lookahead == 'a') ADVANCE(97);
+      END_STATE();
+    case 89:
+      ACCEPT_TOKEN(sym_text_keyword);
+      END_STATE();
+    case 90:
+      ACCEPT_TOKEN(sym__keyword_router);
+      END_STATE();
+    case 91:
+      if (lookahead == 'e') ADVANCE(98);
+      END_STATE();
+    case 92:
+      if (lookahead == 'i') ADVANCE(99);
+      END_STATE();
+    case 93:
+      if (lookahead == '-') ADVANCE(100);
+      END_STATE();
+    case 94:
+      ACCEPT_TOKEN(sym_default_modifier);
+      END_STATE();
+    case 95:
+      if (lookahead == 'T' ||
+          lookahead == 't') ADVANCE(101);
+      END_STATE();
+    case 96:
+      if (lookahead == 't') ADVANCE(102);
+      END_STATE();
+    case 97:
+      if (lookahead == 'C' ||
+          lookahead == 'c') ADVANCE(103);
+      END_STATE();
+    case 98:
+      if (lookahead == 't') ADVANCE(102);
+      END_STATE();
+    case 99:
+      if (lookahead == 'v') ADVANCE(104);
+      END_STATE();
+    case 100:
+      if (lookahead == 'F' ||
+          lookahead == 'f') ADVANCE(105);
+      END_STATE();
+    case 101:
+      if (lookahead == 'I' ||
+          lookahead == 'i') ADVANCE(106);
+      END_STATE();
+    case 102:
+      ACCEPT_TOKEN(sym_token_type_cisco_interface_ethernet);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(36);
+      END_STATE();
+    case 103:
+      if (lookahead == 'E' ||
+          lookahead == 'e') ADVANCE(107);
+      END_STATE();
+    case 104:
+      if (lookahead == 'e') ADVANCE(43);
+      END_STATE();
+    case 105:
+      if (lookahead == 'A' ||
+          lookahead == 'a') ADVANCE(108);
+      END_STATE();
+    case 106:
+      if (lookahead == 'O' ||
+          lookahead == 'o') ADVANCE(109);
+      END_STATE();
+    case 107:
+      ACCEPT_TOKEN(sym__keyword_interface);
+      END_STATE();
+    case 108:
+      if (lookahead == 'M' ||
+          lookahead == 'm') ADVANCE(110);
+      END_STATE();
+    case 109:
+      if (lookahead == 'N' ||
+          lookahead == 'n') ADVANCE(111);
+      END_STATE();
+    case 110:
+      if (lookahead == 'I' ||
+          lookahead == 'i') ADVANCE(112);
+      END_STATE();
+    case 111:
+      ACCEPT_TOKEN(sym_text_keyword);
+      if (lookahead == ':') ADVANCE(89);
+      END_STATE();
+    case 112:
+      if (lookahead == 'L' ||
+          lookahead == 'l') ADVANCE(113);
+      END_STATE();
+    case 113:
+      if (lookahead == 'Y' ||
+          lookahead == 'y') ADVANCE(114);
+      END_STATE();
+    case 114:
+      ACCEPT_TOKEN(sym__keyword_address_family);
       END_STATE();
     default:
       return false;
@@ -100,48 +1267,1306 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
 }
 
 static const TSLexerMode ts_lex_modes[STATE_COUNT] = {
-  [0] = {.lex_state = 0},
-  [1] = {.lex_state = 0},
-  [2] = {.lex_state = 0},
-  [3] = {.lex_state = 0},
+  [0] = {.lex_state = 0, .external_lex_state = 1},
+  [1] = {.lex_state = 0, .external_lex_state = 2},
+  [2] = {.lex_state = 4, .external_lex_state = 3},
+  [3] = {.lex_state = 4, .external_lex_state = 3},
+  [4] = {.lex_state = 4, .external_lex_state = 3},
+  [5] = {.lex_state = 4, .external_lex_state = 3},
+  [6] = {.lex_state = 5, .external_lex_state = 3},
+  [7] = {.lex_state = 6, .external_lex_state = 3},
+  [8] = {.lex_state = 6, .external_lex_state = 3},
+  [9] = {.lex_state = 6, .external_lex_state = 3},
+  [10] = {.lex_state = 6, .external_lex_state = 3},
+  [11] = {.lex_state = 6, .external_lex_state = 3},
+  [12] = {.lex_state = 6, .external_lex_state = 3},
+  [13] = {.lex_state = 6, .external_lex_state = 3},
+  [14] = {.lex_state = 6, .external_lex_state = 3},
+  [15] = {.lex_state = 6, .external_lex_state = 3},
+  [16] = {.lex_state = 6, .external_lex_state = 3},
+  [17] = {.lex_state = 0, .external_lex_state = 2},
+  [18] = {.lex_state = 0, .external_lex_state = 2},
+  [19] = {.lex_state = 6, .external_lex_state = 3},
+  [20] = {.lex_state = 0, .external_lex_state = 2},
+  [21] = {.lex_state = 0, .external_lex_state = 2},
+  [22] = {.lex_state = 0, .external_lex_state = 2},
+  [23] = {.lex_state = 3, .external_lex_state = 3},
+  [24] = {.lex_state = 7, .external_lex_state = 3},
+  [25] = {.lex_state = 7, .external_lex_state = 3},
+  [26] = {.lex_state = 7, .external_lex_state = 3},
+  [27] = {.lex_state = 6, .external_lex_state = 3},
+  [28] = {.lex_state = 7, .external_lex_state = 3},
+  [29] = {.lex_state = 6, .external_lex_state = 3},
+  [30] = {.lex_state = 6, .external_lex_state = 3},
+  [31] = {.lex_state = 6, .external_lex_state = 3},
+  [32] = {.lex_state = 0, .external_lex_state = 2},
+  [33] = {.lex_state = 0, .external_lex_state = 2},
+  [34] = {.lex_state = 0, .external_lex_state = 2},
+  [35] = {.lex_state = 7, .external_lex_state = 3},
+  [36] = {.lex_state = 7, .external_lex_state = 3},
+  [37] = {.lex_state = 6, .external_lex_state = 3},
+  [38] = {.lex_state = 6, .external_lex_state = 3},
+  [39] = {.lex_state = 6, .external_lex_state = 3},
+  [40] = {.lex_state = 6, .external_lex_state = 3},
+  [41] = {.lex_state = 0, .external_lex_state = 3},
+  [42] = {.lex_state = 0, .external_lex_state = 3},
+  [43] = {.lex_state = 0, .external_lex_state = 3},
+  [44] = {.lex_state = 0, .external_lex_state = 3},
+  [45] = {.lex_state = 0, .external_lex_state = 3},
+  [46] = {.lex_state = 0, .external_lex_state = 3},
+  [47] = {.lex_state = 0, .external_lex_state = 3},
+  [48] = {.lex_state = 0, .external_lex_state = 3},
+  [49] = {.lex_state = 0, .external_lex_state = 2},
+  [50] = {.lex_state = 0, .external_lex_state = 2},
+  [51] = {.lex_state = 0, .external_lex_state = 2},
+  [52] = {.lex_state = 0, .external_lex_state = 2},
+  [53] = {.lex_state = 0, .external_lex_state = 2},
+  [54] = {.lex_state = 0, .external_lex_state = 2},
+  [55] = {.lex_state = 0, .external_lex_state = 2},
+  [56] = {.lex_state = 0, .external_lex_state = 2},
+  [57] = {.lex_state = 0, .external_lex_state = 2},
+  [58] = {.lex_state = 0, .external_lex_state = 2},
+  [59] = {.lex_state = 0, .external_lex_state = 2},
+  [60] = {.lex_state = 0, .external_lex_state = 2},
+  [61] = {.lex_state = 0},
 };
 
 static const uint16_t ts_parse_table[LARGE_STATE_COUNT][SYMBOL_COUNT] = {
   [STATE(0)] = {
     [ts_builtin_sym_end] = ACTIONS(1),
-    [anon_sym_hello] = ACTIONS(1),
+    [sym_word] = ACTIONS(1),
+    [sym__keyword_interface] = ACTIONS(1),
+    [sym__keyword_router] = ACTIONS(1),
+    [sym__keyword_address_family] = ACTIONS(1),
+    [sym_no_modifier] = ACTIONS(1),
+    [sym_default_modifier] = ACTIONS(1),
+    [sym_text_keyword] = ACTIONS(1),
+    [sym_line_comment] = ACTIONS(1),
+    [sym__trailing_comment] = ACTIONS(1),
+    [sym_quoted_string] = ACTIONS(1),
+    [sym_text_value] = ACTIONS(1),
+    [sym_token_type_cisco_interface_ethernet] = ACTIONS(1),
+    [sym_prompt] = ACTIONS(1),
+    [sym__newline] = ACTIONS(1),
+    [sym__definition_start] = ACTIONS(1),
+    [sym__ordinary_start] = ACTIONS(1),
+    [sym__bgp_start] = ACTIONS(1),
+    [sym__address_family_start] = ACTIONS(1),
   },
   [STATE(1)] = {
-    [sym_source_file] = STATE(3),
-    [anon_sym_hello] = ACTIONS(3),
+    [sym_source_file] = STATE(61),
+    [sym_prompt_block] = STATE(18),
+    [sym_prompt_record] = STATE(22),
+    [sym_prompt_line] = STATE(48),
+    [sym_top_level_line] = STATE(18),
+    [sym_orphan_child_line] = STATE(18),
+    [sym__definition] = STATE(18),
+    [sym_simple_definition] = STATE(18),
+    [sym_definition_line] = STATE(33),
+    [sym_address_family_definition_line] = STATE(50),
+    [aux_sym_source_file_repeat1] = STATE(18),
+    [ts_builtin_sym_end] = ACTIONS(3),
+    [sym_prompt] = ACTIONS(5),
+    [sym__definition_start] = ACTIONS(7),
+    [sym__ordinary_start] = ACTIONS(9),
+    [sym__address_family_start] = ACTIONS(11),
+  },
+  [STATE(2)] = {
+    [sym_line] = STATE(41),
+    [sym__command_record] = STATE(37),
+    [sym__command] = STATE(40),
+    [sym_generic_command] = STATE(40),
+    [sym_text] = STATE(9),
+    [sym_command_modifier] = STATE(7),
+    [sym_interface_command] = STATE(40),
+    [sym_router_command] = STATE(40),
+    [sym_address_family_command] = STATE(40),
+    [sym__cisco_atom] = STATE(9),
+    [sym__cisco_interface_token] = STATE(31),
+    [ts_builtin_sym_end] = ACTIONS(13),
+    [sym_word] = ACTIONS(15),
+    [sym__keyword_interface] = ACTIONS(17),
+    [sym__keyword_router] = ACTIONS(19),
+    [sym__keyword_address_family] = ACTIONS(21),
+    [sym_no_modifier] = ACTIONS(23),
+    [sym_default_modifier] = ACTIONS(23),
+    [sym_text_keyword] = ACTIONS(25),
+    [sym_line_comment] = ACTIONS(27),
+    [sym_quoted_string] = ACTIONS(29),
+    [sym_token_type_cisco_interface_ethernet] = ACTIONS(31),
+    [sym_prompt] = ACTIONS(13),
+    [sym__newline] = ACTIONS(33),
+    [sym__definition_start] = ACTIONS(13),
+    [sym__ordinary_start] = ACTIONS(13),
+    [sym__address_family_start] = ACTIONS(13),
+  },
+  [STATE(3)] = {
+    [sym_line] = STATE(42),
+    [sym__command_record] = STATE(37),
+    [sym__command] = STATE(40),
+    [sym_generic_command] = STATE(40),
+    [sym_text] = STATE(9),
+    [sym_command_modifier] = STATE(7),
+    [sym_interface_command] = STATE(40),
+    [sym_router_command] = STATE(40),
+    [sym_address_family_command] = STATE(40),
+    [sym__cisco_atom] = STATE(9),
+    [sym__cisco_interface_token] = STATE(31),
+    [ts_builtin_sym_end] = ACTIONS(35),
+    [sym_word] = ACTIONS(15),
+    [sym__keyword_interface] = ACTIONS(17),
+    [sym__keyword_router] = ACTIONS(19),
+    [sym__keyword_address_family] = ACTIONS(21),
+    [sym_no_modifier] = ACTIONS(23),
+    [sym_default_modifier] = ACTIONS(23),
+    [sym_text_keyword] = ACTIONS(25),
+    [sym_line_comment] = ACTIONS(27),
+    [sym_quoted_string] = ACTIONS(29),
+    [sym_token_type_cisco_interface_ethernet] = ACTIONS(31),
+    [sym_prompt] = ACTIONS(35),
+    [sym__newline] = ACTIONS(37),
+    [sym__definition_start] = ACTIONS(35),
+    [sym__ordinary_start] = ACTIONS(35),
+    [sym__address_family_start] = ACTIONS(35),
+  },
+  [STATE(4)] = {
+    [sym_line] = STATE(47),
+    [sym__command_record] = STATE(37),
+    [sym__command] = STATE(40),
+    [sym_generic_command] = STATE(40),
+    [sym_text] = STATE(9),
+    [sym_command_modifier] = STATE(7),
+    [sym_interface_command] = STATE(40),
+    [sym_router_command] = STATE(40),
+    [sym_address_family_command] = STATE(40),
+    [sym__cisco_atom] = STATE(9),
+    [sym__cisco_interface_token] = STATE(31),
+    [ts_builtin_sym_end] = ACTIONS(39),
+    [sym_word] = ACTIONS(15),
+    [sym__keyword_interface] = ACTIONS(17),
+    [sym__keyword_router] = ACTIONS(19),
+    [sym__keyword_address_family] = ACTIONS(21),
+    [sym_no_modifier] = ACTIONS(23),
+    [sym_default_modifier] = ACTIONS(23),
+    [sym_text_keyword] = ACTIONS(25),
+    [sym_line_comment] = ACTIONS(27),
+    [sym_quoted_string] = ACTIONS(29),
+    [sym_token_type_cisco_interface_ethernet] = ACTIONS(31),
+    [sym_prompt] = ACTIONS(39),
+    [sym__newline] = ACTIONS(41),
+    [sym__definition_start] = ACTIONS(39),
+    [sym__ordinary_start] = ACTIONS(39),
+    [sym__address_family_start] = ACTIONS(39),
+  },
+  [STATE(5)] = {
+    [sym_line] = STATE(45),
+    [sym__command_record] = STATE(37),
+    [sym__command] = STATE(40),
+    [sym_generic_command] = STATE(40),
+    [sym_text] = STATE(9),
+    [sym_command_modifier] = STATE(7),
+    [sym_interface_command] = STATE(40),
+    [sym_router_command] = STATE(40),
+    [sym_address_family_command] = STATE(40),
+    [sym__cisco_atom] = STATE(9),
+    [sym__cisco_interface_token] = STATE(31),
+    [ts_builtin_sym_end] = ACTIONS(43),
+    [sym_word] = ACTIONS(15),
+    [sym__keyword_interface] = ACTIONS(17),
+    [sym__keyword_router] = ACTIONS(19),
+    [sym__keyword_address_family] = ACTIONS(21),
+    [sym_no_modifier] = ACTIONS(23),
+    [sym_default_modifier] = ACTIONS(23),
+    [sym_text_keyword] = ACTIONS(25),
+    [sym_line_comment] = ACTIONS(27),
+    [sym_quoted_string] = ACTIONS(29),
+    [sym_token_type_cisco_interface_ethernet] = ACTIONS(31),
+    [sym_prompt] = ACTIONS(43),
+    [sym__newline] = ACTIONS(45),
+    [sym__definition_start] = ACTIONS(43),
+    [sym__ordinary_start] = ACTIONS(43),
+    [sym__address_family_start] = ACTIONS(43),
+  },
+  [STATE(6)] = {
+    [sym__command_record] = STATE(39),
+    [sym__command] = STATE(40),
+    [sym_generic_command] = STATE(40),
+    [sym_text] = STATE(9),
+    [sym_command_modifier] = STATE(7),
+    [sym_interface_command] = STATE(40),
+    [sym_router_command] = STATE(40),
+    [sym_address_family_command] = STATE(40),
+    [sym__cisco_atom] = STATE(9),
+    [sym__cisco_interface_token] = STATE(31),
+    [ts_builtin_sym_end] = ACTIONS(47),
+    [sym_word] = ACTIONS(15),
+    [sym__keyword_interface] = ACTIONS(17),
+    [sym__keyword_router] = ACTIONS(19),
+    [sym__keyword_address_family] = ACTIONS(21),
+    [sym_no_modifier] = ACTIONS(23),
+    [sym_default_modifier] = ACTIONS(23),
+    [sym_text_keyword] = ACTIONS(25),
+    [sym_quoted_string] = ACTIONS(29),
+    [sym_token_type_cisco_interface_ethernet] = ACTIONS(31),
+    [sym_prompt] = ACTIONS(47),
+    [sym__newline] = ACTIONS(47),
+    [sym__definition_start] = ACTIONS(47),
+    [sym__ordinary_start] = ACTIONS(47),
+    [sym__address_family_start] = ACTIONS(47),
   },
 };
 
 static const uint16_t ts_small_parse_table[] = {
-  [0] = 1,
-    ACTIONS(5), 1,
+  [0] = 12,
+    ACTIONS(15), 1,
+      sym_word,
+    ACTIONS(17), 1,
+      sym__keyword_interface,
+    ACTIONS(19), 1,
+      sym__keyword_router,
+    ACTIONS(21), 1,
+      sym__keyword_address_family,
+    ACTIONS(25), 1,
+      sym_text_keyword,
+    ACTIONS(29), 1,
+      sym_quoted_string,
+    ACTIONS(31), 1,
+      sym_token_type_cisco_interface_ethernet,
+    ACTIONS(51), 1,
+      sym__trailing_comment,
+    STATE(31), 1,
+      sym__cisco_interface_token,
+    STATE(9), 2,
+      sym_text,
+      sym__cisco_atom,
+    STATE(38), 5,
+      sym__command,
+      sym_generic_command,
+      sym_interface_command,
+      sym_router_command,
+      sym_address_family_command,
+    ACTIONS(49), 6,
+      sym_prompt,
+      sym__newline,
+      sym__definition_start,
+      sym__ordinary_start,
+      sym__address_family_start,
       ts_builtin_sym_end,
-  [4] = 1,
+  [47] = 9,
+    ACTIONS(15), 1,
+      sym_word,
+    ACTIONS(25), 1,
+      sym_text_keyword,
+    ACTIONS(31), 1,
+      sym_token_type_cisco_interface_ethernet,
+    ACTIONS(55), 1,
+      sym__trailing_comment,
+    ACTIONS(57), 1,
+      sym_quoted_string,
+    STATE(16), 1,
+      aux_sym_generic_command_repeat1,
+    STATE(31), 1,
+      sym__cisco_interface_token,
+    STATE(30), 3,
+      sym__argument,
+      sym_text,
+      sym__cisco_atom,
+    ACTIONS(53), 6,
+      sym_prompt,
+      sym__newline,
+      sym__definition_start,
+      sym__ordinary_start,
+      sym__address_family_start,
+      ts_builtin_sym_end,
+  [82] = 9,
+    ACTIONS(15), 1,
+      sym_word,
+    ACTIONS(25), 1,
+      sym_text_keyword,
+    ACTIONS(31), 1,
+      sym_token_type_cisco_interface_ethernet,
+    ACTIONS(57), 1,
+      sym_quoted_string,
+    ACTIONS(61), 1,
+      sym__trailing_comment,
+    STATE(12), 1,
+      aux_sym_generic_command_repeat1,
+    STATE(31), 1,
+      sym__cisco_interface_token,
+    STATE(30), 3,
+      sym__argument,
+      sym_text,
+      sym__cisco_atom,
+    ACTIONS(59), 6,
+      sym_prompt,
+      sym__newline,
+      sym__definition_start,
+      sym__ordinary_start,
+      sym__address_family_start,
+      ts_builtin_sym_end,
+  [117] = 9,
+    ACTIONS(15), 1,
+      sym_word,
+    ACTIONS(25), 1,
+      sym_text_keyword,
+    ACTIONS(31), 1,
+      sym_token_type_cisco_interface_ethernet,
+    ACTIONS(57), 1,
+      sym_quoted_string,
+    ACTIONS(65), 1,
+      sym__trailing_comment,
+    STATE(13), 1,
+      aux_sym_generic_command_repeat1,
+    STATE(31), 1,
+      sym__cisco_interface_token,
+    STATE(30), 3,
+      sym__argument,
+      sym_text,
+      sym__cisco_atom,
+    ACTIONS(63), 6,
+      sym_prompt,
+      sym__newline,
+      sym__definition_start,
+      sym__ordinary_start,
+      sym__address_family_start,
+      ts_builtin_sym_end,
+  [152] = 9,
+    ACTIONS(15), 1,
+      sym_word,
+    ACTIONS(25), 1,
+      sym_text_keyword,
+    ACTIONS(31), 1,
+      sym_token_type_cisco_interface_ethernet,
+    ACTIONS(57), 1,
+      sym_quoted_string,
+    ACTIONS(69), 1,
+      sym__trailing_comment,
+    STATE(15), 1,
+      aux_sym_generic_command_repeat1,
+    STATE(31), 1,
+      sym__cisco_interface_token,
+    STATE(30), 3,
+      sym__argument,
+      sym_text,
+      sym__cisco_atom,
+    ACTIONS(67), 6,
+      sym_prompt,
+      sym__newline,
+      sym__definition_start,
+      sym__ordinary_start,
+      sym__address_family_start,
+      ts_builtin_sym_end,
+  [187] = 9,
+    ACTIONS(15), 1,
+      sym_word,
+    ACTIONS(25), 1,
+      sym_text_keyword,
+    ACTIONS(31), 1,
+      sym_token_type_cisco_interface_ethernet,
+    ACTIONS(57), 1,
+      sym_quoted_string,
+    ACTIONS(73), 1,
+      sym__trailing_comment,
+    STATE(16), 1,
+      aux_sym_generic_command_repeat1,
+    STATE(31), 1,
+      sym__cisco_interface_token,
+    STATE(30), 3,
+      sym__argument,
+      sym_text,
+      sym__cisco_atom,
+    ACTIONS(71), 6,
+      sym_prompt,
+      sym__newline,
+      sym__definition_start,
+      sym__ordinary_start,
+      sym__address_family_start,
+      ts_builtin_sym_end,
+  [222] = 9,
+    ACTIONS(15), 1,
+      sym_word,
+    ACTIONS(25), 1,
+      sym_text_keyword,
+    ACTIONS(31), 1,
+      sym_token_type_cisco_interface_ethernet,
+    ACTIONS(57), 1,
+      sym_quoted_string,
+    ACTIONS(77), 1,
+      sym__trailing_comment,
+    STATE(16), 1,
+      aux_sym_generic_command_repeat1,
+    STATE(31), 1,
+      sym__cisco_interface_token,
+    STATE(30), 3,
+      sym__argument,
+      sym_text,
+      sym__cisco_atom,
+    ACTIONS(75), 6,
+      sym_prompt,
+      sym__newline,
+      sym__definition_start,
+      sym__ordinary_start,
+      sym__address_family_start,
+      ts_builtin_sym_end,
+  [257] = 9,
+    ACTIONS(15), 1,
+      sym_word,
+    ACTIONS(25), 1,
+      sym_text_keyword,
+    ACTIONS(31), 1,
+      sym_token_type_cisco_interface_ethernet,
+    ACTIONS(57), 1,
+      sym_quoted_string,
+    ACTIONS(81), 1,
+      sym__trailing_comment,
+    STATE(8), 1,
+      aux_sym_generic_command_repeat1,
+    STATE(31), 1,
+      sym__cisco_interface_token,
+    STATE(30), 3,
+      sym__argument,
+      sym_text,
+      sym__cisco_atom,
+    ACTIONS(79), 6,
+      sym_prompt,
+      sym__newline,
+      sym__definition_start,
+      sym__ordinary_start,
+      sym__address_family_start,
+      ts_builtin_sym_end,
+  [292] = 9,
+    ACTIONS(15), 1,
+      sym_word,
+    ACTIONS(25), 1,
+      sym_text_keyword,
+    ACTIONS(31), 1,
+      sym_token_type_cisco_interface_ethernet,
+    ACTIONS(57), 1,
+      sym_quoted_string,
+    ACTIONS(85), 1,
+      sym__trailing_comment,
+    STATE(16), 1,
+      aux_sym_generic_command_repeat1,
+    STATE(31), 1,
+      sym__cisco_interface_token,
+    STATE(30), 3,
+      sym__argument,
+      sym_text,
+      sym__cisco_atom,
+    ACTIONS(83), 6,
+      sym_prompt,
+      sym__newline,
+      sym__definition_start,
+      sym__ordinary_start,
+      sym__address_family_start,
+      ts_builtin_sym_end,
+  [327] = 9,
+    ACTIONS(89), 1,
+      sym_word,
+    ACTIONS(92), 1,
+      sym_text_keyword,
+    ACTIONS(95), 1,
+      sym__trailing_comment,
+    ACTIONS(97), 1,
+      sym_quoted_string,
+    ACTIONS(100), 1,
+      sym_token_type_cisco_interface_ethernet,
+    STATE(16), 1,
+      aux_sym_generic_command_repeat1,
+    STATE(31), 1,
+      sym__cisco_interface_token,
+    STATE(30), 3,
+      sym__argument,
+      sym_text,
+      sym__cisco_atom,
+    ACTIONS(87), 6,
+      sym_prompt,
+      sym__newline,
+      sym__definition_start,
+      sym__ordinary_start,
+      sym__address_family_start,
+      ts_builtin_sym_end,
+  [362] = 10,
+    ACTIONS(103), 1,
+      ts_builtin_sym_end,
+    ACTIONS(105), 1,
+      sym_prompt,
+    ACTIONS(108), 1,
+      sym__definition_start,
+    ACTIONS(111), 1,
+      sym__ordinary_start,
+    ACTIONS(114), 1,
+      sym__address_family_start,
+    STATE(22), 1,
+      sym_prompt_record,
+    STATE(33), 1,
+      sym_definition_line,
+    STATE(48), 1,
+      sym_prompt_line,
+    STATE(50), 1,
+      sym_address_family_definition_line,
+    STATE(17), 6,
+      sym_prompt_block,
+      sym_top_level_line,
+      sym_orphan_child_line,
+      sym__definition,
+      sym_simple_definition,
+      aux_sym_source_file_repeat1,
+  [398] = 10,
+    ACTIONS(5), 1,
+      sym_prompt,
     ACTIONS(7), 1,
+      sym__definition_start,
+    ACTIONS(9), 1,
+      sym__ordinary_start,
+    ACTIONS(11), 1,
+      sym__address_family_start,
+    ACTIONS(117), 1,
+      ts_builtin_sym_end,
+    STATE(22), 1,
+      sym_prompt_record,
+    STATE(33), 1,
+      sym_definition_line,
+    STATE(48), 1,
+      sym_prompt_line,
+    STATE(50), 1,
+      sym_address_family_definition_line,
+    STATE(17), 6,
+      sym_prompt_block,
+      sym_top_level_line,
+      sym_orphan_child_line,
+      sym__definition,
+      sym_simple_definition,
+      aux_sym_source_file_repeat1,
+  [434] = 2,
+    ACTIONS(119), 7,
+      sym_prompt,
+      sym__newline,
+      sym__definition_start,
+      sym__ordinary_start,
+      sym__address_family_start,
+      ts_builtin_sym_end,
+      sym_quoted_string,
+    ACTIONS(121), 7,
+      sym__keyword_interface,
+      sym__keyword_router,
+      sym__keyword_address_family,
+      sym_text_keyword,
+      sym__trailing_comment,
+      sym_token_type_cisco_interface_ethernet,
+      sym_word,
+  [453] = 8,
+    ACTIONS(7), 1,
+      sym__definition_start,
+    ACTIONS(11), 1,
+      sym__address_family_start,
+    ACTIONS(125), 1,
+      sym__ordinary_start,
+    STATE(33), 1,
+      sym_definition_line,
+    STATE(50), 1,
+      sym_address_family_definition_line,
+    ACTIONS(123), 2,
+      sym_prompt,
+      ts_builtin_sym_end,
+    STATE(49), 2,
+      sym_ordinary_line,
+      sym_orphan_child_line,
+    STATE(21), 4,
+      sym_prompt_body_line,
+      sym__definition,
+      sym_simple_definition,
+      aux_sym_prompt_block_repeat1,
+  [483] = 8,
+    ACTIONS(129), 1,
+      sym__definition_start,
+    ACTIONS(132), 1,
+      sym__ordinary_start,
+    ACTIONS(135), 1,
+      sym__address_family_start,
+    STATE(33), 1,
+      sym_definition_line,
+    STATE(50), 1,
+      sym_address_family_definition_line,
+    ACTIONS(127), 2,
+      sym_prompt,
+      ts_builtin_sym_end,
+    STATE(49), 2,
+      sym_ordinary_line,
+      sym_orphan_child_line,
+    STATE(21), 4,
+      sym_prompt_body_line,
+      sym__definition,
+      sym_simple_definition,
+      aux_sym_prompt_block_repeat1,
+  [513] = 8,
+    ACTIONS(7), 1,
+      sym__definition_start,
+    ACTIONS(11), 1,
+      sym__address_family_start,
+    ACTIONS(125), 1,
+      sym__ordinary_start,
+    STATE(33), 1,
+      sym_definition_line,
+    STATE(50), 1,
+      sym_address_family_definition_line,
+    ACTIONS(138), 2,
+      sym_prompt,
+      ts_builtin_sym_end,
+    STATE(49), 2,
+      sym_ordinary_line,
+      sym_orphan_child_line,
+    STATE(20), 4,
+      sym_prompt_body_line,
+      sym__definition,
+      sym_simple_definition,
+      aux_sym_prompt_block_repeat1,
+  [543] = 3,
+    ACTIONS(144), 1,
+      sym_text_value,
+    ACTIONS(142), 4,
+      sym_text_keyword,
+      sym__trailing_comment,
+      sym_token_type_cisco_interface_ethernet,
+      sym_word,
+    ACTIONS(140), 7,
+      sym_prompt,
+      sym__newline,
+      sym__definition_start,
+      sym__ordinary_start,
+      sym__address_family_start,
+      ts_builtin_sym_end,
+      sym_quoted_string,
+  [562] = 6,
+    ACTIONS(148), 1,
+      sym_word,
+    ACTIONS(150), 1,
+      sym__trailing_comment,
+    ACTIONS(152), 1,
+      sym_token_type_cisco_interface_ethernet,
+    STATE(26), 1,
+      sym__cisco_atom,
+    STATE(36), 1,
+      sym__cisco_interface_token,
+    ACTIONS(146), 6,
+      sym_prompt,
+      sym__newline,
+      sym__definition_start,
+      sym__ordinary_start,
+      sym__address_family_start,
+      ts_builtin_sym_end,
+  [586] = 6,
+    ACTIONS(15), 1,
+      sym_word,
+    ACTIONS(31), 1,
+      sym_token_type_cisco_interface_ethernet,
+    ACTIONS(156), 1,
+      sym__trailing_comment,
+    STATE(10), 1,
+      sym__cisco_atom,
+    STATE(31), 1,
+      sym__cisco_interface_token,
+    ACTIONS(154), 6,
+      sym_prompt,
+      sym__newline,
+      sym__definition_start,
+      sym__ordinary_start,
+      sym__address_family_start,
+      ts_builtin_sym_end,
+  [610] = 6,
+    ACTIONS(15), 1,
+      sym_word,
+    ACTIONS(31), 1,
+      sym_token_type_cisco_interface_ethernet,
+    ACTIONS(160), 1,
+      sym__trailing_comment,
+    STATE(14), 1,
+      sym__cisco_atom,
+    STATE(31), 1,
+      sym__cisco_interface_token,
+    ACTIONS(158), 6,
+      sym_prompt,
+      sym__newline,
+      sym__definition_start,
+      sym__ordinary_start,
+      sym__address_family_start,
+      ts_builtin_sym_end,
+  [634] = 2,
+    ACTIONS(164), 4,
+      sym_text_keyword,
+      sym__trailing_comment,
+      sym_token_type_cisco_interface_ethernet,
+      sym_word,
+    ACTIONS(162), 7,
+      sym_prompt,
+      sym__newline,
+      sym__definition_start,
+      sym__ordinary_start,
+      sym__address_family_start,
+      ts_builtin_sym_end,
+      sym_quoted_string,
+  [650] = 6,
+    ACTIONS(15), 1,
+      sym_word,
+    ACTIONS(31), 1,
+      sym_token_type_cisco_interface_ethernet,
+    ACTIONS(168), 1,
+      sym__trailing_comment,
+    STATE(11), 1,
+      sym__cisco_atom,
+    STATE(31), 1,
+      sym__cisco_interface_token,
+    ACTIONS(166), 6,
+      sym_prompt,
+      sym__newline,
+      sym__definition_start,
+      sym__ordinary_start,
+      sym__address_family_start,
+      ts_builtin_sym_end,
+  [674] = 2,
+    ACTIONS(172), 4,
+      sym_text_keyword,
+      sym__trailing_comment,
+      sym_token_type_cisco_interface_ethernet,
+      sym_word,
+    ACTIONS(170), 7,
+      sym_prompt,
+      sym__newline,
+      sym__definition_start,
+      sym__ordinary_start,
+      sym__address_family_start,
+      ts_builtin_sym_end,
+      sym_quoted_string,
+  [690] = 2,
+    ACTIONS(176), 4,
+      sym_text_keyword,
+      sym__trailing_comment,
+      sym_token_type_cisco_interface_ethernet,
+      sym_word,
+    ACTIONS(174), 7,
+      sym_prompt,
+      sym__newline,
+      sym__definition_start,
+      sym__ordinary_start,
+      sym__address_family_start,
+      ts_builtin_sym_end,
+      sym_quoted_string,
+  [706] = 2,
+    ACTIONS(180), 4,
+      sym_text_keyword,
+      sym__trailing_comment,
+      sym_token_type_cisco_interface_ethernet,
+      sym_word,
+    ACTIONS(178), 7,
+      sym_prompt,
+      sym__newline,
+      sym__definition_start,
+      sym__ordinary_start,
+      sym__address_family_start,
+      ts_builtin_sym_end,
+      sym_quoted_string,
+  [722] = 6,
+    ACTIONS(11), 1,
+      sym__address_family_start,
+    ACTIONS(125), 1,
+      sym__ordinary_start,
+    STATE(50), 1,
+      sym_address_family_definition_line,
+    STATE(34), 2,
+      sym_definition_body_line,
+      aux_sym_simple_definition_repeat1,
+    STATE(57), 2,
+      sym_ordinary_line,
+      sym_orphan_child_line,
+    ACTIONS(182), 3,
+      sym_prompt,
+      sym__definition_start,
+      ts_builtin_sym_end,
+  [745] = 6,
+    ACTIONS(11), 1,
+      sym__address_family_start,
+    ACTIONS(125), 1,
+      sym__ordinary_start,
+    STATE(50), 1,
+      sym_address_family_definition_line,
+    STATE(32), 2,
+      sym_definition_body_line,
+      aux_sym_simple_definition_repeat1,
+    STATE(57), 2,
+      sym_ordinary_line,
+      sym_orphan_child_line,
+    ACTIONS(184), 3,
+      sym_prompt,
+      sym__definition_start,
+      ts_builtin_sym_end,
+  [768] = 6,
+    ACTIONS(188), 1,
+      sym__ordinary_start,
+    ACTIONS(191), 1,
+      sym__address_family_start,
+    STATE(50), 1,
+      sym_address_family_definition_line,
+    STATE(34), 2,
+      sym_definition_body_line,
+      aux_sym_simple_definition_repeat1,
+    STATE(57), 2,
+      sym_ordinary_line,
+      sym_orphan_child_line,
+    ACTIONS(186), 3,
+      sym_prompt,
+      sym__definition_start,
+      ts_builtin_sym_end,
+  [791] = 2,
+    ACTIONS(172), 3,
+      sym__trailing_comment,
+      sym_token_type_cisco_interface_ethernet,
+      sym_word,
+    ACTIONS(170), 6,
+      sym_prompt,
+      sym__newline,
+      sym__definition_start,
+      sym__ordinary_start,
+      sym__address_family_start,
+      ts_builtin_sym_end,
+  [805] = 2,
+    ACTIONS(180), 3,
+      sym__trailing_comment,
+      sym_token_type_cisco_interface_ethernet,
+      sym_word,
+    ACTIONS(178), 6,
+      sym_prompt,
+      sym__newline,
+      sym__definition_start,
+      sym__ordinary_start,
+      sym__address_family_start,
+      ts_builtin_sym_end,
+  [819] = 2,
+    ACTIONS(196), 1,
+      sym__trailing_comment,
+    ACTIONS(194), 6,
+      sym_prompt,
+      sym__newline,
+      sym__definition_start,
+      sym__ordinary_start,
+      sym__address_family_start,
+      ts_builtin_sym_end,
+  [831] = 1,
+    ACTIONS(198), 7,
+      sym_prompt,
+      sym__newline,
+      sym__definition_start,
+      sym__ordinary_start,
+      sym__address_family_start,
+      ts_builtin_sym_end,
+      sym__trailing_comment,
+  [841] = 2,
+    ACTIONS(202), 1,
+      sym__trailing_comment,
+    ACTIONS(200), 6,
+      sym_prompt,
+      sym__newline,
+      sym__definition_start,
+      sym__ordinary_start,
+      sym__address_family_start,
+      ts_builtin_sym_end,
+  [853] = 1,
+    ACTIONS(204), 7,
+      sym_prompt,
+      sym__newline,
+      sym__definition_start,
+      sym__ordinary_start,
+      sym__address_family_start,
+      ts_builtin_sym_end,
+      sym__trailing_comment,
+  [863] = 2,
+    ACTIONS(208), 1,
+      sym__newline,
+    ACTIONS(206), 5,
+      sym_prompt,
+      sym__definition_start,
+      sym__ordinary_start,
+      sym__address_family_start,
+      ts_builtin_sym_end,
+  [874] = 2,
+    ACTIONS(212), 1,
+      sym__newline,
+    ACTIONS(210), 5,
+      sym_prompt,
+      sym__definition_start,
+      sym__ordinary_start,
+      sym__address_family_start,
+      ts_builtin_sym_end,
+  [885] = 1,
+    ACTIONS(214), 6,
+      sym_prompt,
+      sym__newline,
+      sym__definition_start,
+      sym__ordinary_start,
+      sym__address_family_start,
+      ts_builtin_sym_end,
+  [894] = 1,
+    ACTIONS(216), 6,
+      sym_prompt,
+      sym__newline,
+      sym__definition_start,
+      sym__ordinary_start,
+      sym__address_family_start,
+      ts_builtin_sym_end,
+  [903] = 2,
+    ACTIONS(220), 1,
+      sym__newline,
+    ACTIONS(218), 5,
+      sym_prompt,
+      sym__definition_start,
+      sym__ordinary_start,
+      sym__address_family_start,
+      ts_builtin_sym_end,
+  [914] = 1,
+    ACTIONS(222), 6,
+      sym_prompt,
+      sym__newline,
+      sym__definition_start,
+      sym__ordinary_start,
+      sym__address_family_start,
+      ts_builtin_sym_end,
+  [923] = 2,
+    ACTIONS(226), 1,
+      sym__newline,
+    ACTIONS(224), 5,
+      sym_prompt,
+      sym__definition_start,
+      sym__ordinary_start,
+      sym__address_family_start,
+      ts_builtin_sym_end,
+  [934] = 2,
+    ACTIONS(230), 1,
+      sym__newline,
+    ACTIONS(228), 5,
+      sym_prompt,
+      sym__definition_start,
+      sym__ordinary_start,
+      sym__address_family_start,
+      ts_builtin_sym_end,
+  [945] = 1,
+    ACTIONS(232), 5,
+      sym_prompt,
+      sym__definition_start,
+      sym__ordinary_start,
+      sym__address_family_start,
+      ts_builtin_sym_end,
+  [953] = 1,
+    ACTIONS(234), 5,
+      sym_prompt,
+      sym__definition_start,
+      sym__ordinary_start,
+      sym__address_family_start,
+      ts_builtin_sym_end,
+  [961] = 1,
+    ACTIONS(236), 5,
+      sym_prompt,
+      sym__definition_start,
+      sym__ordinary_start,
+      sym__address_family_start,
+      ts_builtin_sym_end,
+  [969] = 1,
+    ACTIONS(238), 5,
+      sym_prompt,
+      sym__definition_start,
+      sym__ordinary_start,
+      sym__address_family_start,
+      ts_builtin_sym_end,
+  [977] = 1,
+    ACTIONS(240), 5,
+      sym_prompt,
+      sym__definition_start,
+      sym__ordinary_start,
+      sym__address_family_start,
+      ts_builtin_sym_end,
+  [985] = 1,
+    ACTIONS(218), 5,
+      sym_prompt,
+      sym__definition_start,
+      sym__ordinary_start,
+      sym__address_family_start,
+      ts_builtin_sym_end,
+  [993] = 1,
+    ACTIONS(224), 5,
+      sym_prompt,
+      sym__definition_start,
+      sym__ordinary_start,
+      sym__address_family_start,
+      ts_builtin_sym_end,
+  [1001] = 1,
+    ACTIONS(242), 5,
+      sym_prompt,
+      sym__definition_start,
+      sym__ordinary_start,
+      sym__address_family_start,
+      ts_builtin_sym_end,
+  [1009] = 1,
+    ACTIONS(244), 5,
+      sym_prompt,
+      sym__definition_start,
+      sym__ordinary_start,
+      sym__address_family_start,
+      ts_builtin_sym_end,
+  [1017] = 1,
+    ACTIONS(246), 5,
+      sym_prompt,
+      sym__definition_start,
+      sym__ordinary_start,
+      sym__address_family_start,
+      ts_builtin_sym_end,
+  [1025] = 1,
+    ACTIONS(206), 5,
+      sym_prompt,
+      sym__definition_start,
+      sym__ordinary_start,
+      sym__address_family_start,
+      ts_builtin_sym_end,
+  [1033] = 1,
+    ACTIONS(210), 5,
+      sym_prompt,
+      sym__definition_start,
+      sym__ordinary_start,
+      sym__address_family_start,
+      ts_builtin_sym_end,
+  [1041] = 1,
+    ACTIONS(248), 1,
       ts_builtin_sym_end,
 };
 
 static const uint32_t ts_small_parse_table_map[] = {
-  [SMALL_STATE(2)] = 0,
-  [SMALL_STATE(3)] = 4,
+  [SMALL_STATE(7)] = 0,
+  [SMALL_STATE(8)] = 47,
+  [SMALL_STATE(9)] = 82,
+  [SMALL_STATE(10)] = 117,
+  [SMALL_STATE(11)] = 152,
+  [SMALL_STATE(12)] = 187,
+  [SMALL_STATE(13)] = 222,
+  [SMALL_STATE(14)] = 257,
+  [SMALL_STATE(15)] = 292,
+  [SMALL_STATE(16)] = 327,
+  [SMALL_STATE(17)] = 362,
+  [SMALL_STATE(18)] = 398,
+  [SMALL_STATE(19)] = 434,
+  [SMALL_STATE(20)] = 453,
+  [SMALL_STATE(21)] = 483,
+  [SMALL_STATE(22)] = 513,
+  [SMALL_STATE(23)] = 543,
+  [SMALL_STATE(24)] = 562,
+  [SMALL_STATE(25)] = 586,
+  [SMALL_STATE(26)] = 610,
+  [SMALL_STATE(27)] = 634,
+  [SMALL_STATE(28)] = 650,
+  [SMALL_STATE(29)] = 674,
+  [SMALL_STATE(30)] = 690,
+  [SMALL_STATE(31)] = 706,
+  [SMALL_STATE(32)] = 722,
+  [SMALL_STATE(33)] = 745,
+  [SMALL_STATE(34)] = 768,
+  [SMALL_STATE(35)] = 791,
+  [SMALL_STATE(36)] = 805,
+  [SMALL_STATE(37)] = 819,
+  [SMALL_STATE(38)] = 831,
+  [SMALL_STATE(39)] = 841,
+  [SMALL_STATE(40)] = 853,
+  [SMALL_STATE(41)] = 863,
+  [SMALL_STATE(42)] = 874,
+  [SMALL_STATE(43)] = 885,
+  [SMALL_STATE(44)] = 894,
+  [SMALL_STATE(45)] = 903,
+  [SMALL_STATE(46)] = 914,
+  [SMALL_STATE(47)] = 923,
+  [SMALL_STATE(48)] = 934,
+  [SMALL_STATE(49)] = 945,
+  [SMALL_STATE(50)] = 953,
+  [SMALL_STATE(51)] = 961,
+  [SMALL_STATE(52)] = 969,
+  [SMALL_STATE(53)] = 977,
+  [SMALL_STATE(54)] = 985,
+  [SMALL_STATE(55)] = 993,
+  [SMALL_STATE(56)] = 1001,
+  [SMALL_STATE(57)] = 1009,
+  [SMALL_STATE(58)] = 1017,
+  [SMALL_STATE(59)] = 1025,
+  [SMALL_STATE(60)] = 1033,
+  [SMALL_STATE(61)] = 1041,
 };
 
 static const TSParseActionEntry ts_parse_actions[] = {
   [0] = {.entry = {.count = 0, .reusable = false}},
   [1] = {.entry = {.count = 1, .reusable = false}}, RECOVER(),
-  [3] = {.entry = {.count = 1, .reusable = true}}, SHIFT(2),
-  [5] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_source_file, 1, 0, 0),
-  [7] = {.entry = {.count = 1, .reusable = true}},  ACCEPT_INPUT(),
+  [3] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_source_file, 0, 0, 0),
+  [5] = {.entry = {.count = 1, .reusable = true}}, SHIFT(6),
+  [7] = {.entry = {.count = 1, .reusable = true}}, SHIFT(4),
+  [9] = {.entry = {.count = 1, .reusable = true}}, SHIFT(2),
+  [11] = {.entry = {.count = 1, .reusable = true}}, SHIFT(3),
+  [13] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_top_level_line, 1, 0, 0),
+  [15] = {.entry = {.count = 1, .reusable = false}}, SHIFT(31),
+  [17] = {.entry = {.count = 1, .reusable = false}}, SHIFT(25),
+  [19] = {.entry = {.count = 1, .reusable = false}}, SHIFT(24),
+  [21] = {.entry = {.count = 1, .reusable = false}}, SHIFT(28),
+  [23] = {.entry = {.count = 1, .reusable = false}}, SHIFT(19),
+  [25] = {.entry = {.count = 1, .reusable = false}}, SHIFT(23),
+  [27] = {.entry = {.count = 1, .reusable = true}}, SHIFT(46),
+  [29] = {.entry = {.count = 1, .reusable = true}}, SHIFT(9),
+  [31] = {.entry = {.count = 1, .reusable = false}}, SHIFT(29),
+  [33] = {.entry = {.count = 1, .reusable = true}}, SHIFT(59),
+  [35] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_address_family_definition_line, 1, 0, 0),
+  [37] = {.entry = {.count = 1, .reusable = true}}, SHIFT(60),
+  [39] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_definition_line, 1, 0, 0),
+  [41] = {.entry = {.count = 1, .reusable = true}}, SHIFT(55),
+  [43] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_ordinary_line, 1, 0, 0),
+  [45] = {.entry = {.count = 1, .reusable = true}}, SHIFT(54),
+  [47] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_prompt_line, 1, 0, 1),
+  [49] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym__command_record, 1, 0, 7),
+  [51] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym__command_record, 1, 0, 7),
+  [53] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_router_command, 4, 0, 20),
+  [55] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_router_command, 4, 0, 20),
+  [57] = {.entry = {.count = 1, .reusable = true}}, SHIFT(30),
+  [59] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_generic_command, 1, 0, 4),
+  [61] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_generic_command, 1, 0, 4),
+  [63] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_interface_command, 2, 0, 9),
+  [65] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_interface_command, 2, 0, 9),
+  [67] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_address_family_command, 2, 0, 9),
+  [69] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_address_family_command, 2, 0, 9),
+  [71] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_generic_command, 2, 0, 13),
+  [73] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_generic_command, 2, 0, 13),
+  [75] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_interface_command, 3, 0, 17),
+  [77] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_interface_command, 3, 0, 17),
+  [79] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_router_command, 3, 0, 18),
+  [81] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_router_command, 3, 0, 18),
+  [83] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_address_family_command, 3, 0, 17),
+  [85] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_address_family_command, 3, 0, 17),
+  [87] = {.entry = {.count = 1, .reusable = true}}, REDUCE(aux_sym_generic_command_repeat1, 2, 0, 19),
+  [89] = {.entry = {.count = 2, .reusable = false}}, REDUCE(aux_sym_generic_command_repeat1, 2, 0, 19), SHIFT_REPEAT(31),
+  [92] = {.entry = {.count = 2, .reusable = false}}, REDUCE(aux_sym_generic_command_repeat1, 2, 0, 19), SHIFT_REPEAT(23),
+  [95] = {.entry = {.count = 1, .reusable = false}}, REDUCE(aux_sym_generic_command_repeat1, 2, 0, 19),
+  [97] = {.entry = {.count = 2, .reusable = true}}, REDUCE(aux_sym_generic_command_repeat1, 2, 0, 19), SHIFT_REPEAT(30),
+  [100] = {.entry = {.count = 2, .reusable = false}}, REDUCE(aux_sym_generic_command_repeat1, 2, 0, 19), SHIFT_REPEAT(29),
+  [103] = {.entry = {.count = 1, .reusable = true}}, REDUCE(aux_sym_source_file_repeat1, 2, 0, 0),
+  [105] = {.entry = {.count = 2, .reusable = true}}, REDUCE(aux_sym_source_file_repeat1, 2, 0, 0), SHIFT_REPEAT(6),
+  [108] = {.entry = {.count = 2, .reusable = true}}, REDUCE(aux_sym_source_file_repeat1, 2, 0, 0), SHIFT_REPEAT(4),
+  [111] = {.entry = {.count = 2, .reusable = true}}, REDUCE(aux_sym_source_file_repeat1, 2, 0, 0), SHIFT_REPEAT(2),
+  [114] = {.entry = {.count = 2, .reusable = true}}, REDUCE(aux_sym_source_file_repeat1, 2, 0, 0), SHIFT_REPEAT(3),
+  [117] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_source_file, 1, 0, 0),
+  [119] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_command_modifier, 1, 0, 0),
+  [121] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_command_modifier, 1, 0, 0),
+  [123] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_prompt_block, 2, 0, 2),
+  [125] = {.entry = {.count = 1, .reusable = true}}, SHIFT(5),
+  [127] = {.entry = {.count = 1, .reusable = true}}, REDUCE(aux_sym_prompt_block_repeat1, 2, 0, 0),
+  [129] = {.entry = {.count = 2, .reusable = true}}, REDUCE(aux_sym_prompt_block_repeat1, 2, 0, 0), SHIFT_REPEAT(4),
+  [132] = {.entry = {.count = 2, .reusable = true}}, REDUCE(aux_sym_prompt_block_repeat1, 2, 0, 0), SHIFT_REPEAT(5),
+  [135] = {.entry = {.count = 2, .reusable = true}}, REDUCE(aux_sym_prompt_block_repeat1, 2, 0, 0), SHIFT_REPEAT(3),
+  [138] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_prompt_block, 1, 0, 2),
+  [140] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_text, 1, 0, 3),
+  [142] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_text, 1, 0, 3),
+  [144] = {.entry = {.count = 1, .reusable = false}}, SHIFT(27),
+  [146] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_router_command, 1, 0, 3),
+  [148] = {.entry = {.count = 1, .reusable = false}}, SHIFT(36),
+  [150] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_router_command, 1, 0, 3),
+  [152] = {.entry = {.count = 1, .reusable = false}}, SHIFT(35),
+  [154] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_interface_command, 1, 0, 3),
+  [156] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_interface_command, 1, 0, 3),
+  [158] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_router_command, 2, 0, 10),
+  [160] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_router_command, 2, 0, 10),
+  [162] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_text, 2, 0, 11),
+  [164] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_text, 2, 0, 11),
+  [166] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_address_family_command, 1, 0, 3),
+  [168] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_address_family_command, 1, 0, 3),
+  [170] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym__cisco_interface_token, 1, 0, 0),
+  [172] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym__cisco_interface_token, 1, 0, 0),
+  [174] = {.entry = {.count = 1, .reusable = true}}, REDUCE(aux_sym_generic_command_repeat1, 1, 0, 12),
+  [176] = {.entry = {.count = 1, .reusable = false}}, REDUCE(aux_sym_generic_command_repeat1, 1, 0, 12),
+  [178] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym__cisco_atom, 1, 0, 0),
+  [180] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym__cisco_atom, 1, 0, 0),
+  [182] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_simple_definition, 2, 0, 2),
+  [184] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_simple_definition, 1, 0, 2),
+  [186] = {.entry = {.count = 1, .reusable = true}}, REDUCE(aux_sym_simple_definition_repeat1, 2, 0, 0),
+  [188] = {.entry = {.count = 2, .reusable = true}}, REDUCE(aux_sym_simple_definition_repeat1, 2, 0, 0), SHIFT_REPEAT(5),
+  [191] = {.entry = {.count = 2, .reusable = true}}, REDUCE(aux_sym_simple_definition_repeat1, 2, 0, 0), SHIFT_REPEAT(3),
+  [194] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_line, 1, 0, 8),
+  [196] = {.entry = {.count = 1, .reusable = true}}, SHIFT(43),
+  [198] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym__command_record, 2, 0, 15),
+  [200] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_prompt_line, 2, 0, 5),
+  [202] = {.entry = {.count = 1, .reusable = true}}, SHIFT(44),
+  [204] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym__command_record, 1, 0, 6),
+  [206] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_top_level_line, 2, 0, 0),
+  [208] = {.entry = {.count = 1, .reusable = true}}, SHIFT(52),
+  [210] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_address_family_definition_line, 2, 0, 0),
+  [212] = {.entry = {.count = 1, .reusable = true}}, SHIFT(53),
+  [214] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_line, 2, 0, 16),
+  [216] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_prompt_line, 3, 0, 14),
+  [218] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_ordinary_line, 2, 0, 0),
+  [220] = {.entry = {.count = 1, .reusable = true}}, SHIFT(58),
+  [222] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_line, 1, 0, 0),
+  [224] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_definition_line, 2, 0, 0),
+  [226] = {.entry = {.count = 1, .reusable = true}}, SHIFT(51),
+  [228] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_prompt_record, 1, 0, 0),
+  [230] = {.entry = {.count = 1, .reusable = true}}, SHIFT(56),
+  [232] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_prompt_body_line, 1, 0, 0),
+  [234] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_orphan_child_line, 1, 0, 0),
+  [236] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_definition_line, 3, 0, 0),
+  [238] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_top_level_line, 3, 0, 0),
+  [240] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_address_family_definition_line, 3, 0, 0),
+  [242] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_prompt_record, 2, 0, 0),
+  [244] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_definition_body_line, 1, 0, 0),
+  [246] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_ordinary_line, 3, 0, 0),
+  [248] = {.entry = {.count = 1, .reusable = true}},  ACCEPT_INPUT(),
+};
+
+enum ts_external_scanner_symbol_identifiers {
+  ts_external_token_prompt = 0,
+  ts_external_token__newline = 1,
+  ts_external_token__definition_start = 2,
+  ts_external_token__ordinary_start = 3,
+  ts_external_token__bgp_start = 4,
+  ts_external_token__address_family_start = 5,
+};
+
+static const TSSymbol ts_external_scanner_symbol_map[EXTERNAL_TOKEN_COUNT] = {
+  [ts_external_token_prompt] = sym_prompt,
+  [ts_external_token__newline] = sym__newline,
+  [ts_external_token__definition_start] = sym__definition_start,
+  [ts_external_token__ordinary_start] = sym__ordinary_start,
+  [ts_external_token__bgp_start] = sym__bgp_start,
+  [ts_external_token__address_family_start] = sym__address_family_start,
+};
+
+static const bool ts_external_scanner_states[4][EXTERNAL_TOKEN_COUNT] = {
+  [1] = {
+    [ts_external_token_prompt] = true,
+    [ts_external_token__newline] = true,
+    [ts_external_token__definition_start] = true,
+    [ts_external_token__ordinary_start] = true,
+    [ts_external_token__bgp_start] = true,
+    [ts_external_token__address_family_start] = true,
+  },
+  [2] = {
+    [ts_external_token_prompt] = true,
+    [ts_external_token__definition_start] = true,
+    [ts_external_token__ordinary_start] = true,
+    [ts_external_token__address_family_start] = true,
+  },
+  [3] = {
+    [ts_external_token_prompt] = true,
+    [ts_external_token__newline] = true,
+    [ts_external_token__definition_start] = true,
+    [ts_external_token__ordinary_start] = true,
+    [ts_external_token__address_family_start] = true,
+  },
 };
 
 #ifdef __cplusplus
 extern "C" {
 #endif
+void *tree_sitter_cisco_external_scanner_create(void);
+void tree_sitter_cisco_external_scanner_destroy(void *);
+bool tree_sitter_cisco_external_scanner_scan(void *, TSLexer *, const bool *);
+unsigned tree_sitter_cisco_external_scanner_serialize(void *, char *);
+void tree_sitter_cisco_external_scanner_deserialize(void *, const char *, unsigned);
+
 #ifdef TREE_SITTER_HIDE_SYMBOLS
 #define TS_PUBLIC
 #elif defined(_WIN32)
@@ -168,12 +2593,29 @@ TS_PUBLIC const TSLanguage *tree_sitter_cisco(void) {
     .small_parse_table_map = ts_small_parse_table_map,
     .parse_actions = ts_parse_actions,
     .symbol_names = ts_symbol_names,
+    .field_names = ts_field_names,
+    .field_map_slices = ts_field_map_slices,
+    .field_map_entries = ts_field_map_entries,
+    .supertype_map_slices = ts_supertype_map_slices,
+    .supertype_map_entries = ts_supertype_map_entries,
+    .supertype_symbols = ts_supertype_symbols,
     .symbol_metadata = ts_symbol_metadata,
     .public_symbol_map = ts_symbol_map,
     .alias_map = ts_non_terminal_alias_map,
     .alias_sequences = &ts_alias_sequences[0][0],
     .lex_modes = (const void*)ts_lex_modes,
     .lex_fn = ts_lex,
+    .keyword_lex_fn = ts_lex_keywords,
+    .keyword_capture_token = sym_word,
+    .external_scanner = {
+      &ts_external_scanner_states[0][0],
+      ts_external_scanner_symbol_map,
+      tree_sitter_cisco_external_scanner_create,
+      tree_sitter_cisco_external_scanner_destroy,
+      tree_sitter_cisco_external_scanner_scan,
+      tree_sitter_cisco_external_scanner_serialize,
+      tree_sitter_cisco_external_scanner_deserialize,
+    },
     .primary_state_ids = ts_primary_state_ids,
     .name = "cisco",
     .max_reserved_word_set_size = 0,
