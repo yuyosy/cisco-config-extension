@@ -1,0 +1,3 @@
+name = "Cisco Command Line Override"
+grammar = "cisco"
+path_suffixes = []

@@ -9,4 +9,4 @@ repository = "https://github.com/yuyosy/cisco-config-extension"
 [grammars.cisco]
 repository = "https://github.com/yuyosy/cisco-config-extension"
 path = "grammars/cisco"
-rev = "4f32824e65817e24943dd37bfb87206d5c2870c6"
+rev = "00142daa54e5a7909ee8c607e01865990fae48ff"

@@ -2,5 +2,7 @@ name = "Cisco Config"
 grammar = "cisco"
 path_suffixes = ["cisco"]
 
+line_comments = ["! ", "# "]
+
 tab_size = 1
 hard_tabs = false
