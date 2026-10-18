@@ -1,0 +1,11 @@
+# user specific
+*.local*
+*.env*
+
+# build artifacts
+target/
+*.wasm
+*.dll
+*.obj
+*.lib
+*.exp
