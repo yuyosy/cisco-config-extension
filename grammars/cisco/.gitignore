@@ -1,0 +1,19 @@
+# Node artifacts
+build/
+prebuilds/
+node_modules/
+
+# C artifacts
+*.a
+*.so
+*.so.*
+*.dylib
+*.dll
+*.pc
+*.exp
+*.lib
+
+# Grammar volatiles
+*.wasm
+*.obj
+*.o

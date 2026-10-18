@@ -1,0 +1,24 @@
+{
+  "name": "tree-sitter-cisco",
+  "version": "0.1.0",
+  "description": "Cisco configuration grammar for Tree-sitter",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yuyosy/cisco-config-extension",
+    "directory": "grammars/cisco"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "yuyosy",
+    "email": "yuyosy@outlook.com"
+  },
+  "private": true,
+  "devDependencies": {
+    "tree-sitter-cli": "^0.27.1"
+  },
+  "scripts": {
+    "generate": "tree-sitter generate",
+    "test": "tree-sitter test",
+    "parse": "tree-sitter parse"
+  }
+}
