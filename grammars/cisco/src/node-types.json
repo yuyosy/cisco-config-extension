@@ -38,6 +38,18 @@
         "named": true
       },
       {
+        "type": "_cisco_keyword_token",
+        "named": true
+      },
+      {
+        "type": "_cisco_numeric_literal",
+        "named": true
+      },
+      {
+        "type": "token_tag_cisco_logging_system_message",
+        "named": true
+      },
+      {
         "type": "word",
         "named": true
       }
@@ -129,6 +141,150 @@
       },
       {
         "type": "token_type_cisco_interface_wireless",
+        "named": true
+      }
+    ]
+  },
+  {
+    "type": "_cisco_keyword_token",
+    "named": true,
+    "subtypes": [
+      {
+        "type": "token_keyword_cisco_add_remove_add",
+        "named": true
+      },
+      {
+        "type": "token_keyword_cisco_add_remove_except",
+        "named": true
+      },
+      {
+        "type": "token_keyword_cisco_add_remove_remove",
+        "named": true
+      },
+      {
+        "type": "token_keyword_cisco_allowed_native_allowed",
+        "named": true
+      },
+      {
+        "type": "token_keyword_cisco_allowed_native_native",
+        "named": true
+      },
+      {
+        "type": "token_keyword_cisco_any_all_all",
+        "named": true
+      },
+      {
+        "type": "token_keyword_cisco_any_all_any",
+        "named": true
+      },
+      {
+        "type": "token_keyword_cisco_enable_disable_disable",
+        "named": true
+      },
+      {
+        "type": "token_keyword_cisco_enable_disable_enable",
+        "named": true
+      },
+      {
+        "type": "token_keyword_cisco_encapsulation_dot1q",
+        "named": true
+      },
+      {
+        "type": "token_keyword_cisco_encapsulation_dot1q_tunnel",
+        "named": true
+      },
+      {
+        "type": "token_keyword_cisco_encapsulation_mac_vlan",
+        "named": true
+      },
+      {
+        "type": "token_keyword_cisco_encapsulation_protocol_vlan",
+        "named": true
+      },
+      {
+        "type": "token_keyword_cisco_in_out_in",
+        "named": true
+      },
+      {
+        "type": "token_keyword_cisco_in_out_out",
+        "named": true
+      },
+      {
+        "type": "token_keyword_cisco_input_output_input",
+        "named": true
+      },
+      {
+        "type": "token_keyword_cisco_input_output_output",
+        "named": true
+      },
+      {
+        "type": "token_keyword_cisco_inside_outside_inside",
+        "named": true
+      },
+      {
+        "type": "token_keyword_cisco_inside_outside_outside",
+        "named": true
+      },
+      {
+        "type": "token_keyword_cisco_match_match_all",
+        "named": true
+      },
+      {
+        "type": "token_keyword_cisco_match_match_any",
+        "named": true
+      },
+      {
+        "type": "token_keyword_cisco_permit_deny_deny",
+        "named": true
+      },
+      {
+        "type": "token_keyword_cisco_permit_deny_permit",
+        "named": true
+      },
+      {
+        "type": "token_keyword_cisco_shutdown",
+        "named": true
+      },
+      {
+        "type": "token_keyword_cisco_status_administratively_down",
+        "named": true
+      },
+      {
+        "type": "token_keyword_cisco_status_deleted",
+        "named": true
+      },
+      {
+        "type": "token_keyword_cisco_status_down",
+        "named": true
+      },
+      {
+        "type": "token_keyword_cisco_status_up",
+        "named": true
+      },
+      {
+        "type": "token_keyword_cisco_switchport_mode_access",
+        "named": true
+      },
+      {
+        "type": "token_keyword_cisco_switchport_mode_trunk",
+        "named": true
+      }
+    ]
+  },
+  {
+    "type": "_cisco_numeric_literal",
+    "named": true,
+    "subtypes": [
+      {
+        "type": "token_number_cisco_hex",
+        "named": true
+      },
+      {
+        "type": "token_number_cisco_integer",
+        "named": true
+      },
+      {
+        "type": "token_number_cisco_range",
         "named": true
       }
     ]
@@ -784,6 +940,126 @@
     "named": true
   },
   {
+    "type": "token_keyword_cisco_add_remove_add",
+    "named": true
+  },
+  {
+    "type": "token_keyword_cisco_add_remove_except",
+    "named": true
+  },
+  {
+    "type": "token_keyword_cisco_add_remove_remove",
+    "named": true
+  },
+  {
+    "type": "token_keyword_cisco_allowed_native_allowed",
+    "named": true
+  },
+  {
+    "type": "token_keyword_cisco_allowed_native_native",
+    "named": true
+  },
+  {
+    "type": "token_keyword_cisco_any_all_all",
+    "named": true
+  },
+  {
+    "type": "token_keyword_cisco_any_all_any",
+    "named": true
+  },
+  {
+    "type": "token_keyword_cisco_enable_disable_disable",
+    "named": true
+  },
+  {
+    "type": "token_keyword_cisco_enable_disable_enable",
+    "named": true
+  },
+  {
+    "type": "token_keyword_cisco_encapsulation_dot1q",
+    "named": true
+  },
+  {
+    "type": "token_keyword_cisco_encapsulation_dot1q_tunnel",
+    "named": true
+  },
+  {
+    "type": "token_keyword_cisco_encapsulation_mac_vlan",
+    "named": true
+  },
+  {
+    "type": "token_keyword_cisco_encapsulation_protocol_vlan",
+    "named": true
+  },
+  {
+    "type": "token_keyword_cisco_in_out_in",
+    "named": true
+  },
+  {
+    "type": "token_keyword_cisco_in_out_out",
+    "named": true
+  },
+  {
+    "type": "token_keyword_cisco_input_output_input",
+    "named": true
+  },
+  {
+    "type": "token_keyword_cisco_input_output_output",
+    "named": true
+  },
+  {
+    "type": "token_keyword_cisco_inside_outside_inside",
+    "named": true
+  },
+  {
+    "type": "token_keyword_cisco_inside_outside_outside",
+    "named": true
+  },
+  {
+    "type": "token_keyword_cisco_match_match_all",
+    "named": true
+  },
+  {
+    "type": "token_keyword_cisco_match_match_any",
+    "named": true
+  },
+  {
+    "type": "token_keyword_cisco_permit_deny_deny",
+    "named": true
+  },
+  {
+    "type": "token_keyword_cisco_permit_deny_permit",
+    "named": true
+  },
+  {
+    "type": "token_keyword_cisco_shutdown",
+    "named": true
+  },
+  {
+    "type": "token_keyword_cisco_status_administratively_down",
+    "named": true
+  },
+  {
+    "type": "token_keyword_cisco_status_deleted",
+    "named": true
+  },
+  {
+    "type": "token_keyword_cisco_status_down",
+    "named": true
+  },
+  {
+    "type": "token_keyword_cisco_status_up",
+    "named": true
+  },
+  {
+    "type": "token_keyword_cisco_switchport_mode_access",
+    "named": true
+  },
+  {
+    "type": "token_keyword_cisco_switchport_mode_trunk",
+    "named": true
+  },
+  {
     "type": "token_number_cisco_address_ipv4",
     "named": true
   },
@@ -801,6 +1077,22 @@
   },
   {
     "type": "token_number_cisco_address_mac",
+    "named": true
+  },
+  {
+    "type": "token_number_cisco_hex",
+    "named": true
+  },
+  {
+    "type": "token_number_cisco_integer",
+    "named": true
+  },
+  {
+    "type": "token_number_cisco_range",
+    "named": true
+  },
+  {
+    "type": "token_tag_cisco_logging_system_message",
     "named": true
   },
   {

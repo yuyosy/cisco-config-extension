@@ -15,17 +15,17 @@
 #endif
 
 #define LANGUAGE_VERSION 15
-#define STATE_COUNT 76
-#define LARGE_STATE_COUNT 18
-#define SYMBOL_COUNT 81
+#define STATE_COUNT 80
+#define LARGE_STATE_COUNT 36
+#define SYMBOL_COUNT 117
 #define ALIAS_COUNT 0
-#define TOKEN_COUNT 44
+#define TOKEN_COUNT 78
 #define EXTERNAL_TOKEN_COUNT 6
 #define FIELD_COUNT 11
 #define MAX_ALIAS_SEQUENCE_LENGTH 4
 #define MAX_RESERVED_WORD_SET_SIZE 0
 #define PRODUCTION_ID_COUNT 21
-#define SUPERTYPE_COUNT 3
+#define SUPERTYPE_COUNT 5
 
 enum ts_symbol_identifiers {
   sym_word = 1,
@@ -35,79 +35,115 @@ enum ts_symbol_identifiers {
   sym_no_modifier = 5,
   sym_default_modifier = 6,
   sym_text_keyword = 7,
-  sym_line_comment = 8,
-  sym__trailing_comment = 9,
-  sym_quoted_string = 10,
-  sym_text_value = 11,
-  sym_token_type_cisco_interface_app_gigabitethernet = 12,
-  sym_token_type_cisco_interface_async = 13,
-  sym_token_type_cisco_interface_bdi = 14,
-  sym_token_type_cisco_interface_bri = 15,
-  sym_token_type_cisco_interface_bvi = 16,
-  sym_token_type_cisco_interface_cellular = 17,
-  sym_token_type_cisco_interface_dialer = 18,
-  sym_token_type_cisco_interface_ethernet = 19,
-  sym_token_type_cisco_interface_loopback = 20,
-  sym_token_type_cisco_interface_management = 21,
-  sym_token_type_cisco_interface_null = 22,
-  sym_token_type_cisco_interface_nvi = 23,
-  sym_token_type_cisco_interface_port_channel = 24,
-  sym_token_type_cisco_interface_serial = 25,
-  sym_token_type_cisco_interface_tunnel = 26,
-  sym_token_type_cisco_interface_vasileft = 27,
-  sym_token_type_cisco_interface_vasiright = 28,
-  sym_token_type_cisco_interface_virtual_template = 29,
-  sym_token_type_cisco_interface_vlan = 30,
-  sym_token_type_cisco_interface_vmi = 31,
-  sym_token_type_cisco_interface_wireless = 32,
-  sym_token_number_cisco_address_ipv4_cidr = 33,
-  sym_token_number_cisco_address_ipv4 = 34,
-  sym_token_number_cisco_address_ipv6_condensed = 35,
-  sym_token_number_cisco_address_ipv6_full = 36,
-  sym_token_number_cisco_address_mac = 37,
-  sym_prompt = 38,
-  sym__newline = 39,
-  sym__definition_start = 40,
-  sym__ordinary_start = 41,
-  sym__bgp_start = 42,
-  sym__address_family_start = 43,
-  sym_source_file = 44,
-  sym_prompt_block = 45,
-  sym_prompt_record = 46,
-  sym_prompt_body_line = 47,
-  sym_prompt_line = 48,
-  sym_top_level_line = 49,
-  sym_line = 50,
-  sym__command_record = 51,
-  sym__command = 52,
-  sym__argument = 53,
-  sym_generic_command = 54,
-  sym_text = 55,
-  sym_command_modifier = 56,
-  sym_ordinary_line = 57,
-  sym_orphan_child_line = 58,
-  sym__definition = 59,
-  sym_simple_definition = 60,
-  sym_definition_line = 61,
-  sym_definition_body_line = 62,
-  sym_bgp_definition = 63,
-  sym_bgp_body_line = 64,
-  sym_address_family_definition = 65,
-  sym_bgp_definition_line = 66,
-  sym_address_family_definition_line = 67,
-  sym_interface_command = 68,
-  sym_router_command = 69,
-  sym_address_family_command = 70,
-  sym__cisco_atom = 71,
-  sym__cisco_interface_token = 72,
-  sym__cisco_address_token = 73,
-  sym_address_family_body_line = 74,
-  aux_sym_source_file_repeat1 = 75,
-  aux_sym_prompt_block_repeat1 = 76,
-  aux_sym_generic_command_repeat1 = 77,
-  aux_sym_simple_definition_repeat1 = 78,
-  aux_sym_bgp_definition_repeat1 = 79,
-  aux_sym_address_family_definition_repeat1 = 80,
+  sym_token_keyword_cisco_encapsulation_dot1q = 8,
+  sym_token_keyword_cisco_encapsulation_dot1q_tunnel = 9,
+  sym_token_keyword_cisco_encapsulation_protocol_vlan = 10,
+  sym_token_keyword_cisco_encapsulation_mac_vlan = 11,
+  sym_token_keyword_cisco_switchport_mode_access = 12,
+  sym_token_keyword_cisco_switchport_mode_trunk = 13,
+  sym_token_keyword_cisco_shutdown = 14,
+  sym_token_keyword_cisco_status_up = 15,
+  sym_token_keyword_cisco_status_down = 16,
+  sym_token_keyword_cisco_status_deleted = 17,
+  sym_token_keyword_cisco_status_administratively_down = 18,
+  sym_token_keyword_cisco_enable_disable_enable = 19,
+  sym_token_keyword_cisco_enable_disable_disable = 20,
+  sym_token_keyword_cisco_match_match_any = 21,
+  sym_token_keyword_cisco_match_match_all = 22,
+  sym_token_keyword_cisco_add_remove_add = 23,
+  sym_token_keyword_cisco_add_remove_remove = 24,
+  sym_token_keyword_cisco_add_remove_except = 25,
+  sym_token_keyword_cisco_allowed_native_allowed = 26,
+  sym_token_keyword_cisco_allowed_native_native = 27,
+  sym_token_keyword_cisco_any_all_any = 28,
+  sym_token_keyword_cisco_any_all_all = 29,
+  sym_token_keyword_cisco_permit_deny_permit = 30,
+  sym_token_keyword_cisco_permit_deny_deny = 31,
+  sym_token_keyword_cisco_in_out_in = 32,
+  sym_token_keyword_cisco_in_out_out = 33,
+  sym_token_keyword_cisco_input_output_input = 34,
+  sym_token_keyword_cisco_input_output_output = 35,
+  sym_token_keyword_cisco_inside_outside_inside = 36,
+  sym_token_keyword_cisco_inside_outside_outside = 37,
+  sym_token_number_cisco_integer = 38,
+  sym_token_number_cisco_range = 39,
+  sym_token_number_cisco_hex = 40,
+  sym_line_comment = 41,
+  sym__trailing_comment = 42,
+  sym_quoted_string = 43,
+  sym_text_value = 44,
+  sym_token_tag_cisco_logging_system_message = 45,
+  sym_token_type_cisco_interface_app_gigabitethernet = 46,
+  sym_token_type_cisco_interface_async = 47,
+  sym_token_type_cisco_interface_bdi = 48,
+  sym_token_type_cisco_interface_bri = 49,
+  sym_token_type_cisco_interface_bvi = 50,
+  sym_token_type_cisco_interface_cellular = 51,
+  sym_token_type_cisco_interface_dialer = 52,
+  sym_token_type_cisco_interface_ethernet = 53,
+  sym_token_type_cisco_interface_loopback = 54,
+  sym_token_type_cisco_interface_management = 55,
+  sym_token_type_cisco_interface_null = 56,
+  sym_token_type_cisco_interface_nvi = 57,
+  sym_token_type_cisco_interface_port_channel = 58,
+  sym_token_type_cisco_interface_serial = 59,
+  sym_token_type_cisco_interface_tunnel = 60,
+  sym_token_type_cisco_interface_vasileft = 61,
+  sym_token_type_cisco_interface_vasiright = 62,
+  sym_token_type_cisco_interface_virtual_template = 63,
+  sym_token_type_cisco_interface_vlan = 64,
+  sym_token_type_cisco_interface_vmi = 65,
+  sym_token_type_cisco_interface_wireless = 66,
+  sym_token_number_cisco_address_ipv4_cidr = 67,
+  sym_token_number_cisco_address_ipv4 = 68,
+  sym_token_number_cisco_address_ipv6_condensed = 69,
+  sym_token_number_cisco_address_ipv6_full = 70,
+  sym_token_number_cisco_address_mac = 71,
+  sym_prompt = 72,
+  sym__newline = 73,
+  sym__definition_start = 74,
+  sym__ordinary_start = 75,
+  sym__bgp_start = 76,
+  sym__address_family_start = 77,
+  sym_source_file = 78,
+  sym_prompt_block = 79,
+  sym_prompt_record = 80,
+  sym_prompt_body_line = 81,
+  sym_prompt_line = 82,
+  sym_top_level_line = 83,
+  sym_line = 84,
+  sym__command_record = 85,
+  sym__command = 86,
+  sym__argument = 87,
+  sym_generic_command = 88,
+  sym_text = 89,
+  sym_command_modifier = 90,
+  sym_ordinary_line = 91,
+  sym_orphan_child_line = 92,
+  sym__definition = 93,
+  sym_simple_definition = 94,
+  sym_definition_line = 95,
+  sym_definition_body_line = 96,
+  sym_bgp_definition = 97,
+  sym_bgp_body_line = 98,
+  sym_address_family_definition = 99,
+  sym_bgp_definition_line = 100,
+  sym_address_family_definition_line = 101,
+  sym_interface_command = 102,
+  sym_router_command = 103,
+  sym_address_family_command = 104,
+  sym__cisco_atom = 105,
+  sym__cisco_numeric_literal = 106,
+  sym__cisco_interface_token = 107,
+  sym__cisco_address_token = 108,
+  sym__cisco_keyword_token = 109,
+  sym_address_family_body_line = 110,
+  aux_sym_source_file_repeat1 = 111,
+  aux_sym_prompt_block_repeat1 = 112,
+  aux_sym_generic_command_repeat1 = 113,
+  aux_sym_simple_definition_repeat1 = 114,
+  aux_sym_bgp_definition_repeat1 = 115,
+  aux_sym_address_family_definition_repeat1 = 116,
 };
 
 static const char * const ts_symbol_names[] = {
@@ -119,10 +155,44 @@ static const char * const ts_symbol_names[] = {
   [sym_no_modifier] = "no_modifier",
   [sym_default_modifier] = "default_modifier",
   [sym_text_keyword] = "text_keyword",
+  [sym_token_keyword_cisco_encapsulation_dot1q] = "token_keyword_cisco_encapsulation_dot1q",
+  [sym_token_keyword_cisco_encapsulation_dot1q_tunnel] = "token_keyword_cisco_encapsulation_dot1q_tunnel",
+  [sym_token_keyword_cisco_encapsulation_protocol_vlan] = "token_keyword_cisco_encapsulation_protocol_vlan",
+  [sym_token_keyword_cisco_encapsulation_mac_vlan] = "token_keyword_cisco_encapsulation_mac_vlan",
+  [sym_token_keyword_cisco_switchport_mode_access] = "token_keyword_cisco_switchport_mode_access",
+  [sym_token_keyword_cisco_switchport_mode_trunk] = "token_keyword_cisco_switchport_mode_trunk",
+  [sym_token_keyword_cisco_shutdown] = "token_keyword_cisco_shutdown",
+  [sym_token_keyword_cisco_status_up] = "token_keyword_cisco_status_up",
+  [sym_token_keyword_cisco_status_down] = "token_keyword_cisco_status_down",
+  [sym_token_keyword_cisco_status_deleted] = "token_keyword_cisco_status_deleted",
+  [sym_token_keyword_cisco_status_administratively_down] = "token_keyword_cisco_status_administratively_down",
+  [sym_token_keyword_cisco_enable_disable_enable] = "token_keyword_cisco_enable_disable_enable",
+  [sym_token_keyword_cisco_enable_disable_disable] = "token_keyword_cisco_enable_disable_disable",
+  [sym_token_keyword_cisco_match_match_any] = "token_keyword_cisco_match_match_any",
+  [sym_token_keyword_cisco_match_match_all] = "token_keyword_cisco_match_match_all",
+  [sym_token_keyword_cisco_add_remove_add] = "token_keyword_cisco_add_remove_add",
+  [sym_token_keyword_cisco_add_remove_remove] = "token_keyword_cisco_add_remove_remove",
+  [sym_token_keyword_cisco_add_remove_except] = "token_keyword_cisco_add_remove_except",
+  [sym_token_keyword_cisco_allowed_native_allowed] = "token_keyword_cisco_allowed_native_allowed",
+  [sym_token_keyword_cisco_allowed_native_native] = "token_keyword_cisco_allowed_native_native",
+  [sym_token_keyword_cisco_any_all_any] = "token_keyword_cisco_any_all_any",
+  [sym_token_keyword_cisco_any_all_all] = "token_keyword_cisco_any_all_all",
+  [sym_token_keyword_cisco_permit_deny_permit] = "token_keyword_cisco_permit_deny_permit",
+  [sym_token_keyword_cisco_permit_deny_deny] = "token_keyword_cisco_permit_deny_deny",
+  [sym_token_keyword_cisco_in_out_in] = "token_keyword_cisco_in_out_in",
+  [sym_token_keyword_cisco_in_out_out] = "token_keyword_cisco_in_out_out",
+  [sym_token_keyword_cisco_input_output_input] = "token_keyword_cisco_input_output_input",
+  [sym_token_keyword_cisco_input_output_output] = "token_keyword_cisco_input_output_output",
+  [sym_token_keyword_cisco_inside_outside_inside] = "token_keyword_cisco_inside_outside_inside",
+  [sym_token_keyword_cisco_inside_outside_outside] = "token_keyword_cisco_inside_outside_outside",
+  [sym_token_number_cisco_integer] = "token_number_cisco_integer",
+  [sym_token_number_cisco_range] = "token_number_cisco_range",
+  [sym_token_number_cisco_hex] = "token_number_cisco_hex",
   [sym_line_comment] = "line_comment",
   [sym__trailing_comment] = "line_comment",
   [sym_quoted_string] = "quoted_string",
   [sym_text_value] = "text_value",
+  [sym_token_tag_cisco_logging_system_message] = "token_tag_cisco_logging_system_message",
   [sym_token_type_cisco_interface_app_gigabitethernet] = "token_type_cisco_interface_app_gigabitethernet",
   [sym_token_type_cisco_interface_async] = "token_type_cisco_interface_async",
   [sym_token_type_cisco_interface_bdi] = "token_type_cisco_interface_bdi",
@@ -183,8 +253,10 @@ static const char * const ts_symbol_names[] = {
   [sym_router_command] = "router_command",
   [sym_address_family_command] = "address_family_command",
   [sym__cisco_atom] = "_cisco_atom",
+  [sym__cisco_numeric_literal] = "_cisco_numeric_literal",
   [sym__cisco_interface_token] = "_cisco_interface_token",
   [sym__cisco_address_token] = "_cisco_address_token",
+  [sym__cisco_keyword_token] = "_cisco_keyword_token",
   [sym_address_family_body_line] = "address_family_body_line",
   [aux_sym_source_file_repeat1] = "source_file_repeat1",
   [aux_sym_prompt_block_repeat1] = "prompt_block_repeat1",
@@ -203,10 +275,44 @@ static const TSSymbol ts_symbol_map[] = {
   [sym_no_modifier] = sym_no_modifier,
   [sym_default_modifier] = sym_default_modifier,
   [sym_text_keyword] = sym_text_keyword,
+  [sym_token_keyword_cisco_encapsulation_dot1q] = sym_token_keyword_cisco_encapsulation_dot1q,
+  [sym_token_keyword_cisco_encapsulation_dot1q_tunnel] = sym_token_keyword_cisco_encapsulation_dot1q_tunnel,
+  [sym_token_keyword_cisco_encapsulation_protocol_vlan] = sym_token_keyword_cisco_encapsulation_protocol_vlan,
+  [sym_token_keyword_cisco_encapsulation_mac_vlan] = sym_token_keyword_cisco_encapsulation_mac_vlan,
+  [sym_token_keyword_cisco_switchport_mode_access] = sym_token_keyword_cisco_switchport_mode_access,
+  [sym_token_keyword_cisco_switchport_mode_trunk] = sym_token_keyword_cisco_switchport_mode_trunk,
+  [sym_token_keyword_cisco_shutdown] = sym_token_keyword_cisco_shutdown,
+  [sym_token_keyword_cisco_status_up] = sym_token_keyword_cisco_status_up,
+  [sym_token_keyword_cisco_status_down] = sym_token_keyword_cisco_status_down,
+  [sym_token_keyword_cisco_status_deleted] = sym_token_keyword_cisco_status_deleted,
+  [sym_token_keyword_cisco_status_administratively_down] = sym_token_keyword_cisco_status_administratively_down,
+  [sym_token_keyword_cisco_enable_disable_enable] = sym_token_keyword_cisco_enable_disable_enable,
+  [sym_token_keyword_cisco_enable_disable_disable] = sym_token_keyword_cisco_enable_disable_disable,
+  [sym_token_keyword_cisco_match_match_any] = sym_token_keyword_cisco_match_match_any,
+  [sym_token_keyword_cisco_match_match_all] = sym_token_keyword_cisco_match_match_all,
+  [sym_token_keyword_cisco_add_remove_add] = sym_token_keyword_cisco_add_remove_add,
+  [sym_token_keyword_cisco_add_remove_remove] = sym_token_keyword_cisco_add_remove_remove,
+  [sym_token_keyword_cisco_add_remove_except] = sym_token_keyword_cisco_add_remove_except,
+  [sym_token_keyword_cisco_allowed_native_allowed] = sym_token_keyword_cisco_allowed_native_allowed,
+  [sym_token_keyword_cisco_allowed_native_native] = sym_token_keyword_cisco_allowed_native_native,
+  [sym_token_keyword_cisco_any_all_any] = sym_token_keyword_cisco_any_all_any,
+  [sym_token_keyword_cisco_any_all_all] = sym_token_keyword_cisco_any_all_all,
+  [sym_token_keyword_cisco_permit_deny_permit] = sym_token_keyword_cisco_permit_deny_permit,
+  [sym_token_keyword_cisco_permit_deny_deny] = sym_token_keyword_cisco_permit_deny_deny,
+  [sym_token_keyword_cisco_in_out_in] = sym_token_keyword_cisco_in_out_in,
+  [sym_token_keyword_cisco_in_out_out] = sym_token_keyword_cisco_in_out_out,
+  [sym_token_keyword_cisco_input_output_input] = sym_token_keyword_cisco_input_output_input,
+  [sym_token_keyword_cisco_input_output_output] = sym_token_keyword_cisco_input_output_output,
+  [sym_token_keyword_cisco_inside_outside_inside] = sym_token_keyword_cisco_inside_outside_inside,
+  [sym_token_keyword_cisco_inside_outside_outside] = sym_token_keyword_cisco_inside_outside_outside,
+  [sym_token_number_cisco_integer] = sym_token_number_cisco_integer,
+  [sym_token_number_cisco_range] = sym_token_number_cisco_range,
+  [sym_token_number_cisco_hex] = sym_token_number_cisco_hex,
   [sym_line_comment] = sym_line_comment,
   [sym__trailing_comment] = sym_line_comment,
   [sym_quoted_string] = sym_quoted_string,
   [sym_text_value] = sym_text_value,
+  [sym_token_tag_cisco_logging_system_message] = sym_token_tag_cisco_logging_system_message,
   [sym_token_type_cisco_interface_app_gigabitethernet] = sym_token_type_cisco_interface_app_gigabitethernet,
   [sym_token_type_cisco_interface_async] = sym_token_type_cisco_interface_async,
   [sym_token_type_cisco_interface_bdi] = sym_token_type_cisco_interface_bdi,
@@ -267,8 +373,10 @@ static const TSSymbol ts_symbol_map[] = {
   [sym_router_command] = sym_router_command,
   [sym_address_family_command] = sym_address_family_command,
   [sym__cisco_atom] = sym__cisco_atom,
+  [sym__cisco_numeric_literal] = sym__cisco_numeric_literal,
   [sym__cisco_interface_token] = sym__cisco_interface_token,
   [sym__cisco_address_token] = sym__cisco_address_token,
+  [sym__cisco_keyword_token] = sym__cisco_keyword_token,
   [sym_address_family_body_line] = sym_address_family_body_line,
   [aux_sym_source_file_repeat1] = aux_sym_source_file_repeat1,
   [aux_sym_prompt_block_repeat1] = aux_sym_prompt_block_repeat1,
@@ -311,6 +419,138 @@ static const TSSymbolMetadata ts_symbol_metadata[] = {
     .visible = true,
     .named = true,
   },
+  [sym_token_keyword_cisco_encapsulation_dot1q] = {
+    .visible = true,
+    .named = true,
+  },
+  [sym_token_keyword_cisco_encapsulation_dot1q_tunnel] = {
+    .visible = true,
+    .named = true,
+  },
+  [sym_token_keyword_cisco_encapsulation_protocol_vlan] = {
+    .visible = true,
+    .named = true,
+  },
+  [sym_token_keyword_cisco_encapsulation_mac_vlan] = {
+    .visible = true,
+    .named = true,
+  },
+  [sym_token_keyword_cisco_switchport_mode_access] = {
+    .visible = true,
+    .named = true,
+  },
+  [sym_token_keyword_cisco_switchport_mode_trunk] = {
+    .visible = true,
+    .named = true,
+  },
+  [sym_token_keyword_cisco_shutdown] = {
+    .visible = true,
+    .named = true,
+  },
+  [sym_token_keyword_cisco_status_up] = {
+    .visible = true,
+    .named = true,
+  },
+  [sym_token_keyword_cisco_status_down] = {
+    .visible = true,
+    .named = true,
+  },
+  [sym_token_keyword_cisco_status_deleted] = {
+    .visible = true,
+    .named = true,
+  },
+  [sym_token_keyword_cisco_status_administratively_down] = {
+    .visible = true,
+    .named = true,
+  },
+  [sym_token_keyword_cisco_enable_disable_enable] = {
+    .visible = true,
+    .named = true,
+  },
+  [sym_token_keyword_cisco_enable_disable_disable] = {
+    .visible = true,
+    .named = true,
+  },
+  [sym_token_keyword_cisco_match_match_any] = {
+    .visible = true,
+    .named = true,
+  },
+  [sym_token_keyword_cisco_match_match_all] = {
+    .visible = true,
+    .named = true,
+  },
+  [sym_token_keyword_cisco_add_remove_add] = {
+    .visible = true,
+    .named = true,
+  },
+  [sym_token_keyword_cisco_add_remove_remove] = {
+    .visible = true,
+    .named = true,
+  },
+  [sym_token_keyword_cisco_add_remove_except] = {
+    .visible = true,
+    .named = true,
+  },
+  [sym_token_keyword_cisco_allowed_native_allowed] = {
+    .visible = true,
+    .named = true,
+  },
+  [sym_token_keyword_cisco_allowed_native_native] = {
+    .visible = true,
+    .named = true,
+  },
+  [sym_token_keyword_cisco_any_all_any] = {
+    .visible = true,
+    .named = true,
+  },
+  [sym_token_keyword_cisco_any_all_all] = {
+    .visible = true,
+    .named = true,
+  },
+  [sym_token_keyword_cisco_permit_deny_permit] = {
+    .visible = true,
+    .named = true,
+  },
+  [sym_token_keyword_cisco_permit_deny_deny] = {
+    .visible = true,
+    .named = true,
+  },
+  [sym_token_keyword_cisco_in_out_in] = {
+    .visible = true,
+    .named = true,
+  },
+  [sym_token_keyword_cisco_in_out_out] = {
+    .visible = true,
+    .named = true,
+  },
+  [sym_token_keyword_cisco_input_output_input] = {
+    .visible = true,
+    .named = true,
+  },
+  [sym_token_keyword_cisco_input_output_output] = {
+    .visible = true,
+    .named = true,
+  },
+  [sym_token_keyword_cisco_inside_outside_inside] = {
+    .visible = true,
+    .named = true,
+  },
+  [sym_token_keyword_cisco_inside_outside_outside] = {
+    .visible = true,
+    .named = true,
+  },
+  [sym_token_number_cisco_integer] = {
+    .visible = true,
+    .named = true,
+  },
+  [sym_token_number_cisco_range] = {
+    .visible = true,
+    .named = true,
+  },
+  [sym_token_number_cisco_hex] = {
+    .visible = true,
+    .named = true,
+  },
   [sym_line_comment] = {
     .visible = true,
     .named = true,
@@ -324,6 +564,10 @@ static const TSSymbolMetadata ts_symbol_metadata[] = {
     .named = true,
   },
   [sym_text_value] = {
+    .visible = true,
+    .named = true,
+  },
+  [sym_token_tag_cisco_logging_system_message] = {
     .visible = true,
     .named = true,
   },
@@ -568,12 +812,22 @@ static const TSSymbolMetadata ts_symbol_metadata[] = {
     .named = true,
     .supertype = true,
   },
+  [sym__cisco_numeric_literal] = {
+    .visible = false,
+    .named = true,
+    .supertype = true,
+  },
   [sym__cisco_interface_token] = {
     .visible = false,
     .named = true,
     .supertype = true,
   },
   [sym__cisco_address_token] = {
+    .visible = false,
+    .named = true,
+    .supertype = true,
+  },
+  [sym__cisco_keyword_token] = {
     .visible = false,
     .named = true,
     .supertype = true,
@@ -762,13 +1016,13 @@ static const TSStateId ts_primary_state_ids[STATE_COUNT] = {
   [26] = 26,
   [27] = 27,
   [28] = 28,
-  [29] = 25,
-  [30] = 26,
-  [31] = 24,
-  [32] = 32,
-  [33] = 33,
-  [34] = 34,
-  [35] = 35,
+  [29] = 29,
+  [30] = 30,
+  [31] = 25,
+  [32] = 27,
+  [33] = 26,
+  [34] = 24,
+  [35] = 28,
   [36] = 36,
   [37] = 37,
   [38] = 38,
@@ -809,18 +1063,26 @@ static const TSStateId ts_primary_state_ids[STATE_COUNT] = {
   [73] = 73,
   [74] = 74,
   [75] = 75,
+  [76] = 76,
+  [77] = 77,
+  [78] = 78,
+  [79] = 79,
 };
 
 static const TSSymbol ts_supertype_symbols[SUPERTYPE_COUNT] = {
   sym__cisco_address_token,
   sym__cisco_atom,
   sym__cisco_interface_token,
+  sym__cisco_keyword_token,
+  sym__cisco_numeric_literal,
 };
 
 static const TSMapSlice ts_supertype_map_slices[] = {
   [sym__cisco_address_token] = {.index = 0, .length = 5},
-  [sym__cisco_atom] = {.index = 5, .length = 3},
-  [sym__cisco_interface_token] = {.index = 8, .length = 21},
+  [sym__cisco_atom] = {.index = 5, .length = 6},
+  [sym__cisco_interface_token] = {.index = 11, .length = 21},
+  [sym__cisco_keyword_token] = {.index = 32, .length = 30},
+  [sym__cisco_numeric_literal] = {.index = 62, .length = 3},
 };
 
 static const TSSymbol ts_supertype_map_entries[] = {
@@ -833,8 +1095,11 @@ static const TSSymbol ts_supertype_map_entries[] = {
   [5] =
     sym__cisco_address_token,
     sym__cisco_interface_token,
+    sym__cisco_keyword_token,
+    sym__cisco_numeric_literal,
+    sym_token_tag_cisco_logging_system_message,
     sym_word,
-  [8] =
+  [11] =
     sym_token_type_cisco_interface_app_gigabitethernet,
     sym_token_type_cisco_interface_async,
     sym_token_type_cisco_interface_bdi,
@@ -856,6 +1121,41 @@ static const TSSymbol ts_supertype_map_entries[] = {
     sym_token_type_cisco_interface_vlan,
     sym_token_type_cisco_interface_vmi,
     sym_token_type_cisco_interface_wireless,
+  [32] =
+    sym_token_keyword_cisco_add_remove_add,
+    sym_token_keyword_cisco_add_remove_except,
+    sym_token_keyword_cisco_add_remove_remove,
+    sym_token_keyword_cisco_allowed_native_allowed,
+    sym_token_keyword_cisco_allowed_native_native,
+    sym_token_keyword_cisco_any_all_all,
+    sym_token_keyword_cisco_any_all_any,
+    sym_token_keyword_cisco_enable_disable_disable,
+    sym_token_keyword_cisco_enable_disable_enable,
+    sym_token_keyword_cisco_encapsulation_dot1q,
+    sym_token_keyword_cisco_encapsulation_dot1q_tunnel,
+    sym_token_keyword_cisco_encapsulation_mac_vlan,
+    sym_token_keyword_cisco_encapsulation_protocol_vlan,
+    sym_token_keyword_cisco_in_out_in,
+    sym_token_keyword_cisco_in_out_out,
+    sym_token_keyword_cisco_input_output_input,
+    sym_token_keyword_cisco_input_output_output,
+    sym_token_keyword_cisco_inside_outside_inside,
+    sym_token_keyword_cisco_inside_outside_outside,
+    sym_token_keyword_cisco_match_match_all,
+    sym_token_keyword_cisco_match_match_any,
+    sym_token_keyword_cisco_permit_deny_deny,
+    sym_token_keyword_cisco_permit_deny_permit,
+    sym_token_keyword_cisco_shutdown,
+    sym_token_keyword_cisco_status_administratively_down,
+    sym_token_keyword_cisco_status_deleted,
+    sym_token_keyword_cisco_status_down,
+    sym_token_keyword_cisco_status_up,
+    sym_token_keyword_cisco_switchport_mode_access,
+    sym_token_keyword_cisco_switchport_mode_trunk,
+  [62] =
+    sym_token_number_cisco_hex,
+    sym_token_number_cisco_integer,
+    sym_token_number_cisco_range,
 };
 
 static bool ts_lex(TSLexer *lexer, TSStateId state) {
@@ -864,24 +1164,26 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
   switch (state) {
     case 0:
       if (eof) ADVANCE(8);
-      if (lookahead == '"') ADVANCE(15);
-      if (lookahead == '0') ADVANCE(24);
-      if (lookahead == '1') ADVANCE(22);
-      if (lookahead == '2') ADVANCE(21);
-      if (lookahead == ':') ADVANCE(189);
+      if (lookahead == '"') ADVANCE(59);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '-') ADVANCE(329);
+      if (lookahead == '0') ADVANCE(76);
+      if (lookahead == '1') ADVANCE(77);
+      if (lookahead == '2') ADVANCE(75);
+      if (lookahead == ':') ADVANCE(244);
       if (lookahead == '\t' ||
           lookahead == ' ') SKIP(0);
-      if (('!' <= lookahead && lookahead <= '#')) ADVANCE(9);
-      if (('3' <= lookahead && lookahead <= '9')) ADVANCE(23);
-      if (('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(194);
+      if (('!' <= lookahead && lookahead <= '#')) ADVANCE(44);
+      if (('A' <= lookahead && lookahead <= 'F')) ADVANCE(250);
+      if (('a' <= lookahead && lookahead <= 'f')) ADVANCE(251);
+      if (('3' <= lookahead && lookahead <= '9')) ADVANCE(78);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 1:
-      if (lookahead == '"') ADVANCE(14);
+      if (lookahead == '"') ADVANCE(52);
       if (lookahead == '\\') ADVANCE(2);
       if (lookahead != 0 &&
           lookahead != '\n' &&
@@ -894,6251 +1196,6873 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
       END_STATE();
     case 3:
       if (eof) ADVANCE(8);
-      if (lookahead == '"') ADVANCE(15);
-      if (lookahead == '0') ADVANCE(24);
-      if (lookahead == '1') ADVANCE(22);
-      if (lookahead == '2') ADVANCE(21);
-      if (lookahead == ':') ADVANCE(189);
+      if (lookahead == '"') ADVANCE(59);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '-') ADVANCE(329);
+      if (lookahead == '0') ADVANCE(76);
+      if (lookahead == '1') ADVANCE(77);
+      if (lookahead == '2') ADVANCE(75);
+      if (lookahead == ':') ADVANCE(244);
       if (lookahead == '\t' ||
           lookahead == ' ') SKIP(3);
-      if (('!' <= lookahead && lookahead <= '#')) ADVANCE(257);
-      if (('3' <= lookahead && lookahead <= '9')) ADVANCE(23);
-      if (('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(194);
+      if (('!' <= lookahead && lookahead <= '#')) ADVANCE(313);
+      if (('A' <= lookahead && lookahead <= 'F')) ADVANCE(250);
+      if (('a' <= lookahead && lookahead <= 'f')) ADVANCE(251);
+      if (('3' <= lookahead && lookahead <= '9')) ADVANCE(78);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 4:
       if (eof) ADVANCE(8);
-      if (lookahead == '"') ADVANCE(405);
-      if (lookahead == '0') ADVANCE(413);
-      if (lookahead == '1') ADVANCE(411);
-      if (lookahead == '2') ADVANCE(410);
-      if (lookahead == ':') ADVANCE(478);
+      if (lookahead == '"') ADVANCE(502);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '-') ADVANCE(652);
+      if (lookahead == '0') ADVANCE(18);
+      if (lookahead == '1') ADVANCE(19);
+      if (lookahead == '2') ADVANCE(17);
+      if (lookahead == ':') ADVANCE(569);
       if (lookahead == '\t' ||
           lookahead == ' ') SKIP(4);
-      if (('!' <= lookahead && lookahead <= '#')) ADVANCE(10);
-      if (('3' <= lookahead && lookahead <= '9')) ADVANCE(412);
-      if (('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(484);
+      if (('!' <= lookahead && lookahead <= '#')) ADVANCE(48);
+      if (('A' <= lookahead && lookahead <= 'F')) ADVANCE(576);
+      if (('a' <= lookahead && lookahead <= 'f')) ADVANCE(577);
+      if (('3' <= lookahead && lookahead <= '9')) ADVANCE(20);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(575);
+          lookahead != '\r') ADVANCE(678);
       END_STATE();
     case 5:
       if (eof) ADVANCE(8);
-      if (lookahead == '"') ADVANCE(405);
-      if (lookahead == '0') ADVANCE(413);
-      if (lookahead == '1') ADVANCE(411);
-      if (lookahead == '2') ADVANCE(410);
-      if (lookahead == ':') ADVANCE(478);
+      if (lookahead == '"') ADVANCE(502);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '-') ADVANCE(652);
+      if (lookahead == '0') ADVANCE(18);
+      if (lookahead == '1') ADVANCE(19);
+      if (lookahead == '2') ADVANCE(17);
+      if (lookahead == ':') ADVANCE(569);
       if (lookahead == '\t' ||
           lookahead == ' ') SKIP(5);
-      if (('3' <= lookahead && lookahead <= '9')) ADVANCE(412);
-      if (('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(484);
+      if (('A' <= lookahead && lookahead <= 'F')) ADVANCE(576);
+      if (('a' <= lookahead && lookahead <= 'f')) ADVANCE(577);
+      if (('3' <= lookahead && lookahead <= '9')) ADVANCE(20);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(575);
+          lookahead != '\r') ADVANCE(678);
       END_STATE();
     case 6:
       if (eof) ADVANCE(8);
-      if (lookahead == '"') ADVANCE(405);
-      if (lookahead == '0') ADVANCE(413);
-      if (lookahead == '1') ADVANCE(411);
-      if (lookahead == '2') ADVANCE(410);
-      if (lookahead == ':') ADVANCE(478);
+      if (lookahead == '"') ADVANCE(502);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '-') ADVANCE(652);
+      if (lookahead == '0') ADVANCE(18);
+      if (lookahead == '1') ADVANCE(19);
+      if (lookahead == '2') ADVANCE(17);
+      if (lookahead == ':') ADVANCE(569);
       if (lookahead == '\t' ||
           lookahead == ' ') SKIP(6);
-      if (('!' <= lookahead && lookahead <= '#')) ADVANCE(12);
-      if (('3' <= lookahead && lookahead <= '9')) ADVANCE(412);
-      if (('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(484);
+      if (('!' <= lookahead && lookahead <= '#')) ADVANCE(50);
+      if (('A' <= lookahead && lookahead <= 'F')) ADVANCE(576);
+      if (('a' <= lookahead && lookahead <= 'f')) ADVANCE(577);
+      if (('3' <= lookahead && lookahead <= '9')) ADVANCE(20);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(575);
+          lookahead != '\r') ADVANCE(678);
       END_STATE();
     case 7:
       if (eof) ADVANCE(8);
-      if (lookahead == '0') ADVANCE(413);
-      if (lookahead == '1') ADVANCE(411);
-      if (lookahead == '2') ADVANCE(410);
-      if (lookahead == ':') ADVANCE(478);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '-') ADVANCE(652);
+      if (lookahead == '0') ADVANCE(18);
+      if (lookahead == '1') ADVANCE(19);
+      if (lookahead == '2') ADVANCE(17);
+      if (lookahead == ':') ADVANCE(569);
       if (lookahead == '\t' ||
           lookahead == ' ') SKIP(7);
       if (lookahead == '!' ||
-          lookahead == '#') ADVANCE(12);
-      if (('3' <= lookahead && lookahead <= '9')) ADVANCE(412);
-      if (('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(484);
+          lookahead == '#') ADVANCE(50);
+      if (('A' <= lookahead && lookahead <= 'F')) ADVANCE(576);
+      if (('a' <= lookahead && lookahead <= 'f')) ADVANCE(577);
+      if (('3' <= lookahead && lookahead <= '9')) ADVANCE(20);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(575);
+          lookahead != '\r') ADVANCE(678);
       END_STATE();
     case 8:
       ACCEPT_TOKEN(ts_builtin_sym_end);
       END_STATE();
     case 9:
-      ACCEPT_TOKEN(sym_line_comment);
-      if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(11);
-      if (lookahead == '!' ||
-          lookahead == '#') ADVANCE(9);
+      ACCEPT_TOKEN(sym_token_number_cisco_integer);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == ',') ADVANCE(653);
+      if (lookahead == '-') ADVANCE(655);
+      if (lookahead == '.') ADVANCE(552);
+      if (lookahead == ':') ADVANCE(645);
+      if (('6' <= lookahead && lookahead <= '9')) ADVANCE(22);
+      if (('0' <= lookahead && lookahead <= '5')) ADVANCE(21);
+      if (('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(578);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(10);
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
       END_STATE();
     case 10:
-      ACCEPT_TOKEN(sym_line_comment);
-      if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(11);
+      ACCEPT_TOKEN(sym_token_number_cisco_integer);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == ',') ADVANCE(653);
+      if (lookahead == '-') ADVANCE(655);
+      if (lookahead == '.') ADVANCE(552);
+      if (lookahead == ':') ADVANCE(645);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(22);
+      if (('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(578);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(10);
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
       END_STATE();
     case 11:
+      ACCEPT_TOKEN(sym_token_number_cisco_integer);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == ',') ADVANCE(653);
+      if (lookahead == '-') ADVANCE(655);
+      if (lookahead == '.') ADVANCE(552);
+      if (lookahead == ':') ADVANCE(645);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(21);
+      if (('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(578);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 12:
+      ACCEPT_TOKEN(sym_token_number_cisco_integer);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == ',') ADVANCE(653);
+      if (lookahead == '-') ADVANCE(655);
+      if (lookahead == '.') ADVANCE(665);
+      if (lookahead == ':') ADVANCE(645);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(22);
+      if (('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(578);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 13:
+      ACCEPT_TOKEN(sym_token_number_cisco_integer);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == ',') ADVANCE(653);
+      if (lookahead == '-') ADVANCE(656);
+      if (lookahead == '.' ||
+          lookahead == ':') ADVANCE(666);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(24);
+      if (('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(662);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 14:
+      ACCEPT_TOKEN(sym_token_number_cisco_integer);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == ',') ADVANCE(653);
+      if (lookahead == '-') ADVANCE(657);
+      if (lookahead == '.') ADVANCE(670);
+      if (lookahead == ':') ADVANCE(670);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(27);
+      if (('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(669);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 15:
+      ACCEPT_TOKEN(sym_token_number_cisco_integer);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == ',') ADVANCE(653);
+      if (lookahead == '-') ADVANCE(658);
+      if (lookahead == '.' ||
+          lookahead == ':') ADVANCE(673);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(26);
+      if (('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(664);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 16:
+      ACCEPT_TOKEN(sym_token_number_cisco_integer);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == ',') ADVANCE(653);
+      if (lookahead == '-') ADVANCE(659);
+      if (lookahead == '.') ADVANCE(668);
+      if (lookahead == ':') ADVANCE(646);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(23);
+      if (('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(667);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 17:
+      ACCEPT_TOKEN(sym_token_number_cisco_integer);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '.') ADVANCE(551);
+      if (lookahead == '5') ADVANCE(9);
+      if (lookahead == ':') ADVANCE(644);
+      if (lookahead == ',' ||
+          lookahead == '-') ADVANCE(653);
+      if (('6' <= lookahead && lookahead <= '9')) ADVANCE(10);
+      if (('0' <= lookahead && lookahead <= '4')) ADVANCE(11);
+      if (('A' <= lookahead && lookahead <= 'F')) ADVANCE(39);
+      if (('a' <= lookahead && lookahead <= 'f')) ADVANCE(579);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 18:
+      ACCEPT_TOKEN(sym_token_number_cisco_integer);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '.') ADVANCE(551);
+      if (lookahead == ':') ADVANCE(644);
+      if (lookahead == 'x') ADVANCE(660);
+      if (lookahead == ',' ||
+          lookahead == '-') ADVANCE(653);
+      if (('A' <= lookahead && lookahead <= 'F')) ADVANCE(39);
+      if (('a' <= lookahead && lookahead <= 'f')) ADVANCE(579);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(12);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 19:
+      ACCEPT_TOKEN(sym_token_number_cisco_integer);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '.') ADVANCE(551);
+      if (lookahead == ':') ADVANCE(644);
+      if (lookahead == ',' ||
+          lookahead == '-') ADVANCE(653);
+      if (('A' <= lookahead && lookahead <= 'F')) ADVANCE(39);
+      if (('a' <= lookahead && lookahead <= 'f')) ADVANCE(579);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(11);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 20:
+      ACCEPT_TOKEN(sym_token_number_cisco_integer);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '.') ADVANCE(551);
+      if (lookahead == ':') ADVANCE(644);
+      if (lookahead == ',' ||
+          lookahead == '-') ADVANCE(653);
+      if (('A' <= lookahead && lookahead <= 'F')) ADVANCE(39);
+      if (('a' <= lookahead && lookahead <= 'f')) ADVANCE(579);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(10);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 21:
+      ACCEPT_TOKEN(sym_token_number_cisco_integer);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '.') ADVANCE(551);
+      if (lookahead == ':') ADVANCE(644);
+      if (lookahead == ',' ||
+          lookahead == '-') ADVANCE(653);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(16);
+      if (('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(505);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 22:
+      ACCEPT_TOKEN(sym_token_number_cisco_integer);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == ':') ADVANCE(644);
+      if (lookahead == ',' ||
+          lookahead == '-') ADVANCE(653);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(16);
+      if (('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(505);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 23:
+      ACCEPT_TOKEN(sym_token_number_cisco_integer);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == ',' ||
+          lookahead == '-') ADVANCE(653);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(15);
+      if (('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(649);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 24:
+      ACCEPT_TOKEN(sym_token_number_cisco_integer);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == ',' ||
+          lookahead == '-') ADVANCE(653);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(25);
+      if (('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(495);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 25:
+      ACCEPT_TOKEN(sym_token_number_cisco_integer);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == ',' ||
+          lookahead == '-') ADVANCE(653);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(25);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 26:
+      ACCEPT_TOKEN(sym_token_number_cisco_integer);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == ',' ||
+          lookahead == '-') ADVANCE(653);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(14);
+      if (('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(542);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 27:
+      ACCEPT_TOKEN(sym_token_number_cisco_integer);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == ',' ||
+          lookahead == '-') ADVANCE(653);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(13);
+      if (('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(647);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 28:
+      ACCEPT_TOKEN(sym_token_number_cisco_integer);
+      if (lookahead == '%') ADVANCE(676);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(28);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 29:
+      ACCEPT_TOKEN(sym_token_number_cisco_range);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == ',') ADVANCE(653);
+      if (lookahead == '-') ADVANCE(656);
+      if (lookahead == '.' ||
+          lookahead == ':') ADVANCE(666);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(33);
+      if (('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(662);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 30:
+      ACCEPT_TOKEN(sym_token_number_cisco_range);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == ',') ADVANCE(653);
+      if (lookahead == '-') ADVANCE(657);
+      if (lookahead == '.' ||
+          lookahead == ':') ADVANCE(670);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(36);
+      if (('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(669);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 31:
+      ACCEPT_TOKEN(sym_token_number_cisco_range);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == ',') ADVANCE(653);
+      if (lookahead == '-') ADVANCE(658);
+      if (lookahead == '.' ||
+          lookahead == ':') ADVANCE(673);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(37);
+      if (('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(671);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 32:
+      ACCEPT_TOKEN(sym_token_number_cisco_range);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == ',') ADVANCE(653);
+      if (lookahead == '-') ADVANCE(659);
+      if (lookahead == '.' ||
+          lookahead == ':') ADVANCE(675);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(38);
+      if (('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(674);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 33:
+      ACCEPT_TOKEN(sym_token_number_cisco_range);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == ',' ||
+          lookahead == '-') ADVANCE(653);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(34);
+      if (('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(495);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 34:
+      ACCEPT_TOKEN(sym_token_number_cisco_range);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == ',' ||
+          lookahead == '-') ADVANCE(653);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(34);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 35:
+      ACCEPT_TOKEN(sym_token_number_cisco_range);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == ',' ||
+          lookahead == '-') ADVANCE(653);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(32);
+      if (('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(651);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 36:
+      ACCEPT_TOKEN(sym_token_number_cisco_range);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == ',' ||
+          lookahead == '-') ADVANCE(653);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(29);
+      if (('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(647);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 37:
+      ACCEPT_TOKEN(sym_token_number_cisco_range);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == ',' ||
+          lookahead == '-') ADVANCE(653);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(30);
+      if (('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(648);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 38:
+      ACCEPT_TOKEN(sym_token_number_cisco_range);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == ',' ||
+          lookahead == '-') ADVANCE(653);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(31);
+      if (('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(650);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 39:
+      ACCEPT_TOKEN(sym_token_number_cisco_hex);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == ':') ADVANCE(645);
+      if (lookahead == '-' ||
+          lookahead == '.') ADVANCE(665);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(578);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 40:
+      ACCEPT_TOKEN(sym_token_number_cisco_hex);
+      if (lookahead == '%') ADVANCE(676);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(40);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 41:
+      ACCEPT_TOKEN(sym_line_comment);
+      if (lookahead == '%') ADVANCE(46);
+      if (lookahead == '-') ADVANCE(45);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(49);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'Z') ||
+          lookahead == '_' ||
+          ('a' <= lookahead && lookahead <= 'z')) ADVANCE(41);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(48);
+      END_STATE();
+    case 42:
+      ACCEPT_TOKEN(sym_line_comment);
+      if (lookahead == '%') ADVANCE(46);
+      if (lookahead == '-') ADVANCE(47);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(49);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(48);
+      END_STATE();
+    case 43:
+      ACCEPT_TOKEN(sym_line_comment);
+      if (lookahead == '%') ADVANCE(46);
+      if (lookahead == ':') ADVANCE(48);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(49);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'Z') ||
+          lookahead == '_' ||
+          ('a' <= lookahead && lookahead <= 'z')) ADVANCE(43);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(48);
+      END_STATE();
+    case 44:
+      ACCEPT_TOKEN(sym_line_comment);
+      if (lookahead == '%') ADVANCE(46);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(49);
+      if (lookahead == '!' ||
+          lookahead == '#') ADVANCE(44);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(48);
+      END_STATE();
+    case 45:
+      ACCEPT_TOKEN(sym_line_comment);
+      if (lookahead == '%') ADVANCE(46);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(49);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(42);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(48);
+      END_STATE();
+    case 46:
+      ACCEPT_TOKEN(sym_line_comment);
+      if (lookahead == '%') ADVANCE(46);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(49);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'Z') ||
+          lookahead == '_' ||
+          ('a' <= lookahead && lookahead <= 'z')) ADVANCE(41);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(48);
+      END_STATE();
+    case 47:
+      ACCEPT_TOKEN(sym_line_comment);
+      if (lookahead == '%') ADVANCE(46);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(49);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'Z') ||
+          lookahead == '_' ||
+          ('a' <= lookahead && lookahead <= 'z')) ADVANCE(43);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(48);
+      END_STATE();
+    case 48:
+      ACCEPT_TOKEN(sym_line_comment);
+      if (lookahead == '%') ADVANCE(46);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(49);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(48);
+      END_STATE();
+    case 49:
       ACCEPT_TOKEN(sym_line_comment);
       if (lookahead != 0 &&
           lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(11);
-      END_STATE();
-    case 12:
-      ACCEPT_TOKEN(sym__trailing_comment);
-      if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(13);
-      if (lookahead == '!' ||
-          lookahead == '#') ADVANCE(12);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(575);
-      END_STATE();
-    case 13:
-      ACCEPT_TOKEN(sym__trailing_comment);
-      if (lookahead != 0 &&
-          lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(13);
-      END_STATE();
-    case 14:
-      ACCEPT_TOKEN(sym_quoted_string);
-      END_STATE();
-    case 15:
-      ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '"') ADVANCE(14);
-      if (lookahead == '\\') ADVANCE(256);
-      if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(16);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(15);
-      END_STATE();
-    case 16:
-      ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '"') ADVANCE(14);
-      if (lookahead == '\\') ADVANCE(281);
-      if (lookahead != 0 &&
-          lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(16);
-      END_STATE();
-    case 17:
-      ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '-') ADVANCE(268);
-      if (lookahead == '.') ADVANCE(173);
-      if (lookahead == ':') ADVANCE(254);
-      if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('0' <= lookahead && lookahead <= '5')) ADVANCE(25);
-      if (('6' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(195);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
-      END_STATE();
-    case 18:
-      ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '-') ADVANCE(268);
-      if (lookahead == '.') ADVANCE(173);
-      if (lookahead == ':') ADVANCE(254);
-      if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(25);
-      if (('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(195);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
-      END_STATE();
-    case 19:
-      ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '-') ADVANCE(268);
-      if (lookahead == '.') ADVANCE(173);
-      if (lookahead == ':') ADVANCE(254);
-      if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(195);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
-      END_STATE();
-    case 20:
-      ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '-') ADVANCE(279);
-      if (lookahead == '.') ADVANCE(272);
-      if (lookahead == ':') ADVANCE(255);
-      if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(271);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
-      END_STATE();
-    case 21:
-      ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '.') ADVANCE(172);
-      if (lookahead == '5') ADVANCE(17);
-      if (lookahead == ':') ADVANCE(253);
-      if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('6' <= lookahead && lookahead <= '9')) ADVANCE(19);
-      if (('0' <= lookahead && lookahead <= '4')) ADVANCE(18);
-      if (('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(196);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
-      END_STATE();
-    case 22:
-      ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '.') ADVANCE(172);
-      if (lookahead == ':') ADVANCE(253);
-      if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(18);
-      if (('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(196);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
-      END_STATE();
-    case 23:
-      ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '.') ADVANCE(172);
-      if (lookahead == ':') ADVANCE(253);
-      if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(19);
-      if (('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(196);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
-      END_STATE();
-    case 24:
-      ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '.') ADVANCE(172);
-      if (lookahead == ':') ADVANCE(253);
-      if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(196);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
-      END_STATE();
-    case 25:
-      ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '.') ADVANCE(172);
-      if (lookahead == ':') ADVANCE(253);
-      if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(20);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
-      END_STATE();
-    case 26:
-      ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '.') ADVANCE(174);
-      if (lookahead == '5') ADVANCE(28);
-      if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('6' <= lookahead && lookahead <= '9')) ADVANCE(35);
-      if (('0' <= lookahead && lookahead <= '4')) ADVANCE(29);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
-      END_STATE();
-    case 27:
-      ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '.') ADVANCE(174);
-      if (lookahead == '5') ADVANCE(41);
-      if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('6' <= lookahead && lookahead <= '9')) ADVANCE(43);
-      if (('0' <= lookahead && lookahead <= '4')) ADVANCE(42);
-      if (('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(261);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
-      END_STATE();
-    case 28:
-      ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '.') ADVANCE(174);
-      if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('0' <= lookahead && lookahead <= '5')) ADVANCE(35);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
-      END_STATE();
-    case 29:
-      ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '.') ADVANCE(174);
-      if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(35);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
-      END_STATE();
-    case 30:
-      ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '.') ADVANCE(174);
-      if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(42);
-      if (('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(261);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
-      END_STATE();
-    case 31:
-      ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '.') ADVANCE(174);
-      if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(43);
-      if (('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(261);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
-      END_STATE();
-    case 32:
-      ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '.') ADVANCE(174);
-      if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(29);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
-      END_STATE();
-    case 33:
-      ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '.') ADVANCE(174);
-      if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(259);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
-      END_STATE();
-    case 34:
-      ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '.') ADVANCE(174);
-      if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(261);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
-      END_STATE();
-    case 35:
-      ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '.') ADVANCE(174);
-      if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
-      END_STATE();
-    case 36:
-      ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '.') ADVANCE(178);
-      if (lookahead == '5') ADVANCE(37);
-      if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('6' <= lookahead && lookahead <= '9')) ADVANCE(40);
-      if (('0' <= lookahead && lookahead <= '4')) ADVANCE(38);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
-      END_STATE();
-    case 37:
-      ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '.') ADVANCE(178);
-      if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('0' <= lookahead && lookahead <= '5')) ADVANCE(40);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
-      END_STATE();
-    case 38:
-      ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '.') ADVANCE(178);
-      if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(40);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
-      END_STATE();
-    case 39:
-      ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '.') ADVANCE(178);
-      if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(38);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
-      END_STATE();
-    case 40:
-      ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '.') ADVANCE(178);
-      if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
-      END_STATE();
-    case 41:
-      ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '.') ADVANCE(175);
-      if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (lookahead == '-' ||
-          lookahead == ':') ADVANCE(276);
-      if (('0' <= lookahead && lookahead <= '5')) ADVANCE(33);
-      if (('6' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(275);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
-      END_STATE();
-    case 42:
-      ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '.') ADVANCE(175);
-      if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (lookahead == '-' ||
-          lookahead == ':') ADVANCE(276);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(33);
-      if (('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(275);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
-      END_STATE();
-    case 43:
-      ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '.') ADVANCE(175);
-      if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (lookahead == '-' ||
-          lookahead == ':') ADVANCE(276);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(275);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
-      END_STATE();
-    case 44:
-      ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '.') ADVANCE(176);
-      if (lookahead == '5') ADVANCE(46);
-      if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('6' <= lookahead && lookahead <= '9')) ADVANCE(53);
-      if (('0' <= lookahead && lookahead <= '4')) ADVANCE(47);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
-      END_STATE();
-    case 45:
-      ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '.') ADVANCE(176);
-      if (lookahead == '5') ADVANCE(54);
-      if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('6' <= lookahead && lookahead <= '9')) ADVANCE(56);
-      if (('0' <= lookahead && lookahead <= '4')) ADVANCE(55);
-      if (('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(262);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
-      END_STATE();
-    case 46:
-      ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '.') ADVANCE(176);
-      if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('0' <= lookahead && lookahead <= '5')) ADVANCE(53);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
-      END_STATE();
-    case 47:
-      ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '.') ADVANCE(176);
-      if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(53);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
-      END_STATE();
-    case 48:
-      ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '.') ADVANCE(176);
-      if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(55);
-      if (('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(262);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
-      END_STATE();
-    case 49:
-      ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '.') ADVANCE(176);
-      if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(56);
-      if (('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(262);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
+          lookahead != '\r') ADVANCE(49);
       END_STATE();
     case 50:
-      ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '.') ADVANCE(176);
+      ACCEPT_TOKEN(sym__trailing_comment);
+      if (lookahead == '%') ADVANCE(676);
       if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(47);
+          lookahead == ' ') ADVANCE(51);
+      if (lookahead == '!' ||
+          lookahead == '#') ADVANCE(50);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
+          lookahead != '\r') ADVANCE(678);
       END_STATE();
     case 51:
-      ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '.') ADVANCE(176);
-      if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(262);
+      ACCEPT_TOKEN(sym__trailing_comment);
       if (lookahead != 0 &&
-          lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
+          lookahead != '\r') ADVANCE(51);
       END_STATE();
     case 52:
-      ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '.') ADVANCE(176);
-      if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(261);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
+      ACCEPT_TOKEN(sym_quoted_string);
       END_STATE();
     case 53:
       ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '.') ADVANCE(176);
+      if (lookahead == '"') ADVANCE(52);
+      if (lookahead == '%') ADVANCE(57);
+      if (lookahead == '-') ADVANCE(56);
+      if (lookahead == '\\') ADVANCE(356);
       if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
+          lookahead == ' ') ADVANCE(60);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'Z') ||
+          lookahead == '_' ||
+          ('a' <= lookahead && lookahead <= 'z')) ADVANCE(53);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
+          lookahead != '\r') ADVANCE(59);
       END_STATE();
     case 54:
       ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '.') ADVANCE(177);
+      if (lookahead == '"') ADVANCE(52);
+      if (lookahead == '%') ADVANCE(57);
+      if (lookahead == '-') ADVANCE(58);
+      if (lookahead == '\\') ADVANCE(356);
       if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (lookahead == '-' ||
-          lookahead == ':') ADVANCE(279);
-      if (('0' <= lookahead && lookahead <= '5')) ADVANCE(52);
-      if (('6' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(278);
+          lookahead == ' ') ADVANCE(60);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
+          lookahead != '\r') ADVANCE(59);
       END_STATE();
     case 55:
       ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '.') ADVANCE(177);
+      if (lookahead == '"') ADVANCE(52);
+      if (lookahead == '%') ADVANCE(57);
+      if (lookahead == ':') ADVANCE(59);
+      if (lookahead == '\\') ADVANCE(356);
       if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (lookahead == '-' ||
-          lookahead == ':') ADVANCE(279);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(52);
-      if (('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(278);
+          lookahead == ' ') ADVANCE(60);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'Z') ||
+          lookahead == '_' ||
+          ('a' <= lookahead && lookahead <= 'z')) ADVANCE(55);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
+          lookahead != '\r') ADVANCE(59);
       END_STATE();
     case 56:
       ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '.') ADVANCE(177);
+      if (lookahead == '"') ADVANCE(52);
+      if (lookahead == '%') ADVANCE(57);
+      if (lookahead == '\\') ADVANCE(356);
       if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (lookahead == '-' ||
-          lookahead == ':') ADVANCE(279);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(278);
+          lookahead == ' ') ADVANCE(60);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(54);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
+          lookahead != '\r') ADVANCE(59);
       END_STATE();
     case 57:
       ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '.') ADVANCE(180);
-      if (lookahead == '5') ADVANCE(58);
+      if (lookahead == '"') ADVANCE(52);
+      if (lookahead == '%') ADVANCE(57);
+      if (lookahead == '\\') ADVANCE(356);
       if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('6' <= lookahead && lookahead <= '9')) ADVANCE(61);
-      if (('0' <= lookahead && lookahead <= '4')) ADVANCE(59);
+          lookahead == ' ') ADVANCE(60);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'Z') ||
+          lookahead == '_' ||
+          ('a' <= lookahead && lookahead <= 'z')) ADVANCE(53);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
+          lookahead != '\r') ADVANCE(59);
       END_STATE();
     case 58:
       ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '.') ADVANCE(180);
+      if (lookahead == '"') ADVANCE(52);
+      if (lookahead == '%') ADVANCE(57);
+      if (lookahead == '\\') ADVANCE(356);
       if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('0' <= lookahead && lookahead <= '5')) ADVANCE(61);
+          lookahead == ' ') ADVANCE(60);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'Z') ||
+          lookahead == '_' ||
+          ('a' <= lookahead && lookahead <= 'z')) ADVANCE(55);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
+          lookahead != '\r') ADVANCE(59);
       END_STATE();
     case 59:
       ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '.') ADVANCE(180);
+      if (lookahead == '"') ADVANCE(52);
+      if (lookahead == '%') ADVANCE(57);
+      if (lookahead == '\\') ADVANCE(356);
       if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(61);
+          lookahead == ' ') ADVANCE(60);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
+          lookahead != '\r') ADVANCE(59);
       END_STATE();
     case 60:
       ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '.') ADVANCE(180);
-      if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(59);
+      if (lookahead == '"') ADVANCE(52);
+      if (lookahead == '\\') ADVANCE(357);
       if (lookahead != 0 &&
-          lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
+          lookahead != '\r') ADVANCE(60);
       END_STATE();
     case 61:
       ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '.') ADVANCE(180);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == ',') ADVANCE(331);
+      if (lookahead == '-') ADVANCE(333);
+      if (lookahead == '.') ADVANCE(227);
+      if (lookahead == ':') ADVANCE(311);
       if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
+          lookahead == ' ') ADVANCE(358);
+      if (('6' <= lookahead && lookahead <= '9')) ADVANCE(249);
+      if (('0' <= lookahead && lookahead <= '5')) ADVANCE(79);
+      if (('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(252);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 62:
       ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '.') ADVANCE(274);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == ',') ADVANCE(331);
+      if (lookahead == '-') ADVANCE(333);
+      if (lookahead == '.') ADVANCE(227);
+      if (lookahead == ':') ADVANCE(311);
       if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (lookahead == '-' ||
-          lookahead == ':') ADVANCE(274);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(273);
+          lookahead == ' ') ADVANCE(358);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(249);
+      if (('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(252);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 63:
       ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '.') ADVANCE(183);
-      if (lookahead == '/') ADVANCE(171);
-      if (lookahead == '5') ADVANCE(69);
-      if (lookahead == ':') ADVANCE(186);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == ',') ADVANCE(331);
+      if (lookahead == '-') ADVANCE(333);
+      if (lookahead == '.') ADVANCE(227);
+      if (lookahead == ':') ADVANCE(311);
       if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('6' <= lookahead && lookahead <= '9')) ADVANCE(74);
-      if (('0' <= lookahead && lookahead <= '4')) ADVANCE(70);
+          lookahead == ' ') ADVANCE(358);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(79);
       if (('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(127);
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(252);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 64:
       ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '.') ADVANCE(183);
-      if (lookahead == '/') ADVANCE(171);
-      if (lookahead == '5') ADVANCE(83);
-      if (lookahead == ':') ADVANCE(277);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == ',') ADVANCE(331);
+      if (lookahead == '-') ADVANCE(333);
+      if (lookahead == '.') ADVANCE(341);
+      if (lookahead == ':') ADVANCE(311);
       if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('6' <= lookahead && lookahead <= '9')) ADVANCE(88);
-      if (('0' <= lookahead && lookahead <= '4')) ADVANCE(84);
+          lookahead == ' ') ADVANCE(358);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(249);
       if (('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(135);
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(252);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 65:
       ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '.') ADVANCE(183);
-      if (lookahead == '/') ADVANCE(171);
-      if (lookahead == '5') ADVANCE(76);
-      if (lookahead == ':') ADVANCE(181);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == ',') ADVANCE(331);
+      if (lookahead == '-') ADVANCE(334);
       if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('6' <= lookahead && lookahead <= '9')) ADVANCE(80);
-      if (('0' <= lookahead && lookahead <= '4')) ADVANCE(77);
+          lookahead == ' ') ADVANCE(358);
+      if (lookahead == '.' ||
+          lookahead == ':') ADVANCE(343);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(314);
       if (('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(130);
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(338);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 66:
       ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '.') ADVANCE(183);
-      if (lookahead == '/') ADVANCE(171);
-      if (lookahead == '5') ADVANCE(90);
-      if (lookahead == ':') ADVANCE(182);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == ',') ADVANCE(331);
+      if (lookahead == '-') ADVANCE(335);
+      if (lookahead == '.') ADVANCE(347);
+      if (lookahead == ':') ADVANCE(347);
       if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('6' <= lookahead && lookahead <= '9')) ADVANCE(94);
-      if (('0' <= lookahead && lookahead <= '4')) ADVANCE(91);
+          lookahead == ' ') ADVANCE(358);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(318);
       if (('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(138);
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(346);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 67:
       ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '.') ADVANCE(183);
-      if (lookahead == '/') ADVANCE(171);
-      if (lookahead == '5') ADVANCE(97);
-      if (lookahead == ':') ADVANCE(184);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == ',') ADVANCE(331);
+      if (lookahead == '-') ADVANCE(335);
       if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('6' <= lookahead && lookahead <= '9')) ADVANCE(101);
-      if (('0' <= lookahead && lookahead <= '4')) ADVANCE(98);
+          lookahead == ' ') ADVANCE(358);
+      if (lookahead == '.' ||
+          lookahead == ':') ADVANCE(347);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(318);
       if (('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(142);
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(346);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 68:
       ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '.') ADVANCE(183);
-      if (lookahead == '/') ADVANCE(171);
-      if (lookahead == '5') ADVANCE(104);
-      if (lookahead == ':') ADVANCE(185);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == ',') ADVANCE(331);
+      if (lookahead == '-') ADVANCE(336);
       if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('6' <= lookahead && lookahead <= '9')) ADVANCE(108);
-      if (('0' <= lookahead && lookahead <= '4')) ADVANCE(105);
+          lookahead == ' ') ADVANCE(358);
+      if (lookahead == '.' ||
+          lookahead == ':') ADVANCE(349);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(319);
       if (('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(146);
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(342);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 69:
       ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '.') ADVANCE(183);
-      if (lookahead == '/') ADVANCE(171);
-      if (lookahead == ':') ADVANCE(186);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == ',') ADVANCE(331);
+      if (lookahead == '-') ADVANCE(336);
       if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('0' <= lookahead && lookahead <= '5')) ADVANCE(73);
-      if (('6' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(126);
+          lookahead == ' ') ADVANCE(358);
+      if (lookahead == '.' ||
+          lookahead == ':') ADVANCE(349);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(320);
+      if (('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(348);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 70:
       ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '.') ADVANCE(183);
-      if (lookahead == '/') ADVANCE(171);
-      if (lookahead == ':') ADVANCE(186);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == ',') ADVANCE(331);
+      if (lookahead == '-') ADVANCE(337);
+      if (lookahead == '.') ADVANCE(345);
+      if (lookahead == ':') ADVANCE(312);
       if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(73);
+          lookahead == ' ') ADVANCE(358);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(317);
       if (('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(126);
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(344);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 71:
       ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '.') ADVANCE(183);
-      if (lookahead == '/') ADVANCE(171);
-      if (lookahead == ':') ADVANCE(186);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == ',') ADVANCE(331);
+      if (lookahead == '-') ADVANCE(337);
       if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(70);
+          lookahead == ' ') ADVANCE(358);
+      if (lookahead == '.' ||
+          lookahead == ':') ADVANCE(352);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(321);
       if (('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(127);
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(351);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 72:
       ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '.') ADVANCE(183);
-      if (lookahead == '/') ADVANCE(171);
-      if (lookahead == ':') ADVANCE(186);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '-') ADVANCE(354);
       if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(74);
-      if (('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(127);
+          lookahead == ' ') ADVANCE(358);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 73:
       ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '.') ADVANCE(183);
-      if (lookahead == '/') ADVANCE(171);
-      if (lookahead == ':') ADVANCE(186);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '-') ADVANCE(332);
       if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
+          lookahead == ' ') ADVANCE(358);
       if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(129);
+          ('A' <= lookahead && lookahead <= 'Z') ||
+          lookahead == '_' ||
+          ('a' <= lookahead && lookahead <= 'z')) ADVANCE(73);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 74:
       ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '.') ADVANCE(183);
-      if (lookahead == '/') ADVANCE(171);
-      if (lookahead == ':') ADVANCE(186);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '-') ADVANCE(352);
+      if (lookahead == '.') ADVANCE(345);
+      if (lookahead == ':') ADVANCE(312);
       if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
+          lookahead == ' ') ADVANCE(358);
       if (('0' <= lookahead && lookahead <= '9') ||
           ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(126);
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(344);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 75:
       ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '.') ADVANCE(183);
-      if (lookahead == '/') ADVANCE(171);
-      if (lookahead == ':') ADVANCE(186);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '.') ADVANCE(226);
+      if (lookahead == '5') ADVANCE(61);
+      if (lookahead == ':') ADVANCE(310);
       if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(127);
+          lookahead == ' ') ADVANCE(358);
+      if (lookahead == ',' ||
+          lookahead == '-') ADVANCE(331);
+      if (('6' <= lookahead && lookahead <= '9')) ADVANCE(62);
+      if (('0' <= lookahead && lookahead <= '4')) ADVANCE(63);
+      if (('A' <= lookahead && lookahead <= 'F')) ADVANCE(253);
+      if (('a' <= lookahead && lookahead <= 'f')) ADVANCE(253);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 76:
       ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '.') ADVANCE(183);
-      if (lookahead == '/') ADVANCE(171);
-      if (lookahead == ':') ADVANCE(181);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '.') ADVANCE(226);
+      if (lookahead == ':') ADVANCE(310);
+      if (lookahead == 'x') ADVANCE(339);
       if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('0' <= lookahead && lookahead <= '5')) ADVANCE(81);
-      if (('6' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(131);
+          lookahead == ' ') ADVANCE(358);
+      if (lookahead == ',' ||
+          lookahead == '-') ADVANCE(331);
+      if (('A' <= lookahead && lookahead <= 'F')) ADVANCE(253);
+      if (('a' <= lookahead && lookahead <= 'f')) ADVANCE(253);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(64);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 77:
       ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '.') ADVANCE(183);
-      if (lookahead == '/') ADVANCE(171);
-      if (lookahead == ':') ADVANCE(181);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '.') ADVANCE(226);
+      if (lookahead == ':') ADVANCE(310);
       if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(81);
-      if (('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(131);
+          lookahead == ' ') ADVANCE(358);
+      if (lookahead == ',' ||
+          lookahead == '-') ADVANCE(331);
+      if (('A' <= lookahead && lookahead <= 'F')) ADVANCE(253);
+      if (('a' <= lookahead && lookahead <= 'f')) ADVANCE(253);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(63);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 78:
       ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '.') ADVANCE(183);
-      if (lookahead == '/') ADVANCE(171);
-      if (lookahead == ':') ADVANCE(181);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '.') ADVANCE(226);
+      if (lookahead == ':') ADVANCE(310);
       if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(77);
-      if (('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(130);
+          lookahead == ' ') ADVANCE(358);
+      if (lookahead == ',' ||
+          lookahead == '-') ADVANCE(331);
+      if (('A' <= lookahead && lookahead <= 'F')) ADVANCE(253);
+      if (('a' <= lookahead && lookahead <= 'f')) ADVANCE(253);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(62);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 79:
       ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '.') ADVANCE(183);
-      if (lookahead == '/') ADVANCE(171);
-      if (lookahead == ':') ADVANCE(181);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '.') ADVANCE(226);
+      if (lookahead == ':') ADVANCE(310);
       if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(80);
+          lookahead == ' ') ADVANCE(358);
+      if (lookahead == ',' ||
+          lookahead == '-') ADVANCE(331);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(70);
       if (('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(130);
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(74);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 80:
       ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '.') ADVANCE(183);
-      if (lookahead == '/') ADVANCE(171);
-      if (lookahead == ':') ADVANCE(181);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '.') ADVANCE(228);
+      if (lookahead == '5') ADVANCE(82);
       if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(131);
+          lookahead == ' ') ADVANCE(358);
+      if (('6' <= lookahead && lookahead <= '9')) ADVANCE(89);
+      if (('0' <= lookahead && lookahead <= '4')) ADVANCE(83);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 81:
       ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '.') ADVANCE(183);
-      if (lookahead == '/') ADVANCE(171);
-      if (lookahead == ':') ADVANCE(181);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '.') ADVANCE(228);
+      if (lookahead == '5') ADVANCE(95);
       if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(133);
+          lookahead == ' ') ADVANCE(358);
+      if (('6' <= lookahead && lookahead <= '9')) ADVANCE(97);
+      if (('0' <= lookahead && lookahead <= '4')) ADVANCE(96);
+      if (('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(325);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 82:
       ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '.') ADVANCE(183);
-      if (lookahead == '/') ADVANCE(171);
-      if (lookahead == ':') ADVANCE(181);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '.') ADVANCE(228);
       if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(130);
+          lookahead == ' ') ADVANCE(358);
+      if (('0' <= lookahead && lookahead <= '5')) ADVANCE(89);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 83:
       ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '.') ADVANCE(183);
-      if (lookahead == '/') ADVANCE(171);
-      if (lookahead == ':') ADVANCE(277);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '.') ADVANCE(228);
       if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('0' <= lookahead && lookahead <= '5')) ADVANCE(87);
-      if (('6' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(134);
+          lookahead == ' ') ADVANCE(358);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(89);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 84:
       ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '.') ADVANCE(183);
-      if (lookahead == '/') ADVANCE(171);
-      if (lookahead == ':') ADVANCE(277);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '.') ADVANCE(228);
       if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(87);
+          lookahead == ' ') ADVANCE(358);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(96);
       if (('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(134);
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(325);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 85:
       ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '.') ADVANCE(183);
-      if (lookahead == '/') ADVANCE(171);
-      if (lookahead == ':') ADVANCE(277);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '.') ADVANCE(228);
       if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(84);
+          lookahead == ' ') ADVANCE(358);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(97);
       if (('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(135);
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(325);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 86:
       ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '.') ADVANCE(183);
-      if (lookahead == '/') ADVANCE(171);
-      if (lookahead == ':') ADVANCE(277);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '.') ADVANCE(228);
       if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(88);
-      if (('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(135);
+          lookahead == ' ') ADVANCE(358);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(83);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 87:
       ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '.') ADVANCE(183);
-      if (lookahead == '/') ADVANCE(171);
-      if (lookahead == ':') ADVANCE(277);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '.') ADVANCE(228);
       if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
+          lookahead == ' ') ADVANCE(358);
       if (('0' <= lookahead && lookahead <= '9') ||
           ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(137);
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(322);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 88:
       ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '.') ADVANCE(183);
-      if (lookahead == '/') ADVANCE(171);
-      if (lookahead == ':') ADVANCE(277);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '.') ADVANCE(228);
       if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
+          lookahead == ' ') ADVANCE(358);
       if (('0' <= lookahead && lookahead <= '9') ||
           ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(134);
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(325);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 89:
       ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '.') ADVANCE(183);
-      if (lookahead == '/') ADVANCE(171);
-      if (lookahead == ':') ADVANCE(277);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '.') ADVANCE(228);
       if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(135);
+          lookahead == ' ') ADVANCE(358);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 90:
       ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '.') ADVANCE(183);
-      if (lookahead == '/') ADVANCE(171);
-      if (lookahead == ':') ADVANCE(182);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '.') ADVANCE(233);
+      if (lookahead == '5') ADVANCE(91);
       if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('0' <= lookahead && lookahead <= '5')) ADVANCE(96);
-      if (('6' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(140);
+          lookahead == ' ') ADVANCE(358);
+      if (('6' <= lookahead && lookahead <= '9')) ADVANCE(94);
+      if (('0' <= lookahead && lookahead <= '4')) ADVANCE(92);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 91:
       ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '.') ADVANCE(183);
-      if (lookahead == '/') ADVANCE(171);
-      if (lookahead == ':') ADVANCE(182);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '.') ADVANCE(233);
       if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(96);
-      if (('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(140);
+          lookahead == ' ') ADVANCE(358);
+      if (('0' <= lookahead && lookahead <= '5')) ADVANCE(94);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 92:
       ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '.') ADVANCE(183);
-      if (lookahead == '/') ADVANCE(171);
-      if (lookahead == ':') ADVANCE(182);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '.') ADVANCE(233);
       if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(91);
-      if (('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(138);
+          lookahead == ' ') ADVANCE(358);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(94);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 93:
       ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '.') ADVANCE(183);
-      if (lookahead == '/') ADVANCE(171);
-      if (lookahead == ':') ADVANCE(182);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '.') ADVANCE(233);
       if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(94);
-      if (('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(138);
+          lookahead == ' ') ADVANCE(358);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(92);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 94:
       ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '.') ADVANCE(183);
-      if (lookahead == '/') ADVANCE(171);
-      if (lookahead == ':') ADVANCE(182);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '.') ADVANCE(233);
       if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(140);
+          lookahead == ' ') ADVANCE(358);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 95:
       ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '.') ADVANCE(183);
-      if (lookahead == '/') ADVANCE(171);
-      if (lookahead == ':') ADVANCE(182);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '.') ADVANCE(229);
       if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('0' <= lookahead && lookahead <= '9') ||
+          lookahead == ' ') ADVANCE(358);
+      if (lookahead == '-' ||
+          lookahead == ':') ADVANCE(349);
+      if (('0' <= lookahead && lookahead <= '5')) ADVANCE(87);
+      if (('6' <= lookahead && lookahead <= '9') ||
           ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(138);
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(348);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 96:
       ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '.') ADVANCE(183);
-      if (lookahead == '/') ADVANCE(171);
-      if (lookahead == ':') ADVANCE(182);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '.') ADVANCE(229);
       if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(141);
+          lookahead == ' ') ADVANCE(358);
+      if (lookahead == '-' ||
+          lookahead == ':') ADVANCE(349);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(87);
+      if (('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(348);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 97:
       ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '.') ADVANCE(183);
-      if (lookahead == '/') ADVANCE(171);
-      if (lookahead == ':') ADVANCE(184);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '.') ADVANCE(229);
       if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('0' <= lookahead && lookahead <= '5')) ADVANCE(103);
-      if (('6' <= lookahead && lookahead <= '9') ||
+          lookahead == ' ') ADVANCE(358);
+      if (lookahead == '-' ||
+          lookahead == ':') ADVANCE(349);
+      if (('0' <= lookahead && lookahead <= '9') ||
           ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(144);
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(348);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 98:
       ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '.') ADVANCE(183);
-      if (lookahead == '/') ADVANCE(171);
-      if (lookahead == ':') ADVANCE(184);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '.') ADVANCE(231);
+      if (lookahead == '5') ADVANCE(100);
       if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(103);
-      if (('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(144);
+          lookahead == ' ') ADVANCE(358);
+      if (('6' <= lookahead && lookahead <= '9')) ADVANCE(107);
+      if (('0' <= lookahead && lookahead <= '4')) ADVANCE(101);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 99:
       ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '.') ADVANCE(183);
-      if (lookahead == '/') ADVANCE(171);
-      if (lookahead == ':') ADVANCE(184);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '.') ADVANCE(231);
+      if (lookahead == '5') ADVANCE(108);
       if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(98);
+          lookahead == ' ') ADVANCE(358);
+      if (('6' <= lookahead && lookahead <= '9')) ADVANCE(110);
+      if (('0' <= lookahead && lookahead <= '4')) ADVANCE(109);
       if (('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(142);
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(326);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 100:
       ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '.') ADVANCE(183);
-      if (lookahead == '/') ADVANCE(171);
-      if (lookahead == ':') ADVANCE(184);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '.') ADVANCE(231);
       if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(101);
-      if (('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(142);
+          lookahead == ' ') ADVANCE(358);
+      if (('0' <= lookahead && lookahead <= '5')) ADVANCE(107);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 101:
       ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '.') ADVANCE(183);
-      if (lookahead == '/') ADVANCE(171);
-      if (lookahead == ':') ADVANCE(184);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '.') ADVANCE(231);
       if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(144);
+          lookahead == ' ') ADVANCE(358);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(107);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 102:
       ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '.') ADVANCE(183);
-      if (lookahead == '/') ADVANCE(171);
-      if (lookahead == ':') ADVANCE(184);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '.') ADVANCE(231);
       if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(142);
+          lookahead == ' ') ADVANCE(358);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(109);
+      if (('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(326);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 103:
       ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '.') ADVANCE(183);
-      if (lookahead == '/') ADVANCE(171);
-      if (lookahead == ':') ADVANCE(184);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '.') ADVANCE(231);
       if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(145);
+          lookahead == ' ') ADVANCE(358);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(110);
+      if (('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(326);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 104:
       ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '.') ADVANCE(183);
-      if (lookahead == '/') ADVANCE(171);
-      if (lookahead == ':') ADVANCE(185);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '.') ADVANCE(231);
       if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('0' <= lookahead && lookahead <= '5')) ADVANCE(110);
-      if (('6' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(148);
+          lookahead == ' ') ADVANCE(358);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(101);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 105:
       ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '.') ADVANCE(183);
-      if (lookahead == '/') ADVANCE(171);
-      if (lookahead == ':') ADVANCE(185);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '.') ADVANCE(231);
       if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(110);
-      if (('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(148);
+          lookahead == ' ') ADVANCE(358);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(326);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 106:
       ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '.') ADVANCE(183);
-      if (lookahead == '/') ADVANCE(171);
-      if (lookahead == ':') ADVANCE(185);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '.') ADVANCE(231);
       if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(105);
-      if (('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(146);
+          lookahead == ' ') ADVANCE(358);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(325);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 107:
       ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '.') ADVANCE(183);
-      if (lookahead == '/') ADVANCE(171);
-      if (lookahead == ':') ADVANCE(185);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '.') ADVANCE(231);
       if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(108);
-      if (('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(146);
+          lookahead == ' ') ADVANCE(358);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 108:
       ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '.') ADVANCE(183);
-      if (lookahead == '/') ADVANCE(171);
-      if (lookahead == ':') ADVANCE(185);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '.') ADVANCE(232);
       if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('0' <= lookahead && lookahead <= '9') ||
+          lookahead == ' ') ADVANCE(358);
+      if (lookahead == '-' ||
+          lookahead == ':') ADVANCE(352);
+      if (('0' <= lookahead && lookahead <= '5')) ADVANCE(106);
+      if (('6' <= lookahead && lookahead <= '9') ||
           ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(148);
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(351);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 109:
       ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '.') ADVANCE(183);
-      if (lookahead == '/') ADVANCE(171);
-      if (lookahead == ':') ADVANCE(185);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '.') ADVANCE(232);
       if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(146);
+          lookahead == ' ') ADVANCE(358);
+      if (lookahead == '-' ||
+          lookahead == ':') ADVANCE(352);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(106);
+      if (('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(351);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 110:
       ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '.') ADVANCE(183);
-      if (lookahead == '/') ADVANCE(171);
-      if (lookahead == ':') ADVANCE(185);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '.') ADVANCE(232);
       if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
+          lookahead == ' ') ADVANCE(358);
+      if (lookahead == '-' ||
+          lookahead == ':') ADVANCE(352);
       if (('0' <= lookahead && lookahead <= '9') ||
           ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(149);
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(351);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 111:
       ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '.') ADVANCE(183);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '.') ADVANCE(234);
       if (lookahead == '5') ADVANCE(112);
-      if (lookahead == ':') ADVANCE(277);
       if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('6' <= lookahead && lookahead <= '9')) ADVANCE(117);
+          lookahead == ' ') ADVANCE(358);
+      if (('6' <= lookahead && lookahead <= '9')) ADVANCE(115);
       if (('0' <= lookahead && lookahead <= '4')) ADVANCE(113);
-      if (('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(198);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 112:
       ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '.') ADVANCE(183);
-      if (lookahead == ':') ADVANCE(277);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '.') ADVANCE(234);
       if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('0' <= lookahead && lookahead <= '5')) ADVANCE(116);
-      if (('6' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(197);
+          lookahead == ' ') ADVANCE(358);
+      if (('0' <= lookahead && lookahead <= '5')) ADVANCE(115);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 113:
       ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '.') ADVANCE(183);
-      if (lookahead == ':') ADVANCE(277);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '.') ADVANCE(234);
       if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(116);
-      if (('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(197);
+          lookahead == ' ') ADVANCE(358);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(115);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 114:
       ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '.') ADVANCE(183);
-      if (lookahead == ':') ADVANCE(277);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '.') ADVANCE(234);
       if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
+          lookahead == ' ') ADVANCE(358);
       if (('0' <= lookahead && lookahead <= '9')) ADVANCE(113);
-      if (('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(198);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 115:
       ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '.') ADVANCE(183);
-      if (lookahead == ':') ADVANCE(277);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '.') ADVANCE(234);
       if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(117);
-      if (('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(198);
+          lookahead == ' ') ADVANCE(358);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 116:
       ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '.') ADVANCE(183);
-      if (lookahead == ':') ADVANCE(277);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '.') ADVANCE(347);
       if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
+          lookahead == ' ') ADVANCE(358);
+      if (lookahead == '-' ||
+          lookahead == ':') ADVANCE(347);
       if (('0' <= lookahead && lookahead <= '9') ||
           ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(346);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(355);
+      END_STATE();
+    case 117:
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '.') ADVANCE(237);
+      if (lookahead == '/') ADVANCE(225);
+      if (lookahead == '5') ADVANCE(123);
+      if (lookahead == ':') ADVANCE(240);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (('6' <= lookahead && lookahead <= '9')) ADVANCE(128);
+      if (('0' <= lookahead && lookahead <= '4')) ADVANCE(124);
+      if (('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(181);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(355);
+      END_STATE();
+    case 118:
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '.') ADVANCE(237);
+      if (lookahead == '/') ADVANCE(225);
+      if (lookahead == '5') ADVANCE(137);
+      if (lookahead == ':') ADVANCE(350);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (('6' <= lookahead && lookahead <= '9')) ADVANCE(142);
+      if (('0' <= lookahead && lookahead <= '4')) ADVANCE(138);
+      if (('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(189);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(355);
+      END_STATE();
+    case 119:
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '.') ADVANCE(237);
+      if (lookahead == '/') ADVANCE(225);
+      if (lookahead == '5') ADVANCE(130);
+      if (lookahead == ':') ADVANCE(235);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (('6' <= lookahead && lookahead <= '9')) ADVANCE(134);
+      if (('0' <= lookahead && lookahead <= '4')) ADVANCE(131);
+      if (('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(184);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(355);
+      END_STATE();
+    case 120:
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '.') ADVANCE(237);
+      if (lookahead == '/') ADVANCE(225);
+      if (lookahead == '5') ADVANCE(144);
+      if (lookahead == ':') ADVANCE(236);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (('6' <= lookahead && lookahead <= '9')) ADVANCE(148);
+      if (('0' <= lookahead && lookahead <= '4')) ADVANCE(145);
+      if (('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(192);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(355);
+      END_STATE();
+    case 121:
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '.') ADVANCE(237);
+      if (lookahead == '/') ADVANCE(225);
+      if (lookahead == '5') ADVANCE(151);
+      if (lookahead == ':') ADVANCE(238);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (('6' <= lookahead && lookahead <= '9')) ADVANCE(155);
+      if (('0' <= lookahead && lookahead <= '4')) ADVANCE(152);
+      if (('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(196);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(355);
+      END_STATE();
+    case 122:
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '.') ADVANCE(237);
+      if (lookahead == '/') ADVANCE(225);
+      if (lookahead == '5') ADVANCE(158);
+      if (lookahead == ':') ADVANCE(239);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (('6' <= lookahead && lookahead <= '9')) ADVANCE(162);
+      if (('0' <= lookahead && lookahead <= '4')) ADVANCE(159);
+      if (('A' <= lookahead && lookahead <= 'F') ||
           ('a' <= lookahead && lookahead <= 'f')) ADVANCE(200);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
-      END_STATE();
-    case 117:
-      ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '.') ADVANCE(183);
-      if (lookahead == ':') ADVANCE(277);
-      if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(197);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
-      END_STATE();
-    case 118:
-      ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '.') ADVANCE(183);
-      if (lookahead == ':') ADVANCE(277);
-      if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(198);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
-      END_STATE();
-    case 119:
-      ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '/') ADVANCE(171);
-      if (lookahead == '0') ADVANCE(75);
-      if (lookahead == '1') ADVANCE(71);
-      if (lookahead == '2') ADVANCE(63);
-      if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('3' <= lookahead && lookahead <= '9')) ADVANCE(72);
-      if (('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(128);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
-      END_STATE();
-    case 120:
-      ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '/') ADVANCE(171);
-      if (lookahead == '0') ADVANCE(89);
-      if (lookahead == '1') ADVANCE(85);
-      if (lookahead == '2') ADVANCE(64);
-      if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('3' <= lookahead && lookahead <= '9')) ADVANCE(86);
-      if (('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(136);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
-      END_STATE();
-    case 121:
-      ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '/') ADVANCE(171);
-      if (lookahead == '0') ADVANCE(82);
-      if (lookahead == '1') ADVANCE(78);
-      if (lookahead == '2') ADVANCE(65);
-      if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('3' <= lookahead && lookahead <= '9')) ADVANCE(79);
-      if (('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(132);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
-      END_STATE();
-    case 122:
-      ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '/') ADVANCE(171);
-      if (lookahead == '0') ADVANCE(95);
-      if (lookahead == '1') ADVANCE(92);
-      if (lookahead == '2') ADVANCE(66);
-      if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('3' <= lookahead && lookahead <= '9')) ADVANCE(93);
-      if (('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(139);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 123:
       ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '/') ADVANCE(171);
-      if (lookahead == '0') ADVANCE(102);
-      if (lookahead == '1') ADVANCE(99);
-      if (lookahead == '2') ADVANCE(67);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '.') ADVANCE(237);
+      if (lookahead == '/') ADVANCE(225);
+      if (lookahead == ':') ADVANCE(240);
       if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('3' <= lookahead && lookahead <= '9')) ADVANCE(100);
-      if (('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(143);
+          lookahead == ' ') ADVANCE(358);
+      if (('0' <= lookahead && lookahead <= '5')) ADVANCE(127);
+      if (('6' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(180);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 124:
       ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '/') ADVANCE(171);
-      if (lookahead == '0') ADVANCE(109);
-      if (lookahead == '1') ADVANCE(106);
-      if (lookahead == '2') ADVANCE(68);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '.') ADVANCE(237);
+      if (lookahead == '/') ADVANCE(225);
+      if (lookahead == ':') ADVANCE(240);
       if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('3' <= lookahead && lookahead <= '9')) ADVANCE(107);
+          lookahead == ' ') ADVANCE(358);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(127);
       if (('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(147);
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(180);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 125:
       ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '/') ADVANCE(171);
-      if (lookahead == '5') ADVANCE(150);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '.') ADVANCE(237);
+      if (lookahead == '/') ADVANCE(225);
+      if (lookahead == ':') ADVANCE(240);
       if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('6' <= lookahead && lookahead <= '9')) ADVANCE(157);
-      if (('0' <= lookahead && lookahead <= '4')) ADVANCE(151);
+          lookahead == ' ') ADVANCE(358);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(124);
+      if (('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(181);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 126:
       ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '/') ADVANCE(171);
-      if (lookahead == ':') ADVANCE(186);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '.') ADVANCE(237);
+      if (lookahead == '/') ADVANCE(225);
+      if (lookahead == ':') ADVANCE(240);
       if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(129);
+          lookahead == ' ') ADVANCE(358);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(128);
+      if (('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(181);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 127:
       ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '/') ADVANCE(171);
-      if (lookahead == ':') ADVANCE(186);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '.') ADVANCE(237);
+      if (lookahead == '/') ADVANCE(225);
+      if (lookahead == ':') ADVANCE(240);
       if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
+          lookahead == ' ') ADVANCE(358);
       if (('0' <= lookahead && lookahead <= '9') ||
           ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(126);
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(183);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 128:
       ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '/') ADVANCE(171);
-      if (lookahead == ':') ADVANCE(186);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '.') ADVANCE(237);
+      if (lookahead == '/') ADVANCE(225);
+      if (lookahead == ':') ADVANCE(240);
       if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
+          lookahead == ' ') ADVANCE(358);
       if (('0' <= lookahead && lookahead <= '9') ||
           ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(127);
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(180);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 129:
       ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '/') ADVANCE(171);
-      if (lookahead == ':') ADVANCE(186);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '.') ADVANCE(237);
+      if (lookahead == '/') ADVANCE(225);
+      if (lookahead == ':') ADVANCE(240);
       if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
+          lookahead == ' ') ADVANCE(358);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(181);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 130:
       ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '/') ADVANCE(171);
-      if (lookahead == ':') ADVANCE(181);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '.') ADVANCE(237);
+      if (lookahead == '/') ADVANCE(225);
+      if (lookahead == ':') ADVANCE(235);
       if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('0' <= lookahead && lookahead <= '9') ||
+          lookahead == ' ') ADVANCE(358);
+      if (('0' <= lookahead && lookahead <= '5')) ADVANCE(135);
+      if (('6' <= lookahead && lookahead <= '9') ||
           ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(131);
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(185);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 131:
       ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '/') ADVANCE(171);
-      if (lookahead == ':') ADVANCE(181);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '.') ADVANCE(237);
+      if (lookahead == '/') ADVANCE(225);
+      if (lookahead == ':') ADVANCE(235);
       if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(133);
+          lookahead == ' ') ADVANCE(358);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(135);
+      if (('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(185);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 132:
       ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '/') ADVANCE(171);
-      if (lookahead == ':') ADVANCE(181);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '.') ADVANCE(237);
+      if (lookahead == '/') ADVANCE(225);
+      if (lookahead == ':') ADVANCE(235);
       if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(130);
+          lookahead == ' ') ADVANCE(358);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(131);
+      if (('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(184);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 133:
       ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '/') ADVANCE(171);
-      if (lookahead == ':') ADVANCE(181);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '.') ADVANCE(237);
+      if (lookahead == '/') ADVANCE(225);
+      if (lookahead == ':') ADVANCE(235);
       if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
+          lookahead == ' ') ADVANCE(358);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(134);
+      if (('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(184);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 134:
       ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '/') ADVANCE(171);
-      if (lookahead == ':') ADVANCE(277);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '.') ADVANCE(237);
+      if (lookahead == '/') ADVANCE(225);
+      if (lookahead == ':') ADVANCE(235);
       if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
+          lookahead == ' ') ADVANCE(358);
       if (('0' <= lookahead && lookahead <= '9') ||
           ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(137);
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(185);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 135:
       ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '/') ADVANCE(171);
-      if (lookahead == ':') ADVANCE(277);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '.') ADVANCE(237);
+      if (lookahead == '/') ADVANCE(225);
+      if (lookahead == ':') ADVANCE(235);
       if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
+          lookahead == ' ') ADVANCE(358);
       if (('0' <= lookahead && lookahead <= '9') ||
           ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(134);
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(187);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 136:
       ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '/') ADVANCE(171);
-      if (lookahead == ':') ADVANCE(277);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '.') ADVANCE(237);
+      if (lookahead == '/') ADVANCE(225);
+      if (lookahead == ':') ADVANCE(235);
       if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
+          lookahead == ' ') ADVANCE(358);
       if (('0' <= lookahead && lookahead <= '9') ||
           ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(135);
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(184);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 137:
       ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '/') ADVANCE(171);
-      if (lookahead == ':') ADVANCE(277);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '.') ADVANCE(237);
+      if (lookahead == '/') ADVANCE(225);
+      if (lookahead == ':') ADVANCE(350);
       if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
+          lookahead == ' ') ADVANCE(358);
+      if (('0' <= lookahead && lookahead <= '5')) ADVANCE(141);
+      if (('6' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(188);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 138:
       ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '/') ADVANCE(171);
-      if (lookahead == ':') ADVANCE(182);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '.') ADVANCE(237);
+      if (lookahead == '/') ADVANCE(225);
+      if (lookahead == ':') ADVANCE(350);
       if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(140);
+          lookahead == ' ') ADVANCE(358);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(141);
+      if (('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(188);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 139:
       ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '/') ADVANCE(171);
-      if (lookahead == ':') ADVANCE(182);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '.') ADVANCE(237);
+      if (lookahead == '/') ADVANCE(225);
+      if (lookahead == ':') ADVANCE(350);
       if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(138);
+          lookahead == ' ') ADVANCE(358);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(138);
+      if (('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(189);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 140:
       ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '/') ADVANCE(171);
-      if (lookahead == ':') ADVANCE(182);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '.') ADVANCE(237);
+      if (lookahead == '/') ADVANCE(225);
+      if (lookahead == ':') ADVANCE(350);
       if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(141);
+          lookahead == ' ') ADVANCE(358);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(142);
+      if (('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(189);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 141:
       ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '/') ADVANCE(171);
-      if (lookahead == ':') ADVANCE(182);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '.') ADVANCE(237);
+      if (lookahead == '/') ADVANCE(225);
+      if (lookahead == ':') ADVANCE(350);
       if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
-      END_STATE();
-    case 142:
-      ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '/') ADVANCE(171);
-      if (lookahead == ':') ADVANCE(184);
-      if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(144);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
-      END_STATE();
-    case 143:
-      ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '/') ADVANCE(171);
-      if (lookahead == ':') ADVANCE(184);
-      if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(142);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
-      END_STATE();
-    case 144:
-      ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '/') ADVANCE(171);
-      if (lookahead == ':') ADVANCE(184);
-      if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(145);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
-      END_STATE();
-    case 145:
-      ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '/') ADVANCE(171);
-      if (lookahead == ':') ADVANCE(184);
-      if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
-      END_STATE();
-    case 146:
-      ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '/') ADVANCE(171);
-      if (lookahead == ':') ADVANCE(185);
-      if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(148);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
-      END_STATE();
-    case 147:
-      ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '/') ADVANCE(171);
-      if (lookahead == ':') ADVANCE(185);
-      if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(146);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
-      END_STATE();
-    case 148:
-      ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '/') ADVANCE(171);
-      if (lookahead == ':') ADVANCE(185);
-      if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(149);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
-      END_STATE();
-    case 149:
-      ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '/') ADVANCE(171);
-      if (lookahead == ':') ADVANCE(185);
-      if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
-      END_STATE();
-    case 150:
-      ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '/') ADVANCE(171);
-      if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('0' <= lookahead && lookahead <= '5')) ADVANCE(157);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
-      END_STATE();
-    case 151:
-      ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '/') ADVANCE(171);
-      if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(157);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
-      END_STATE();
-    case 152:
-      ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '/') ADVANCE(171);
-      if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(151);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
-      END_STATE();
-    case 153:
-      ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '/') ADVANCE(171);
-      if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(157);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
-      END_STATE();
-    case 154:
-      ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '/') ADVANCE(171);
-      if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(153);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
-      END_STATE();
-    case 155:
-      ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '/') ADVANCE(171);
-      if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(154);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
-      END_STATE();
-    case 156:
-      ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '/') ADVANCE(171);
-      if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(155);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
-      END_STATE();
-    case 157:
-      ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '/') ADVANCE(171);
-      if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
-      END_STATE();
-    case 158:
-      ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '/') ADVANCE(188);
-      if (lookahead == '5') ADVANCE(163);
-      if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('6' <= lookahead && lookahead <= '9')) ADVANCE(170);
-      if (('0' <= lookahead && lookahead <= '4')) ADVANCE(164);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
-      END_STATE();
-    case 159:
-      ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '/') ADVANCE(188);
-      if (lookahead == '5') ADVANCE(160);
-      if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('6' <= lookahead && lookahead <= '9')) ADVANCE(162);
-      if (('0' <= lookahead && lookahead <= '4')) ADVANCE(161);
-      if (('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(259);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
-      END_STATE();
-    case 160:
-      ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '/') ADVANCE(188);
-      if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (lookahead == '-' ||
-          lookahead == '.' ||
-          lookahead == ':') ADVANCE(274);
-      if (('0' <= lookahead && lookahead <= '5')) ADVANCE(168);
-      if (('6' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(273);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
-      END_STATE();
-    case 161:
-      ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '/') ADVANCE(188);
-      if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (lookahead == '-' ||
-          lookahead == '.' ||
-          lookahead == ':') ADVANCE(274);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(168);
-      if (('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(273);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
-      END_STATE();
-    case 162:
-      ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '/') ADVANCE(188);
-      if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (lookahead == '-' ||
-          lookahead == '.' ||
-          lookahead == ':') ADVANCE(274);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(273);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
-      END_STATE();
-    case 163:
-      ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '/') ADVANCE(188);
-      if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('0' <= lookahead && lookahead <= '5')) ADVANCE(170);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
-      END_STATE();
-    case 164:
-      ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '/') ADVANCE(188);
-      if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(170);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
-      END_STATE();
-    case 165:
-      ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '/') ADVANCE(188);
-      if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(161);
-      if (('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(259);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
-      END_STATE();
-    case 166:
-      ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '/') ADVANCE(188);
-      if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(162);
-      if (('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(259);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
-      END_STATE();
-    case 167:
-      ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '/') ADVANCE(188);
-      if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(164);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
-      END_STATE();
-    case 168:
-      ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '/') ADVANCE(188);
-      if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(258);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
-      END_STATE();
-    case 169:
-      ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '/') ADVANCE(188);
-      if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(259);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
-      END_STATE();
-    case 170:
-      ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '/') ADVANCE(188);
-      if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
-      END_STATE();
-    case 171:
-      ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '0') ADVANCE(280);
-      if (lookahead == '1') ADVANCE(187);
-      if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('2' <= lookahead && lookahead <= '9')) ADVANCE(265);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
-      END_STATE();
-    case 172:
-      ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '0') ADVANCE(53);
-      if (lookahead == '1') ADVANCE(50);
-      if (lookahead == '2') ADVANCE(44);
-      if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('3' <= lookahead && lookahead <= '9')) ADVANCE(47);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
-      END_STATE();
-    case 173:
-      ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '0') ADVANCE(51);
-      if (lookahead == '1') ADVANCE(48);
-      if (lookahead == '2') ADVANCE(45);
-      if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('3' <= lookahead && lookahead <= '9')) ADVANCE(49);
-      if (('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(267);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
-      END_STATE();
-    case 174:
-      ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '0') ADVANCE(170);
-      if (lookahead == '1') ADVANCE(167);
-      if (lookahead == '2') ADVANCE(158);
-      if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('3' <= lookahead && lookahead <= '9')) ADVANCE(164);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
-      END_STATE();
-    case 175:
-      ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '0') ADVANCE(169);
-      if (lookahead == '1') ADVANCE(165);
-      if (lookahead == '2') ADVANCE(159);
-      if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('3' <= lookahead && lookahead <= '9')) ADVANCE(166);
-      if (('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(275);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
-      END_STATE();
-    case 176:
-      ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '0') ADVANCE(35);
-      if (lookahead == '1') ADVANCE(32);
-      if (lookahead == '2') ADVANCE(26);
-      if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('3' <= lookahead && lookahead <= '9')) ADVANCE(29);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
-      END_STATE();
-    case 177:
-      ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '0') ADVANCE(34);
-      if (lookahead == '1') ADVANCE(30);
-      if (lookahead == '2') ADVANCE(27);
-      if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('3' <= lookahead && lookahead <= '9')) ADVANCE(31);
-      if (('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(278);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
-      END_STATE();
-    case 178:
-      ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '0') ADVANCE(157);
-      if (lookahead == '1') ADVANCE(152);
-      if (lookahead == '2') ADVANCE(125);
-      if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('3' <= lookahead && lookahead <= '9')) ADVANCE(151);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
-      END_STATE();
-    case 179:
-      ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '0') ADVANCE(118);
-      if (lookahead == '1') ADVANCE(114);
-      if (lookahead == '2') ADVANCE(111);
-      if (lookahead == ':') ADVANCE(156);
-      if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('3' <= lookahead && lookahead <= '9')) ADVANCE(115);
-      if (('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(199);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
-      END_STATE();
-    case 180:
-      ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '0') ADVANCE(40);
-      if (lookahead == '1') ADVANCE(39);
-      if (lookahead == '2') ADVANCE(36);
-      if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('3' <= lookahead && lookahead <= '9')) ADVANCE(38);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
-      END_STATE();
-    case 181:
-      ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '0') ADVANCE(89);
-      if (lookahead == '1') ADVANCE(85);
-      if (lookahead == '2') ADVANCE(64);
-      if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('3' <= lookahead && lookahead <= '9')) ADVANCE(86);
-      if (('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(136);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
-      END_STATE();
-    case 182:
-      ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '0') ADVANCE(82);
-      if (lookahead == '1') ADVANCE(78);
-      if (lookahead == '2') ADVANCE(65);
-      if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('3' <= lookahead && lookahead <= '9')) ADVANCE(79);
-      if (('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(132);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
-      END_STATE();
-    case 183:
-      ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '0') ADVANCE(61);
-      if (lookahead == '1') ADVANCE(60);
-      if (lookahead == '2') ADVANCE(57);
-      if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('3' <= lookahead && lookahead <= '9')) ADVANCE(59);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
-      END_STATE();
-    case 184:
-      ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '0') ADVANCE(95);
-      if (lookahead == '1') ADVANCE(92);
-      if (lookahead == '2') ADVANCE(66);
-      if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('3' <= lookahead && lookahead <= '9')) ADVANCE(93);
-      if (('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(139);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
-      END_STATE();
-    case 185:
-      ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '0') ADVANCE(102);
-      if (lookahead == '1') ADVANCE(99);
-      if (lookahead == '2') ADVANCE(67);
-      if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('3' <= lookahead && lookahead <= '9')) ADVANCE(100);
-      if (('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(143);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
-      END_STATE();
-    case 186:
-      ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '0') ADVANCE(109);
-      if (lookahead == '1') ADVANCE(106);
-      if (lookahead == '2') ADVANCE(68);
-      if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('3' <= lookahead && lookahead <= '9')) ADVANCE(107);
-      if (('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(147);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
-      END_STATE();
-    case 187:
-      ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '2') ADVANCE(264);
-      if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (lookahead == '0' ||
-          lookahead == '1') ADVANCE(265);
-      if (('3' <= lookahead && lookahead <= '9')) ADVANCE(280);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
-      END_STATE();
-    case 188:
-      ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '3') ADVANCE(263);
-      if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (lookahead == '1' ||
-          lookahead == '2') ADVANCE(265);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(280);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
-      END_STATE();
-    case 189:
-      ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == ':') ADVANCE(119);
-      if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
-      END_STATE();
-    case 190:
-      ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == ':') ADVANCE(179);
-      if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(193);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
-      END_STATE();
-    case 191:
-      ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == ':') ADVANCE(179);
-      if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(190);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
-      END_STATE();
-    case 192:
-      ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == ':') ADVANCE(179);
-      if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
+          lookahead == ' ') ADVANCE(358);
       if (('0' <= lookahead && lookahead <= '9') ||
           ('A' <= lookahead && lookahead <= 'F') ||
           ('a' <= lookahead && lookahead <= 'f')) ADVANCE(191);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
-    case 193:
+    case 142:
       ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == ':') ADVANCE(179);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '.') ADVANCE(237);
+      if (lookahead == '/') ADVANCE(225);
+      if (lookahead == ':') ADVANCE(350);
       if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
-      END_STATE();
-    case 194:
-      ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == ':') ADVANCE(253);
-      if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
+          lookahead == ' ') ADVANCE(358);
       if (('0' <= lookahead && lookahead <= '9') ||
           ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(196);
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(188);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
-    case 195:
+    case 143:
       ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == ':') ADVANCE(253);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '.') ADVANCE(237);
+      if (lookahead == '/') ADVANCE(225);
+      if (lookahead == ':') ADVANCE(350);
       if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
+          lookahead == ' ') ADVANCE(358);
       if (('0' <= lookahead && lookahead <= '9') ||
           ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(20);
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(189);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
-    case 196:
+    case 144:
       ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == ':') ADVANCE(254);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '.') ADVANCE(237);
+      if (lookahead == '/') ADVANCE(225);
+      if (lookahead == ':') ADVANCE(236);
       if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (lookahead == '-' ||
-          lookahead == '.') ADVANCE(268);
+          lookahead == ' ') ADVANCE(358);
+      if (('0' <= lookahead && lookahead <= '5')) ADVANCE(150);
+      if (('6' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(194);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(355);
+      END_STATE();
+    case 145:
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '.') ADVANCE(237);
+      if (lookahead == '/') ADVANCE(225);
+      if (lookahead == ':') ADVANCE(236);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(150);
+      if (('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(194);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(355);
+      END_STATE();
+    case 146:
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '.') ADVANCE(237);
+      if (lookahead == '/') ADVANCE(225);
+      if (lookahead == ':') ADVANCE(236);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(145);
+      if (('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(192);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(355);
+      END_STATE();
+    case 147:
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '.') ADVANCE(237);
+      if (lookahead == '/') ADVANCE(225);
+      if (lookahead == ':') ADVANCE(236);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(148);
+      if (('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(192);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(355);
+      END_STATE();
+    case 148:
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '.') ADVANCE(237);
+      if (lookahead == '/') ADVANCE(225);
+      if (lookahead == ':') ADVANCE(236);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
       if (('0' <= lookahead && lookahead <= '9') ||
           ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(195);
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(194);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
-    case 197:
+    case 149:
       ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == ':') ADVANCE(277);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '.') ADVANCE(237);
+      if (lookahead == '/') ADVANCE(225);
+      if (lookahead == ':') ADVANCE(236);
       if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(200);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
-      END_STATE();
-    case 198:
-      ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == ':') ADVANCE(277);
-      if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(197);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
-      END_STATE();
-    case 199:
-      ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == ':') ADVANCE(277);
-      if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(198);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
-      END_STATE();
-    case 200:
-      ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == ':') ADVANCE(277);
-      if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
-      END_STATE();
-    case 201:
-      ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == ':') ADVANCE(121);
-      if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(217);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
-      END_STATE();
-    case 202:
-      ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == ':') ADVANCE(121);
-      if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(216);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
-      END_STATE();
-    case 203:
-      ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == ':') ADVANCE(201);
-      if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (lookahead == '-' ||
-          lookahead == '.') ADVANCE(270);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(266);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
-      END_STATE();
-    case 204:
-      ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == ':') ADVANCE(201);
-      if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (lookahead == '-' ||
-          lookahead == '.') ADVANCE(270);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(209);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
-      END_STATE();
-    case 205:
-      ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == ':') ADVANCE(201);
-      if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(203);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
-      END_STATE();
-    case 206:
-      ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == ':') ADVANCE(201);
-      if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(209);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
-      END_STATE();
-    case 207:
-      ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == ':') ADVANCE(201);
-      if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(204);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
-      END_STATE();
-    case 208:
-      ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == ':') ADVANCE(201);
-      if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(206);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
-      END_STATE();
-    case 209:
-      ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == ':') ADVANCE(201);
-      if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(211);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
-      END_STATE();
-    case 210:
-      ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == ':') ADVANCE(201);
-      if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(220);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
-      END_STATE();
-    case 211:
-      ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == ':') ADVANCE(201);
-      if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
-      END_STATE();
-    case 212:
-      ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == ':') ADVANCE(238);
-      if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (lookahead == '-' ||
-          lookahead == '.') ADVANCE(274);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(273);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
-      END_STATE();
-    case 213:
-      ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == ':') ADVANCE(120);
-      if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
+          lookahead == ' ') ADVANCE(358);
       if (('0' <= lookahead && lookahead <= '9') ||
           ('A' <= lookahead && lookahead <= 'F') ||
           ('a' <= lookahead && lookahead <= 'f')) ADVANCE(192);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
-    case 214:
+    case 150:
       ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == ':') ADVANCE(213);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '.') ADVANCE(237);
+      if (lookahead == '/') ADVANCE(225);
+      if (lookahead == ':') ADVANCE(236);
       if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (lookahead == '-' ||
-          lookahead == '.') ADVANCE(270);
+          lookahead == ' ') ADVANCE(358);
       if (('0' <= lookahead && lookahead <= '9') ||
           ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(218);
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(195);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
-    case 215:
+    case 151:
       ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == ':') ADVANCE(213);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '.') ADVANCE(237);
+      if (lookahead == '/') ADVANCE(225);
+      if (lookahead == ':') ADVANCE(238);
       if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
+          lookahead == ' ') ADVANCE(358);
+      if (('0' <= lookahead && lookahead <= '5')) ADVANCE(157);
+      if (('6' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(198);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(355);
+      END_STATE();
+    case 152:
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '.') ADVANCE(237);
+      if (lookahead == '/') ADVANCE(225);
+      if (lookahead == ':') ADVANCE(238);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(157);
+      if (('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(198);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(355);
+      END_STATE();
+    case 153:
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '.') ADVANCE(237);
+      if (lookahead == '/') ADVANCE(225);
+      if (lookahead == ':') ADVANCE(238);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(152);
+      if (('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(196);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(355);
+      END_STATE();
+    case 154:
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '.') ADVANCE(237);
+      if (lookahead == '/') ADVANCE(225);
+      if (lookahead == ':') ADVANCE(238);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(155);
+      if (('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(196);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(355);
+      END_STATE();
+    case 155:
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '.') ADVANCE(237);
+      if (lookahead == '/') ADVANCE(225);
+      if (lookahead == ':') ADVANCE(238);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
       if (('0' <= lookahead && lookahead <= '9') ||
           ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(218);
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(198);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
-    case 216:
+    case 156:
       ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == ':') ADVANCE(213);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '.') ADVANCE(237);
+      if (lookahead == '/') ADVANCE(225);
+      if (lookahead == ':') ADVANCE(238);
       if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
+          lookahead == ' ') ADVANCE(358);
       if (('0' <= lookahead && lookahead <= '9') ||
           ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(214);
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(196);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
-    case 217:
+    case 157:
       ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == ':') ADVANCE(213);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '.') ADVANCE(237);
+      if (lookahead == '/') ADVANCE(225);
+      if (lookahead == ':') ADVANCE(238);
       if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
+          lookahead == ' ') ADVANCE(358);
       if (('0' <= lookahead && lookahead <= '9') ||
           ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(215);
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(199);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
-    case 218:
+    case 158:
       ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == ':') ADVANCE(213);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '.') ADVANCE(237);
+      if (lookahead == '/') ADVANCE(225);
+      if (lookahead == ':') ADVANCE(239);
       if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
+          lookahead == ' ') ADVANCE(358);
+      if (('0' <= lookahead && lookahead <= '5')) ADVANCE(164);
+      if (('6' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(202);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(355);
+      END_STATE();
+    case 159:
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '.') ADVANCE(237);
+      if (lookahead == '/') ADVANCE(225);
+      if (lookahead == ':') ADVANCE(239);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(164);
+      if (('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(202);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(355);
+      END_STATE();
+    case 160:
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '.') ADVANCE(237);
+      if (lookahead == '/') ADVANCE(225);
+      if (lookahead == ':') ADVANCE(239);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(159);
+      if (('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(200);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(355);
+      END_STATE();
+    case 161:
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '.') ADVANCE(237);
+      if (lookahead == '/') ADVANCE(225);
+      if (lookahead == ':') ADVANCE(239);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(162);
+      if (('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(200);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(355);
+      END_STATE();
+    case 162:
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '.') ADVANCE(237);
+      if (lookahead == '/') ADVANCE(225);
+      if (lookahead == ':') ADVANCE(239);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
       if (('0' <= lookahead && lookahead <= '9') ||
           ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(219);
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(202);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
-    case 219:
+    case 163:
       ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == ':') ADVANCE(213);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '.') ADVANCE(237);
+      if (lookahead == '/') ADVANCE(225);
+      if (lookahead == ':') ADVANCE(239);
       if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
-      END_STATE();
-    case 220:
-      ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == ':') ADVANCE(202);
-      if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (lookahead == '-' ||
-          lookahead == '.') ADVANCE(274);
+          lookahead == ' ') ADVANCE(358);
       if (('0' <= lookahead && lookahead <= '9') ||
           ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(205);
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(200);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
-    case 221:
+    case 164:
       ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == ':') ADVANCE(122);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '.') ADVANCE(237);
+      if (lookahead == '/') ADVANCE(225);
+      if (lookahead == ':') ADVANCE(239);
       if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
+          lookahead == ' ') ADVANCE(358);
       if (('0' <= lookahead && lookahead <= '9') ||
           ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(208);
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(203);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
-    case 222:
+    case 165:
       ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == ':') ADVANCE(122);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '.') ADVANCE(237);
+      if (lookahead == '5') ADVANCE(166);
+      if (lookahead == ':') ADVANCE(350);
       if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
+          lookahead == ' ') ADVANCE(358);
+      if (('6' <= lookahead && lookahead <= '9')) ADVANCE(171);
+      if (('0' <= lookahead && lookahead <= '4')) ADVANCE(167);
+      if (('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(255);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(355);
+      END_STATE();
+    case 166:
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '.') ADVANCE(237);
+      if (lookahead == ':') ADVANCE(350);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (('0' <= lookahead && lookahead <= '5')) ADVANCE(170);
+      if (('6' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(254);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(355);
+      END_STATE();
+    case 167:
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '.') ADVANCE(237);
+      if (lookahead == ':') ADVANCE(350);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(170);
+      if (('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(254);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(355);
+      END_STATE();
+    case 168:
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '.') ADVANCE(237);
+      if (lookahead == ':') ADVANCE(350);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(167);
+      if (('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(255);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(355);
+      END_STATE();
+    case 169:
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '.') ADVANCE(237);
+      if (lookahead == ':') ADVANCE(350);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(171);
+      if (('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(255);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(355);
+      END_STATE();
+    case 170:
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '.') ADVANCE(237);
+      if (lookahead == ':') ADVANCE(350);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
       if (('0' <= lookahead && lookahead <= '9') ||
           ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(210);
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(257);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
-    case 223:
+    case 171:
       ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == ':') ADVANCE(122);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '.') ADVANCE(237);
+      if (lookahead == ':') ADVANCE(350);
       if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
+          lookahead == ' ') ADVANCE(358);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(254);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(355);
+      END_STATE();
+    case 172:
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '.') ADVANCE(237);
+      if (lookahead == ':') ADVANCE(350);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(255);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(355);
+      END_STATE();
+    case 173:
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '/') ADVANCE(225);
+      if (lookahead == '0') ADVANCE(129);
+      if (lookahead == '1') ADVANCE(125);
+      if (lookahead == '2') ADVANCE(117);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (('3' <= lookahead && lookahead <= '9')) ADVANCE(126);
+      if (('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(182);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(355);
+      END_STATE();
+    case 174:
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '/') ADVANCE(225);
+      if (lookahead == '0') ADVANCE(143);
+      if (lookahead == '1') ADVANCE(139);
+      if (lookahead == '2') ADVANCE(118);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (('3' <= lookahead && lookahead <= '9')) ADVANCE(140);
+      if (('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(190);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(355);
+      END_STATE();
+    case 175:
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '/') ADVANCE(225);
+      if (lookahead == '0') ADVANCE(136);
+      if (lookahead == '1') ADVANCE(132);
+      if (lookahead == '2') ADVANCE(119);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (('3' <= lookahead && lookahead <= '9')) ADVANCE(133);
+      if (('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(186);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(355);
+      END_STATE();
+    case 176:
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '/') ADVANCE(225);
+      if (lookahead == '0') ADVANCE(149);
+      if (lookahead == '1') ADVANCE(146);
+      if (lookahead == '2') ADVANCE(120);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (('3' <= lookahead && lookahead <= '9')) ADVANCE(147);
+      if (('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(193);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(355);
+      END_STATE();
+    case 177:
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '/') ADVANCE(225);
+      if (lookahead == '0') ADVANCE(156);
+      if (lookahead == '1') ADVANCE(153);
+      if (lookahead == '2') ADVANCE(121);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (('3' <= lookahead && lookahead <= '9')) ADVANCE(154);
+      if (('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(197);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(355);
+      END_STATE();
+    case 178:
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '/') ADVANCE(225);
+      if (lookahead == '0') ADVANCE(163);
+      if (lookahead == '1') ADVANCE(160);
+      if (lookahead == '2') ADVANCE(122);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (('3' <= lookahead && lookahead <= '9')) ADVANCE(161);
+      if (('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(201);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(355);
+      END_STATE();
+    case 179:
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '/') ADVANCE(225);
+      if (lookahead == '5') ADVANCE(204);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (('6' <= lookahead && lookahead <= '9')) ADVANCE(211);
+      if (('0' <= lookahead && lookahead <= '4')) ADVANCE(205);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(355);
+      END_STATE();
+    case 180:
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '/') ADVANCE(225);
+      if (lookahead == ':') ADVANCE(240);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(183);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(355);
+      END_STATE();
+    case 181:
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '/') ADVANCE(225);
+      if (lookahead == ':') ADVANCE(240);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(180);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(355);
+      END_STATE();
+    case 182:
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '/') ADVANCE(225);
+      if (lookahead == ':') ADVANCE(240);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(181);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(355);
+      END_STATE();
+    case 183:
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '/') ADVANCE(225);
+      if (lookahead == ':') ADVANCE(240);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(355);
+      END_STATE();
+    case 184:
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '/') ADVANCE(225);
+      if (lookahead == ':') ADVANCE(235);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(185);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(355);
+      END_STATE();
+    case 185:
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '/') ADVANCE(225);
+      if (lookahead == ':') ADVANCE(235);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(187);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(355);
+      END_STATE();
+    case 186:
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '/') ADVANCE(225);
+      if (lookahead == ':') ADVANCE(235);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(184);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(355);
+      END_STATE();
+    case 187:
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '/') ADVANCE(225);
+      if (lookahead == ':') ADVANCE(235);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(355);
+      END_STATE();
+    case 188:
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '/') ADVANCE(225);
+      if (lookahead == ':') ADVANCE(350);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(191);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(355);
+      END_STATE();
+    case 189:
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '/') ADVANCE(225);
+      if (lookahead == ':') ADVANCE(350);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(188);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(355);
+      END_STATE();
+    case 190:
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '/') ADVANCE(225);
+      if (lookahead == ':') ADVANCE(350);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(189);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(355);
+      END_STATE();
+    case 191:
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '/') ADVANCE(225);
+      if (lookahead == ':') ADVANCE(350);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(355);
+      END_STATE();
+    case 192:
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '/') ADVANCE(225);
+      if (lookahead == ':') ADVANCE(236);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(194);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(355);
+      END_STATE();
+    case 193:
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '/') ADVANCE(225);
+      if (lookahead == ':') ADVANCE(236);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(192);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(355);
+      END_STATE();
+    case 194:
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '/') ADVANCE(225);
+      if (lookahead == ':') ADVANCE(236);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(195);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(355);
+      END_STATE();
+    case 195:
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '/') ADVANCE(225);
+      if (lookahead == ':') ADVANCE(236);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(355);
+      END_STATE();
+    case 196:
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '/') ADVANCE(225);
+      if (lookahead == ':') ADVANCE(238);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(198);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(355);
+      END_STATE();
+    case 197:
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '/') ADVANCE(225);
+      if (lookahead == ':') ADVANCE(238);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(196);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(355);
+      END_STATE();
+    case 198:
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '/') ADVANCE(225);
+      if (lookahead == ':') ADVANCE(238);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(199);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(355);
+      END_STATE();
+    case 199:
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '/') ADVANCE(225);
+      if (lookahead == ':') ADVANCE(238);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(355);
+      END_STATE();
+    case 200:
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '/') ADVANCE(225);
+      if (lookahead == ':') ADVANCE(239);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(202);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(355);
+      END_STATE();
+    case 201:
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '/') ADVANCE(225);
+      if (lookahead == ':') ADVANCE(239);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(200);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(355);
+      END_STATE();
+    case 202:
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '/') ADVANCE(225);
+      if (lookahead == ':') ADVANCE(239);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(203);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(355);
+      END_STATE();
+    case 203:
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '/') ADVANCE(225);
+      if (lookahead == ':') ADVANCE(239);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(355);
+      END_STATE();
+    case 204:
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '/') ADVANCE(225);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (('0' <= lookahead && lookahead <= '5')) ADVANCE(211);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(355);
+      END_STATE();
+    case 205:
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '/') ADVANCE(225);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(211);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(355);
+      END_STATE();
+    case 206:
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '/') ADVANCE(225);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(205);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(355);
+      END_STATE();
+    case 207:
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '/') ADVANCE(225);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(211);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(355);
+      END_STATE();
+    case 208:
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '/') ADVANCE(225);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
       if (('0' <= lookahead && lookahead <= '9') ||
           ('A' <= lookahead && lookahead <= 'F') ||
           ('a' <= lookahead && lookahead <= 'f')) ADVANCE(207);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
+          lookahead != '\r') ADVANCE(355);
+      END_STATE();
+    case 209:
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '/') ADVANCE(225);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(208);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(355);
+      END_STATE();
+    case 210:
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '/') ADVANCE(225);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(209);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(355);
+      END_STATE();
+    case 211:
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '/') ADVANCE(225);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(355);
+      END_STATE();
+    case 212:
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '/') ADVANCE(242);
+      if (lookahead == '5') ADVANCE(217);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (('6' <= lookahead && lookahead <= '9')) ADVANCE(224);
+      if (('0' <= lookahead && lookahead <= '4')) ADVANCE(218);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(355);
+      END_STATE();
+    case 213:
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '/') ADVANCE(242);
+      if (lookahead == '5') ADVANCE(214);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (('6' <= lookahead && lookahead <= '9')) ADVANCE(216);
+      if (('0' <= lookahead && lookahead <= '4')) ADVANCE(215);
+      if (('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(322);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(355);
+      END_STATE();
+    case 214:
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '/') ADVANCE(242);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (lookahead == '-' ||
+          lookahead == '.' ||
+          lookahead == ':') ADVANCE(347);
+      if (('0' <= lookahead && lookahead <= '5')) ADVANCE(222);
+      if (('6' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(346);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(355);
+      END_STATE();
+    case 215:
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '/') ADVANCE(242);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (lookahead == '-' ||
+          lookahead == '.' ||
+          lookahead == ':') ADVANCE(347);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(222);
+      if (('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(346);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(355);
+      END_STATE();
+    case 216:
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '/') ADVANCE(242);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (lookahead == '-' ||
+          lookahead == '.' ||
+          lookahead == ':') ADVANCE(347);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(346);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(355);
+      END_STATE();
+    case 217:
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '/') ADVANCE(242);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (('0' <= lookahead && lookahead <= '5')) ADVANCE(224);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(355);
+      END_STATE();
+    case 218:
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '/') ADVANCE(242);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(224);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(355);
+      END_STATE();
+    case 219:
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '/') ADVANCE(242);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(215);
+      if (('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(322);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(355);
+      END_STATE();
+    case 220:
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '/') ADVANCE(242);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(216);
+      if (('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(322);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(355);
+      END_STATE();
+    case 221:
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '/') ADVANCE(242);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(218);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(355);
+      END_STATE();
+    case 222:
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '/') ADVANCE(242);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(323);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(355);
+      END_STATE();
+    case 223:
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '/') ADVANCE(242);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(322);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 224:
       ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == ':') ADVANCE(221);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '/') ADVANCE(242);
       if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (lookahead == '-' ||
-          lookahead == '.') ADVANCE(270);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(266);
+          lookahead == ' ') ADVANCE(358);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 225:
       ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == ':') ADVANCE(221);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '0') ADVANCE(355);
+      if (lookahead == '1') ADVANCE(241);
       if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (lookahead == '-' ||
-          lookahead == '.') ADVANCE(270);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(232);
+          lookahead == ' ') ADVANCE(358);
+      if (('2' <= lookahead && lookahead <= '9')) ADVANCE(330);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 226:
       ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == ':') ADVANCE(221);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '0') ADVANCE(107);
+      if (lookahead == '1') ADVANCE(104);
+      if (lookahead == '2') ADVANCE(98);
       if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(224);
+          lookahead == ' ') ADVANCE(358);
+      if (('3' <= lookahead && lookahead <= '9')) ADVANCE(101);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 227:
       ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == ':') ADVANCE(221);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '0') ADVANCE(105);
+      if (lookahead == '1') ADVANCE(102);
+      if (lookahead == '2') ADVANCE(99);
       if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(225);
+          lookahead == ' ') ADVANCE(358);
+      if (('3' <= lookahead && lookahead <= '9')) ADVANCE(103);
+      if (('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(340);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 228:
       ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == ':') ADVANCE(221);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '0') ADVANCE(224);
+      if (lookahead == '1') ADVANCE(221);
+      if (lookahead == '2') ADVANCE(212);
       if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(232);
+          lookahead == ' ') ADVANCE(358);
+      if (('3' <= lookahead && lookahead <= '9')) ADVANCE(218);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 229:
       ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == ':') ADVANCE(221);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '0') ADVANCE(223);
+      if (lookahead == '1') ADVANCE(219);
+      if (lookahead == '2') ADVANCE(213);
       if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(228);
+          lookahead == ' ') ADVANCE(358);
+      if (('3' <= lookahead && lookahead <= '9')) ADVANCE(220);
+      if (('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(348);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 230:
       ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == ':') ADVANCE(221);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '0') ADVANCE(172);
+      if (lookahead == '1') ADVANCE(168);
+      if (lookahead == '2') ADVANCE(165);
+      if (lookahead == ':') ADVANCE(210);
       if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(235);
+          lookahead == ' ') ADVANCE(358);
+      if (('3' <= lookahead && lookahead <= '9')) ADVANCE(169);
+      if (('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(256);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 231:
       ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == ':') ADVANCE(221);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '0') ADVANCE(89);
+      if (lookahead == '1') ADVANCE(86);
+      if (lookahead == '2') ADVANCE(80);
       if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(237);
+          lookahead == ' ') ADVANCE(358);
+      if (('3' <= lookahead && lookahead <= '9')) ADVANCE(83);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 232:
       ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == ':') ADVANCE(221);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '0') ADVANCE(88);
+      if (lookahead == '1') ADVANCE(84);
+      if (lookahead == '2') ADVANCE(81);
       if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(234);
+          lookahead == ' ') ADVANCE(358);
+      if (('3' <= lookahead && lookahead <= '9')) ADVANCE(85);
+      if (('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(351);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 233:
       ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == ':') ADVANCE(221);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '0') ADVANCE(211);
+      if (lookahead == '1') ADVANCE(206);
+      if (lookahead == '2') ADVANCE(179);
       if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(236);
+          lookahead == ' ') ADVANCE(358);
+      if (('3' <= lookahead && lookahead <= '9')) ADVANCE(205);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 234:
       ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == ':') ADVANCE(221);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '0') ADVANCE(94);
+      if (lookahead == '1') ADVANCE(93);
+      if (lookahead == '2') ADVANCE(90);
       if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
+          lookahead == ' ') ADVANCE(358);
+      if (('3' <= lookahead && lookahead <= '9')) ADVANCE(92);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 235:
       ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == ':') ADVANCE(222);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '0') ADVANCE(143);
+      if (lookahead == '1') ADVANCE(139);
+      if (lookahead == '2') ADVANCE(118);
       if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (lookahead == '-' ||
-          lookahead == '.') ADVANCE(276);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(233);
+          lookahead == ' ') ADVANCE(358);
+      if (('3' <= lookahead && lookahead <= '9')) ADVANCE(140);
+      if (('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(190);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 236:
       ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == ':') ADVANCE(223);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '0') ADVANCE(136);
+      if (lookahead == '1') ADVANCE(132);
+      if (lookahead == '2') ADVANCE(119);
       if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (lookahead == '-' ||
-          lookahead == '.') ADVANCE(274);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(273);
+          lookahead == ' ') ADVANCE(358);
+      if (('3' <= lookahead && lookahead <= '9')) ADVANCE(133);
+      if (('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(186);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 237:
       ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == ':') ADVANCE(223);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '0') ADVANCE(115);
+      if (lookahead == '1') ADVANCE(114);
+      if (lookahead == '2') ADVANCE(111);
       if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (lookahead == '-' ||
-          lookahead == '.') ADVANCE(274);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(226);
+          lookahead == ' ') ADVANCE(358);
+      if (('3' <= lookahead && lookahead <= '9')) ADVANCE(113);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 238:
       ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == ':') ADVANCE(123);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '0') ADVANCE(149);
+      if (lookahead == '1') ADVANCE(146);
+      if (lookahead == '2') ADVANCE(120);
       if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(227);
+          lookahead == ' ') ADVANCE(358);
+      if (('3' <= lookahead && lookahead <= '9')) ADVANCE(147);
+      if (('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(193);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 239:
       ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == ':') ADVANCE(123);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '0') ADVANCE(156);
+      if (lookahead == '1') ADVANCE(153);
+      if (lookahead == '2') ADVANCE(121);
       if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(229);
+          lookahead == ' ') ADVANCE(358);
+      if (('3' <= lookahead && lookahead <= '9')) ADVANCE(154);
+      if (('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(197);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 240:
       ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == ':') ADVANCE(123);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '0') ADVANCE(163);
+      if (lookahead == '1') ADVANCE(160);
+      if (lookahead == '2') ADVANCE(122);
       if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(230);
+          lookahead == ' ') ADVANCE(358);
+      if (('3' <= lookahead && lookahead <= '9')) ADVANCE(161);
+      if (('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(201);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 241:
       ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == ':') ADVANCE(123);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '2') ADVANCE(328);
       if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(231);
+          lookahead == ' ') ADVANCE(358);
+      if (lookahead == '0' ||
+          lookahead == '1') ADVANCE(330);
+      if (('3' <= lookahead && lookahead <= '9')) ADVANCE(355);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 242:
       ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == ':') ADVANCE(239);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '3') ADVANCE(327);
       if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(249);
+          lookahead == ' ') ADVANCE(358);
+      if (lookahead == '1' ||
+          lookahead == '2') ADVANCE(330);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(355);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 243:
       ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == ':') ADVANCE(239);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == ':') ADVANCE(355);
       if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
+          lookahead == ' ') ADVANCE(358);
       if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(250);
+          ('A' <= lookahead && lookahead <= 'Z') ||
+          lookahead == '_' ||
+          ('a' <= lookahead && lookahead <= 'z')) ADVANCE(243);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 244:
       ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == ':') ADVANCE(239);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == ':') ADVANCE(173);
       if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(252);
+          lookahead == ' ') ADVANCE(358);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 245:
       ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == ':') ADVANCE(239);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == ':') ADVANCE(230);
       if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(242);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
-      END_STATE();
-    case 246:
-      ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == ':') ADVANCE(239);
-      if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(245);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
-      END_STATE();
-    case 247:
-      ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == ':') ADVANCE(239);
-      if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(212);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
-      END_STATE();
-    case 248:
-      ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == ':') ADVANCE(239);
-      if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(251);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
-      END_STATE();
-    case 249:
-      ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == ':') ADVANCE(239);
-      if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
-      END_STATE();
-    case 250:
-      ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == ':') ADVANCE(240);
-      if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (lookahead == '-' ||
-          lookahead == '.') ADVANCE(279);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(244);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
-      END_STATE();
-    case 251:
-      ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == ':') ADVANCE(241);
-      if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (lookahead == '-' ||
-          lookahead == '.') ADVANCE(276);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(247);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
-      END_STATE();
-    case 252:
-      ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == ':') ADVANCE(241);
-      if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (lookahead == '-' ||
-          lookahead == '.') ADVANCE(276);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(275);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
-      END_STATE();
-    case 253:
-      ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == ':') ADVANCE(124);
-      if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(246);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
-      END_STATE();
-    case 254:
-      ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == ':') ADVANCE(124);
-      if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(243);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
-      END_STATE();
-    case 255:
-      ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == ':') ADVANCE(124);
-      if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
+          lookahead == ' ') ADVANCE(358);
       if (('0' <= lookahead && lookahead <= '9') ||
           ('A' <= lookahead && lookahead <= 'F') ||
           ('a' <= lookahead && lookahead <= 'f')) ADVANCE(248);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
+          lookahead != '\r') ADVANCE(355);
+      END_STATE();
+    case 246:
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == ':') ADVANCE(230);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(245);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(355);
+      END_STATE();
+    case 247:
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == ':') ADVANCE(230);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(246);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(355);
+      END_STATE();
+    case 248:
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == ':') ADVANCE(230);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(355);
+      END_STATE();
+    case 249:
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == ':') ADVANCE(310);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (lookahead == ',' ||
+          lookahead == '-') ADVANCE(331);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(70);
+      if (('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(74);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(355);
+      END_STATE();
+    case 250:
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == ':') ADVANCE(310);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (('a' <= lookahead && lookahead <= 'f')) ADVANCE(253);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F')) ADVANCE(253);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(355);
+      END_STATE();
+    case 251:
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == ':') ADVANCE(310);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(253);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(355);
+      END_STATE();
+    case 252:
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == ':') ADVANCE(310);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(74);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(355);
+      END_STATE();
+    case 253:
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == ':') ADVANCE(311);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (lookahead == '-' ||
+          lookahead == '.') ADVANCE(341);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(252);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(355);
+      END_STATE();
+    case 254:
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == ':') ADVANCE(350);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(257);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(355);
+      END_STATE();
+    case 255:
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == ':') ADVANCE(350);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(254);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 256:
       ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == ':') ADVANCE(350);
       if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(16);
+          lookahead == ' ') ADVANCE(358);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(255);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(15);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 257:
       ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == ':') ADVANCE(350);
       if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (lookahead == '!' ||
-          lookahead == '#') ADVANCE(257);
+          lookahead == ' ') ADVANCE(358);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 258:
       ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == ':') ADVANCE(175);
       if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (lookahead == '-' ||
-          lookahead == '.' ||
-          lookahead == ':') ADVANCE(270);
+          lookahead == ' ') ADVANCE(358);
       if (('0' <= lookahead && lookahead <= '9') ||
           ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(266);
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(274);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 259:
       ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == ':') ADVANCE(175);
       if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (lookahead == '-' ||
-          lookahead == '.' ||
-          lookahead == ':') ADVANCE(274);
+          lookahead == ' ') ADVANCE(358);
       if (('0' <= lookahead && lookahead <= '9') ||
           ('A' <= lookahead && lookahead <= 'F') ||
           ('a' <= lookahead && lookahead <= 'f')) ADVANCE(273);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 260:
       ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == ':') ADVANCE(258);
       if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
+          lookahead == ' ') ADVANCE(358);
       if (lookahead == '-' ||
-          lookahead == '.' ||
-          lookahead == ':') ADVANCE(276);
+          lookahead == '.') ADVANCE(343);
       if (('0' <= lookahead && lookahead <= '9') ||
           ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(269);
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(338);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 261:
       ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == ':') ADVANCE(258);
       if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
+          lookahead == ' ') ADVANCE(358);
       if (lookahead == '-' ||
-          lookahead == '.' ||
-          lookahead == ':') ADVANCE(276);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(275);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
-      END_STATE();
-    case 262:
-      ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (lookahead == '-' ||
-          lookahead == '.' ||
-          lookahead == ':') ADVANCE(279);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(278);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
-      END_STATE();
-    case 263:
-      ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('0' <= lookahead && lookahead <= '2')) ADVANCE(280);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
-      END_STATE();
-    case 264:
-      ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('0' <= lookahead && lookahead <= '8')) ADVANCE(280);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
-      END_STATE();
-    case 265:
-      ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(280);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
-      END_STATE();
-    case 266:
-      ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(280);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
-      END_STATE();
-    case 267:
-      ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(262);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
-      END_STATE();
-    case 268:
-      ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(267);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
-      END_STATE();
-    case 269:
-      ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(62);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
-      END_STATE();
-    case 270:
-      ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
+          lookahead == '.') ADVANCE(343);
       if (('0' <= lookahead && lookahead <= '9') ||
           ('A' <= lookahead && lookahead <= 'F') ||
           ('a' <= lookahead && lookahead <= 'f')) ADVANCE(266);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
-    case 271:
+    case 262:
       ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == ':') ADVANCE(258);
       if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
+          lookahead == ' ') ADVANCE(358);
       if (('0' <= lookahead && lookahead <= '9') ||
           ('A' <= lookahead && lookahead <= 'F') ||
           ('a' <= lookahead && lookahead <= 'f')) ADVANCE(260);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
-    case 272:
+    case 263:
       ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == ':') ADVANCE(258);
       if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
+          lookahead == ' ') ADVANCE(358);
       if (('0' <= lookahead && lookahead <= '9') ||
           ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(271);
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(266);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
-    case 273:
+    case 264:
       ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == ':') ADVANCE(258);
       if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(258);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
-      END_STATE();
-    case 274:
-      ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(273);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
-      END_STATE();
-    case 275:
-      ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(259);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
-      END_STATE();
-    case 276:
-      ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(275);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
-      END_STATE();
-    case 277:
-      ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(155);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
-      END_STATE();
-    case 278:
-      ACCEPT_TOKEN(sym_text_value);
-      if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
+          lookahead == ' ') ADVANCE(358);
       if (('0' <= lookahead && lookahead <= '9') ||
           ('A' <= lookahead && lookahead <= 'F') ||
           ('a' <= lookahead && lookahead <= 'f')) ADVANCE(261);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
+          lookahead != '\r') ADVANCE(355);
+      END_STATE();
+    case 265:
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == ':') ADVANCE(258);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(263);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(355);
+      END_STATE();
+    case 266:
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == ':') ADVANCE(258);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(268);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(355);
+      END_STATE();
+    case 267:
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == ':') ADVANCE(258);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(277);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(355);
+      END_STATE();
+    case 268:
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == ':') ADVANCE(258);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(355);
+      END_STATE();
+    case 269:
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == ':') ADVANCE(295);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (lookahead == '-' ||
+          lookahead == '.') ADVANCE(347);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(346);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(355);
+      END_STATE();
+    case 270:
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == ':') ADVANCE(174);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(247);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(355);
+      END_STATE();
+    case 271:
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == ':') ADVANCE(270);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (lookahead == '-' ||
+          lookahead == '.') ADVANCE(343);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(275);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(355);
+      END_STATE();
+    case 272:
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == ':') ADVANCE(270);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(275);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(355);
+      END_STATE();
+    case 273:
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == ':') ADVANCE(270);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(271);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(355);
+      END_STATE();
+    case 274:
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == ':') ADVANCE(270);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(272);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(355);
+      END_STATE();
+    case 275:
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == ':') ADVANCE(270);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(276);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(355);
+      END_STATE();
+    case 276:
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == ':') ADVANCE(270);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(355);
+      END_STATE();
+    case 277:
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == ':') ADVANCE(259);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (lookahead == '-' ||
+          lookahead == '.') ADVANCE(347);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(262);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(355);
+      END_STATE();
+    case 278:
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == ':') ADVANCE(176);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(265);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 279:
       ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == ':') ADVANCE(176);
       if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
+          lookahead == ' ') ADVANCE(358);
       if (('0' <= lookahead && lookahead <= '9') ||
           ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(278);
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(267);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 280:
       ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == ':') ADVANCE(176);
       if (lookahead == '\t' ||
-          lookahead == ' ') ADVANCE(282);
+          lookahead == ' ') ADVANCE(358);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(264);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(280);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 281:
       ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == ':') ADVANCE(278);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (lookahead == '-' ||
+          lookahead == '.') ADVANCE(343);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(338);
       if (lookahead != 0 &&
+          lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(16);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 282:
       ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == ':') ADVANCE(278);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (lookahead == '-' ||
+          lookahead == '.') ADVANCE(343);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(289);
       if (lookahead != 0 &&
+          lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(282);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 283:
-      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv4_cidr);
-      if (('0' <= lookahead && lookahead <= '2')) ADVANCE(285);
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == ':') ADVANCE(278);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(281);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 284:
-      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv4_cidr);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(285);
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == ':') ADVANCE(278);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(282);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 285:
-      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv4_cidr);
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == ':') ADVANCE(278);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(289);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 286:
-      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv4);
-      if (lookahead == '/') ADVANCE(477);
-      if (lookahead == '5') ADVANCE(291);
-      if (('6' <= lookahead && lookahead <= '9')) ADVANCE(298);
-      if (('0' <= lookahead && lookahead <= '4')) ADVANCE(292);
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == ':') ADVANCE(278);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(285);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 287:
-      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv4);
-      if (lookahead == '/') ADVANCE(477);
-      if (lookahead == '5') ADVANCE(288);
-      if (('6' <= lookahead && lookahead <= '9')) ADVANCE(290);
-      if (('0' <= lookahead && lookahead <= '4')) ADVANCE(289);
-      if (('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(556);
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == ':') ADVANCE(278);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(292);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 288:
-      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv4);
-      if (lookahead == '/') ADVANCE(477);
-      if (lookahead == '-' ||
-          lookahead == '.' ||
-          lookahead == ':') ADVANCE(569);
-      if (('0' <= lookahead && lookahead <= '5')) ADVANCE(296);
-      if (('6' <= lookahead && lookahead <= '9') ||
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == ':') ADVANCE(278);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (('0' <= lookahead && lookahead <= '9') ||
           ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(568);
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(294);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 289:
-      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv4);
-      if (lookahead == '/') ADVANCE(477);
-      if (lookahead == '-' ||
-          lookahead == '.' ||
-          lookahead == ':') ADVANCE(569);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(296);
-      if (('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(568);
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == ':') ADVANCE(278);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(291);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 290:
-      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv4);
-      if (lookahead == '/') ADVANCE(477);
-      if (lookahead == '-' ||
-          lookahead == '.' ||
-          lookahead == ':') ADVANCE(569);
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == ':') ADVANCE(278);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
       if (('0' <= lookahead && lookahead <= '9') ||
           ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(568);
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(293);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 291:
-      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv4);
-      if (lookahead == '/') ADVANCE(477);
-      if (('0' <= lookahead && lookahead <= '5')) ADVANCE(298);
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == ':') ADVANCE(278);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 292:
-      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv4);
-      if (lookahead == '/') ADVANCE(477);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(298);
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == ':') ADVANCE(279);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (lookahead == '-' ||
+          lookahead == '.') ADVANCE(349);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(290);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 293:
-      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv4);
-      if (lookahead == '/') ADVANCE(477);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(289);
-      if (('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(556);
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == ':') ADVANCE(280);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (lookahead == '-' ||
+          lookahead == '.') ADVANCE(347);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(346);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 294:
-      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv4);
-      if (lookahead == '/') ADVANCE(477);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(290);
-      if (('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(556);
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == ':') ADVANCE(280);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (lookahead == '-' ||
+          lookahead == '.') ADVANCE(347);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(283);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 295:
-      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv4);
-      if (lookahead == '/') ADVANCE(477);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(292);
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == ':') ADVANCE(177);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(284);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 296:
-      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv4);
-      if (lookahead == '/') ADVANCE(477);
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == ':') ADVANCE(177);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
       if (('0' <= lookahead && lookahead <= '9') ||
           ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(555);
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(286);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 297:
-      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv4);
-      if (lookahead == '/') ADVANCE(477);
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == ':') ADVANCE(177);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
       if (('0' <= lookahead && lookahead <= '9') ||
           ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(556);
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(287);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 298:
-      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv4);
-      if (lookahead == '/') ADVANCE(477);
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == ':') ADVANCE(177);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(288);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 299:
-      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
-      if (lookahead == '.') ADVANCE(473);
-      if (lookahead == '/') ADVANCE(462);
-      if (lookahead == '5') ADVANCE(305);
-      if (lookahead == ':') ADVANCE(476);
-      if (('6' <= lookahead && lookahead <= '9')) ADVANCE(310);
-      if (('0' <= lookahead && lookahead <= '4')) ADVANCE(306);
-      if (('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(355);
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == ':') ADVANCE(296);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(306);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 300:
-      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
-      if (lookahead == '.') ADVANCE(473);
-      if (lookahead == '/') ADVANCE(462);
-      if (lookahead == '5') ADVANCE(319);
-      if (lookahead == ':') ADVANCE(571);
-      if (('6' <= lookahead && lookahead <= '9')) ADVANCE(324);
-      if (('0' <= lookahead && lookahead <= '4')) ADVANCE(320);
-      if (('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(363);
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == ':') ADVANCE(296);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(307);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 301:
-      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
-      if (lookahead == '.') ADVANCE(473);
-      if (lookahead == '/') ADVANCE(462);
-      if (lookahead == '5') ADVANCE(312);
-      if (lookahead == ':') ADVANCE(471);
-      if (('6' <= lookahead && lookahead <= '9')) ADVANCE(316);
-      if (('0' <= lookahead && lookahead <= '4')) ADVANCE(313);
-      if (('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(358);
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == ':') ADVANCE(296);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(309);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 302:
-      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
-      if (lookahead == '.') ADVANCE(473);
-      if (lookahead == '/') ADVANCE(462);
-      if (lookahead == '5') ADVANCE(326);
-      if (lookahead == ':') ADVANCE(472);
-      if (('6' <= lookahead && lookahead <= '9')) ADVANCE(330);
-      if (('0' <= lookahead && lookahead <= '4')) ADVANCE(327);
-      if (('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(366);
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == ':') ADVANCE(296);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(299);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 303:
-      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
-      if (lookahead == '.') ADVANCE(473);
-      if (lookahead == '/') ADVANCE(462);
-      if (lookahead == '5') ADVANCE(333);
-      if (lookahead == ':') ADVANCE(474);
-      if (('6' <= lookahead && lookahead <= '9')) ADVANCE(337);
-      if (('0' <= lookahead && lookahead <= '4')) ADVANCE(334);
-      if (('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(370);
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == ':') ADVANCE(296);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(302);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 304:
-      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
-      if (lookahead == '.') ADVANCE(473);
-      if (lookahead == '/') ADVANCE(462);
-      if (lookahead == '5') ADVANCE(340);
-      if (lookahead == ':') ADVANCE(475);
-      if (('6' <= lookahead && lookahead <= '9')) ADVANCE(344);
-      if (('0' <= lookahead && lookahead <= '4')) ADVANCE(341);
-      if (('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(374);
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == ':') ADVANCE(296);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(269);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 305:
-      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
-      if (lookahead == '.') ADVANCE(473);
-      if (lookahead == '/') ADVANCE(462);
-      if (lookahead == ':') ADVANCE(476);
-      if (('0' <= lookahead && lookahead <= '5')) ADVANCE(309);
-      if (('6' <= lookahead && lookahead <= '9') ||
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == ':') ADVANCE(296);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (('0' <= lookahead && lookahead <= '9') ||
           ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(354);
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(308);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 306:
-      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
-      if (lookahead == '.') ADVANCE(473);
-      if (lookahead == '/') ADVANCE(462);
-      if (lookahead == ':') ADVANCE(476);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(309);
-      if (('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(354);
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == ':') ADVANCE(296);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 307:
-      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
-      if (lookahead == '.') ADVANCE(473);
-      if (lookahead == '/') ADVANCE(462);
-      if (lookahead == ':') ADVANCE(476);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(306);
-      if (('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(355);
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == ':') ADVANCE(297);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (lookahead == '-' ||
+          lookahead == '.') ADVANCE(352);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(301);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 308:
-      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
-      if (lookahead == '.') ADVANCE(473);
-      if (lookahead == '/') ADVANCE(462);
-      if (lookahead == ':') ADVANCE(476);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(310);
-      if (('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(355);
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == ':') ADVANCE(298);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (lookahead == '-' ||
+          lookahead == '.') ADVANCE(349);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(304);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 309:
-      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
-      if (lookahead == '.') ADVANCE(473);
-      if (lookahead == '/') ADVANCE(462);
-      if (lookahead == ':') ADVANCE(476);
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == ':') ADVANCE(298);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (lookahead == '-' ||
+          lookahead == '.') ADVANCE(349);
       if (('0' <= lookahead && lookahead <= '9') ||
           ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(357);
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(348);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 310:
-      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
-      if (lookahead == '.') ADVANCE(473);
-      if (lookahead == '/') ADVANCE(462);
-      if (lookahead == ':') ADVANCE(476);
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == ':') ADVANCE(178);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
       if (('0' <= lookahead && lookahead <= '9') ||
           ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(354);
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(303);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 311:
-      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
-      if (lookahead == '.') ADVANCE(473);
-      if (lookahead == '/') ADVANCE(462);
-      if (lookahead == ':') ADVANCE(476);
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == ':') ADVANCE(178);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
       if (('0' <= lookahead && lookahead <= '9') ||
           ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(355);
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(300);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 312:
-      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
-      if (lookahead == '.') ADVANCE(473);
-      if (lookahead == '/') ADVANCE(462);
-      if (lookahead == ':') ADVANCE(471);
-      if (('0' <= lookahead && lookahead <= '5')) ADVANCE(317);
-      if (('6' <= lookahead && lookahead <= '9') ||
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == ':') ADVANCE(178);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (('0' <= lookahead && lookahead <= '9') ||
           ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(359);
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(305);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 313:
-      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
-      if (lookahead == '.') ADVANCE(473);
-      if (lookahead == '/') ADVANCE(462);
-      if (lookahead == ':') ADVANCE(471);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(317);
-      if (('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(359);
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (lookahead == '!' ||
+          lookahead == '#') ADVANCE(313);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 314:
-      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
-      if (lookahead == '.') ADVANCE(473);
-      if (lookahead == '/') ADVANCE(462);
-      if (lookahead == ':') ADVANCE(471);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(313);
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (lookahead == ',' ||
+          lookahead == '-') ADVANCE(331);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(315);
       if (('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(358);
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(355);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 315:
-      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
-      if (lookahead == '.') ADVANCE(473);
-      if (lookahead == '/') ADVANCE(462);
-      if (lookahead == ':') ADVANCE(471);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(316);
-      if (('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(358);
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (lookahead == ',' ||
+          lookahead == '-') ADVANCE(331);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(315);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 316:
-      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
-      if (lookahead == '.') ADVANCE(473);
-      if (lookahead == '/') ADVANCE(462);
-      if (lookahead == ':') ADVANCE(471);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(359);
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (lookahead == ',' ||
+          lookahead == '-') ADVANCE(331);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(71);
+      if (('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(326);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 317:
-      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
-      if (lookahead == '.') ADVANCE(473);
-      if (lookahead == '/') ADVANCE(462);
-      if (lookahead == ':') ADVANCE(471);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(361);
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (lookahead == ',' ||
+          lookahead == '-') ADVANCE(331);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(68);
+      if (('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(324);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 318:
-      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
-      if (lookahead == '.') ADVANCE(473);
-      if (lookahead == '/') ADVANCE(462);
-      if (lookahead == ':') ADVANCE(471);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(358);
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (lookahead == ',' ||
+          lookahead == '-') ADVANCE(331);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(65);
+      if (('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(323);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 319:
-      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
-      if (lookahead == '.') ADVANCE(473);
-      if (lookahead == '/') ADVANCE(462);
-      if (lookahead == ':') ADVANCE(571);
-      if (('0' <= lookahead && lookahead <= '5')) ADVANCE(323);
-      if (('6' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(362);
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (lookahead == ',' ||
+          lookahead == '-') ADVANCE(331);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(66);
+      if (('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(116);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 320:
-      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
-      if (lookahead == '.') ADVANCE(473);
-      if (lookahead == '/') ADVANCE(462);
-      if (lookahead == ':') ADVANCE(571);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(323);
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (lookahead == ',' ||
+          lookahead == '-') ADVANCE(331);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(67);
       if (('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(362);
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(322);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 321:
-      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
-      if (lookahead == '.') ADVANCE(473);
-      if (lookahead == '/') ADVANCE(462);
-      if (lookahead == ':') ADVANCE(571);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(320);
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (lookahead == ',' ||
+          lookahead == '-') ADVANCE(331);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(69);
       if (('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(363);
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(325);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 322:
-      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
-      if (lookahead == '.') ADVANCE(473);
-      if (lookahead == '/') ADVANCE(462);
-      if (lookahead == ':') ADVANCE(571);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(324);
-      if (('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(363);
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (lookahead == '-' ||
+          lookahead == '.' ||
+          lookahead == ':') ADVANCE(347);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(346);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 323:
-      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
-      if (lookahead == '.') ADVANCE(473);
-      if (lookahead == '/') ADVANCE(462);
-      if (lookahead == ':') ADVANCE(571);
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (lookahead == '-' ||
+          lookahead == '.' ||
+          lookahead == ':') ADVANCE(343);
       if (('0' <= lookahead && lookahead <= '9') ||
           ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(365);
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(338);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 324:
-      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
-      if (lookahead == '.') ADVANCE(473);
-      if (lookahead == '/') ADVANCE(462);
-      if (lookahead == ':') ADVANCE(571);
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (lookahead == '-' ||
+          lookahead == '.' ||
+          lookahead == ':') ADVANCE(349);
       if (('0' <= lookahead && lookahead <= '9') ||
           ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(362);
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(342);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 325:
-      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
-      if (lookahead == '.') ADVANCE(473);
-      if (lookahead == '/') ADVANCE(462);
-      if (lookahead == ':') ADVANCE(571);
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (lookahead == '-' ||
+          lookahead == '.' ||
+          lookahead == ':') ADVANCE(349);
       if (('0' <= lookahead && lookahead <= '9') ||
           ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(363);
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(348);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 326:
-      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
-      if (lookahead == '.') ADVANCE(473);
-      if (lookahead == '/') ADVANCE(462);
-      if (lookahead == ':') ADVANCE(472);
-      if (('0' <= lookahead && lookahead <= '5')) ADVANCE(332);
-      if (('6' <= lookahead && lookahead <= '9') ||
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (lookahead == '-' ||
+          lookahead == '.' ||
+          lookahead == ':') ADVANCE(352);
+      if (('0' <= lookahead && lookahead <= '9') ||
           ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(368);
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(351);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 327:
-      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
-      if (lookahead == '.') ADVANCE(473);
-      if (lookahead == '/') ADVANCE(462);
-      if (lookahead == ':') ADVANCE(472);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(332);
-      if (('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(368);
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (('0' <= lookahead && lookahead <= '2')) ADVANCE(355);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 328:
-      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
-      if (lookahead == '.') ADVANCE(473);
-      if (lookahead == '/') ADVANCE(462);
-      if (lookahead == ':') ADVANCE(472);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(327);
-      if (('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(366);
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (('0' <= lookahead && lookahead <= '8')) ADVANCE(355);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 329:
-      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
-      if (lookahead == '.') ADVANCE(473);
-      if (lookahead == '/') ADVANCE(462);
-      if (lookahead == ':') ADVANCE(472);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(330);
-      if (('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(366);
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(329);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 330:
-      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
-      if (lookahead == '.') ADVANCE(473);
-      if (lookahead == '/') ADVANCE(462);
-      if (lookahead == ':') ADVANCE(472);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(368);
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(355);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 331:
-      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
-      if (lookahead == '.') ADVANCE(473);
-      if (lookahead == '/') ADVANCE(462);
-      if (lookahead == ':') ADVANCE(472);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(366);
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(315);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 332:
-      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
-      if (lookahead == '.') ADVANCE(473);
-      if (lookahead == '/') ADVANCE(462);
-      if (lookahead == ':') ADVANCE(472);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(369);
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(72);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 333:
-      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
-      if (lookahead == '.') ADVANCE(473);
-      if (lookahead == '/') ADVANCE(462);
-      if (lookahead == ':') ADVANCE(474);
-      if (('0' <= lookahead && lookahead <= '5')) ADVANCE(339);
-      if (('6' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(372);
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(316);
+      if (('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(340);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 334:
-      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
-      if (lookahead == '.') ADVANCE(473);
-      if (lookahead == '/') ADVANCE(462);
-      if (lookahead == ':') ADVANCE(474);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(339);
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(314);
       if (('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(372);
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(338);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 335:
-      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
-      if (lookahead == '.') ADVANCE(473);
-      if (lookahead == '/') ADVANCE(462);
-      if (lookahead == ':') ADVANCE(474);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(334);
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(318);
       if (('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(370);
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(346);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 336:
-      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
-      if (lookahead == '.') ADVANCE(473);
-      if (lookahead == '/') ADVANCE(462);
-      if (lookahead == ':') ADVANCE(474);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(337);
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(320);
       if (('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(370);
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(348);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 337:
-      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
-      if (lookahead == '.') ADVANCE(473);
-      if (lookahead == '/') ADVANCE(462);
-      if (lookahead == ':') ADVANCE(474);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(372);
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(321);
+      if (('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(351);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != '\r') ADVANCE(355);
       END_STATE();
     case 338:
-      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
-      if (lookahead == '.') ADVANCE(473);
-      if (lookahead == '/') ADVANCE(462);
-      if (lookahead == ':') ADVANCE(474);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(370);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
-      END_STATE();
-    case 339:
-      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
-      if (lookahead == '.') ADVANCE(473);
-      if (lookahead == '/') ADVANCE(462);
-      if (lookahead == ':') ADVANCE(474);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(373);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
-      END_STATE();
-    case 340:
-      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
-      if (lookahead == '.') ADVANCE(473);
-      if (lookahead == '/') ADVANCE(462);
-      if (lookahead == ':') ADVANCE(475);
-      if (('0' <= lookahead && lookahead <= '5')) ADVANCE(346);
-      if (('6' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(376);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
-      END_STATE();
-    case 341:
-      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
-      if (lookahead == '.') ADVANCE(473);
-      if (lookahead == '/') ADVANCE(462);
-      if (lookahead == ':') ADVANCE(475);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(346);
-      if (('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(376);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
-      END_STATE();
-    case 342:
-      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
-      if (lookahead == '.') ADVANCE(473);
-      if (lookahead == '/') ADVANCE(462);
-      if (lookahead == ':') ADVANCE(475);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(341);
-      if (('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(374);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
-      END_STATE();
-    case 343:
-      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
-      if (lookahead == '.') ADVANCE(473);
-      if (lookahead == '/') ADVANCE(462);
-      if (lookahead == ':') ADVANCE(475);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(344);
-      if (('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(374);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
-      END_STATE();
-    case 344:
-      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
-      if (lookahead == '.') ADVANCE(473);
-      if (lookahead == '/') ADVANCE(462);
-      if (lookahead == ':') ADVANCE(475);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(376);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
-      END_STATE();
-    case 345:
-      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
-      if (lookahead == '.') ADVANCE(473);
-      if (lookahead == '/') ADVANCE(462);
-      if (lookahead == ':') ADVANCE(475);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(374);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
-      END_STATE();
-    case 346:
-      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
-      if (lookahead == '.') ADVANCE(473);
-      if (lookahead == '/') ADVANCE(462);
-      if (lookahead == ':') ADVANCE(475);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(377);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
-      END_STATE();
-    case 347:
-      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
-      if (lookahead == '/') ADVANCE(462);
-      if (lookahead == '0') ADVANCE(311);
-      if (lookahead == '1') ADVANCE(307);
-      if (lookahead == '2') ADVANCE(299);
-      if (('3' <= lookahead && lookahead <= '9')) ADVANCE(308);
-      if (('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(356);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
-      END_STATE();
-    case 348:
-      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
-      if (lookahead == '/') ADVANCE(462);
-      if (lookahead == '0') ADVANCE(325);
-      if (lookahead == '1') ADVANCE(321);
-      if (lookahead == '2') ADVANCE(300);
-      if (('3' <= lookahead && lookahead <= '9')) ADVANCE(322);
-      if (('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(364);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
-      END_STATE();
-    case 349:
-      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
-      if (lookahead == '/') ADVANCE(462);
-      if (lookahead == '0') ADVANCE(318);
-      if (lookahead == '1') ADVANCE(314);
-      if (lookahead == '2') ADVANCE(301);
-      if (('3' <= lookahead && lookahead <= '9')) ADVANCE(315);
-      if (('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(360);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
-      END_STATE();
-    case 350:
-      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
-      if (lookahead == '/') ADVANCE(462);
-      if (lookahead == '0') ADVANCE(331);
-      if (lookahead == '1') ADVANCE(328);
-      if (lookahead == '2') ADVANCE(302);
-      if (('3' <= lookahead && lookahead <= '9')) ADVANCE(329);
-      if (('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(367);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
-      END_STATE();
-    case 351:
-      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
-      if (lookahead == '/') ADVANCE(462);
-      if (lookahead == '0') ADVANCE(338);
-      if (lookahead == '1') ADVANCE(335);
-      if (lookahead == '2') ADVANCE(303);
-      if (('3' <= lookahead && lookahead <= '9')) ADVANCE(336);
-      if (('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(371);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
-      END_STATE();
-    case 352:
-      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
-      if (lookahead == '/') ADVANCE(462);
-      if (lookahead == '0') ADVANCE(345);
-      if (lookahead == '1') ADVANCE(342);
-      if (lookahead == '2') ADVANCE(304);
-      if (('3' <= lookahead && lookahead <= '9')) ADVANCE(343);
-      if (('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(375);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
-      END_STATE();
-    case 353:
-      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
-      if (lookahead == '/') ADVANCE(462);
-      if (lookahead == '5') ADVANCE(378);
-      if (('6' <= lookahead && lookahead <= '9')) ADVANCE(385);
-      if (('0' <= lookahead && lookahead <= '4')) ADVANCE(379);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
-      END_STATE();
-    case 354:
-      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
-      if (lookahead == '/') ADVANCE(462);
-      if (lookahead == ':') ADVANCE(476);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(357);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
-      END_STATE();
-    case 355:
-      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
-      if (lookahead == '/') ADVANCE(462);
-      if (lookahead == ':') ADVANCE(476);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(354);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
-      END_STATE();
-    case 356:
-      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
-      if (lookahead == '/') ADVANCE(462);
-      if (lookahead == ':') ADVANCE(476);
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
       if (('0' <= lookahead && lookahead <= '9') ||
           ('A' <= lookahead && lookahead <= 'F') ||
           ('a' <= lookahead && lookahead <= 'f')) ADVANCE(355);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != '\r') ADVANCE(355);
+      END_STATE();
+    case 339:
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(339);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(355);
+      END_STATE();
+    case 340:
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(326);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(355);
+      END_STATE();
+    case 341:
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(340);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(355);
+      END_STATE();
+    case 342:
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(116);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(355);
+      END_STATE();
+    case 343:
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(338);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(355);
+      END_STATE();
+    case 344:
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(324);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(355);
+      END_STATE();
+    case 345:
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(344);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(355);
+      END_STATE();
+    case 346:
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(323);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(355);
+      END_STATE();
+    case 347:
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(346);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(355);
+      END_STATE();
+    case 348:
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(322);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(355);
+      END_STATE();
+    case 349:
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(348);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(355);
+      END_STATE();
+    case 350:
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(209);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(355);
+      END_STATE();
+    case 351:
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(325);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(355);
+      END_STATE();
+    case 352:
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(351);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(355);
+      END_STATE();
+    case 353:
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'Z') ||
+          lookahead == '_' ||
+          ('a' <= lookahead && lookahead <= 'z')) ADVANCE(73);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(355);
+      END_STATE();
+    case 354:
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'Z') ||
+          lookahead == '_' ||
+          ('a' <= lookahead && lookahead <= 'z')) ADVANCE(243);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(355);
+      END_STATE();
+    case 355:
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(353);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(358);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(355);
+      END_STATE();
+    case 356:
+      ACCEPT_TOKEN(sym_text_value);
+      if (lookahead == '%') ADVANCE(57);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(60);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(59);
       END_STATE();
     case 357:
-      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
-      if (lookahead == '/') ADVANCE(462);
-      if (lookahead == ':') ADVANCE(476);
+      ACCEPT_TOKEN(sym_text_value);
       if (lookahead != 0 &&
-          lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != '\r') ADVANCE(60);
       END_STATE();
     case 358:
-      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
-      if (lookahead == '/') ADVANCE(462);
-      if (lookahead == ':') ADVANCE(471);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(359);
+      ACCEPT_TOKEN(sym_text_value);
       if (lookahead != 0 &&
-          lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != '\r') ADVANCE(358);
       END_STATE();
     case 359:
-      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
-      if (lookahead == '/') ADVANCE(462);
-      if (lookahead == ':') ADVANCE(471);
+      ACCEPT_TOKEN(sym_token_tag_cisco_logging_system_message);
+      if (lookahead == '"') ADVANCE(52);
+      if (lookahead == '%') ADVANCE(363);
+      if (lookahead == '-') ADVANCE(362);
+      if (lookahead == '\\') ADVANCE(373);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(1);
       if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(361);
+          ('A' <= lookahead && lookahead <= 'Z') ||
+          lookahead == '_' ||
+          ('a' <= lookahead && lookahead <= 'z')) ADVANCE(359);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != '\r') ADVANCE(365);
       END_STATE();
     case 360:
-      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
-      if (lookahead == '/') ADVANCE(462);
-      if (lookahead == ':') ADVANCE(471);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(358);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
-      END_STATE();
-    case 361:
-      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
-      if (lookahead == '/') ADVANCE(462);
-      if (lookahead == ':') ADVANCE(471);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
-      END_STATE();
-    case 362:
-      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
-      if (lookahead == '/') ADVANCE(462);
-      if (lookahead == ':') ADVANCE(571);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(365);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
-      END_STATE();
-    case 363:
-      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
-      if (lookahead == '/') ADVANCE(462);
-      if (lookahead == ':') ADVANCE(571);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(362);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
-      END_STATE();
-    case 364:
-      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
-      if (lookahead == '/') ADVANCE(462);
-      if (lookahead == ':') ADVANCE(571);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(363);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
-      END_STATE();
-    case 365:
-      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
-      if (lookahead == '/') ADVANCE(462);
-      if (lookahead == ':') ADVANCE(571);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
-      END_STATE();
-    case 366:
-      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
-      if (lookahead == '/') ADVANCE(462);
-      if (lookahead == ':') ADVANCE(472);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(368);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
-      END_STATE();
-    case 367:
-      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
-      if (lookahead == '/') ADVANCE(462);
-      if (lookahead == ':') ADVANCE(472);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(366);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
-      END_STATE();
-    case 368:
-      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
-      if (lookahead == '/') ADVANCE(462);
-      if (lookahead == ':') ADVANCE(472);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(369);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
-      END_STATE();
-    case 369:
-      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
-      if (lookahead == '/') ADVANCE(462);
-      if (lookahead == ':') ADVANCE(472);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
-      END_STATE();
-    case 370:
-      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
-      if (lookahead == '/') ADVANCE(462);
-      if (lookahead == ':') ADVANCE(474);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(372);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
-      END_STATE();
-    case 371:
-      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
-      if (lookahead == '/') ADVANCE(462);
-      if (lookahead == ':') ADVANCE(474);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(370);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
-      END_STATE();
-    case 372:
-      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
-      if (lookahead == '/') ADVANCE(462);
-      if (lookahead == ':') ADVANCE(474);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(373);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
-      END_STATE();
-    case 373:
-      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
-      if (lookahead == '/') ADVANCE(462);
-      if (lookahead == ':') ADVANCE(474);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
-      END_STATE();
-    case 374:
-      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
-      if (lookahead == '/') ADVANCE(462);
-      if (lookahead == ':') ADVANCE(475);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(376);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
-      END_STATE();
-    case 375:
-      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
-      if (lookahead == '/') ADVANCE(462);
-      if (lookahead == ':') ADVANCE(475);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(374);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
-      END_STATE();
-    case 376:
-      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
-      if (lookahead == '/') ADVANCE(462);
-      if (lookahead == ':') ADVANCE(475);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(377);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
-      END_STATE();
-    case 377:
-      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
-      if (lookahead == '/') ADVANCE(462);
-      if (lookahead == ':') ADVANCE(475);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
-      END_STATE();
-    case 378:
-      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
-      if (lookahead == '/') ADVANCE(462);
-      if (('0' <= lookahead && lookahead <= '5')) ADVANCE(385);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
-      END_STATE();
-    case 379:
-      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
-      if (lookahead == '/') ADVANCE(462);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(385);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
-      END_STATE();
-    case 380:
-      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
-      if (lookahead == '/') ADVANCE(462);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(379);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
-      END_STATE();
-    case 381:
-      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
-      if (lookahead == '/') ADVANCE(462);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(385);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
-      END_STATE();
-    case 382:
-      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
-      if (lookahead == '/') ADVANCE(462);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(381);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
-      END_STATE();
-    case 383:
-      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
-      if (lookahead == '/') ADVANCE(462);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(382);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
-      END_STATE();
-    case 384:
-      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
-      if (lookahead == '/') ADVANCE(462);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(383);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
-      END_STATE();
-    case 385:
-      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
-      if (lookahead == '/') ADVANCE(462);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
-      END_STATE();
-    case 386:
-      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
-      if (lookahead == '2') ADVANCE(387);
-      if (lookahead == '0' ||
-          lookahead == '1') ADVANCE(388);
-      if (('3' <= lookahead && lookahead <= '9')) ADVANCE(389);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
-      END_STATE();
-    case 387:
-      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
-      if (('0' <= lookahead && lookahead <= '8')) ADVANCE(389);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
-      END_STATE();
-    case 388:
-      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(389);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
-      END_STATE();
-    case 389:
-      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
-      END_STATE();
-    case 390:
-      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_full);
-      if (lookahead == '/') ADVANCE(466);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(393);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
-      END_STATE();
-    case 391:
-      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_full);
-      if (lookahead == '/') ADVANCE(466);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(390);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
-      END_STATE();
-    case 392:
-      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_full);
-      if (lookahead == '/') ADVANCE(466);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(391);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
-      END_STATE();
-    case 393:
-      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_full);
-      if (lookahead == '/') ADVANCE(466);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
-      END_STATE();
-    case 394:
-      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_full);
-      if (lookahead == '2') ADVANCE(395);
-      if (lookahead == '0' ||
-          lookahead == '1') ADVANCE(396);
-      if (('3' <= lookahead && lookahead <= '9')) ADVANCE(397);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
-      END_STATE();
-    case 395:
-      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_full);
-      if (('0' <= lookahead && lookahead <= '8')) ADVANCE(397);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
-      END_STATE();
-    case 396:
-      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_full);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(397);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
-      END_STATE();
-    case 397:
-      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_full);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
-      END_STATE();
-    case 398:
-      ACCEPT_TOKEN(sym_token_number_cisco_address_mac);
-      if (lookahead == ':') ADVANCE(469);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(480);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
-      END_STATE();
-    case 399:
-      ACCEPT_TOKEN(sym_token_number_cisco_address_mac);
-      if (lookahead == ':') ADVANCE(491);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(499);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
-      END_STATE();
-    case 400:
-      ACCEPT_TOKEN(sym_token_number_cisco_address_mac);
-      if (lookahead == ':') ADVANCE(491);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
-      END_STATE();
-    case 401:
-      ACCEPT_TOKEN(sym_token_number_cisco_address_mac);
-      if (lookahead == ':') ADVANCE(504);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(511);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
-      END_STATE();
-    case 402:
-      ACCEPT_TOKEN(sym_token_number_cisco_address_mac);
-      if (lookahead == ':') ADVANCE(504);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
-      END_STATE();
-    case 403:
-      ACCEPT_TOKEN(sym_token_number_cisco_address_mac);
-      if (lookahead == ':') ADVANCE(520);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
-      END_STATE();
-    case 404:
-      ACCEPT_TOKEN(sym_token_number_cisco_address_mac);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
-      END_STATE();
-    case 405:
-      ACCEPT_TOKEN(sym_word);
-      if (lookahead == '"') ADVANCE(14);
-      if (lookahead == '\\') ADVANCE(554);
+      ACCEPT_TOKEN(sym_token_tag_cisco_logging_system_message);
+      if (lookahead == '"') ADVANCE(52);
+      if (lookahead == '%') ADVANCE(363);
+      if (lookahead == '-') ADVANCE(364);
+      if (lookahead == '\\') ADVANCE(373);
       if (lookahead == '\t' ||
           lookahead == ' ') ADVANCE(1);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(405);
+          lookahead != '\r') ADVANCE(365);
+      END_STATE();
+    case 361:
+      ACCEPT_TOKEN(sym_token_tag_cisco_logging_system_message);
+      if (lookahead == '"') ADVANCE(52);
+      if (lookahead == '%') ADVANCE(363);
+      if (lookahead == ':') ADVANCE(365);
+      if (lookahead == '\\') ADVANCE(373);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(1);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'Z') ||
+          lookahead == '_' ||
+          ('a' <= lookahead && lookahead <= 'z')) ADVANCE(361);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(365);
+      END_STATE();
+    case 362:
+      ACCEPT_TOKEN(sym_token_tag_cisco_logging_system_message);
+      if (lookahead == '"') ADVANCE(52);
+      if (lookahead == '%') ADVANCE(363);
+      if (lookahead == '\\') ADVANCE(373);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(1);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(360);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(365);
+      END_STATE();
+    case 363:
+      ACCEPT_TOKEN(sym_token_tag_cisco_logging_system_message);
+      if (lookahead == '"') ADVANCE(52);
+      if (lookahead == '%') ADVANCE(363);
+      if (lookahead == '\\') ADVANCE(373);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(1);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'Z') ||
+          lookahead == '_' ||
+          ('a' <= lookahead && lookahead <= 'z')) ADVANCE(359);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(365);
+      END_STATE();
+    case 364:
+      ACCEPT_TOKEN(sym_token_tag_cisco_logging_system_message);
+      if (lookahead == '"') ADVANCE(52);
+      if (lookahead == '%') ADVANCE(363);
+      if (lookahead == '\\') ADVANCE(373);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(1);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'Z') ||
+          lookahead == '_' ||
+          ('a' <= lookahead && lookahead <= 'z')) ADVANCE(361);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(365);
+      END_STATE();
+    case 365:
+      ACCEPT_TOKEN(sym_token_tag_cisco_logging_system_message);
+      if (lookahead == '"') ADVANCE(52);
+      if (lookahead == '%') ADVANCE(363);
+      if (lookahead == '\\') ADVANCE(373);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(1);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(365);
+      END_STATE();
+    case 366:
+      ACCEPT_TOKEN(sym_token_tag_cisco_logging_system_message);
+      if (lookahead == '%') ADVANCE(370);
+      if (lookahead == '-') ADVANCE(369);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'Z') ||
+          lookahead == '_' ||
+          ('a' <= lookahead && lookahead <= 'z')) ADVANCE(366);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(372);
+      END_STATE();
+    case 367:
+      ACCEPT_TOKEN(sym_token_tag_cisco_logging_system_message);
+      if (lookahead == '%') ADVANCE(370);
+      if (lookahead == '-') ADVANCE(371);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(372);
+      END_STATE();
+    case 368:
+      ACCEPT_TOKEN(sym_token_tag_cisco_logging_system_message);
+      if (lookahead == '%') ADVANCE(370);
+      if (lookahead == ':') ADVANCE(372);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'Z') ||
+          lookahead == '_' ||
+          ('a' <= lookahead && lookahead <= 'z')) ADVANCE(368);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(372);
+      END_STATE();
+    case 369:
+      ACCEPT_TOKEN(sym_token_tag_cisco_logging_system_message);
+      if (lookahead == '%') ADVANCE(370);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(367);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(372);
+      END_STATE();
+    case 370:
+      ACCEPT_TOKEN(sym_token_tag_cisco_logging_system_message);
+      if (lookahead == '%') ADVANCE(370);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'Z') ||
+          lookahead == '_' ||
+          ('a' <= lookahead && lookahead <= 'z')) ADVANCE(366);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(372);
+      END_STATE();
+    case 371:
+      ACCEPT_TOKEN(sym_token_tag_cisco_logging_system_message);
+      if (lookahead == '%') ADVANCE(370);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'Z') ||
+          lookahead == '_' ||
+          ('a' <= lookahead && lookahead <= 'z')) ADVANCE(368);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(372);
+      END_STATE();
+    case 372:
+      ACCEPT_TOKEN(sym_token_tag_cisco_logging_system_message);
+      if (lookahead == '%') ADVANCE(370);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(372);
+      END_STATE();
+    case 373:
+      ACCEPT_TOKEN(sym_token_tag_cisco_logging_system_message);
+      if (lookahead == '%') ADVANCE(363);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(1);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(365);
+      END_STATE();
+    case 374:
+      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv4_cidr);
+      if (lookahead == '%') ADVANCE(676);
+      if (('0' <= lookahead && lookahead <= '2')) ADVANCE(376);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 375:
+      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv4_cidr);
+      if (lookahead == '%') ADVANCE(676);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(376);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 376:
+      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv4_cidr);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 377:
+      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv4);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '/') ADVANCE(568);
+      if (lookahead == '5') ADVANCE(382);
+      if (('6' <= lookahead && lookahead <= '9')) ADVANCE(389);
+      if (('0' <= lookahead && lookahead <= '4')) ADVANCE(383);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 378:
+      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv4);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '/') ADVANCE(568);
+      if (lookahead == '5') ADVANCE(379);
+      if (('6' <= lookahead && lookahead <= '9')) ADVANCE(381);
+      if (('0' <= lookahead && lookahead <= '4')) ADVANCE(380);
+      if (('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(648);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 379:
+      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv4);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '/') ADVANCE(568);
+      if (lookahead == '-' ||
+          lookahead == '.' ||
+          lookahead == ':') ADVANCE(670);
+      if (('0' <= lookahead && lookahead <= '5')) ADVANCE(387);
+      if (('6' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(669);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 380:
+      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv4);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '/') ADVANCE(568);
+      if (lookahead == '-' ||
+          lookahead == '.' ||
+          lookahead == ':') ADVANCE(670);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(387);
+      if (('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(669);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 381:
+      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv4);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '/') ADVANCE(568);
+      if (lookahead == '-' ||
+          lookahead == '.' ||
+          lookahead == ':') ADVANCE(670);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(669);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 382:
+      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv4);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '/') ADVANCE(568);
+      if (('0' <= lookahead && lookahead <= '5')) ADVANCE(389);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 383:
+      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv4);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '/') ADVANCE(568);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(389);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 384:
+      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv4);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '/') ADVANCE(568);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(380);
+      if (('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(648);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 385:
+      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv4);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '/') ADVANCE(568);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(381);
+      if (('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(648);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 386:
+      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv4);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '/') ADVANCE(568);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(383);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 387:
+      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv4);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '/') ADVANCE(568);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(647);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 388:
+      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv4);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '/') ADVANCE(568);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(648);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 389:
+      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv4);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '/') ADVANCE(568);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 390:
+      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '.') ADVANCE(564);
+      if (lookahead == '/') ADVANCE(553);
+      if (lookahead == '5') ADVANCE(396);
+      if (lookahead == ':') ADVANCE(567);
+      if (('6' <= lookahead && lookahead <= '9')) ADVANCE(401);
+      if (('0' <= lookahead && lookahead <= '4')) ADVANCE(397);
+      if (('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(446);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 391:
+      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '.') ADVANCE(564);
+      if (lookahead == '/') ADVANCE(553);
+      if (lookahead == '5') ADVANCE(410);
+      if (lookahead == ':') ADVANCE(672);
+      if (('6' <= lookahead && lookahead <= '9')) ADVANCE(415);
+      if (('0' <= lookahead && lookahead <= '4')) ADVANCE(411);
+      if (('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(454);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 392:
+      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '.') ADVANCE(564);
+      if (lookahead == '/') ADVANCE(553);
+      if (lookahead == '5') ADVANCE(403);
+      if (lookahead == ':') ADVANCE(562);
+      if (('6' <= lookahead && lookahead <= '9')) ADVANCE(407);
+      if (('0' <= lookahead && lookahead <= '4')) ADVANCE(404);
+      if (('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(449);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 393:
+      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '.') ADVANCE(564);
+      if (lookahead == '/') ADVANCE(553);
+      if (lookahead == '5') ADVANCE(417);
+      if (lookahead == ':') ADVANCE(563);
+      if (('6' <= lookahead && lookahead <= '9')) ADVANCE(421);
+      if (('0' <= lookahead && lookahead <= '4')) ADVANCE(418);
+      if (('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(457);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 394:
+      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '.') ADVANCE(564);
+      if (lookahead == '/') ADVANCE(553);
+      if (lookahead == '5') ADVANCE(424);
+      if (lookahead == ':') ADVANCE(565);
+      if (('6' <= lookahead && lookahead <= '9')) ADVANCE(428);
+      if (('0' <= lookahead && lookahead <= '4')) ADVANCE(425);
+      if (('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(461);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 395:
+      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '.') ADVANCE(564);
+      if (lookahead == '/') ADVANCE(553);
+      if (lookahead == '5') ADVANCE(431);
+      if (lookahead == ':') ADVANCE(566);
+      if (('6' <= lookahead && lookahead <= '9')) ADVANCE(435);
+      if (('0' <= lookahead && lookahead <= '4')) ADVANCE(432);
+      if (('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(465);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 396:
+      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '.') ADVANCE(564);
+      if (lookahead == '/') ADVANCE(553);
+      if (lookahead == ':') ADVANCE(567);
+      if (('0' <= lookahead && lookahead <= '5')) ADVANCE(400);
+      if (('6' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(445);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 397:
+      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '.') ADVANCE(564);
+      if (lookahead == '/') ADVANCE(553);
+      if (lookahead == ':') ADVANCE(567);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(400);
+      if (('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(445);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 398:
+      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '.') ADVANCE(564);
+      if (lookahead == '/') ADVANCE(553);
+      if (lookahead == ':') ADVANCE(567);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(397);
+      if (('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(446);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 399:
+      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '.') ADVANCE(564);
+      if (lookahead == '/') ADVANCE(553);
+      if (lookahead == ':') ADVANCE(567);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(401);
+      if (('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(446);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 400:
+      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '.') ADVANCE(564);
+      if (lookahead == '/') ADVANCE(553);
+      if (lookahead == ':') ADVANCE(567);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(448);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 401:
+      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '.') ADVANCE(564);
+      if (lookahead == '/') ADVANCE(553);
+      if (lookahead == ':') ADVANCE(567);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(445);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 402:
+      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '.') ADVANCE(564);
+      if (lookahead == '/') ADVANCE(553);
+      if (lookahead == ':') ADVANCE(567);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(446);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 403:
+      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '.') ADVANCE(564);
+      if (lookahead == '/') ADVANCE(553);
+      if (lookahead == ':') ADVANCE(562);
+      if (('0' <= lookahead && lookahead <= '5')) ADVANCE(408);
+      if (('6' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(450);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 404:
+      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '.') ADVANCE(564);
+      if (lookahead == '/') ADVANCE(553);
+      if (lookahead == ':') ADVANCE(562);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(408);
+      if (('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(450);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 405:
+      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '.') ADVANCE(564);
+      if (lookahead == '/') ADVANCE(553);
+      if (lookahead == ':') ADVANCE(562);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(404);
+      if (('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(449);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
       END_STATE();
     case 406:
-      ACCEPT_TOKEN(sym_word);
-      if (lookahead == '-') ADVANCE(563);
-      if (lookahead == '.') ADVANCE(461);
-      if (lookahead == ':') ADVANCE(552);
+      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '.') ADVANCE(564);
+      if (lookahead == '/') ADVANCE(553);
+      if (lookahead == ':') ADVANCE(562);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(407);
+      if (('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(449);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 407:
+      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '.') ADVANCE(564);
+      if (lookahead == '/') ADVANCE(553);
+      if (lookahead == ':') ADVANCE(562);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(450);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 408:
+      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '.') ADVANCE(564);
+      if (lookahead == '/') ADVANCE(553);
+      if (lookahead == ':') ADVANCE(562);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(452);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 409:
+      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '.') ADVANCE(564);
+      if (lookahead == '/') ADVANCE(553);
+      if (lookahead == ':') ADVANCE(562);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(449);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 410:
+      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '.') ADVANCE(564);
+      if (lookahead == '/') ADVANCE(553);
+      if (lookahead == ':') ADVANCE(672);
       if (('0' <= lookahead && lookahead <= '5')) ADVANCE(414);
       if (('6' <= lookahead && lookahead <= '9') ||
           ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(485);
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(453);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
           lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
-      END_STATE();
-    case 407:
-      ACCEPT_TOKEN(sym_word);
-      if (lookahead == '-') ADVANCE(563);
-      if (lookahead == '.') ADVANCE(461);
-      if (lookahead == ':') ADVANCE(552);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(414);
-      if (('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(485);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
-      END_STATE();
-    case 408:
-      ACCEPT_TOKEN(sym_word);
-      if (lookahead == '-') ADVANCE(563);
-      if (lookahead == '.') ADVANCE(461);
-      if (lookahead == ':') ADVANCE(552);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(485);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
-      END_STATE();
-    case 409:
-      ACCEPT_TOKEN(sym_word);
-      if (lookahead == '-') ADVANCE(574);
-      if (lookahead == '.') ADVANCE(567);
-      if (lookahead == ':') ADVANCE(553);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(566);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
-      END_STATE();
-    case 410:
-      ACCEPT_TOKEN(sym_word);
-      if (lookahead == '.') ADVANCE(460);
-      if (lookahead == '5') ADVANCE(406);
-      if (lookahead == ':') ADVANCE(551);
-      if (('6' <= lookahead && lookahead <= '9')) ADVANCE(408);
-      if (('0' <= lookahead && lookahead <= '4')) ADVANCE(407);
-      if (('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(486);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != ' ') ADVANCE(678);
       END_STATE();
     case 411:
-      ACCEPT_TOKEN(sym_word);
-      if (lookahead == '.') ADVANCE(460);
-      if (lookahead == ':') ADVANCE(551);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(407);
+      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '.') ADVANCE(564);
+      if (lookahead == '/') ADVANCE(553);
+      if (lookahead == ':') ADVANCE(672);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(414);
       if (('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(486);
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(453);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
           lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != ' ') ADVANCE(678);
       END_STATE();
     case 412:
-      ACCEPT_TOKEN(sym_word);
-      if (lookahead == '.') ADVANCE(460);
-      if (lookahead == ':') ADVANCE(551);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(408);
+      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '.') ADVANCE(564);
+      if (lookahead == '/') ADVANCE(553);
+      if (lookahead == ':') ADVANCE(672);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(411);
       if (('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(486);
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(454);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
           lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != ' ') ADVANCE(678);
       END_STATE();
     case 413:
-      ACCEPT_TOKEN(sym_word);
-      if (lookahead == '.') ADVANCE(460);
-      if (lookahead == ':') ADVANCE(551);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(486);
+      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '.') ADVANCE(564);
+      if (lookahead == '/') ADVANCE(553);
+      if (lookahead == ':') ADVANCE(672);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(415);
+      if (('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(454);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
           lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != ' ') ADVANCE(678);
       END_STATE();
     case 414:
-      ACCEPT_TOKEN(sym_word);
-      if (lookahead == '.') ADVANCE(460);
-      if (lookahead == ':') ADVANCE(551);
+      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '.') ADVANCE(564);
+      if (lookahead == '/') ADVANCE(553);
+      if (lookahead == ':') ADVANCE(672);
       if (('0' <= lookahead && lookahead <= '9') ||
           ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(409);
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(456);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
           lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != ' ') ADVANCE(678);
       END_STATE();
     case 415:
-      ACCEPT_TOKEN(sym_word);
-      if (lookahead == '.') ADVANCE(463);
-      if (lookahead == '5') ADVANCE(417);
-      if (('6' <= lookahead && lookahead <= '9')) ADVANCE(424);
-      if (('0' <= lookahead && lookahead <= '4')) ADVANCE(418);
+      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '.') ADVANCE(564);
+      if (lookahead == '/') ADVANCE(553);
+      if (lookahead == ':') ADVANCE(672);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(453);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
           lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != ' ') ADVANCE(678);
       END_STATE();
     case 416:
-      ACCEPT_TOKEN(sym_word);
-      if (lookahead == '.') ADVANCE(463);
-      if (lookahead == '5') ADVANCE(430);
-      if (('6' <= lookahead && lookahead <= '9')) ADVANCE(432);
-      if (('0' <= lookahead && lookahead <= '4')) ADVANCE(431);
-      if (('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(558);
+      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '.') ADVANCE(564);
+      if (lookahead == '/') ADVANCE(553);
+      if (lookahead == ':') ADVANCE(672);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(454);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
           lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != ' ') ADVANCE(678);
       END_STATE();
     case 417:
-      ACCEPT_TOKEN(sym_word);
-      if (lookahead == '.') ADVANCE(463);
-      if (('0' <= lookahead && lookahead <= '5')) ADVANCE(424);
+      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '.') ADVANCE(564);
+      if (lookahead == '/') ADVANCE(553);
+      if (lookahead == ':') ADVANCE(563);
+      if (('0' <= lookahead && lookahead <= '5')) ADVANCE(423);
+      if (('6' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(459);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
           lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != ' ') ADVANCE(678);
       END_STATE();
     case 418:
-      ACCEPT_TOKEN(sym_word);
-      if (lookahead == '.') ADVANCE(463);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(424);
+      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '.') ADVANCE(564);
+      if (lookahead == '/') ADVANCE(553);
+      if (lookahead == ':') ADVANCE(563);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(423);
+      if (('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(459);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
           lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != ' ') ADVANCE(678);
       END_STATE();
     case 419:
-      ACCEPT_TOKEN(sym_word);
-      if (lookahead == '.') ADVANCE(463);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(431);
+      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '.') ADVANCE(564);
+      if (lookahead == '/') ADVANCE(553);
+      if (lookahead == ':') ADVANCE(563);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(418);
       if (('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(558);
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(457);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
           lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != ' ') ADVANCE(678);
       END_STATE();
     case 420:
-      ACCEPT_TOKEN(sym_word);
-      if (lookahead == '.') ADVANCE(463);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(432);
+      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '.') ADVANCE(564);
+      if (lookahead == '/') ADVANCE(553);
+      if (lookahead == ':') ADVANCE(563);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(421);
       if (('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(558);
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(457);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
           lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != ' ') ADVANCE(678);
       END_STATE();
     case 421:
-      ACCEPT_TOKEN(sym_word);
-      if (lookahead == '.') ADVANCE(463);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(418);
+      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '.') ADVANCE(564);
+      if (lookahead == '/') ADVANCE(553);
+      if (lookahead == ':') ADVANCE(563);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(459);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
           lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != ' ') ADVANCE(678);
       END_STATE();
     case 422:
-      ACCEPT_TOKEN(sym_word);
-      if (lookahead == '.') ADVANCE(463);
+      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '.') ADVANCE(564);
+      if (lookahead == '/') ADVANCE(553);
+      if (lookahead == ':') ADVANCE(563);
       if (('0' <= lookahead && lookahead <= '9') ||
           ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(556);
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(457);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
           lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != ' ') ADVANCE(678);
       END_STATE();
     case 423:
-      ACCEPT_TOKEN(sym_word);
-      if (lookahead == '.') ADVANCE(463);
+      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '.') ADVANCE(564);
+      if (lookahead == '/') ADVANCE(553);
+      if (lookahead == ':') ADVANCE(563);
       if (('0' <= lookahead && lookahead <= '9') ||
           ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(558);
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(460);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
           lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != ' ') ADVANCE(678);
       END_STATE();
     case 424:
-      ACCEPT_TOKEN(sym_word);
-      if (lookahead == '.') ADVANCE(463);
+      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '.') ADVANCE(564);
+      if (lookahead == '/') ADVANCE(553);
+      if (lookahead == ':') ADVANCE(565);
+      if (('0' <= lookahead && lookahead <= '5')) ADVANCE(430);
+      if (('6' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(463);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
           lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != ' ') ADVANCE(678);
       END_STATE();
     case 425:
-      ACCEPT_TOKEN(sym_word);
-      if (lookahead == '.') ADVANCE(464);
-      if (lookahead == '5') ADVANCE(426);
-      if (('6' <= lookahead && lookahead <= '9')) ADVANCE(429);
-      if (('0' <= lookahead && lookahead <= '4')) ADVANCE(427);
+      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '.') ADVANCE(564);
+      if (lookahead == '/') ADVANCE(553);
+      if (lookahead == ':') ADVANCE(565);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(430);
+      if (('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(463);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
           lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != ' ') ADVANCE(678);
       END_STATE();
     case 426:
-      ACCEPT_TOKEN(sym_word);
-      if (lookahead == '.') ADVANCE(464);
-      if (('0' <= lookahead && lookahead <= '5')) ADVANCE(429);
+      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '.') ADVANCE(564);
+      if (lookahead == '/') ADVANCE(553);
+      if (lookahead == ':') ADVANCE(565);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(425);
+      if (('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(461);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
           lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != ' ') ADVANCE(678);
       END_STATE();
     case 427:
-      ACCEPT_TOKEN(sym_word);
-      if (lookahead == '.') ADVANCE(464);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(429);
+      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '.') ADVANCE(564);
+      if (lookahead == '/') ADVANCE(553);
+      if (lookahead == ':') ADVANCE(565);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(428);
+      if (('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(461);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
           lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != ' ') ADVANCE(678);
       END_STATE();
     case 428:
-      ACCEPT_TOKEN(sym_word);
-      if (lookahead == '.') ADVANCE(464);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(427);
+      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '.') ADVANCE(564);
+      if (lookahead == '/') ADVANCE(553);
+      if (lookahead == ':') ADVANCE(565);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(463);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
           lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != ' ') ADVANCE(678);
       END_STATE();
     case 429:
-      ACCEPT_TOKEN(sym_word);
-      if (lookahead == '.') ADVANCE(464);
+      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '.') ADVANCE(564);
+      if (lookahead == '/') ADVANCE(553);
+      if (lookahead == ':') ADVANCE(565);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(461);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
           lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != ' ') ADVANCE(678);
       END_STATE();
     case 430:
-      ACCEPT_TOKEN(sym_word);
-      if (lookahead == '.') ADVANCE(465);
-      if (lookahead == '-' ||
-          lookahead == ':') ADVANCE(572);
-      if (('0' <= lookahead && lookahead <= '5')) ADVANCE(422);
-      if (('6' <= lookahead && lookahead <= '9') ||
+      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '.') ADVANCE(564);
+      if (lookahead == '/') ADVANCE(553);
+      if (lookahead == ':') ADVANCE(565);
+      if (('0' <= lookahead && lookahead <= '9') ||
           ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(570);
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(464);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
           lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != ' ') ADVANCE(678);
       END_STATE();
     case 431:
-      ACCEPT_TOKEN(sym_word);
-      if (lookahead == '.') ADVANCE(465);
-      if (lookahead == '-' ||
-          lookahead == ':') ADVANCE(572);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(422);
-      if (('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(570);
+      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '.') ADVANCE(564);
+      if (lookahead == '/') ADVANCE(553);
+      if (lookahead == ':') ADVANCE(566);
+      if (('0' <= lookahead && lookahead <= '5')) ADVANCE(437);
+      if (('6' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(467);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
           lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != ' ') ADVANCE(678);
       END_STATE();
     case 432:
-      ACCEPT_TOKEN(sym_word);
-      if (lookahead == '.') ADVANCE(465);
-      if (lookahead == '-' ||
-          lookahead == ':') ADVANCE(572);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(570);
+      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '.') ADVANCE(564);
+      if (lookahead == '/') ADVANCE(553);
+      if (lookahead == ':') ADVANCE(566);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(437);
+      if (('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(467);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
           lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != ' ') ADVANCE(678);
       END_STATE();
     case 433:
-      ACCEPT_TOKEN(sym_word);
-      if (lookahead == '.') ADVANCE(467);
-      if (lookahead == '5') ADVANCE(435);
-      if (('6' <= lookahead && lookahead <= '9')) ADVANCE(442);
-      if (('0' <= lookahead && lookahead <= '4')) ADVANCE(436);
+      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '.') ADVANCE(564);
+      if (lookahead == '/') ADVANCE(553);
+      if (lookahead == ':') ADVANCE(566);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(432);
+      if (('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(465);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
           lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != ' ') ADVANCE(678);
       END_STATE();
     case 434:
-      ACCEPT_TOKEN(sym_word);
-      if (lookahead == '.') ADVANCE(467);
-      if (lookahead == '5') ADVANCE(443);
-      if (('6' <= lookahead && lookahead <= '9')) ADVANCE(445);
-      if (('0' <= lookahead && lookahead <= '4')) ADVANCE(444);
+      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '.') ADVANCE(564);
+      if (lookahead == '/') ADVANCE(553);
+      if (lookahead == ':') ADVANCE(566);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(435);
       if (('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(559);
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(465);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
           lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != ' ') ADVANCE(678);
       END_STATE();
     case 435:
-      ACCEPT_TOKEN(sym_word);
-      if (lookahead == '.') ADVANCE(467);
-      if (('0' <= lookahead && lookahead <= '5')) ADVANCE(442);
+      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '.') ADVANCE(564);
+      if (lookahead == '/') ADVANCE(553);
+      if (lookahead == ':') ADVANCE(566);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(467);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
           lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != ' ') ADVANCE(678);
       END_STATE();
     case 436:
-      ACCEPT_TOKEN(sym_word);
-      if (lookahead == '.') ADVANCE(467);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(442);
+      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '.') ADVANCE(564);
+      if (lookahead == '/') ADVANCE(553);
+      if (lookahead == ':') ADVANCE(566);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(465);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
           lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != ' ') ADVANCE(678);
       END_STATE();
     case 437:
-      ACCEPT_TOKEN(sym_word);
-      if (lookahead == '.') ADVANCE(467);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(444);
-      if (('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(559);
+      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '.') ADVANCE(564);
+      if (lookahead == '/') ADVANCE(553);
+      if (lookahead == ':') ADVANCE(566);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(468);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
           lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != ' ') ADVANCE(678);
       END_STATE();
     case 438:
-      ACCEPT_TOKEN(sym_word);
-      if (lookahead == '.') ADVANCE(467);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(445);
+      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '/') ADVANCE(553);
+      if (lookahead == '0') ADVANCE(402);
+      if (lookahead == '1') ADVANCE(398);
+      if (lookahead == '2') ADVANCE(390);
+      if (('3' <= lookahead && lookahead <= '9')) ADVANCE(399);
       if (('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(559);
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(447);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
           lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != ' ') ADVANCE(678);
       END_STATE();
     case 439:
-      ACCEPT_TOKEN(sym_word);
-      if (lookahead == '.') ADVANCE(467);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(436);
+      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '/') ADVANCE(553);
+      if (lookahead == '0') ADVANCE(416);
+      if (lookahead == '1') ADVANCE(412);
+      if (lookahead == '2') ADVANCE(391);
+      if (('3' <= lookahead && lookahead <= '9')) ADVANCE(413);
+      if (('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(455);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
           lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != ' ') ADVANCE(678);
       END_STATE();
     case 440:
-      ACCEPT_TOKEN(sym_word);
-      if (lookahead == '.') ADVANCE(467);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(559);
+      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '/') ADVANCE(553);
+      if (lookahead == '0') ADVANCE(409);
+      if (lookahead == '1') ADVANCE(405);
+      if (lookahead == '2') ADVANCE(392);
+      if (('3' <= lookahead && lookahead <= '9')) ADVANCE(406);
+      if (('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(451);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
           lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != ' ') ADVANCE(678);
       END_STATE();
     case 441:
-      ACCEPT_TOKEN(sym_word);
-      if (lookahead == '.') ADVANCE(467);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(558);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
-      END_STATE();
-    case 442:
-      ACCEPT_TOKEN(sym_word);
-      if (lookahead == '.') ADVANCE(467);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
-      END_STATE();
-    case 443:
-      ACCEPT_TOKEN(sym_word);
-      if (lookahead == '.') ADVANCE(468);
-      if (lookahead == '-' ||
-          lookahead == ':') ADVANCE(574);
-      if (('0' <= lookahead && lookahead <= '5')) ADVANCE(441);
-      if (('6' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(573);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
-      END_STATE();
-    case 444:
-      ACCEPT_TOKEN(sym_word);
-      if (lookahead == '.') ADVANCE(468);
-      if (lookahead == '-' ||
-          lookahead == ':') ADVANCE(574);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(441);
-      if (('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(573);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
-      END_STATE();
-    case 445:
-      ACCEPT_TOKEN(sym_word);
-      if (lookahead == '.') ADVANCE(468);
-      if (lookahead == '-' ||
-          lookahead == ':') ADVANCE(574);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(573);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
-      END_STATE();
-    case 446:
-      ACCEPT_TOKEN(sym_word);
-      if (lookahead == '.') ADVANCE(470);
-      if (lookahead == '5') ADVANCE(447);
-      if (('6' <= lookahead && lookahead <= '9')) ADVANCE(450);
-      if (('0' <= lookahead && lookahead <= '4')) ADVANCE(448);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
-      END_STATE();
-    case 447:
-      ACCEPT_TOKEN(sym_word);
-      if (lookahead == '.') ADVANCE(470);
-      if (('0' <= lookahead && lookahead <= '5')) ADVANCE(450);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
-      END_STATE();
-    case 448:
-      ACCEPT_TOKEN(sym_word);
-      if (lookahead == '.') ADVANCE(470);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(450);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
-      END_STATE();
-    case 449:
-      ACCEPT_TOKEN(sym_word);
-      if (lookahead == '.') ADVANCE(470);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(448);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
-      END_STATE();
-    case 450:
-      ACCEPT_TOKEN(sym_word);
-      if (lookahead == '.') ADVANCE(470);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
-      END_STATE();
-    case 451:
-      ACCEPT_TOKEN(sym_word);
-      if (lookahead == '.') ADVANCE(569);
-      if (lookahead == '-' ||
-          lookahead == ':') ADVANCE(569);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(568);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
-      END_STATE();
-    case 452:
-      ACCEPT_TOKEN(sym_word);
-      if (lookahead == '.') ADVANCE(473);
-      if (lookahead == '5') ADVANCE(453);
-      if (lookahead == ':') ADVANCE(562);
-      if (('6' <= lookahead && lookahead <= '9')) ADVANCE(458);
-      if (('0' <= lookahead && lookahead <= '4')) ADVANCE(454);
-      if (('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(488);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
-      END_STATE();
-    case 453:
-      ACCEPT_TOKEN(sym_word);
-      if (lookahead == '.') ADVANCE(473);
-      if (lookahead == ':') ADVANCE(562);
-      if (('0' <= lookahead && lookahead <= '5')) ADVANCE(457);
-      if (('6' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(487);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
-      END_STATE();
-    case 454:
-      ACCEPT_TOKEN(sym_word);
-      if (lookahead == '.') ADVANCE(473);
-      if (lookahead == ':') ADVANCE(562);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(457);
-      if (('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(487);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
-      END_STATE();
-    case 455:
-      ACCEPT_TOKEN(sym_word);
-      if (lookahead == '.') ADVANCE(473);
-      if (lookahead == ':') ADVANCE(562);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(454);
-      if (('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(488);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
-      END_STATE();
-    case 456:
-      ACCEPT_TOKEN(sym_word);
-      if (lookahead == '.') ADVANCE(473);
-      if (lookahead == ':') ADVANCE(562);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(458);
-      if (('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(488);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
-      END_STATE();
-    case 457:
-      ACCEPT_TOKEN(sym_word);
-      if (lookahead == '.') ADVANCE(473);
-      if (lookahead == ':') ADVANCE(562);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(490);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
-      END_STATE();
-    case 458:
-      ACCEPT_TOKEN(sym_word);
-      if (lookahead == '.') ADVANCE(473);
-      if (lookahead == ':') ADVANCE(562);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(487);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
-      END_STATE();
-    case 459:
-      ACCEPT_TOKEN(sym_word);
-      if (lookahead == '.') ADVANCE(473);
-      if (lookahead == ':') ADVANCE(562);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(488);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
-      END_STATE();
-    case 460:
-      ACCEPT_TOKEN(sym_word);
-      if (lookahead == '0') ADVANCE(442);
-      if (lookahead == '1') ADVANCE(439);
-      if (lookahead == '2') ADVANCE(433);
-      if (('3' <= lookahead && lookahead <= '9')) ADVANCE(436);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
-      END_STATE();
-    case 461:
-      ACCEPT_TOKEN(sym_word);
-      if (lookahead == '0') ADVANCE(440);
-      if (lookahead == '1') ADVANCE(437);
-      if (lookahead == '2') ADVANCE(434);
-      if (('3' <= lookahead && lookahead <= '9')) ADVANCE(438);
-      if (('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(560);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
-      END_STATE();
-    case 462:
-      ACCEPT_TOKEN(sym_word);
-      if (lookahead == '0') ADVANCE(389);
-      if (lookahead == '1') ADVANCE(386);
-      if (('2' <= lookahead && lookahead <= '9')) ADVANCE(388);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
-      END_STATE();
-    case 463:
-      ACCEPT_TOKEN(sym_word);
-      if (lookahead == '0') ADVANCE(298);
-      if (lookahead == '1') ADVANCE(295);
-      if (lookahead == '2') ADVANCE(286);
-      if (('3' <= lookahead && lookahead <= '9')) ADVANCE(292);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
-      END_STATE();
-    case 464:
-      ACCEPT_TOKEN(sym_word);
-      if (lookahead == '0') ADVANCE(385);
-      if (lookahead == '1') ADVANCE(380);
-      if (lookahead == '2') ADVANCE(353);
-      if (('3' <= lookahead && lookahead <= '9')) ADVANCE(379);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
-      END_STATE();
-    case 465:
-      ACCEPT_TOKEN(sym_word);
-      if (lookahead == '0') ADVANCE(297);
-      if (lookahead == '1') ADVANCE(293);
-      if (lookahead == '2') ADVANCE(287);
-      if (('3' <= lookahead && lookahead <= '9')) ADVANCE(294);
-      if (('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(570);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
-      END_STATE();
-    case 466:
-      ACCEPT_TOKEN(sym_word);
-      if (lookahead == '0') ADVANCE(397);
-      if (lookahead == '1') ADVANCE(394);
-      if (('2' <= lookahead && lookahead <= '9')) ADVANCE(396);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
-      END_STATE();
-    case 467:
-      ACCEPT_TOKEN(sym_word);
-      if (lookahead == '0') ADVANCE(424);
-      if (lookahead == '1') ADVANCE(421);
-      if (lookahead == '2') ADVANCE(415);
-      if (('3' <= lookahead && lookahead <= '9')) ADVANCE(418);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
-      END_STATE();
-    case 468:
-      ACCEPT_TOKEN(sym_word);
-      if (lookahead == '0') ADVANCE(423);
+      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '/') ADVANCE(553);
+      if (lookahead == '0') ADVANCE(422);
       if (lookahead == '1') ADVANCE(419);
-      if (lookahead == '2') ADVANCE(416);
+      if (lookahead == '2') ADVANCE(393);
       if (('3' <= lookahead && lookahead <= '9')) ADVANCE(420);
       if (('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(573);
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(458);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
           lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 442:
+      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '/') ADVANCE(553);
+      if (lookahead == '0') ADVANCE(429);
+      if (lookahead == '1') ADVANCE(426);
+      if (lookahead == '2') ADVANCE(394);
+      if (('3' <= lookahead && lookahead <= '9')) ADVANCE(427);
+      if (('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(462);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 443:
+      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '/') ADVANCE(553);
+      if (lookahead == '0') ADVANCE(436);
+      if (lookahead == '1') ADVANCE(433);
+      if (lookahead == '2') ADVANCE(395);
+      if (('3' <= lookahead && lookahead <= '9')) ADVANCE(434);
+      if (('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(466);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 444:
+      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '/') ADVANCE(553);
+      if (lookahead == '5') ADVANCE(469);
+      if (('6' <= lookahead && lookahead <= '9')) ADVANCE(476);
+      if (('0' <= lookahead && lookahead <= '4')) ADVANCE(470);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 445:
+      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '/') ADVANCE(553);
+      if (lookahead == ':') ADVANCE(567);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(448);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 446:
+      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '/') ADVANCE(553);
+      if (lookahead == ':') ADVANCE(567);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(445);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 447:
+      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '/') ADVANCE(553);
+      if (lookahead == ':') ADVANCE(567);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(446);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 448:
+      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '/') ADVANCE(553);
+      if (lookahead == ':') ADVANCE(567);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 449:
+      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '/') ADVANCE(553);
+      if (lookahead == ':') ADVANCE(562);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(450);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 450:
+      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '/') ADVANCE(553);
+      if (lookahead == ':') ADVANCE(562);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(452);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 451:
+      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '/') ADVANCE(553);
+      if (lookahead == ':') ADVANCE(562);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(449);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 452:
+      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '/') ADVANCE(553);
+      if (lookahead == ':') ADVANCE(562);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 453:
+      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '/') ADVANCE(553);
+      if (lookahead == ':') ADVANCE(672);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(456);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 454:
+      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '/') ADVANCE(553);
+      if (lookahead == ':') ADVANCE(672);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(453);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 455:
+      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '/') ADVANCE(553);
+      if (lookahead == ':') ADVANCE(672);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(454);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 456:
+      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '/') ADVANCE(553);
+      if (lookahead == ':') ADVANCE(672);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 457:
+      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '/') ADVANCE(553);
+      if (lookahead == ':') ADVANCE(563);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(459);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 458:
+      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '/') ADVANCE(553);
+      if (lookahead == ':') ADVANCE(563);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(457);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 459:
+      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '/') ADVANCE(553);
+      if (lookahead == ':') ADVANCE(563);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(460);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 460:
+      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '/') ADVANCE(553);
+      if (lookahead == ':') ADVANCE(563);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 461:
+      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '/') ADVANCE(553);
+      if (lookahead == ':') ADVANCE(565);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(463);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 462:
+      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '/') ADVANCE(553);
+      if (lookahead == ':') ADVANCE(565);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(461);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 463:
+      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '/') ADVANCE(553);
+      if (lookahead == ':') ADVANCE(565);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(464);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 464:
+      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '/') ADVANCE(553);
+      if (lookahead == ':') ADVANCE(565);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 465:
+      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '/') ADVANCE(553);
+      if (lookahead == ':') ADVANCE(566);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(467);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 466:
+      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '/') ADVANCE(553);
+      if (lookahead == ':') ADVANCE(566);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(465);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 467:
+      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '/') ADVANCE(553);
+      if (lookahead == ':') ADVANCE(566);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(468);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 468:
+      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '/') ADVANCE(553);
+      if (lookahead == ':') ADVANCE(566);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
       END_STATE();
     case 469:
-      ACCEPT_TOKEN(sym_word);
-      if (lookahead == '0') ADVANCE(459);
-      if (lookahead == '1') ADVANCE(455);
-      if (lookahead == '2') ADVANCE(452);
-      if (lookahead == ':') ADVANCE(384);
-      if (('3' <= lookahead && lookahead <= '9')) ADVANCE(456);
-      if (('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(489);
+      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '/') ADVANCE(553);
+      if (('0' <= lookahead && lookahead <= '5')) ADVANCE(476);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
           lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != ' ') ADVANCE(678);
       END_STATE();
     case 470:
-      ACCEPT_TOKEN(sym_word);
-      if (lookahead == '0') ADVANCE(429);
-      if (lookahead == '1') ADVANCE(428);
-      if (lookahead == '2') ADVANCE(425);
-      if (('3' <= lookahead && lookahead <= '9')) ADVANCE(427);
+      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '/') ADVANCE(553);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(476);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
           lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != ' ') ADVANCE(678);
       END_STATE();
     case 471:
-      ACCEPT_TOKEN(sym_word);
-      if (lookahead == '0') ADVANCE(325);
-      if (lookahead == '1') ADVANCE(321);
-      if (lookahead == '2') ADVANCE(300);
-      if (('3' <= lookahead && lookahead <= '9')) ADVANCE(322);
-      if (('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(364);
+      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '/') ADVANCE(553);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(470);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
           lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != ' ') ADVANCE(678);
       END_STATE();
     case 472:
-      ACCEPT_TOKEN(sym_word);
-      if (lookahead == '0') ADVANCE(318);
-      if (lookahead == '1') ADVANCE(314);
-      if (lookahead == '2') ADVANCE(301);
-      if (('3' <= lookahead && lookahead <= '9')) ADVANCE(315);
-      if (('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(360);
+      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '/') ADVANCE(553);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(476);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
           lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != ' ') ADVANCE(678);
       END_STATE();
     case 473:
-      ACCEPT_TOKEN(sym_word);
-      if (lookahead == '0') ADVANCE(450);
-      if (lookahead == '1') ADVANCE(449);
-      if (lookahead == '2') ADVANCE(446);
-      if (('3' <= lookahead && lookahead <= '9')) ADVANCE(448);
+      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '/') ADVANCE(553);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(472);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
           lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != ' ') ADVANCE(678);
       END_STATE();
     case 474:
-      ACCEPT_TOKEN(sym_word);
-      if (lookahead == '0') ADVANCE(331);
-      if (lookahead == '1') ADVANCE(328);
-      if (lookahead == '2') ADVANCE(302);
-      if (('3' <= lookahead && lookahead <= '9')) ADVANCE(329);
-      if (('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(367);
+      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '/') ADVANCE(553);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(473);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
           lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != ' ') ADVANCE(678);
       END_STATE();
     case 475:
-      ACCEPT_TOKEN(sym_word);
-      if (lookahead == '0') ADVANCE(338);
-      if (lookahead == '1') ADVANCE(335);
-      if (lookahead == '2') ADVANCE(303);
-      if (('3' <= lookahead && lookahead <= '9')) ADVANCE(336);
-      if (('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(371);
+      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '/') ADVANCE(553);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(474);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
           lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != ' ') ADVANCE(678);
       END_STATE();
     case 476:
-      ACCEPT_TOKEN(sym_word);
-      if (lookahead == '0') ADVANCE(345);
-      if (lookahead == '1') ADVANCE(342);
-      if (lookahead == '2') ADVANCE(304);
-      if (('3' <= lookahead && lookahead <= '9')) ADVANCE(343);
-      if (('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(375);
+      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '/') ADVANCE(553);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
           lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != ' ') ADVANCE(678);
       END_STATE();
     case 477:
-      ACCEPT_TOKEN(sym_word);
-      if (lookahead == '3') ADVANCE(283);
-      if (lookahead == '1' ||
-          lookahead == '2') ADVANCE(284);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(285);
+      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '2') ADVANCE(478);
+      if (lookahead == '0' ||
+          lookahead == '1') ADVANCE(479);
+      if (('3' <= lookahead && lookahead <= '9')) ADVANCE(480);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
           lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != ' ') ADVANCE(678);
       END_STATE();
     case 478:
-      ACCEPT_TOKEN(sym_word);
-      if (lookahead == ':') ADVANCE(347);
+      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
+      if (lookahead == '%') ADVANCE(676);
+      if (('0' <= lookahead && lookahead <= '8')) ADVANCE(480);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
           lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != ' ') ADVANCE(678);
       END_STATE();
     case 479:
-      ACCEPT_TOKEN(sym_word);
-      if (lookahead == ':') ADVANCE(469);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(398);
+      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
+      if (lookahead == '%') ADVANCE(676);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(480);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
           lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != ' ') ADVANCE(678);
       END_STATE();
     case 480:
-      ACCEPT_TOKEN(sym_word);
-      if (lookahead == ':') ADVANCE(469);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(483);
+      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_condensed);
+      if (lookahead == '%') ADVANCE(676);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
           lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != ' ') ADVANCE(678);
       END_STATE();
     case 481:
-      ACCEPT_TOKEN(sym_word);
-      if (lookahead == ':') ADVANCE(469);
+      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_full);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '/') ADVANCE(558);
       if (('0' <= lookahead && lookahead <= '9') ||
           ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(480);
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(484);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
           lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != ' ') ADVANCE(678);
       END_STATE();
     case 482:
-      ACCEPT_TOKEN(sym_word);
-      if (lookahead == ':') ADVANCE(469);
+      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_full);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '/') ADVANCE(558);
       if (('0' <= lookahead && lookahead <= '9') ||
           ('A' <= lookahead && lookahead <= 'F') ||
           ('a' <= lookahead && lookahead <= 'f')) ADVANCE(481);
@@ -7146,258 +8070,12 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
           lookahead != '\t' &&
           lookahead != '\n' &&
           lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != ' ') ADVANCE(678);
       END_STATE();
     case 483:
-      ACCEPT_TOKEN(sym_word);
-      if (lookahead == ':') ADVANCE(469);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
-      END_STATE();
-    case 484:
-      ACCEPT_TOKEN(sym_word);
-      if (lookahead == ':') ADVANCE(551);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(486);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
-      END_STATE();
-    case 485:
-      ACCEPT_TOKEN(sym_word);
-      if (lookahead == ':') ADVANCE(551);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(409);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
-      END_STATE();
-    case 486:
-      ACCEPT_TOKEN(sym_word);
-      if (lookahead == ':') ADVANCE(552);
-      if (lookahead == '-' ||
-          lookahead == '.') ADVANCE(563);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(485);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
-      END_STATE();
-    case 487:
-      ACCEPT_TOKEN(sym_word);
-      if (lookahead == ':') ADVANCE(562);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(490);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
-      END_STATE();
-    case 488:
-      ACCEPT_TOKEN(sym_word);
-      if (lookahead == ':') ADVANCE(562);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(487);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
-      END_STATE();
-    case 489:
-      ACCEPT_TOKEN(sym_word);
-      if (lookahead == ':') ADVANCE(562);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(488);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
-      END_STATE();
-    case 490:
-      ACCEPT_TOKEN(sym_word);
-      if (lookahead == ':') ADVANCE(562);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
-      END_STATE();
-    case 491:
-      ACCEPT_TOKEN(sym_word);
-      if (lookahead == ':') ADVANCE(349);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(508);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
-      END_STATE();
-    case 492:
-      ACCEPT_TOKEN(sym_word);
-      if (lookahead == ':') ADVANCE(349);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(509);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
-      END_STATE();
-    case 493:
-      ACCEPT_TOKEN(sym_word);
-      if (lookahead == ':') ADVANCE(349);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(507);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
-      END_STATE();
-    case 494:
-      ACCEPT_TOKEN(sym_word);
-      if (lookahead == ':') ADVANCE(491);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(399);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
-      END_STATE();
-    case 495:
-      ACCEPT_TOKEN(sym_word);
-      if (lookahead == ':') ADVANCE(491);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(499);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
-      END_STATE();
-    case 496:
-      ACCEPT_TOKEN(sym_word);
-      if (lookahead == ':') ADVANCE(491);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(517);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
-      END_STATE();
-    case 497:
-      ACCEPT_TOKEN(sym_word);
-      if (lookahead == ':') ADVANCE(491);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(495);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
-      END_STATE();
-    case 498:
-      ACCEPT_TOKEN(sym_word);
-      if (lookahead == ':') ADVANCE(491);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(400);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
-      END_STATE();
-    case 499:
-      ACCEPT_TOKEN(sym_word);
-      if (lookahead == ':') ADVANCE(491);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(502);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
-      END_STATE();
-    case 500:
-      ACCEPT_TOKEN(sym_word);
-      if (lookahead == ':') ADVANCE(491);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(516);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
-      END_STATE();
-    case 501:
-      ACCEPT_TOKEN(sym_word);
-      if (lookahead == ':') ADVANCE(491);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(513);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
-      END_STATE();
-    case 502:
-      ACCEPT_TOKEN(sym_word);
-      if (lookahead == ':') ADVANCE(491);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
-      END_STATE();
-    case 503:
-      ACCEPT_TOKEN(sym_word);
-      if (lookahead == ':') ADVANCE(536);
-      if (lookahead == '-' ||
-          lookahead == '.') ADVANCE(569);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(568);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
-      END_STATE();
-    case 504:
-      ACCEPT_TOKEN(sym_word);
-      if (lookahead == ':') ADVANCE(348);
+      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_full);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '/') ADVANCE(558);
       if (('0' <= lookahead && lookahead <= '9') ||
           ('A' <= lookahead && lookahead <= 'F') ||
           ('a' <= lookahead && lookahead <= 'f')) ADVANCE(482);
@@ -7405,188 +8083,1729 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
           lookahead != '\t' &&
           lookahead != '\n' &&
           lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 484:
+      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_full);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '/') ADVANCE(558);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 485:
+      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_full);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '2') ADVANCE(486);
+      if (lookahead == '0' ||
+          lookahead == '1') ADVANCE(487);
+      if (('3' <= lookahead && lookahead <= '9')) ADVANCE(488);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 486:
+      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_full);
+      if (lookahead == '%') ADVANCE(676);
+      if (('0' <= lookahead && lookahead <= '8')) ADVANCE(488);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 487:
+      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_full);
+      if (lookahead == '%') ADVANCE(676);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(488);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 488:
+      ACCEPT_TOKEN(sym_token_number_cisco_address_ipv6_full);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 489:
+      ACCEPT_TOKEN(sym_token_number_cisco_address_mac);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == ':') ADVANCE(557);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(572);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 490:
+      ACCEPT_TOKEN(sym_token_number_cisco_address_mac);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == ':') ADVANCE(584);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(592);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 491:
+      ACCEPT_TOKEN(sym_token_number_cisco_address_mac);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == ':') ADVANCE(584);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 492:
+      ACCEPT_TOKEN(sym_token_number_cisco_address_mac);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == ':') ADVANCE(597);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(604);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 493:
+      ACCEPT_TOKEN(sym_token_number_cisco_address_mac);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == ':') ADVANCE(597);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 494:
+      ACCEPT_TOKEN(sym_token_number_cisco_address_mac);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == ':') ADVANCE(613);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 495:
+      ACCEPT_TOKEN(sym_token_number_cisco_address_mac);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 496:
+      ACCEPT_TOKEN(sym_word);
+      if (lookahead == '"') ADVANCE(52);
+      if (lookahead == '%') ADVANCE(500);
+      if (lookahead == '-') ADVANCE(499);
+      if (lookahead == '\\') ADVANCE(679);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(1);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'Z') ||
+          lookahead == '_' ||
+          ('a' <= lookahead && lookahead <= 'z')) ADVANCE(496);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(502);
+      END_STATE();
+    case 497:
+      ACCEPT_TOKEN(sym_word);
+      if (lookahead == '"') ADVANCE(52);
+      if (lookahead == '%') ADVANCE(500);
+      if (lookahead == '-') ADVANCE(501);
+      if (lookahead == '\\') ADVANCE(679);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(1);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(502);
+      END_STATE();
+    case 498:
+      ACCEPT_TOKEN(sym_word);
+      if (lookahead == '"') ADVANCE(52);
+      if (lookahead == '%') ADVANCE(500);
+      if (lookahead == ':') ADVANCE(365);
+      if (lookahead == '\\') ADVANCE(679);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(1);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'Z') ||
+          lookahead == '_' ||
+          ('a' <= lookahead && lookahead <= 'z')) ADVANCE(498);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(502);
+      END_STATE();
+    case 499:
+      ACCEPT_TOKEN(sym_word);
+      if (lookahead == '"') ADVANCE(52);
+      if (lookahead == '%') ADVANCE(500);
+      if (lookahead == '\\') ADVANCE(679);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(1);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(497);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(502);
+      END_STATE();
+    case 500:
+      ACCEPT_TOKEN(sym_word);
+      if (lookahead == '"') ADVANCE(52);
+      if (lookahead == '%') ADVANCE(500);
+      if (lookahead == '\\') ADVANCE(679);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(1);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'Z') ||
+          lookahead == '_' ||
+          ('a' <= lookahead && lookahead <= 'z')) ADVANCE(496);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(502);
+      END_STATE();
+    case 501:
+      ACCEPT_TOKEN(sym_word);
+      if (lookahead == '"') ADVANCE(52);
+      if (lookahead == '%') ADVANCE(500);
+      if (lookahead == '\\') ADVANCE(679);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(1);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'Z') ||
+          lookahead == '_' ||
+          ('a' <= lookahead && lookahead <= 'z')) ADVANCE(498);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(502);
+      END_STATE();
+    case 502:
+      ACCEPT_TOKEN(sym_word);
+      if (lookahead == '"') ADVANCE(52);
+      if (lookahead == '%') ADVANCE(500);
+      if (lookahead == '\\') ADVANCE(679);
+      if (lookahead == '\t' ||
+          lookahead == ' ') ADVANCE(1);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r') ADVANCE(502);
+      END_STATE();
+    case 503:
+      ACCEPT_TOKEN(sym_word);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '-') ADVANCE(677);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 504:
+      ACCEPT_TOKEN(sym_word);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '-') ADVANCE(654);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'Z') ||
+          lookahead == '_' ||
+          ('a' <= lookahead && lookahead <= 'z')) ADVANCE(504);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
       END_STATE();
     case 505:
       ACCEPT_TOKEN(sym_word);
-      if (lookahead == ':') ADVANCE(348);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '-') ADVANCE(675);
+      if (lookahead == '.') ADVANCE(668);
+      if (lookahead == ':') ADVANCE(646);
       if (('0' <= lookahead && lookahead <= '9') ||
           ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(479);
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(667);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
           lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != ' ') ADVANCE(678);
       END_STATE();
     case 506:
       ACCEPT_TOKEN(sym_word);
-      if (lookahead == ':') ADVANCE(504);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(511);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '.') ADVANCE(554);
+      if (lookahead == '5') ADVANCE(508);
+      if (('6' <= lookahead && lookahead <= '9')) ADVANCE(515);
+      if (('0' <= lookahead && lookahead <= '4')) ADVANCE(509);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
           lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != ' ') ADVANCE(678);
       END_STATE();
     case 507:
       ACCEPT_TOKEN(sym_word);
-      if (lookahead == ':') ADVANCE(504);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(518);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '.') ADVANCE(554);
+      if (lookahead == '5') ADVANCE(521);
+      if (('6' <= lookahead && lookahead <= '9')) ADVANCE(523);
+      if (('0' <= lookahead && lookahead <= '4')) ADVANCE(522);
+      if (('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(650);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
           lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != ' ') ADVANCE(678);
       END_STATE();
     case 508:
       ACCEPT_TOKEN(sym_word);
-      if (lookahead == ':') ADVANCE(504);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(506);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '.') ADVANCE(554);
+      if (('0' <= lookahead && lookahead <= '5')) ADVANCE(515);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
           lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != ' ') ADVANCE(678);
       END_STATE();
     case 509:
       ACCEPT_TOKEN(sym_word);
-      if (lookahead == ':') ADVANCE(504);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(401);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '.') ADVANCE(554);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(515);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
           lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != ' ') ADVANCE(678);
       END_STATE();
     case 510:
       ACCEPT_TOKEN(sym_word);
-      if (lookahead == ':') ADVANCE(504);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(402);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '.') ADVANCE(554);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(522);
+      if (('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(650);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
           lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != ' ') ADVANCE(678);
       END_STATE();
     case 511:
       ACCEPT_TOKEN(sym_word);
-      if (lookahead == ':') ADVANCE(504);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(512);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '.') ADVANCE(554);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(523);
+      if (('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(650);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
           lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != ' ') ADVANCE(678);
       END_STATE();
     case 512:
       ACCEPT_TOKEN(sym_word);
-      if (lookahead == ':') ADVANCE(504);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '.') ADVANCE(554);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(509);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
           lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != ' ') ADVANCE(678);
       END_STATE();
     case 513:
       ACCEPT_TOKEN(sym_word);
-      if (lookahead == ':') ADVANCE(493);
-      if (lookahead == '-' ||
-          lookahead == '.') ADVANCE(569);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '.') ADVANCE(554);
       if (('0' <= lookahead && lookahead <= '9') ||
           ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(500);
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(648);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
           lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != ' ') ADVANCE(678);
       END_STATE();
     case 514:
       ACCEPT_TOKEN(sym_word);
-      if (lookahead == ':') ADVANCE(519);
-      if (lookahead == '-' ||
-          lookahead == '.') ADVANCE(565);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '.') ADVANCE(554);
       if (('0' <= lookahead && lookahead <= '9') ||
           ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(561);
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(650);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
           lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != ' ') ADVANCE(678);
       END_STATE();
     case 515:
       ACCEPT_TOKEN(sym_word);
-      if (lookahead == ':') ADVANCE(519);
-      if (lookahead == '-' ||
-          lookahead == '.') ADVANCE(565);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(523);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '.') ADVANCE(554);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
           lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != ' ') ADVANCE(678);
       END_STATE();
     case 516:
       ACCEPT_TOKEN(sym_word);
-      if (lookahead == ':') ADVANCE(492);
-      if (lookahead == '-' ||
-          lookahead == '.') ADVANCE(565);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(561);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '.') ADVANCE(555);
+      if (lookahead == '5') ADVANCE(517);
+      if (('6' <= lookahead && lookahead <= '9')) ADVANCE(520);
+      if (('0' <= lookahead && lookahead <= '4')) ADVANCE(518);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
           lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != ' ') ADVANCE(678);
       END_STATE();
     case 517:
       ACCEPT_TOKEN(sym_word);
-      if (lookahead == ':') ADVANCE(492);
-      if (lookahead == '-' ||
-          lookahead == '.') ADVANCE(565);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(498);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '.') ADVANCE(555);
+      if (('0' <= lookahead && lookahead <= '5')) ADVANCE(520);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
           lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != ' ') ADVANCE(678);
       END_STATE();
     case 518:
       ACCEPT_TOKEN(sym_word);
-      if (lookahead == ':') ADVANCE(505);
-      if (lookahead == '-' ||
-          lookahead == '.') ADVANCE(565);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(510);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '.') ADVANCE(555);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(520);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
           lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != ' ') ADVANCE(678);
       END_STATE();
     case 519:
       ACCEPT_TOKEN(sym_word);
-      if (lookahead == ':') ADVANCE(350);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '.') ADVANCE(555);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(518);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 520:
+      ACCEPT_TOKEN(sym_word);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '.') ADVANCE(555);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 521:
+      ACCEPT_TOKEN(sym_word);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '.') ADVANCE(556);
+      if (lookahead == '-' ||
+          lookahead == ':') ADVANCE(673);
+      if (('0' <= lookahead && lookahead <= '5')) ADVANCE(513);
+      if (('6' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(671);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 522:
+      ACCEPT_TOKEN(sym_word);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '.') ADVANCE(556);
+      if (lookahead == '-' ||
+          lookahead == ':') ADVANCE(673);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(513);
+      if (('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(671);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 523:
+      ACCEPT_TOKEN(sym_word);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '.') ADVANCE(556);
+      if (lookahead == '-' ||
+          lookahead == ':') ADVANCE(673);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(671);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 524:
+      ACCEPT_TOKEN(sym_word);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '.') ADVANCE(559);
+      if (lookahead == '5') ADVANCE(526);
+      if (('6' <= lookahead && lookahead <= '9')) ADVANCE(533);
+      if (('0' <= lookahead && lookahead <= '4')) ADVANCE(527);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 525:
+      ACCEPT_TOKEN(sym_word);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '.') ADVANCE(559);
+      if (lookahead == '5') ADVANCE(534);
+      if (('6' <= lookahead && lookahead <= '9')) ADVANCE(536);
+      if (('0' <= lookahead && lookahead <= '4')) ADVANCE(535);
+      if (('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(651);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 526:
+      ACCEPT_TOKEN(sym_word);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '.') ADVANCE(559);
+      if (('0' <= lookahead && lookahead <= '5')) ADVANCE(533);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 527:
+      ACCEPT_TOKEN(sym_word);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '.') ADVANCE(559);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(533);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 528:
+      ACCEPT_TOKEN(sym_word);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '.') ADVANCE(559);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(535);
+      if (('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(651);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 529:
+      ACCEPT_TOKEN(sym_word);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '.') ADVANCE(559);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(536);
+      if (('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(651);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 530:
+      ACCEPT_TOKEN(sym_word);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '.') ADVANCE(559);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(527);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 531:
+      ACCEPT_TOKEN(sym_word);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '.') ADVANCE(559);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(651);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 532:
+      ACCEPT_TOKEN(sym_word);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '.') ADVANCE(559);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(650);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 533:
+      ACCEPT_TOKEN(sym_word);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '.') ADVANCE(559);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 534:
+      ACCEPT_TOKEN(sym_word);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '.') ADVANCE(560);
+      if (lookahead == '-' ||
+          lookahead == ':') ADVANCE(675);
+      if (('0' <= lookahead && lookahead <= '5')) ADVANCE(532);
+      if (('6' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(674);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 535:
+      ACCEPT_TOKEN(sym_word);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '.') ADVANCE(560);
+      if (lookahead == '-' ||
+          lookahead == ':') ADVANCE(675);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(532);
+      if (('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(674);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 536:
+      ACCEPT_TOKEN(sym_word);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '.') ADVANCE(560);
+      if (lookahead == '-' ||
+          lookahead == ':') ADVANCE(675);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(674);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 537:
+      ACCEPT_TOKEN(sym_word);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '.') ADVANCE(561);
+      if (lookahead == '5') ADVANCE(538);
+      if (('6' <= lookahead && lookahead <= '9')) ADVANCE(541);
+      if (('0' <= lookahead && lookahead <= '4')) ADVANCE(539);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 538:
+      ACCEPT_TOKEN(sym_word);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '.') ADVANCE(561);
+      if (('0' <= lookahead && lookahead <= '5')) ADVANCE(541);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 539:
+      ACCEPT_TOKEN(sym_word);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '.') ADVANCE(561);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(541);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 540:
+      ACCEPT_TOKEN(sym_word);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '.') ADVANCE(561);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(539);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 541:
+      ACCEPT_TOKEN(sym_word);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '.') ADVANCE(561);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 542:
+      ACCEPT_TOKEN(sym_word);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '.') ADVANCE(670);
+      if (lookahead == '-' ||
+          lookahead == ':') ADVANCE(670);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(669);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 543:
+      ACCEPT_TOKEN(sym_word);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '.') ADVANCE(564);
+      if (lookahead == '5') ADVANCE(544);
+      if (lookahead == ':') ADVANCE(663);
+      if (('6' <= lookahead && lookahead <= '9')) ADVANCE(549);
+      if (('0' <= lookahead && lookahead <= '4')) ADVANCE(545);
+      if (('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(581);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 544:
+      ACCEPT_TOKEN(sym_word);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '.') ADVANCE(564);
+      if (lookahead == ':') ADVANCE(663);
+      if (('0' <= lookahead && lookahead <= '5')) ADVANCE(548);
+      if (('6' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(580);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 545:
+      ACCEPT_TOKEN(sym_word);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '.') ADVANCE(564);
+      if (lookahead == ':') ADVANCE(663);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(548);
+      if (('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(580);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 546:
+      ACCEPT_TOKEN(sym_word);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '.') ADVANCE(564);
+      if (lookahead == ':') ADVANCE(663);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(545);
+      if (('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(581);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 547:
+      ACCEPT_TOKEN(sym_word);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '.') ADVANCE(564);
+      if (lookahead == ':') ADVANCE(663);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(549);
+      if (('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(581);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 548:
+      ACCEPT_TOKEN(sym_word);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '.') ADVANCE(564);
+      if (lookahead == ':') ADVANCE(663);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(583);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 549:
+      ACCEPT_TOKEN(sym_word);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '.') ADVANCE(564);
+      if (lookahead == ':') ADVANCE(663);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(580);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 550:
+      ACCEPT_TOKEN(sym_word);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '.') ADVANCE(564);
+      if (lookahead == ':') ADVANCE(663);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(581);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 551:
+      ACCEPT_TOKEN(sym_word);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '0') ADVANCE(533);
+      if (lookahead == '1') ADVANCE(530);
+      if (lookahead == '2') ADVANCE(524);
+      if (('3' <= lookahead && lookahead <= '9')) ADVANCE(527);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 552:
+      ACCEPT_TOKEN(sym_word);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '0') ADVANCE(531);
+      if (lookahead == '1') ADVANCE(528);
+      if (lookahead == '2') ADVANCE(525);
+      if (('3' <= lookahead && lookahead <= '9')) ADVANCE(529);
+      if (('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(661);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 553:
+      ACCEPT_TOKEN(sym_word);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '0') ADVANCE(480);
+      if (lookahead == '1') ADVANCE(477);
+      if (('2' <= lookahead && lookahead <= '9')) ADVANCE(479);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 554:
+      ACCEPT_TOKEN(sym_word);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '0') ADVANCE(389);
+      if (lookahead == '1') ADVANCE(386);
+      if (lookahead == '2') ADVANCE(377);
+      if (('3' <= lookahead && lookahead <= '9')) ADVANCE(383);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 555:
+      ACCEPT_TOKEN(sym_word);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '0') ADVANCE(476);
+      if (lookahead == '1') ADVANCE(471);
+      if (lookahead == '2') ADVANCE(444);
+      if (('3' <= lookahead && lookahead <= '9')) ADVANCE(470);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 556:
+      ACCEPT_TOKEN(sym_word);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '0') ADVANCE(388);
+      if (lookahead == '1') ADVANCE(384);
+      if (lookahead == '2') ADVANCE(378);
+      if (('3' <= lookahead && lookahead <= '9')) ADVANCE(385);
+      if (('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(671);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 557:
+      ACCEPT_TOKEN(sym_word);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '0') ADVANCE(550);
+      if (lookahead == '1') ADVANCE(546);
+      if (lookahead == '2') ADVANCE(543);
+      if (lookahead == ':') ADVANCE(475);
+      if (('3' <= lookahead && lookahead <= '9')) ADVANCE(547);
+      if (('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(582);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 558:
+      ACCEPT_TOKEN(sym_word);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '0') ADVANCE(488);
+      if (lookahead == '1') ADVANCE(485);
+      if (('2' <= lookahead && lookahead <= '9')) ADVANCE(487);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 559:
+      ACCEPT_TOKEN(sym_word);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '0') ADVANCE(515);
+      if (lookahead == '1') ADVANCE(512);
+      if (lookahead == '2') ADVANCE(506);
+      if (('3' <= lookahead && lookahead <= '9')) ADVANCE(509);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 560:
+      ACCEPT_TOKEN(sym_word);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '0') ADVANCE(514);
+      if (lookahead == '1') ADVANCE(510);
+      if (lookahead == '2') ADVANCE(507);
+      if (('3' <= lookahead && lookahead <= '9')) ADVANCE(511);
+      if (('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(674);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 561:
+      ACCEPT_TOKEN(sym_word);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '0') ADVANCE(520);
+      if (lookahead == '1') ADVANCE(519);
+      if (lookahead == '2') ADVANCE(516);
+      if (('3' <= lookahead && lookahead <= '9')) ADVANCE(518);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 562:
+      ACCEPT_TOKEN(sym_word);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '0') ADVANCE(416);
+      if (lookahead == '1') ADVANCE(412);
+      if (lookahead == '2') ADVANCE(391);
+      if (('3' <= lookahead && lookahead <= '9')) ADVANCE(413);
+      if (('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(455);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 563:
+      ACCEPT_TOKEN(sym_word);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '0') ADVANCE(409);
+      if (lookahead == '1') ADVANCE(405);
+      if (lookahead == '2') ADVANCE(392);
+      if (('3' <= lookahead && lookahead <= '9')) ADVANCE(406);
+      if (('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(451);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 564:
+      ACCEPT_TOKEN(sym_word);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '0') ADVANCE(541);
+      if (lookahead == '1') ADVANCE(540);
+      if (lookahead == '2') ADVANCE(537);
+      if (('3' <= lookahead && lookahead <= '9')) ADVANCE(539);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 565:
+      ACCEPT_TOKEN(sym_word);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '0') ADVANCE(422);
+      if (lookahead == '1') ADVANCE(419);
+      if (lookahead == '2') ADVANCE(393);
+      if (('3' <= lookahead && lookahead <= '9')) ADVANCE(420);
+      if (('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(458);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 566:
+      ACCEPT_TOKEN(sym_word);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '0') ADVANCE(429);
+      if (lookahead == '1') ADVANCE(426);
+      if (lookahead == '2') ADVANCE(394);
+      if (('3' <= lookahead && lookahead <= '9')) ADVANCE(427);
+      if (('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(462);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 567:
+      ACCEPT_TOKEN(sym_word);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '0') ADVANCE(436);
+      if (lookahead == '1') ADVANCE(433);
+      if (lookahead == '2') ADVANCE(395);
+      if (('3' <= lookahead && lookahead <= '9')) ADVANCE(434);
+      if (('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(466);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 568:
+      ACCEPT_TOKEN(sym_word);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '3') ADVANCE(374);
+      if (lookahead == '1' ||
+          lookahead == '2') ADVANCE(375);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(376);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 569:
+      ACCEPT_TOKEN(sym_word);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == ':') ADVANCE(438);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 570:
+      ACCEPT_TOKEN(sym_word);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == ':') ADVANCE(372);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'Z') ||
+          lookahead == '_' ||
+          ('a' <= lookahead && lookahead <= 'z')) ADVANCE(570);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 571:
+      ACCEPT_TOKEN(sym_word);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == ':') ADVANCE(557);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(489);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 572:
+      ACCEPT_TOKEN(sym_word);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == ':') ADVANCE(557);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(575);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 573:
+      ACCEPT_TOKEN(sym_word);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == ':') ADVANCE(557);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(572);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 574:
+      ACCEPT_TOKEN(sym_word);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == ':') ADVANCE(557);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(573);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 575:
+      ACCEPT_TOKEN(sym_word);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == ':') ADVANCE(557);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 576:
+      ACCEPT_TOKEN(sym_word);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == ':') ADVANCE(644);
+      if (('a' <= lookahead && lookahead <= 'f')) ADVANCE(579);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F')) ADVANCE(39);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 577:
+      ACCEPT_TOKEN(sym_word);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == ':') ADVANCE(644);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(579);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 578:
+      ACCEPT_TOKEN(sym_word);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == ':') ADVANCE(644);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(505);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 579:
+      ACCEPT_TOKEN(sym_word);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == ':') ADVANCE(645);
+      if (lookahead == '-' ||
+          lookahead == '.') ADVANCE(665);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(578);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 580:
+      ACCEPT_TOKEN(sym_word);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == ':') ADVANCE(663);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(583);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 581:
+      ACCEPT_TOKEN(sym_word);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == ':') ADVANCE(663);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(580);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 582:
+      ACCEPT_TOKEN(sym_word);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == ':') ADVANCE(663);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(581);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 583:
+      ACCEPT_TOKEN(sym_word);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == ':') ADVANCE(663);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 584:
+      ACCEPT_TOKEN(sym_word);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == ':') ADVANCE(440);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(601);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 585:
+      ACCEPT_TOKEN(sym_word);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == ':') ADVANCE(440);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(602);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 586:
+      ACCEPT_TOKEN(sym_word);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == ':') ADVANCE(440);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(600);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 587:
+      ACCEPT_TOKEN(sym_word);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == ':') ADVANCE(584);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(490);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 588:
+      ACCEPT_TOKEN(sym_word);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == ':') ADVANCE(584);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(592);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 589:
+      ACCEPT_TOKEN(sym_word);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == ':') ADVANCE(584);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(610);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 590:
+      ACCEPT_TOKEN(sym_word);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == ':') ADVANCE(584);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(588);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 591:
+      ACCEPT_TOKEN(sym_word);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == ':') ADVANCE(584);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(491);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 592:
+      ACCEPT_TOKEN(sym_word);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == ':') ADVANCE(584);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(595);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 593:
+      ACCEPT_TOKEN(sym_word);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == ':') ADVANCE(584);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(609);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 594:
+      ACCEPT_TOKEN(sym_word);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == ':') ADVANCE(584);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(606);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 595:
+      ACCEPT_TOKEN(sym_word);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == ':') ADVANCE(584);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 596:
+      ACCEPT_TOKEN(sym_word);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == ':') ADVANCE(629);
+      if (lookahead == '-' ||
+          lookahead == '.') ADVANCE(670);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(669);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 597:
+      ACCEPT_TOKEN(sym_word);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == ':') ADVANCE(439);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(574);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 598:
+      ACCEPT_TOKEN(sym_word);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == ':') ADVANCE(439);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(571);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 599:
+      ACCEPT_TOKEN(sym_word);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == ':') ADVANCE(597);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(604);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 600:
+      ACCEPT_TOKEN(sym_word);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == ':') ADVANCE(597);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(611);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 601:
+      ACCEPT_TOKEN(sym_word);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == ':') ADVANCE(597);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(599);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 602:
+      ACCEPT_TOKEN(sym_word);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == ':') ADVANCE(597);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(492);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 603:
+      ACCEPT_TOKEN(sym_word);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == ':') ADVANCE(597);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(493);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 604:
+      ACCEPT_TOKEN(sym_word);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == ':') ADVANCE(597);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(605);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 605:
+      ACCEPT_TOKEN(sym_word);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == ':') ADVANCE(597);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 606:
+      ACCEPT_TOKEN(sym_word);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == ':') ADVANCE(586);
+      if (lookahead == '-' ||
+          lookahead == '.') ADVANCE(670);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(593);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 607:
+      ACCEPT_TOKEN(sym_word);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == ':') ADVANCE(612);
+      if (lookahead == '-' ||
+          lookahead == '.') ADVANCE(666);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(662);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 608:
+      ACCEPT_TOKEN(sym_word);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == ':') ADVANCE(612);
+      if (lookahead == '-' ||
+          lookahead == '.') ADVANCE(666);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(616);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 609:
+      ACCEPT_TOKEN(sym_word);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == ':') ADVANCE(585);
+      if (lookahead == '-' ||
+          lookahead == '.') ADVANCE(666);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(662);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 610:
+      ACCEPT_TOKEN(sym_word);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == ':') ADVANCE(585);
+      if (lookahead == '-' ||
+          lookahead == '.') ADVANCE(666);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(591);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 611:
+      ACCEPT_TOKEN(sym_word);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == ':') ADVANCE(598);
+      if (lookahead == '-' ||
+          lookahead == '.') ADVANCE(666);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(603);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 612:
+      ACCEPT_TOKEN(sym_word);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == ':') ADVANCE(441);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(587);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 613:
+      ACCEPT_TOKEN(sym_word);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == ':') ADVANCE(441);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(590);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 614:
+      ACCEPT_TOKEN(sym_word);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == ':') ADVANCE(441);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(594);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 615:
+      ACCEPT_TOKEN(sym_word);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == ':') ADVANCE(441);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(589);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 616:
+      ACCEPT_TOKEN(sym_word);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == ':') ADVANCE(613);
       if (('0' <= lookahead && lookahead <= '9') ||
           ('A' <= lookahead && lookahead <= 'F') ||
           ('a' <= lookahead && lookahead <= 'f')) ADVANCE(494);
@@ -7594,349 +9813,620 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
           lookahead != '\t' &&
           lookahead != '\n' &&
           lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != ' ') ADVANCE(678);
       END_STATE();
-    case 520:
+    case 617:
       ACCEPT_TOKEN(sym_word);
-      if (lookahead == ':') ADVANCE(350);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == ':') ADVANCE(613);
       if (('0' <= lookahead && lookahead <= '9') ||
           ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(497);
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(607);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
           lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != ' ') ADVANCE(678);
       END_STATE();
-    case 521:
+    case 618:
       ACCEPT_TOKEN(sym_word);
-      if (lookahead == ':') ADVANCE(350);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == ':') ADVANCE(613);
       if (('0' <= lookahead && lookahead <= '9') ||
           ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(501);
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(608);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
           lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != ' ') ADVANCE(678);
       END_STATE();
-    case 522:
+    case 619:
       ACCEPT_TOKEN(sym_word);
-      if (lookahead == ':') ADVANCE(350);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == ':') ADVANCE(613);
       if (('0' <= lookahead && lookahead <= '9') ||
           ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(496);
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(623);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
           lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != ' ') ADVANCE(678);
       END_STATE();
-    case 523:
+    case 620:
       ACCEPT_TOKEN(sym_word);
-      if (lookahead == ':') ADVANCE(520);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == ':') ADVANCE(613);
       if (('0' <= lookahead && lookahead <= '9') ||
           ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(403);
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(619);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
           lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != ' ') ADVANCE(678);
       END_STATE();
-    case 524:
+    case 621:
       ACCEPT_TOKEN(sym_word);
-      if (lookahead == ':') ADVANCE(520);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == ':') ADVANCE(613);
       if (('0' <= lookahead && lookahead <= '9') ||
           ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(514);
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(626);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
           lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != ' ') ADVANCE(678);
       END_STATE();
-    case 525:
+    case 622:
       ACCEPT_TOKEN(sym_word);
-      if (lookahead == ':') ADVANCE(520);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == ':') ADVANCE(613);
       if (('0' <= lookahead && lookahead <= '9') ||
           ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(515);
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(628);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
           lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != ' ') ADVANCE(678);
       END_STATE();
-    case 526:
+    case 623:
       ACCEPT_TOKEN(sym_word);
-      if (lookahead == ':') ADVANCE(520);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == ':') ADVANCE(613);
       if (('0' <= lookahead && lookahead <= '9') ||
           ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(530);
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(625);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
           lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != ' ') ADVANCE(678);
       END_STATE();
-    case 527:
+    case 624:
       ACCEPT_TOKEN(sym_word);
-      if (lookahead == ':') ADVANCE(520);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == ':') ADVANCE(613);
       if (('0' <= lookahead && lookahead <= '9') ||
           ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(526);
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(627);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
           lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != ' ') ADVANCE(678);
       END_STATE();
-    case 528:
+    case 625:
       ACCEPT_TOKEN(sym_word);
-      if (lookahead == ':') ADVANCE(520);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(533);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == ':') ADVANCE(613);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
           lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != ' ') ADVANCE(678);
       END_STATE();
-    case 529:
+    case 626:
       ACCEPT_TOKEN(sym_word);
-      if (lookahead == ':') ADVANCE(520);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(535);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
-      END_STATE();
-    case 530:
-      ACCEPT_TOKEN(sym_word);
-      if (lookahead == ':') ADVANCE(520);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(532);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
-      END_STATE();
-    case 531:
-      ACCEPT_TOKEN(sym_word);
-      if (lookahead == ':') ADVANCE(520);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(534);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
-      END_STATE();
-    case 532:
-      ACCEPT_TOKEN(sym_word);
-      if (lookahead == ':') ADVANCE(520);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
-      END_STATE();
-    case 533:
-      ACCEPT_TOKEN(sym_word);
-      if (lookahead == ':') ADVANCE(521);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == ':') ADVANCE(614);
       if (lookahead == '-' ||
-          lookahead == '.') ADVANCE(572);
+          lookahead == '.') ADVANCE(673);
       if (('0' <= lookahead && lookahead <= '9') ||
           ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(531);
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(624);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
           lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != ' ') ADVANCE(678);
       END_STATE();
-    case 534:
+    case 627:
       ACCEPT_TOKEN(sym_word);
-      if (lookahead == ':') ADVANCE(522);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == ':') ADVANCE(615);
       if (lookahead == '-' ||
-          lookahead == '.') ADVANCE(569);
+          lookahead == '.') ADVANCE(670);
       if (('0' <= lookahead && lookahead <= '9') ||
           ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(568);
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(669);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
           lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != ' ') ADVANCE(678);
       END_STATE();
-    case 535:
+    case 628:
       ACCEPT_TOKEN(sym_word);
-      if (lookahead == ':') ADVANCE(522);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == ':') ADVANCE(615);
       if (lookahead == '-' ||
-          lookahead == '.') ADVANCE(569);
+          lookahead == '.') ADVANCE(670);
       if (('0' <= lookahead && lookahead <= '9') ||
           ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(524);
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(617);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
           lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != ' ') ADVANCE(678);
       END_STATE();
-    case 536:
+    case 629:
       ACCEPT_TOKEN(sym_word);
-      if (lookahead == ':') ADVANCE(351);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == ':') ADVANCE(442);
       if (('0' <= lookahead && lookahead <= '9') ||
           ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(525);
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(618);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
           lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != ' ') ADVANCE(678);
       END_STATE();
-    case 537:
+    case 630:
       ACCEPT_TOKEN(sym_word);
-      if (lookahead == ':') ADVANCE(351);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == ':') ADVANCE(442);
       if (('0' <= lookahead && lookahead <= '9') ||
           ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(527);
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(620);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
           lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != ' ') ADVANCE(678);
       END_STATE();
-    case 538:
+    case 631:
       ACCEPT_TOKEN(sym_word);
-      if (lookahead == ':') ADVANCE(351);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == ':') ADVANCE(442);
       if (('0' <= lookahead && lookahead <= '9') ||
           ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(528);
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(621);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
           lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != ' ') ADVANCE(678);
       END_STATE();
-    case 539:
+    case 632:
       ACCEPT_TOKEN(sym_word);
-      if (lookahead == ':') ADVANCE(351);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == ':') ADVANCE(442);
       if (('0' <= lookahead && lookahead <= '9') ||
           ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(529);
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(622);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
           lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != ' ') ADVANCE(678);
       END_STATE();
-    case 540:
+    case 633:
       ACCEPT_TOKEN(sym_word);
-      if (lookahead == ':') ADVANCE(537);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == ':') ADVANCE(630);
       if (('0' <= lookahead && lookahead <= '9') ||
           ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(547);
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(640);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
           lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != ' ') ADVANCE(678);
       END_STATE();
-    case 541:
+    case 634:
       ACCEPT_TOKEN(sym_word);
-      if (lookahead == ':') ADVANCE(537);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == ':') ADVANCE(630);
       if (('0' <= lookahead && lookahead <= '9') ||
           ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(548);
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(641);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
           lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != ' ') ADVANCE(678);
       END_STATE();
-    case 542:
+    case 635:
       ACCEPT_TOKEN(sym_word);
-      if (lookahead == ':') ADVANCE(537);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == ':') ADVANCE(630);
       if (('0' <= lookahead && lookahead <= '9') ||
           ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(550);
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(643);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
           lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != ' ') ADVANCE(678);
       END_STATE();
-    case 543:
+    case 636:
       ACCEPT_TOKEN(sym_word);
-      if (lookahead == ':') ADVANCE(537);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == ':') ADVANCE(630);
       if (('0' <= lookahead && lookahead <= '9') ||
           ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(540);
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(633);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
           lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != ' ') ADVANCE(678);
       END_STATE();
-    case 544:
+    case 637:
       ACCEPT_TOKEN(sym_word);
-      if (lookahead == ':') ADVANCE(537);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == ':') ADVANCE(630);
       if (('0' <= lookahead && lookahead <= '9') ||
           ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(543);
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(636);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
           lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != ' ') ADVANCE(678);
       END_STATE();
-    case 545:
+    case 638:
       ACCEPT_TOKEN(sym_word);
-      if (lookahead == ':') ADVANCE(537);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == ':') ADVANCE(630);
       if (('0' <= lookahead && lookahead <= '9') ||
           ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(503);
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(596);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
           lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != ' ') ADVANCE(678);
       END_STATE();
-    case 546:
+    case 639:
       ACCEPT_TOKEN(sym_word);
-      if (lookahead == ':') ADVANCE(537);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == ':') ADVANCE(630);
       if (('0' <= lookahead && lookahead <= '9') ||
           ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(549);
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(642);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
           lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != ' ') ADVANCE(678);
       END_STATE();
-    case 547:
+    case 640:
       ACCEPT_TOKEN(sym_word);
-      if (lookahead == ':') ADVANCE(537);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == ':') ADVANCE(630);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
           lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != ' ') ADVANCE(678);
       END_STATE();
-    case 548:
+    case 641:
       ACCEPT_TOKEN(sym_word);
-      if (lookahead == ':') ADVANCE(538);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == ':') ADVANCE(631);
       if (lookahead == '-' ||
-          lookahead == '.') ADVANCE(574);
+          lookahead == '.') ADVANCE(675);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(635);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 642:
+      ACCEPT_TOKEN(sym_word);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == ':') ADVANCE(632);
+      if (lookahead == '-' ||
+          lookahead == '.') ADVANCE(673);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(638);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 643:
+      ACCEPT_TOKEN(sym_word);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == ':') ADVANCE(632);
+      if (lookahead == '-' ||
+          lookahead == '.') ADVANCE(673);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(671);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 644:
+      ACCEPT_TOKEN(sym_word);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == ':') ADVANCE(443);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(637);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 645:
+      ACCEPT_TOKEN(sym_word);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == ':') ADVANCE(443);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(634);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 646:
+      ACCEPT_TOKEN(sym_word);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == ':') ADVANCE(443);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(639);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 647:
+      ACCEPT_TOKEN(sym_word);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '-' ||
+          lookahead == '.' ||
+          lookahead == ':') ADVANCE(666);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(662);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 648:
+      ACCEPT_TOKEN(sym_word);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '-' ||
+          lookahead == '.' ||
+          lookahead == ':') ADVANCE(670);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(669);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 649:
+      ACCEPT_TOKEN(sym_word);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '-' ||
+          lookahead == '.' ||
+          lookahead == ':') ADVANCE(673);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(664);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 650:
+      ACCEPT_TOKEN(sym_word);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '-' ||
+          lookahead == '.' ||
+          lookahead == ':') ADVANCE(673);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(671);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 651:
+      ACCEPT_TOKEN(sym_word);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead == '-' ||
+          lookahead == '.' ||
+          lookahead == ':') ADVANCE(675);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(674);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 652:
+      ACCEPT_TOKEN(sym_word);
+      if (lookahead == '%') ADVANCE(676);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(28);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 653:
+      ACCEPT_TOKEN(sym_word);
+      if (lookahead == '%') ADVANCE(676);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(34);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 654:
+      ACCEPT_TOKEN(sym_word);
+      if (lookahead == '%') ADVANCE(676);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(503);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 655:
+      ACCEPT_TOKEN(sym_word);
+      if (lookahead == '%') ADVANCE(676);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(35);
+      if (('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(661);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 656:
+      ACCEPT_TOKEN(sym_word);
+      if (lookahead == '%') ADVANCE(676);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(33);
+      if (('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(662);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 657:
+      ACCEPT_TOKEN(sym_word);
+      if (lookahead == '%') ADVANCE(676);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(36);
+      if (('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(669);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 658:
+      ACCEPT_TOKEN(sym_word);
+      if (lookahead == '%') ADVANCE(676);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(37);
+      if (('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(671);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 659:
+      ACCEPT_TOKEN(sym_word);
+      if (lookahead == '%') ADVANCE(676);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(38);
+      if (('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(674);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 660:
+      ACCEPT_TOKEN(sym_word);
+      if (lookahead == '%') ADVANCE(676);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(40);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 661:
+      ACCEPT_TOKEN(sym_word);
+      if (lookahead == '%') ADVANCE(676);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(651);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 662:
+      ACCEPT_TOKEN(sym_word);
+      if (lookahead == '%') ADVANCE(676);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(495);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 663:
+      ACCEPT_TOKEN(sym_word);
+      if (lookahead == '%') ADVANCE(676);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(483);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 664:
+      ACCEPT_TOKEN(sym_word);
+      if (lookahead == '%') ADVANCE(676);
       if (('0' <= lookahead && lookahead <= '9') ||
           ('A' <= lookahead && lookahead <= 'F') ||
           ('a' <= lookahead && lookahead <= 'f')) ADVANCE(542);
@@ -7944,323 +10434,184 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
           lookahead != '\t' &&
           lookahead != '\n' &&
           lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != ' ') ADVANCE(678);
       END_STATE();
-    case 549:
+    case 665:
       ACCEPT_TOKEN(sym_word);
-      if (lookahead == ':') ADVANCE(539);
-      if (lookahead == '-' ||
-          lookahead == '.') ADVANCE(572);
+      if (lookahead == '%') ADVANCE(676);
       if (('0' <= lookahead && lookahead <= '9') ||
           ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(545);
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(661);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
           lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != ' ') ADVANCE(678);
       END_STATE();
-    case 550:
+    case 666:
       ACCEPT_TOKEN(sym_word);
-      if (lookahead == ':') ADVANCE(539);
-      if (lookahead == '-' ||
-          lookahead == '.') ADVANCE(572);
+      if (lookahead == '%') ADVANCE(676);
       if (('0' <= lookahead && lookahead <= '9') ||
           ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(570);
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(662);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
           lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != ' ') ADVANCE(678);
       END_STATE();
-    case 551:
+    case 667:
       ACCEPT_TOKEN(sym_word);
-      if (lookahead == ':') ADVANCE(352);
+      if (lookahead == '%') ADVANCE(676);
       if (('0' <= lookahead && lookahead <= '9') ||
           ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(544);
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(649);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
           lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != ' ') ADVANCE(678);
       END_STATE();
-    case 552:
+    case 668:
       ACCEPT_TOKEN(sym_word);
-      if (lookahead == ':') ADVANCE(352);
+      if (lookahead == '%') ADVANCE(676);
       if (('0' <= lookahead && lookahead <= '9') ||
           ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(541);
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(667);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
           lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != ' ') ADVANCE(678);
       END_STATE();
-    case 553:
+    case 669:
       ACCEPT_TOKEN(sym_word);
-      if (lookahead == ':') ADVANCE(352);
+      if (lookahead == '%') ADVANCE(676);
       if (('0' <= lookahead && lookahead <= '9') ||
           ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(546);
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(647);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
           lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != ' ') ADVANCE(678);
       END_STATE();
-    case 554:
+    case 670:
       ACCEPT_TOKEN(sym_word);
+      if (lookahead == '%') ADVANCE(676);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(669);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 671:
+      ACCEPT_TOKEN(sym_word);
+      if (lookahead == '%') ADVANCE(676);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(648);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 672:
+      ACCEPT_TOKEN(sym_word);
+      if (lookahead == '%') ADVANCE(676);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(474);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 673:
+      ACCEPT_TOKEN(sym_word);
+      if (lookahead == '%') ADVANCE(676);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(671);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 674:
+      ACCEPT_TOKEN(sym_word);
+      if (lookahead == '%') ADVANCE(676);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(650);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 675:
+      ACCEPT_TOKEN(sym_word);
+      if (lookahead == '%') ADVANCE(676);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'F') ||
+          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(674);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 676:
+      ACCEPT_TOKEN(sym_word);
+      if (lookahead == '%') ADVANCE(676);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'Z') ||
+          lookahead == '_' ||
+          ('a' <= lookahead && lookahead <= 'z')) ADVANCE(504);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 677:
+      ACCEPT_TOKEN(sym_word);
+      if (lookahead == '%') ADVANCE(676);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'Z') ||
+          lookahead == '_' ||
+          ('a' <= lookahead && lookahead <= 'z')) ADVANCE(570);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 678:
+      ACCEPT_TOKEN(sym_word);
+      if (lookahead == '%') ADVANCE(676);
+      if (lookahead != 0 &&
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(678);
+      END_STATE();
+    case 679:
+      ACCEPT_TOKEN(sym_word);
+      if (lookahead == '%') ADVANCE(500);
       if (lookahead == '\t' ||
           lookahead == ' ') ADVANCE(1);
       if (lookahead != 0 &&
           lookahead != '\t' &&
           lookahead != '\n' &&
-          lookahead != '\r') ADVANCE(405);
-      END_STATE();
-    case 555:
-      ACCEPT_TOKEN(sym_word);
-      if (lookahead == '-' ||
-          lookahead == '.' ||
-          lookahead == ':') ADVANCE(565);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(561);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
-      END_STATE();
-    case 556:
-      ACCEPT_TOKEN(sym_word);
-      if (lookahead == '-' ||
-          lookahead == '.' ||
-          lookahead == ':') ADVANCE(569);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(568);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
-      END_STATE();
-    case 557:
-      ACCEPT_TOKEN(sym_word);
-      if (lookahead == '-' ||
-          lookahead == '.' ||
-          lookahead == ':') ADVANCE(572);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(564);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
-      END_STATE();
-    case 558:
-      ACCEPT_TOKEN(sym_word);
-      if (lookahead == '-' ||
-          lookahead == '.' ||
-          lookahead == ':') ADVANCE(572);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(570);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
-      END_STATE();
-    case 559:
-      ACCEPT_TOKEN(sym_word);
-      if (lookahead == '-' ||
-          lookahead == '.' ||
-          lookahead == ':') ADVANCE(574);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(573);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
-      END_STATE();
-    case 560:
-      ACCEPT_TOKEN(sym_word);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(559);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
-      END_STATE();
-    case 561:
-      ACCEPT_TOKEN(sym_word);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(404);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
-      END_STATE();
-    case 562:
-      ACCEPT_TOKEN(sym_word);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(392);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
-      END_STATE();
-    case 563:
-      ACCEPT_TOKEN(sym_word);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(560);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
-      END_STATE();
-    case 564:
-      ACCEPT_TOKEN(sym_word);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(451);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
-      END_STATE();
-    case 565:
-      ACCEPT_TOKEN(sym_word);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(561);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
-      END_STATE();
-    case 566:
-      ACCEPT_TOKEN(sym_word);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(557);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
-      END_STATE();
-    case 567:
-      ACCEPT_TOKEN(sym_word);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(566);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
-      END_STATE();
-    case 568:
-      ACCEPT_TOKEN(sym_word);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(555);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
-      END_STATE();
-    case 569:
-      ACCEPT_TOKEN(sym_word);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(568);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
-      END_STATE();
-    case 570:
-      ACCEPT_TOKEN(sym_word);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(556);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
-      END_STATE();
-    case 571:
-      ACCEPT_TOKEN(sym_word);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(383);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
-      END_STATE();
-    case 572:
-      ACCEPT_TOKEN(sym_word);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(570);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
-      END_STATE();
-    case 573:
-      ACCEPT_TOKEN(sym_word);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(558);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
-      END_STATE();
-    case 574:
-      ACCEPT_TOKEN(sym_word);
-      if (('0' <= lookahead && lookahead <= '9') ||
-          ('A' <= lookahead && lookahead <= 'F') ||
-          ('a' <= lookahead && lookahead <= 'f')) ADVANCE(573);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
-      END_STATE();
-    case 575:
-      ACCEPT_TOKEN(sym_word);
-      if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(575);
+          lookahead != '\r') ADVANCE(502);
       END_STATE();
     default:
       return false;
@@ -8306,1147 +10657,1766 @@ static bool ts_lex_keywords(TSLexer *lexer, TSStateId state) {
           lookahead == 'i') ADVANCE(23);
       if (lookahead == 'N' ||
           lookahead == 'n') ADVANCE(24);
+      if (lookahead == 'O' ||
+          lookahead == 'o') ADVANCE(25);
       if (lookahead == 'R' ||
-          lookahead == 'r') ADVANCE(25);
+          lookahead == 'r') ADVANCE(26);
       if (lookahead == 'S' ||
-          lookahead == 's') ADVANCE(26);
+          lookahead == 's') ADVANCE(27);
+      if (lookahead == 'U' ||
+          lookahead == 'u') ADVANCE(28);
       END_STATE();
     case 1:
-      if (lookahead == 'p') ADVANCE(27);
-      if (lookahead == 's') ADVANCE(28);
-      if (lookahead == 'D' ||
-          lookahead == 'd') ADVANCE(29);
+      ADVANCE_MAP(
+        'p', 29,
+        's', 30,
+        'C', 31,
+        'c', 31,
+        'D', 32,
+        'd', 32,
+        'L', 33,
+        'l', 33,
+        'N', 34,
+        'n', 34,
+      );
       END_STATE();
     case 2:
-      if (lookahead == 'D') ADVANCE(30);
-      if (lookahead == 'R') ADVANCE(31);
-      if (lookahead == 'V') ADVANCE(32);
-      if (lookahead == 'r') ADVANCE(33);
+      if (lookahead == 'D') ADVANCE(35);
+      if (lookahead == 'R') ADVANCE(36);
+      if (lookahead == 'V') ADVANCE(37);
+      if (lookahead == 'r') ADVANCE(38);
       END_STATE();
     case 3:
-      if (lookahead == 'a') ADVANCE(34);
-      if (lookahead == 'i') ADVANCE(35);
-      if (lookahead == 'o') ADVANCE(36);
+      if (lookahead == 'a') ADVANCE(39);
+      if (lookahead == 'i') ADVANCE(40);
+      if (lookahead == 'o') ADVANCE(41);
       END_STATE();
     case 4:
-      if (lookahead == 'a') ADVANCE(37);
-      if (lookahead == 'i') ADVANCE(38);
+      if (lookahead == 'a') ADVANCE(42);
+      if (lookahead == 'i') ADVANCE(43);
       if (lookahead == 'E' ||
-          lookahead == 'e') ADVANCE(39);
+          lookahead == 'e') ADVANCE(44);
       END_STATE();
     case 5:
-      if (lookahead == 'o') ADVANCE(40);
+      if (lookahead == 'o') ADVANCE(45);
       END_STATE();
     case 6:
-      if (lookahead == 'a') ADVANCE(41);
-      if (lookahead == 'g') ADVANCE(42);
+      if (lookahead == 'A') ADVANCE(46);
+      if (lookahead == 'a') ADVANCE(47);
+      if (lookahead == 'g') ADVANCE(48);
       END_STATE();
     case 7:
-      if (lookahead == 'o') ADVANCE(43);
+      if (lookahead == 'o') ADVANCE(49);
+      if (lookahead == 'E' ||
+          lookahead == 'e') ADVANCE(50);
+      if (lookahead == 'R' ||
+          lookahead == 'r') ADVANCE(51);
       END_STATE();
     case 8:
-      if (lookahead == 'e') ADVANCE(44);
-      if (lookahead == 'u') ADVANCE(45);
-      if (lookahead == 'w') ADVANCE(46);
+      if (lookahead == 'e') ADVANCE(52);
+      if (lookahead == 'u') ADVANCE(53);
+      if (lookahead == 'w') ADVANCE(54);
+      if (lookahead == 'R' ||
+          lookahead == 'r') ADVANCE(55);
       END_STATE();
     case 9:
-      if (lookahead == 'L') ADVANCE(47);
-      if (lookahead == 'a') ADVANCE(48);
-      if (lookahead == 'i') ADVANCE(49);
-      if (lookahead == 'l') ADVANCE(50);
+      if (lookahead == 'L') ADVANCE(56);
+      if (lookahead == 'a') ADVANCE(57);
+      if (lookahead == 'i') ADVANCE(58);
+      if (lookahead == 'l') ADVANCE(59);
       if (lookahead == 'M' ||
-          lookahead == 'm') ADVANCE(51);
+          lookahead == 'm') ADVANCE(60);
       END_STATE();
     case 10:
-      if (lookahead == 's') ADVANCE(28);
-      if (lookahead == 'D' ||
-          lookahead == 'd') ADVANCE(29);
+      ADVANCE_MAP(
+        's', 30,
+        'C', 31,
+        'c', 31,
+        'D', 32,
+        'd', 32,
+        'L', 33,
+        'l', 33,
+        'N', 34,
+        'n', 34,
+      );
       END_STATE();
     case 11:
-      if (lookahead == 'r') ADVANCE(33);
+      if (lookahead == 'r') ADVANCE(38);
       END_STATE();
     case 12:
-      if (lookahead == 'a') ADVANCE(52);
-      if (lookahead == 'i') ADVANCE(53);
-      if (lookahead == 'o') ADVANCE(54);
+      if (lookahead == 'a') ADVANCE(61);
+      if (lookahead == 'i') ADVANCE(62);
+      if (lookahead == 'o') ADVANCE(63);
       END_STATE();
     case 13:
-      if (lookahead == 'a') ADVANCE(37);
-      if (lookahead == 'i') ADVANCE(55);
+      if (lookahead == 'a') ADVANCE(42);
+      if (lookahead == 'i') ADVANCE(64);
       if (lookahead == 'E' ||
-          lookahead == 'e') ADVANCE(39);
+          lookahead == 'e') ADVANCE(44);
       END_STATE();
     case 14:
-      if (lookahead == 'o') ADVANCE(56);
+      if (lookahead == 'o') ADVANCE(65);
       END_STATE();
     case 15:
-      if (lookahead == 'g') ADVANCE(42);
+      if (lookahead == 'g') ADVANCE(48);
+      if (lookahead == 'A' ||
+          lookahead == 'a') ADVANCE(46);
       END_STATE();
     case 16:
-      if (lookahead == 'o') ADVANCE(57);
+      if (lookahead == 'o') ADVANCE(66);
+      if (lookahead == 'E' ||
+          lookahead == 'e') ADVANCE(50);
+      if (lookahead == 'R' ||
+          lookahead == 'r') ADVANCE(51);
       END_STATE();
     case 17:
-      if (lookahead == 'e') ADVANCE(58);
-      if (lookahead == 'u') ADVANCE(59);
-      if (lookahead == 'w') ADVANCE(46);
+      if (lookahead == 'e') ADVANCE(67);
+      if (lookahead == 'u') ADVANCE(68);
+      if (lookahead == 'w') ADVANCE(54);
+      if (lookahead == 'R' ||
+          lookahead == 'r') ADVANCE(55);
       END_STATE();
     case 18:
-      if (lookahead == 'a') ADVANCE(48);
-      if (lookahead == 'i') ADVANCE(49);
-      if (lookahead == 'l') ADVANCE(50);
+      if (lookahead == 'a') ADVANCE(57);
+      if (lookahead == 'i') ADVANCE(58);
+      if (lookahead == 'l') ADVANCE(59);
       if (lookahead == 'M' ||
-          lookahead == 'm') ADVANCE(51);
+          lookahead == 'm') ADVANCE(60);
       END_STATE();
     case 19:
-      if (lookahead == 'e') ADVANCE(60);
+      if (lookahead == 'e') ADVANCE(69);
       END_STATE();
     case 20:
-      if (lookahead == 'i') ADVANCE(61);
-      if (lookahead == 'o') ADVANCE(62);
+      if (lookahead == 'I') ADVANCE(70);
+      if (lookahead == 'O') ADVANCE(71);
+      if (lookahead == 'i') ADVANCE(72);
+      if (lookahead == 'o') ADVANCE(73);
       if (lookahead == 'E' ||
-          lookahead == 'e') ADVANCE(63);
+          lookahead == 'e') ADVANCE(74);
       END_STATE();
     case 21:
-      if (lookahead == 't') ADVANCE(64);
+      if (lookahead == 't') ADVANCE(75);
+      if (lookahead == 'N' ||
+          lookahead == 'n') ADVANCE(76);
+      if (lookahead == 'X' ||
+          lookahead == 'x') ADVANCE(77);
       END_STATE();
     case 22:
-      if (lookahead == 'u') ADVANCE(65);
+      if (lookahead == 'u') ADVANCE(78);
       END_STATE();
     case 23:
       if (lookahead == 'N' ||
-          lookahead == 'n') ADVANCE(66);
+          lookahead == 'n') ADVANCE(79);
       END_STATE();
     case 24:
-      if (lookahead == 'u') ADVANCE(67);
+      if (lookahead == 'u') ADVANCE(80);
+      if (lookahead == 'A' ||
+          lookahead == 'a') ADVANCE(81);
       if (lookahead == 'O' ||
-          lookahead == 'o') ADVANCE(68);
+          lookahead == 'o') ADVANCE(82);
       if (lookahead == 'V' ||
-          lookahead == 'v') ADVANCE(69);
+          lookahead == 'v') ADVANCE(83);
       END_STATE();
     case 25:
-      if (lookahead == 'E' ||
-          lookahead == 'e') ADVANCE(70);
-      if (lookahead == 'O' ||
-          lookahead == 'o') ADVANCE(71);
+      if (lookahead == 'U' ||
+          lookahead == 'u') ADVANCE(84);
       END_STATE();
     case 26:
-      if (lookahead == 'e') ADVANCE(72);
+      if (lookahead == 'E' ||
+          lookahead == 'e') ADVANCE(85);
+      if (lookahead == 'O' ||
+          lookahead == 'o') ADVANCE(86);
       END_STATE();
     case 27:
-      if (lookahead == 'p') ADVANCE(73);
+      if (lookahead == 'e') ADVANCE(87);
+      if (lookahead == 'H' ||
+          lookahead == 'h') ADVANCE(88);
       END_STATE();
     case 28:
-      if (lookahead == 'y') ADVANCE(74);
+      if (lookahead == 'P' ||
+          lookahead == 'p') ADVANCE(89);
       END_STATE();
     case 29:
-      if (lookahead == 'D' ||
-          lookahead == 'd') ADVANCE(75);
+      if (lookahead == 'p') ADVANCE(90);
       END_STATE();
     case 30:
-      if (lookahead == 'I') ADVANCE(76);
+      if (lookahead == 'y') ADVANCE(91);
       END_STATE();
     case 31:
-      if (lookahead == 'I') ADVANCE(77);
+      if (lookahead == 'C' ||
+          lookahead == 'c') ADVANCE(92);
       END_STATE();
     case 32:
-      if (lookahead == 'I') ADVANCE(78);
+      if (lookahead == 'D' ||
+          lookahead == 'd') ADVANCE(93);
+      if (lookahead == 'M' ||
+          lookahead == 'm') ADVANCE(94);
       END_STATE();
     case 33:
-      if (lookahead == 'i') ADVANCE(79);
+      if (lookahead == 'L' ||
+          lookahead == 'l') ADVANCE(95);
       END_STATE();
     case 34:
-      ACCEPT_TOKEN(sym_token_type_cisco_interface_ethernet);
-      if (lookahead == 's') ADVANCE(80);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(81);
+      if (lookahead == 'Y' ||
+          lookahead == 'y') ADVANCE(96);
       END_STATE();
     case 35:
-      ACCEPT_TOKEN(sym_token_type_cisco_interface_ethernet);
-      if (lookahead == 'f') ADVANCE(82);
-      if (lookahead == 'v') ADVANCE(83);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(81);
+      if (lookahead == 'I') ADVANCE(97);
       END_STATE();
     case 36:
-      ACCEPT_TOKEN(sym_token_type_cisco_interface_ethernet);
-      if (lookahead == 'r') ADVANCE(84);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(81);
+      if (lookahead == 'I') ADVANCE(98);
       END_STATE();
     case 37:
-      if (lookahead == 'b') ADVANCE(85);
+      if (lookahead == 'I') ADVANCE(99);
       END_STATE();
     case 38:
-      ACCEPT_TOKEN(sym_token_type_cisco_interface_ethernet);
-      if (lookahead == 'g') ADVANCE(86);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(81);
+      if (lookahead == 'i') ADVANCE(100);
       END_STATE();
     case 39:
       ACCEPT_TOKEN(sym_token_type_cisco_interface_ethernet);
-      if (lookahead == 't') ADVANCE(87);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(81);
+      if (lookahead == 's') ADVANCE(101);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(102);
       END_STATE();
     case 40:
-      ACCEPT_TOKEN(sym_token_type_cisco_interface_loopback);
-      if (lookahead == 'o') ADVANCE(88);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(89);
+      ACCEPT_TOKEN(sym_token_type_cisco_interface_ethernet);
+      if (lookahead == 'f') ADVANCE(103);
+      if (lookahead == 'v') ADVANCE(104);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(102);
       END_STATE();
     case 41:
-      if (lookahead == 'n') ADVANCE(90);
+      ACCEPT_TOKEN(sym_token_type_cisco_interface_ethernet);
+      if (lookahead == 'r') ADVANCE(105);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(102);
       END_STATE();
     case 42:
-      if (lookahead == 'm') ADVANCE(91);
+      if (lookahead == 'b') ADVANCE(106);
       END_STATE();
     case 43:
-      ACCEPT_TOKEN(sym_token_type_cisco_interface_port_channel);
-      if (lookahead == '1') ADVANCE(92);
-      if (lookahead == 'r') ADVANCE(93);
-      if (('2' <= lookahead && lookahead <= '9')) ADVANCE(94);
+      ACCEPT_TOKEN(sym_token_type_cisco_interface_ethernet);
+      if (lookahead == 'g') ADVANCE(107);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(102);
       END_STATE();
     case 44:
       ACCEPT_TOKEN(sym_token_type_cisco_interface_ethernet);
-      if (lookahead == 'n') ADVANCE(95);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(81);
+      if (lookahead == 't') ADVANCE(108);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(102);
       END_STATE();
     case 45:
-      ACCEPT_TOKEN(sym_token_type_cisco_interface_tunnel);
-      if (lookahead == 'n') ADVANCE(96);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(97);
+      ACCEPT_TOKEN(sym_token_type_cisco_interface_loopback);
+      if (lookahead == 'o') ADVANCE(109);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(110);
       END_STATE();
     case 46:
-      if (lookahead == 'e') ADVANCE(98);
-      if (lookahead == 'o') ADVANCE(99);
-      END_STATE();
-    case 47:
-      if (lookahead == 'A') ADVANCE(100);
-      END_STATE();
-    case 48:
-      if (lookahead == 's') ADVANCE(101);
-      END_STATE();
-    case 49:
-      if (lookahead == 'r') ADVANCE(102);
-      END_STATE();
-    case 50:
-      if (lookahead == 'a') ADVANCE(103);
-      END_STATE();
-    case 51:
-      if (lookahead == 'I' ||
-          lookahead == 'i') ADVANCE(104);
-      END_STATE();
-    case 52:
-      if (lookahead == 's') ADVANCE(80);
-      END_STATE();
-    case 53:
-      if (lookahead == 'f') ADVANCE(82);
-      if (lookahead == 'v') ADVANCE(83);
-      END_STATE();
-    case 54:
-      if (lookahead == 'r') ADVANCE(84);
-      END_STATE();
-    case 55:
-      if (lookahead == 'g') ADVANCE(86);
-      END_STATE();
-    case 56:
-      if (lookahead == 'o') ADVANCE(88);
-      END_STATE();
-    case 57:
-      if (lookahead == 'r') ADVANCE(93);
-      END_STATE();
-    case 58:
-      if (lookahead == 'n') ADVANCE(95);
-      END_STATE();
-    case 59:
-      if (lookahead == 'n') ADVANCE(96);
-      END_STATE();
-    case 60:
-      if (lookahead == 'l') ADVANCE(105);
-      END_STATE();
-    case 61:
-      if (lookahead == 'a') ADVANCE(106);
-      END_STATE();
-    case 62:
-      if (lookahead == 't') ADVANCE(107);
-      END_STATE();
-    case 63:
-      if (lookahead == 'F' ||
-          lookahead == 'f') ADVANCE(108);
-      if (lookahead == 'S' ||
-          lookahead == 's') ADVANCE(109);
-      END_STATE();
-    case 64:
-      if (lookahead == 'h') ADVANCE(110);
-      END_STATE();
-    case 65:
-      if (lookahead == 'n') ADVANCE(111);
-      END_STATE();
-    case 66:
+      if (lookahead == 'C' ||
+          lookahead == 'c') ADVANCE(111);
       if (lookahead == 'T' ||
           lookahead == 't') ADVANCE(112);
       END_STATE();
+    case 47:
+      if (lookahead == 'n') ADVANCE(113);
+      if (lookahead == 'C' ||
+          lookahead == 'c') ADVANCE(111);
+      if (lookahead == 'T' ||
+          lookahead == 't') ADVANCE(112);
+      END_STATE();
+    case 48:
+      if (lookahead == 'm') ADVANCE(114);
+      END_STATE();
+    case 49:
+      ACCEPT_TOKEN(sym_token_type_cisco_interface_port_channel);
+      if (lookahead == '1') ADVANCE(115);
+      if (lookahead == 'r') ADVANCE(116);
+      if (('2' <= lookahead && lookahead <= '9')) ADVANCE(117);
+      END_STATE();
+    case 50:
+      if (lookahead == 'R' ||
+          lookahead == 'r') ADVANCE(118);
+      END_STATE();
+    case 51:
+      if (lookahead == 'O' ||
+          lookahead == 'o') ADVANCE(119);
+      END_STATE();
+    case 52:
+      ACCEPT_TOKEN(sym_token_type_cisco_interface_ethernet);
+      if (lookahead == 'n') ADVANCE(120);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(102);
+      END_STATE();
+    case 53:
+      ACCEPT_TOKEN(sym_token_type_cisco_interface_tunnel);
+      if (lookahead == 'n') ADVANCE(121);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(122);
+      END_STATE();
+    case 54:
+      if (lookahead == 'e') ADVANCE(123);
+      if (lookahead == 'o') ADVANCE(124);
+      END_STATE();
+    case 55:
+      if (lookahead == 'U' ||
+          lookahead == 'u') ADVANCE(125);
+      END_STATE();
+    case 56:
+      if (lookahead == 'A') ADVANCE(126);
+      END_STATE();
+    case 57:
+      if (lookahead == 's') ADVANCE(127);
+      END_STATE();
+    case 58:
+      if (lookahead == 'r') ADVANCE(128);
+      END_STATE();
+    case 59:
+      if (lookahead == 'a') ADVANCE(129);
+      END_STATE();
+    case 60:
+      if (lookahead == 'I' ||
+          lookahead == 'i') ADVANCE(130);
+      END_STATE();
+    case 61:
+      if (lookahead == 's') ADVANCE(101);
+      END_STATE();
+    case 62:
+      if (lookahead == 'f') ADVANCE(103);
+      if (lookahead == 'v') ADVANCE(104);
+      END_STATE();
+    case 63:
+      if (lookahead == 'r') ADVANCE(105);
+      END_STATE();
+    case 64:
+      if (lookahead == 'g') ADVANCE(107);
+      END_STATE();
+    case 65:
+      if (lookahead == 'o') ADVANCE(109);
+      END_STATE();
+    case 66:
+      if (lookahead == 'r') ADVANCE(116);
+      END_STATE();
     case 67:
-      if (lookahead == 'l') ADVANCE(113);
+      if (lookahead == 'n') ADVANCE(120);
       END_STATE();
     case 68:
-      ACCEPT_TOKEN(sym_no_modifier);
+      if (lookahead == 'n') ADVANCE(121);
       END_STATE();
     case 69:
-      if (lookahead == 'I' ||
-          lookahead == 'i') ADVANCE(114);
+      if (lookahead == 'l') ADVANCE(131);
       END_STATE();
     case 70:
-      if (lookahead == 'M' ||
-          lookahead == 'm') ADVANCE(115);
+      if (lookahead == 'S' ||
+          lookahead == 's') ADVANCE(132);
       END_STATE();
     case 71:
-      if (lookahead == 'U' ||
-          lookahead == 'u') ADVANCE(116);
+      if (lookahead == 'T' ||
+          lookahead == 't') ADVANCE(133);
+      if (lookahead == 'W' ||
+          lookahead == 'w') ADVANCE(134);
       END_STATE();
     case 72:
-      if (lookahead == 'r') ADVANCE(117);
+      if (lookahead == 'a') ADVANCE(135);
+      if (lookahead == 'S' ||
+          lookahead == 's') ADVANCE(132);
       END_STATE();
     case 73:
-      if (lookahead == 'G' ||
-          lookahead == 'g') ADVANCE(118);
+      if (lookahead == 'T') ADVANCE(133);
+      if (lookahead == 't') ADVANCE(136);
+      if (lookahead == 'W' ||
+          lookahead == 'w') ADVANCE(134);
       END_STATE();
     case 74:
-      if (lookahead == 'n') ADVANCE(119);
+      ADVANCE_MAP(
+        'F', 137,
+        'f', 137,
+        'L', 138,
+        'l', 138,
+        'N', 139,
+        'n', 139,
+        'S', 140,
+        's', 140,
+      );
       END_STATE();
     case 75:
-      if (lookahead == 'R' ||
-          lookahead == 'r') ADVANCE(120);
+      if (lookahead == 'h') ADVANCE(141);
       END_STATE();
     case 76:
-      ACCEPT_TOKEN(sym_token_type_cisco_interface_bdi);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(76);
+      if (lookahead == 'A' ||
+          lookahead == 'a') ADVANCE(142);
       END_STATE();
     case 77:
-      ACCEPT_TOKEN(sym_token_type_cisco_interface_bri);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(77);
+      if (lookahead == 'C' ||
+          lookahead == 'c') ADVANCE(143);
       END_STATE();
     case 78:
-      ACCEPT_TOKEN(sym_token_type_cisco_interface_bvi);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(78);
+      if (lookahead == 'n') ADVANCE(144);
       END_STATE();
     case 79:
-      if (lookahead == 'd') ADVANCE(121);
+      ACCEPT_TOKEN(sym_token_keyword_cisco_in_out_in);
+      if (lookahead == 'P' ||
+          lookahead == 'p') ADVANCE(145);
+      if (lookahead == 'S' ||
+          lookahead == 's') ADVANCE(146);
+      if (lookahead == 'T' ||
+          lookahead == 't') ADVANCE(147);
       END_STATE();
     case 80:
-      if (lookahead == 't') ADVANCE(122);
+      if (lookahead == 'l') ADVANCE(148);
       END_STATE();
     case 81:
-      ACCEPT_TOKEN(sym_token_type_cisco_interface_ethernet);
-      if (lookahead == '.') ADVANCE(123);
-      if (lookahead == '/') ADVANCE(124);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(81);
+      if (lookahead == 'T' ||
+          lookahead == 't') ADVANCE(149);
       END_STATE();
     case 82:
-      if (lookahead == 't') ADVANCE(125);
+      ACCEPT_TOKEN(sym_no_modifier);
       END_STATE();
     case 83:
-      if (lookahead == 'e') ADVANCE(95);
+      if (lookahead == 'I' ||
+          lookahead == 'i') ADVANCE(150);
       END_STATE();
     case 84:
-      if (lookahead == 't') ADVANCE(126);
-      END_STATE();
-    case 85:
-      if (lookahead == 'i') ADVANCE(127);
-      END_STATE();
-    case 86:
-      if (lookahead == 'a') ADVANCE(37);
-      if (lookahead == 'E' ||
-          lookahead == 'e') ADVANCE(39);
-      END_STATE();
-    case 87:
-      if (lookahead == 'h') ADVANCE(128);
-      END_STATE();
-    case 88:
-      if (lookahead == 'p') ADVANCE(129);
-      END_STATE();
-    case 89:
-      ACCEPT_TOKEN(sym_token_type_cisco_interface_loopback);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(89);
-      END_STATE();
-    case 90:
-      if (lookahead == 'a') ADVANCE(130);
-      END_STATE();
-    case 91:
-      if (lookahead == 't') ADVANCE(131);
-      END_STATE();
-    case 92:
-      ACCEPT_TOKEN(sym_token_type_cisco_interface_port_channel);
-      if (lookahead == '2') ADVANCE(132);
-      if (lookahead == '0' ||
-          lookahead == '1') ADVANCE(133);
-      if (('3' <= lookahead && lookahead <= '9')) ADVANCE(134);
-      END_STATE();
-    case 93:
-      if (lookahead == 't') ADVANCE(135);
-      END_STATE();
-    case 94:
-      ACCEPT_TOKEN(sym_token_type_cisco_interface_port_channel);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(134);
-      END_STATE();
-    case 95:
-      if (lookahead == 'G' ||
-          lookahead == 'g') ADVANCE(13);
-      END_STATE();
-    case 96:
-      if (lookahead == 'n') ADVANCE(136);
-      END_STATE();
-    case 97:
-      ACCEPT_TOKEN(sym_token_type_cisco_interface_tunnel);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(97);
-      END_STATE();
-    case 98:
-      if (lookahead == 'n') ADVANCE(137);
-      END_STATE();
-    case 99:
-      if (lookahead == 'H' ||
-          lookahead == 'h') ADVANCE(22);
-      END_STATE();
-    case 100:
-      if (lookahead == 'N') ADVANCE(138);
-      END_STATE();
-    case 101:
-      if (lookahead == 'i') ADVANCE(139);
-      END_STATE();
-    case 102:
-      if (lookahead == 't') ADVANCE(140);
-      END_STATE();
-    case 103:
-      if (lookahead == 'n') ADVANCE(138);
-      END_STATE();
-    case 104:
-      ACCEPT_TOKEN(sym_token_type_cisco_interface_vmi);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(104);
-      END_STATE();
-    case 105:
-      if (lookahead == 'l') ADVANCE(141);
-      END_STATE();
-    case 106:
-      if (lookahead == 'l') ADVANCE(142);
-      END_STATE();
-    case 107:
-      if (lookahead == '1') ADVANCE(143);
-      END_STATE();
-    case 108:
-      if (lookahead == 'A' ||
-          lookahead == 'a') ADVANCE(144);
-      END_STATE();
-    case 109:
-      if (lookahead == 'C' ||
-          lookahead == 'c') ADVANCE(145);
-      END_STATE();
-    case 110:
-      ACCEPT_TOKEN(sym_token_type_cisco_interface_ethernet);
-      if (lookahead == 'e') ADVANCE(146);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(81);
-      END_STATE();
-    case 111:
-      if (lookahead == 'd') ADVANCE(147);
-      END_STATE();
-    case 112:
-      if (lookahead == 'E' ||
-          lookahead == 'e') ADVANCE(148);
-      END_STATE();
-    case 113:
-      if (lookahead == 'l') ADVANCE(149);
-      END_STATE();
-    case 114:
-      ACCEPT_TOKEN(sym_token_type_cisco_interface_nvi);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(114);
-      END_STATE();
-    case 115:
-      if (lookahead == 'A' ||
-          lookahead == 'a') ADVANCE(150);
-      END_STATE();
-    case 116:
       if (lookahead == 'T' ||
           lookahead == 't') ADVANCE(151);
       END_STATE();
-    case 117:
-      if (lookahead == 'i') ADVANCE(152);
+    case 85:
+      if (lookahead == 'M' ||
+          lookahead == 'm') ADVANCE(152);
       END_STATE();
-    case 118:
-      ACCEPT_TOKEN(sym_token_type_cisco_interface_app_gigabitethernet);
-      if (lookahead == 'a') ADVANCE(153);
-      if (lookahead == 'i') ADVANCE(154);
-      if (lookahead == 'E' ||
-          lookahead == 'e') ADVANCE(155);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(156);
+    case 86:
+      if (lookahead == 'U' ||
+          lookahead == 'u') ADVANCE(153);
       END_STATE();
-    case 119:
-      if (lookahead == 'c') ADVANCE(157);
+    case 87:
+      if (lookahead == 'r') ADVANCE(154);
       END_STATE();
-    case 120:
+    case 88:
+      if (lookahead == 'U' ||
+          lookahead == 'u') ADVANCE(155);
+      END_STATE();
+    case 89:
+      ACCEPT_TOKEN(sym_token_keyword_cisco_status_up);
+      END_STATE();
+    case 90:
+      if (lookahead == 'G' ||
+          lookahead == 'g') ADVANCE(156);
+      END_STATE();
+    case 91:
+      if (lookahead == 'n') ADVANCE(157);
+      END_STATE();
+    case 92:
       if (lookahead == 'E' ||
           lookahead == 'e') ADVANCE(158);
       END_STATE();
+    case 93:
+      ACCEPT_TOKEN(sym_token_keyword_cisco_add_remove_add);
+      if (lookahead == 'R' ||
+          lookahead == 'r') ADVANCE(159);
+      END_STATE();
+    case 94:
+      if (lookahead == 'I' ||
+          lookahead == 'i') ADVANCE(160);
+      END_STATE();
+    case 95:
+      ACCEPT_TOKEN(sym_token_keyword_cisco_any_all_all);
+      if (lookahead == 'O' ||
+          lookahead == 'o') ADVANCE(161);
+      END_STATE();
+    case 96:
+      ACCEPT_TOKEN(sym_token_keyword_cisco_any_all_any);
+      END_STATE();
+    case 97:
+      ACCEPT_TOKEN(sym_token_type_cisco_interface_bdi);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(97);
+      END_STATE();
+    case 98:
+      ACCEPT_TOKEN(sym_token_type_cisco_interface_bri);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(98);
+      END_STATE();
+    case 99:
+      ACCEPT_TOKEN(sym_token_type_cisco_interface_bvi);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(99);
+      END_STATE();
+    case 100:
+      if (lookahead == 'd') ADVANCE(162);
+      END_STATE();
+    case 101:
+      if (lookahead == 't') ADVANCE(163);
+      END_STATE();
+    case 102:
+      ACCEPT_TOKEN(sym_token_type_cisco_interface_ethernet);
+      if (lookahead == '.') ADVANCE(164);
+      if (lookahead == '/') ADVANCE(165);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(102);
+      END_STATE();
+    case 103:
+      if (lookahead == 't') ADVANCE(166);
+      END_STATE();
+    case 104:
+      if (lookahead == 'e') ADVANCE(120);
+      END_STATE();
+    case 105:
+      if (lookahead == 't') ADVANCE(167);
+      END_STATE();
+    case 106:
+      if (lookahead == 'i') ADVANCE(168);
+      END_STATE();
+    case 107:
+      if (lookahead == 'a') ADVANCE(42);
+      if (lookahead == 'E' ||
+          lookahead == 'e') ADVANCE(44);
+      END_STATE();
+    case 108:
+      if (lookahead == 'h') ADVANCE(169);
+      END_STATE();
+    case 109:
+      if (lookahead == 'p') ADVANCE(170);
+      END_STATE();
+    case 110:
+      ACCEPT_TOKEN(sym_token_type_cisco_interface_loopback);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(110);
+      END_STATE();
+    case 111:
+      if (lookahead == '-') ADVANCE(171);
+      END_STATE();
+    case 112:
+      if (lookahead == 'C' ||
+          lookahead == 'c') ADVANCE(172);
+      END_STATE();
+    case 113:
+      if (lookahead == 'a') ADVANCE(173);
+      END_STATE();
+    case 114:
+      if (lookahead == 't') ADVANCE(174);
+      END_STATE();
+    case 115:
+      ACCEPT_TOKEN(sym_token_type_cisco_interface_port_channel);
+      if (lookahead == '2') ADVANCE(175);
+      if (lookahead == '0' ||
+          lookahead == '1') ADVANCE(176);
+      if (('3' <= lookahead && lookahead <= '9')) ADVANCE(177);
+      END_STATE();
+    case 116:
+      if (lookahead == 't') ADVANCE(178);
+      END_STATE();
+    case 117:
+      ACCEPT_TOKEN(sym_token_type_cisco_interface_port_channel);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(177);
+      END_STATE();
+    case 118:
+      if (lookahead == 'M' ||
+          lookahead == 'm') ADVANCE(179);
+      END_STATE();
+    case 119:
+      if (lookahead == 'T' ||
+          lookahead == 't') ADVANCE(180);
+      END_STATE();
+    case 120:
+      if (lookahead == 'G' ||
+          lookahead == 'g') ADVANCE(13);
+      END_STATE();
     case 121:
-      if (lookahead == 'g') ADVANCE(159);
+      if (lookahead == 'n') ADVANCE(181);
       END_STATE();
     case 122:
-      if (lookahead == 'E' ||
-          lookahead == 'e') ADVANCE(39);
+      ACCEPT_TOKEN(sym_token_type_cisco_interface_tunnel);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(122);
       END_STATE();
     case 123:
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(160);
+      if (lookahead == 'n') ADVANCE(182);
       END_STATE();
     case 124:
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(81);
+      if (lookahead == 'H' ||
+          lookahead == 'h') ADVANCE(22);
       END_STATE();
     case 125:
-      if (lookahead == 'y') ADVANCE(95);
+      if (lookahead == 'N' ||
+          lookahead == 'n') ADVANCE(183);
       END_STATE();
     case 126:
-      if (lookahead == 'y') ADVANCE(95);
+      if (lookahead == 'N') ADVANCE(184);
       END_STATE();
     case 127:
-      if (lookahead == 't') ADVANCE(122);
+      if (lookahead == 'i') ADVANCE(185);
       END_STATE();
     case 128:
-      ACCEPT_TOKEN(sym_token_type_cisco_interface_ethernet);
-      if (lookahead == 'e') ADVANCE(161);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(81);
+      if (lookahead == 't') ADVANCE(186);
       END_STATE();
     case 129:
-      if (lookahead == 'b') ADVANCE(162);
+      if (lookahead == 'n') ADVANCE(184);
       END_STATE();
     case 130:
-      if (lookahead == 'g') ADVANCE(163);
+      ACCEPT_TOKEN(sym_token_type_cisco_interface_vmi);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(130);
       END_STATE();
     case 131:
-      ACCEPT_TOKEN(sym_token_type_cisco_interface_management);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(164);
+      if (lookahead == 'l') ADVANCE(187);
       END_STATE();
     case 132:
-      ACCEPT_TOKEN(sym_token_type_cisco_interface_port_channel);
-      if (('0' <= lookahead && lookahead <= '8')) ADVANCE(134);
+      if (lookahead == 'A' ||
+          lookahead == 'a') ADVANCE(188);
       END_STATE();
     case 133:
-      ACCEPT_TOKEN(sym_token_type_cisco_interface_port_channel);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(134);
+      if (lookahead == '1') ADVANCE(189);
       END_STATE();
     case 134:
-      ACCEPT_TOKEN(sym_token_type_cisco_interface_port_channel);
+      if (lookahead == 'N' ||
+          lookahead == 'n') ADVANCE(190);
       END_STATE();
     case 135:
-      if (lookahead == '-') ADVANCE(165);
-      if (lookahead == 'C' ||
-          lookahead == 'c') ADVANCE(166);
+      if (lookahead == 'l') ADVANCE(191);
       END_STATE();
     case 136:
-      if (lookahead == 'e') ADVANCE(167);
+      if (lookahead == '1') ADVANCE(192);
       END_STATE();
     case 137:
-      if (lookahead == 't') ADVANCE(168);
+      if (lookahead == 'A' ||
+          lookahead == 'a') ADVANCE(193);
       END_STATE();
     case 138:
-      ACCEPT_TOKEN(sym_token_type_cisco_interface_vlan);
-      if (lookahead == '4') ADVANCE(169);
-      if (('1' <= lookahead && lookahead <= '3')) ADVANCE(170);
-      if (('5' <= lookahead && lookahead <= '9')) ADVANCE(171);
+      if (lookahead == 'E' ||
+          lookahead == 'e') ADVANCE(194);
       END_STATE();
     case 139:
-      if (lookahead == 'L' ||
-          lookahead == 'l') ADVANCE(172);
-      if (lookahead == 'R' ||
-          lookahead == 'r') ADVANCE(173);
+      if (lookahead == 'Y' ||
+          lookahead == 'y') ADVANCE(195);
       END_STATE();
     case 140:
-      if (lookahead == 'u') ADVANCE(174);
+      if (lookahead == 'C' ||
+          lookahead == 'c') ADVANCE(196);
       END_STATE();
     case 141:
-      if (lookahead == 'u') ADVANCE(175);
+      ACCEPT_TOKEN(sym_token_type_cisco_interface_ethernet);
+      if (lookahead == 'e') ADVANCE(197);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(102);
       END_STATE();
     case 142:
-      if (lookahead == 'e') ADVANCE(176);
+      if (lookahead == 'B' ||
+          lookahead == 'b') ADVANCE(198);
       END_STATE();
     case 143:
-      if (lookahead == '1') ADVANCE(177);
+      if (lookahead == 'E' ||
+          lookahead == 'e') ADVANCE(199);
       END_STATE();
     case 144:
-      if (lookahead == 'U' ||
-          lookahead == 'u') ADVANCE(178);
+      if (lookahead == 'd') ADVANCE(200);
       END_STATE();
     case 145:
-      if (lookahead == 'R' ||
-          lookahead == 'r') ADVANCE(179);
+      if (lookahead == 'U' ||
+          lookahead == 'u') ADVANCE(201);
       END_STATE();
     case 146:
-      if (lookahead == 'r') ADVANCE(180);
+      if (lookahead == 'I' ||
+          lookahead == 'i') ADVANCE(202);
       END_STATE();
     case 147:
-      if (lookahead == 'r') ADVANCE(181);
+      if (lookahead == 'E' ||
+          lookahead == 'e') ADVANCE(203);
       END_STATE();
     case 148:
-      if (lookahead == 'R' ||
-          lookahead == 'r') ADVANCE(182);
+      if (lookahead == 'l') ADVANCE(204);
       END_STATE();
     case 149:
-      ACCEPT_TOKEN(sym_token_type_cisco_interface_null);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(149);
+      if (lookahead == 'I' ||
+          lookahead == 'i') ADVANCE(205);
       END_STATE();
     case 150:
-      if (lookahead == 'R' ||
-          lookahead == 'r') ADVANCE(183);
+      ACCEPT_TOKEN(sym_token_type_cisco_interface_nvi);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(150);
       END_STATE();
     case 151:
-      if (lookahead == 'E' ||
-          lookahead == 'e') ADVANCE(184);
+      ACCEPT_TOKEN(sym_token_keyword_cisco_in_out_out);
+      if (lookahead == 'P' ||
+          lookahead == 'p') ADVANCE(206);
+      if (lookahead == 'S' ||
+          lookahead == 's') ADVANCE(207);
       END_STATE();
     case 152:
-      if (lookahead == 'a') ADVANCE(185);
+      if (lookahead == 'A' ||
+          lookahead == 'a') ADVANCE(208);
+      if (lookahead == 'O' ||
+          lookahead == 'o') ADVANCE(209);
       END_STATE();
     case 153:
-      if (lookahead == 'b') ADVANCE(186);
+      if (lookahead == 'T' ||
+          lookahead == 't') ADVANCE(210);
       END_STATE();
     case 154:
-      if (lookahead == 'g') ADVANCE(187);
+      if (lookahead == 'i') ADVANCE(211);
       END_STATE();
     case 155:
-      ACCEPT_TOKEN(sym_token_type_cisco_interface_app_gigabitethernet);
-      if (lookahead == 't') ADVANCE(188);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(156);
+      if (lookahead == 'T' ||
+          lookahead == 't') ADVANCE(212);
       END_STATE();
     case 156:
       ACCEPT_TOKEN(sym_token_type_cisco_interface_app_gigabitethernet);
-      if (lookahead == '.') ADVANCE(189);
-      if (lookahead == '/') ADVANCE(190);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(156);
+      if (lookahead == 'a') ADVANCE(213);
+      if (lookahead == 'i') ADVANCE(214);
+      if (lookahead == 'E' ||
+          lookahead == 'e') ADVANCE(215);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(216);
       END_STATE();
     case 157:
-      ACCEPT_TOKEN(sym_token_type_cisco_interface_async);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(157);
+      if (lookahead == 'c') ADVANCE(217);
       END_STATE();
     case 158:
       if (lookahead == 'S' ||
-          lookahead == 's') ADVANCE(191);
+          lookahead == 's') ADVANCE(218);
       END_STATE();
     case 159:
-      if (lookahead == 'e') ADVANCE(192);
+      if (lookahead == 'E' ||
+          lookahead == 'e') ADVANCE(219);
       END_STATE();
     case 160:
-      ACCEPT_TOKEN(sym_token_type_cisco_interface_ethernet);
-      if (lookahead == '.') ADVANCE(123);
-      if (lookahead == '/') ADVANCE(124);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(160);
+      if (lookahead == 'N' ||
+          lookahead == 'n') ADVANCE(220);
       END_STATE();
     case 161:
-      if (lookahead == 'r') ADVANCE(193);
+      if (lookahead == 'W' ||
+          lookahead == 'w') ADVANCE(221);
       END_STATE();
     case 162:
-      if (lookahead == 'a') ADVANCE(194);
+      if (lookahead == 'g') ADVANCE(222);
       END_STATE();
     case 163:
-      if (lookahead == 'e') ADVANCE(195);
+      if (lookahead == 'E' ||
+          lookahead == 'e') ADVANCE(44);
       END_STATE();
     case 164:
-      ACCEPT_TOKEN(sym_token_type_cisco_interface_management);
-      if (lookahead == '.' ||
-          lookahead == '/') ADVANCE(131);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(164);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(223);
       END_STATE();
     case 165:
-      if (lookahead == 'C' ||
-          lookahead == 'c') ADVANCE(166);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(102);
       END_STATE();
     case 166:
-      if (lookahead == 'h') ADVANCE(196);
+      if (lookahead == 'y') ADVANCE(120);
       END_STATE();
     case 167:
-      if (lookahead == 'l') ADVANCE(97);
+      if (lookahead == 'y') ADVANCE(120);
       END_STATE();
     case 168:
-      if (lookahead == 'y') ADVANCE(197);
+      if (lookahead == 't') ADVANCE(163);
       END_STATE();
     case 169:
-      ACCEPT_TOKEN(sym_token_type_cisco_interface_vlan);
-      if (lookahead == '0') ADVANCE(198);
-      if (('1' <= lookahead && lookahead <= '9')) ADVANCE(199);
+      ACCEPT_TOKEN(sym_token_type_cisco_interface_ethernet);
+      if (lookahead == 'e') ADVANCE(224);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(102);
       END_STATE();
     case 170:
-      ACCEPT_TOKEN(sym_token_type_cisco_interface_vlan);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(200);
+      if (lookahead == 'b') ADVANCE(225);
       END_STATE();
     case 171:
-      ACCEPT_TOKEN(sym_token_type_cisco_interface_vlan);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(199);
+      if (lookahead == 'V' ||
+          lookahead == 'v') ADVANCE(226);
       END_STATE();
     case 172:
-      if (lookahead == 'e') ADVANCE(201);
+      if (lookahead == 'H' ||
+          lookahead == 'h') ADVANCE(227);
       END_STATE();
     case 173:
-      if (lookahead == 'i') ADVANCE(202);
+      if (lookahead == 'g') ADVANCE(228);
       END_STATE();
     case 174:
-      if (lookahead == 'a') ADVANCE(203);
+      ACCEPT_TOKEN(sym_token_type_cisco_interface_management);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(229);
       END_STATE();
     case 175:
-      if (lookahead == 'l') ADVANCE(204);
+      ACCEPT_TOKEN(sym_token_type_cisco_interface_port_channel);
+      if (('0' <= lookahead && lookahead <= '8')) ADVANCE(177);
       END_STATE();
     case 176:
-      if (lookahead == 'r') ADVANCE(205);
+      ACCEPT_TOKEN(sym_token_type_cisco_interface_port_channel);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(177);
       END_STATE();
     case 177:
-      if (lookahead == 'R' ||
-          lookahead == 'r') ADVANCE(206);
+      ACCEPT_TOKEN(sym_token_type_cisco_interface_port_channel);
       END_STATE();
     case 178:
-      if (lookahead == 'L' ||
-          lookahead == 'l') ADVANCE(207);
+      if (lookahead == '-') ADVANCE(230);
+      if (lookahead == 'C' ||
+          lookahead == 'c') ADVANCE(231);
       END_STATE();
     case 179:
       if (lookahead == 'I' ||
-          lookahead == 'i') ADVANCE(208);
+          lookahead == 'i') ADVANCE(232);
       END_STATE();
     case 180:
-      if (lookahead == 'n') ADVANCE(209);
+      if (lookahead == 'O' ||
+          lookahead == 'o') ADVANCE(233);
       END_STATE();
     case 181:
-      if (lookahead == 'e') ADVANCE(210);
+      if (lookahead == 'e') ADVANCE(234);
       END_STATE();
     case 182:
-      if (lookahead == 'F' ||
-          lookahead == 'f') ADVANCE(211);
+      if (lookahead == 't') ADVANCE(235);
       END_STATE();
     case 183:
       if (lookahead == 'K' ||
-          lookahead == 'k') ADVANCE(212);
+          lookahead == 'k') ADVANCE(236);
       END_STATE();
     case 184:
-      if (lookahead == 'R' ||
-          lookahead == 'r') ADVANCE(213);
+      ACCEPT_TOKEN(sym_token_type_cisco_interface_vlan);
+      if (lookahead == '4') ADVANCE(237);
+      if (('1' <= lookahead && lookahead <= '3')) ADVANCE(238);
+      if (('5' <= lookahead && lookahead <= '9')) ADVANCE(239);
       END_STATE();
     case 185:
-      if (lookahead == 'l') ADVANCE(214);
+      if (lookahead == 'L' ||
+          lookahead == 'l') ADVANCE(240);
+      if (lookahead == 'R' ||
+          lookahead == 'r') ADVANCE(241);
       END_STATE();
     case 186:
-      if (lookahead == 'i') ADVANCE(215);
+      if (lookahead == 'u') ADVANCE(242);
       END_STATE();
     case 187:
-      ACCEPT_TOKEN(sym_token_type_cisco_interface_app_gigabitethernet);
-      if (lookahead == 'a') ADVANCE(153);
-      if (lookahead == 'E' ||
-          lookahead == 'e') ADVANCE(155);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(156);
+      if (lookahead == 'u') ADVANCE(243);
       END_STATE();
     case 188:
-      if (lookahead == 'h') ADVANCE(216);
+      if (lookahead == 'B' ||
+          lookahead == 'b') ADVANCE(244);
       END_STATE();
     case 189:
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(217);
+      if (lookahead == 'Q' ||
+          lookahead == 'q') ADVANCE(245);
       END_STATE();
     case 190:
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(156);
+      ACCEPT_TOKEN(sym_token_keyword_cisco_status_down);
       END_STATE();
     case 191:
-      if (lookahead == 'S' ||
-          lookahead == 's') ADVANCE(218);
+      if (lookahead == 'e') ADVANCE(246);
       END_STATE();
     case 192:
-      if (lookahead == '-') ADVANCE(219);
-      if (lookahead == 'D' ||
-          lookahead == 'd') ADVANCE(220);
+      if (lookahead == '1') ADVANCE(247);
+      if (lookahead == 'Q' ||
+          lookahead == 'q') ADVANCE(245);
       END_STATE();
     case 193:
-      if (lookahead == 'n') ADVANCE(221);
+      if (lookahead == 'U' ||
+          lookahead == 'u') ADVANCE(248);
       END_STATE();
     case 194:
-      if (lookahead == 'c') ADVANCE(222);
+      if (lookahead == 'T' ||
+          lookahead == 't') ADVANCE(249);
       END_STATE();
     case 195:
-      if (lookahead == 'm') ADVANCE(223);
+      ACCEPT_TOKEN(sym_token_keyword_cisco_permit_deny_deny);
       END_STATE();
     case 196:
-      if (lookahead == 'a') ADVANCE(224);
+      if (lookahead == 'R' ||
+          lookahead == 'r') ADVANCE(250);
       END_STATE();
     case 197:
-      if (lookahead == 'F' ||
-          lookahead == 'f') ADVANCE(225);
+      if (lookahead == 'r') ADVANCE(251);
       END_STATE();
     case 198:
-      ACCEPT_TOKEN(sym_token_type_cisco_interface_vlan);
-      if (lookahead == '9') ADVANCE(226);
-      if (('0' <= lookahead && lookahead <= '8')) ADVANCE(227);
+      if (lookahead == 'L' ||
+          lookahead == 'l') ADVANCE(252);
       END_STATE();
     case 199:
-      ACCEPT_TOKEN(sym_token_type_cisco_interface_vlan);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(228);
+      if (lookahead == 'P' ||
+          lookahead == 'p') ADVANCE(253);
       END_STATE();
     case 200:
-      ACCEPT_TOKEN(sym_token_type_cisco_interface_vlan);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(229);
+      if (lookahead == 'r') ADVANCE(254);
       END_STATE();
     case 201:
-      if (lookahead == 'f') ADVANCE(230);
+      if (lookahead == 'T' ||
+          lookahead == 't') ADVANCE(255);
       END_STATE();
     case 202:
-      if (lookahead == 'g') ADVANCE(231);
+      if (lookahead == 'D' ||
+          lookahead == 'd') ADVANCE(256);
       END_STATE();
     case 203:
-      if (lookahead == 'l') ADVANCE(232);
+      if (lookahead == 'R' ||
+          lookahead == 'r') ADVANCE(257);
       END_STATE();
     case 204:
-      if (lookahead == 'a') ADVANCE(233);
+      ACCEPT_TOKEN(sym_token_type_cisco_interface_null);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(204);
       END_STATE();
     case 205:
-      ACCEPT_TOKEN(sym_token_type_cisco_interface_dialer);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(205);
+      if (lookahead == 'V' ||
+          lookahead == 'v') ADVANCE(258);
       END_STATE();
     case 206:
-      if (lookahead == 'a') ADVANCE(234);
+      if (lookahead == 'U' ||
+          lookahead == 'u') ADVANCE(259);
       END_STATE();
     case 207:
-      if (lookahead == 'T' ||
-          lookahead == 't') ADVANCE(235);
+      if (lookahead == 'I' ||
+          lookahead == 'i') ADVANCE(260);
       END_STATE();
     case 208:
-      if (lookahead == 'P' ||
-          lookahead == 'p') ADVANCE(236);
+      if (lookahead == 'R' ||
+          lookahead == 'r') ADVANCE(261);
       END_STATE();
     case 209:
-      if (lookahead == 'e') ADVANCE(237);
+      if (lookahead == 'V' ||
+          lookahead == 'v') ADVANCE(262);
       END_STATE();
     case 210:
-      if (lookahead == 'd') ADVANCE(95);
+      if (lookahead == 'E' ||
+          lookahead == 'e') ADVANCE(263);
       END_STATE();
     case 211:
-      if (lookahead == 'A' ||
-          lookahead == 'a') ADVANCE(238);
+      if (lookahead == 'a') ADVANCE(264);
       END_STATE();
     case 212:
-      ACCEPT_TOKEN(sym_text_keyword);
+      if (lookahead == 'D' ||
+          lookahead == 'd') ADVANCE(265);
       END_STATE();
     case 213:
-      ACCEPT_TOKEN(sym__keyword_router);
+      if (lookahead == 'b') ADVANCE(266);
       END_STATE();
     case 214:
-      ACCEPT_TOKEN(sym_token_type_cisco_interface_serial);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(239);
+      if (lookahead == 'g') ADVANCE(267);
       END_STATE();
     case 215:
-      if (lookahead == 't') ADVANCE(240);
+      ACCEPT_TOKEN(sym_token_type_cisco_interface_app_gigabitethernet);
+      if (lookahead == 't') ADVANCE(268);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(216);
       END_STATE();
     case 216:
       ACCEPT_TOKEN(sym_token_type_cisco_interface_app_gigabitethernet);
-      if (lookahead == 'e') ADVANCE(241);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(156);
+      if (lookahead == '.') ADVANCE(269);
+      if (lookahead == '/') ADVANCE(270);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(216);
       END_STATE();
     case 217:
-      ACCEPT_TOKEN(sym_token_type_cisco_interface_app_gigabitethernet);
-      if (lookahead == '.') ADVANCE(189);
-      if (lookahead == '/') ADVANCE(190);
+      ACCEPT_TOKEN(sym_token_type_cisco_interface_async);
       if (('0' <= lookahead && lookahead <= '9')) ADVANCE(217);
       END_STATE();
     case 218:
-      if (lookahead == '-') ADVANCE(242);
+      if (lookahead == 'S' ||
+          lookahead == 's') ADVANCE(271);
       END_STATE();
     case 219:
-      if (lookahead == 'D' ||
-          lookahead == 'd') ADVANCE(220);
+      if (lookahead == 'S' ||
+          lookahead == 's') ADVANCE(272);
       END_STATE();
     case 220:
-      if (lookahead == 'o') ADVANCE(243);
+      if (lookahead == 'I' ||
+          lookahead == 'i') ADVANCE(273);
       END_STATE();
     case 221:
-      if (lookahead == 'e') ADVANCE(244);
+      if (lookahead == 'E' ||
+          lookahead == 'e') ADVANCE(274);
       END_STATE();
     case 222:
-      if (lookahead == 'k') ADVANCE(89);
-      END_STATE();
-    case 223:
-      if (lookahead == 'e') ADVANCE(245);
-      END_STATE();
-    case 224:
-      if (lookahead == 'n') ADVANCE(246);
-      END_STATE();
-    case 225:
-      if (lookahead == 'i') ADVANCE(247);
-      END_STATE();
-    case 226:
-      ACCEPT_TOKEN(sym_token_type_cisco_interface_vlan);
-      if (('0' <= lookahead && lookahead <= '4')) ADVANCE(228);
-      END_STATE();
-    case 227:
-      ACCEPT_TOKEN(sym_token_type_cisco_interface_vlan);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(228);
-      END_STATE();
-    case 228:
-      ACCEPT_TOKEN(sym_token_type_cisco_interface_vlan);
-      END_STATE();
-    case 229:
-      ACCEPT_TOKEN(sym_token_type_cisco_interface_vlan);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(228);
-      END_STATE();
-    case 230:
-      if (lookahead == 't') ADVANCE(248);
-      END_STATE();
-    case 231:
-      if (lookahead == 'h') ADVANCE(249);
-      END_STATE();
-    case 232:
-      if (lookahead == '-') ADVANCE(250);
-      END_STATE();
-    case 233:
-      if (lookahead == 'r') ADVANCE(251);
-      END_STATE();
-    case 234:
-      if (lookahead == 'd') ADVANCE(252);
-      END_STATE();
-    case 235:
-      ACCEPT_TOKEN(sym_default_modifier);
-      END_STATE();
-    case 236:
-      if (lookahead == 'T' ||
-          lookahead == 't') ADVANCE(253);
-      END_STATE();
-    case 237:
-      if (lookahead == 't') ADVANCE(254);
-      END_STATE();
-    case 238:
-      if (lookahead == 'C' ||
-          lookahead == 'c') ADVANCE(255);
-      END_STATE();
-    case 239:
-      ACCEPT_TOKEN(sym_token_type_cisco_interface_serial);
-      if (lookahead == '.') ADVANCE(256);
-      if (lookahead == '/') ADVANCE(257);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(239);
-      END_STATE();
-    case 240:
-      ACCEPT_TOKEN(sym_token_type_cisco_interface_app_gigabitethernet);
-      if (lookahead == 'E' ||
-          lookahead == 'e') ADVANCE(155);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(156);
-      END_STATE();
-    case 241:
-      if (lookahead == 'r') ADVANCE(258);
-      END_STATE();
-    case 242:
-      if (lookahead == 'F' ||
-          lookahead == 'f') ADVANCE(259);
-      END_STATE();
-    case 243:
-      if (lookahead == 'm') ADVANCE(260);
-      END_STATE();
-    case 244:
-      if (lookahead == 't') ADVANCE(254);
-      END_STATE();
-    case 245:
-      if (lookahead == 'n') ADVANCE(261);
-      END_STATE();
-    case 246:
-      if (lookahead == 'n') ADVANCE(262);
-      END_STATE();
-    case 247:
-      if (lookahead == 'v') ADVANCE(263);
-      END_STATE();
-    case 248:
-      ACCEPT_TOKEN(sym_token_type_cisco_interface_vasileft);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(248);
-      END_STATE();
-    case 249:
-      if (lookahead == 't') ADVANCE(264);
-      END_STATE();
-    case 250:
-      if (lookahead == 'T' ||
-          lookahead == 't') ADVANCE(265);
-      END_STATE();
-    case 251:
-      ACCEPT_TOKEN(sym_token_type_cisco_interface_cellular);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(266);
-      END_STATE();
-    case 252:
-      if (lookahead == 'i') ADVANCE(267);
-      END_STATE();
-    case 253:
-      if (lookahead == 'I' ||
-          lookahead == 'i') ADVANCE(268);
-      END_STATE();
-    case 254:
-      ACCEPT_TOKEN(sym_token_type_cisco_interface_ethernet);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(81);
-      END_STATE();
-    case 255:
-      if (lookahead == 'E' ||
-          lookahead == 'e') ADVANCE(269);
-      END_STATE();
-    case 256:
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(270);
-      END_STATE();
-    case 257:
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(239);
-      END_STATE();
-    case 258:
-      if (lookahead == 'n') ADVANCE(271);
-      END_STATE();
-    case 259:
-      if (lookahead == 'A' ||
-          lookahead == 'a') ADVANCE(272);
-      END_STATE();
-    case 260:
-      if (lookahead == 'a') ADVANCE(273);
-      END_STATE();
-    case 261:
-      if (lookahead == 't') ADVANCE(131);
-      END_STATE();
-    case 262:
-      if (lookahead == 'e') ADVANCE(274);
-      END_STATE();
-    case 263:
-      if (lookahead == 'e') ADVANCE(95);
-      END_STATE();
-    case 264:
-      ACCEPT_TOKEN(sym_token_type_cisco_interface_vasiright);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(264);
-      END_STATE();
-    case 265:
       if (lookahead == 'e') ADVANCE(275);
       END_STATE();
-    case 266:
-      ACCEPT_TOKEN(sym_token_type_cisco_interface_cellular);
-      if (lookahead == '.') ADVANCE(276);
-      if (lookahead == '/') ADVANCE(277);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(266);
+    case 223:
+      ACCEPT_TOKEN(sym_token_type_cisco_interface_ethernet);
+      if (lookahead == '.') ADVANCE(164);
+      if (lookahead == '/') ADVANCE(165);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(223);
       END_STATE();
-    case 267:
-      if (lookahead == 'o') ADVANCE(278);
+    case 224:
+      if (lookahead == 'r') ADVANCE(276);
       END_STATE();
-    case 268:
-      if (lookahead == 'O' ||
-          lookahead == 'o') ADVANCE(279);
+    case 225:
+      if (lookahead == 'a') ADVANCE(277);
       END_STATE();
-    case 269:
-      ACCEPT_TOKEN(sym__keyword_interface);
+    case 226:
+      if (lookahead == 'L' ||
+          lookahead == 'l') ADVANCE(278);
       END_STATE();
-    case 270:
-      ACCEPT_TOKEN(sym_token_type_cisco_interface_serial);
-      if (lookahead == '.') ADVANCE(256);
-      if (lookahead == '/') ADVANCE(257);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(270);
+    case 227:
+      if (lookahead == '-') ADVANCE(279);
       END_STATE();
-    case 271:
+    case 228:
       if (lookahead == 'e') ADVANCE(280);
       END_STATE();
+    case 229:
+      ACCEPT_TOKEN(sym_token_type_cisco_interface_management);
+      if (lookahead == '.' ||
+          lookahead == '/') ADVANCE(174);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(229);
+      END_STATE();
+    case 230:
+      if (lookahead == 'C' ||
+          lookahead == 'c') ADVANCE(231);
+      END_STATE();
+    case 231:
+      if (lookahead == 'h') ADVANCE(281);
+      END_STATE();
+    case 232:
+      if (lookahead == 'T' ||
+          lookahead == 't') ADVANCE(282);
+      END_STATE();
+    case 233:
+      if (lookahead == 'C' ||
+          lookahead == 'c') ADVANCE(283);
+      END_STATE();
+    case 234:
+      if (lookahead == 'l') ADVANCE(122);
+      END_STATE();
+    case 235:
+      if (lookahead == 'y') ADVANCE(284);
+      END_STATE();
+    case 236:
+      ACCEPT_TOKEN(sym_token_keyword_cisco_switchport_mode_trunk);
+      END_STATE();
+    case 237:
+      ACCEPT_TOKEN(sym_token_type_cisco_interface_vlan);
+      if (lookahead == '0') ADVANCE(285);
+      if (('1' <= lookahead && lookahead <= '9')) ADVANCE(286);
+      END_STATE();
+    case 238:
+      ACCEPT_TOKEN(sym_token_type_cisco_interface_vlan);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(287);
+      END_STATE();
+    case 239:
+      ACCEPT_TOKEN(sym_token_type_cisco_interface_vlan);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(286);
+      END_STATE();
+    case 240:
+      if (lookahead == 'e') ADVANCE(288);
+      END_STATE();
+    case 241:
+      if (lookahead == 'i') ADVANCE(289);
+      END_STATE();
+    case 242:
+      if (lookahead == 'a') ADVANCE(290);
+      END_STATE();
+    case 243:
+      if (lookahead == 'l') ADVANCE(291);
+      END_STATE();
+    case 244:
+      if (lookahead == 'L' ||
+          lookahead == 'l') ADVANCE(292);
+      END_STATE();
+    case 245:
+      ACCEPT_TOKEN(sym_token_keyword_cisco_encapsulation_dot1q);
+      if (lookahead == '-') ADVANCE(293);
+      END_STATE();
+    case 246:
+      if (lookahead == 'r') ADVANCE(294);
+      END_STATE();
+    case 247:
+      if (lookahead == 'R' ||
+          lookahead == 'r') ADVANCE(295);
+      END_STATE();
+    case 248:
+      if (lookahead == 'L' ||
+          lookahead == 'l') ADVANCE(296);
+      END_STATE();
+    case 249:
+      if (lookahead == 'E' ||
+          lookahead == 'e') ADVANCE(297);
+      END_STATE();
+    case 250:
+      if (lookahead == 'I' ||
+          lookahead == 'i') ADVANCE(298);
+      END_STATE();
+    case 251:
+      if (lookahead == 'n') ADVANCE(299);
+      END_STATE();
+    case 252:
+      if (lookahead == 'E' ||
+          lookahead == 'e') ADVANCE(300);
+      END_STATE();
+    case 253:
+      if (lookahead == 'T' ||
+          lookahead == 't') ADVANCE(301);
+      END_STATE();
+    case 254:
+      if (lookahead == 'e') ADVANCE(302);
+      END_STATE();
+    case 255:
+      ACCEPT_TOKEN(sym_token_keyword_cisco_input_output_input);
+      END_STATE();
+    case 256:
+      if (lookahead == 'E' ||
+          lookahead == 'e') ADVANCE(303);
+      END_STATE();
+    case 257:
+      if (lookahead == 'F' ||
+          lookahead == 'f') ADVANCE(304);
+      END_STATE();
+    case 258:
+      if (lookahead == 'E' ||
+          lookahead == 'e') ADVANCE(305);
+      END_STATE();
+    case 259:
+      if (lookahead == 'T' ||
+          lookahead == 't') ADVANCE(306);
+      END_STATE();
+    case 260:
+      if (lookahead == 'D' ||
+          lookahead == 'd') ADVANCE(307);
+      END_STATE();
+    case 261:
+      if (lookahead == 'K' ||
+          lookahead == 'k') ADVANCE(308);
+      END_STATE();
+    case 262:
+      if (lookahead == 'E' ||
+          lookahead == 'e') ADVANCE(309);
+      END_STATE();
+    case 263:
+      if (lookahead == 'R' ||
+          lookahead == 'r') ADVANCE(310);
+      END_STATE();
+    case 264:
+      if (lookahead == 'l') ADVANCE(311);
+      END_STATE();
+    case 265:
+      if (lookahead == 'O' ||
+          lookahead == 'o') ADVANCE(312);
+      END_STATE();
+    case 266:
+      if (lookahead == 'i') ADVANCE(313);
+      END_STATE();
+    case 267:
+      ACCEPT_TOKEN(sym_token_type_cisco_interface_app_gigabitethernet);
+      if (lookahead == 'a') ADVANCE(213);
+      if (lookahead == 'E' ||
+          lookahead == 'e') ADVANCE(215);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(216);
+      END_STATE();
+    case 268:
+      if (lookahead == 'h') ADVANCE(314);
+      END_STATE();
+    case 269:
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(315);
+      END_STATE();
+    case 270:
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(216);
+      END_STATE();
+    case 271:
+      ACCEPT_TOKEN(sym_token_keyword_cisco_switchport_mode_access);
+      END_STATE();
     case 272:
-      if (lookahead == 'M' ||
-          lookahead == 'm') ADVANCE(281);
+      if (lookahead == 'S' ||
+          lookahead == 's') ADVANCE(316);
       END_STATE();
     case 273:
-      if (lookahead == 'i') ADVANCE(282);
+      if (lookahead == 'S' ||
+          lookahead == 's') ADVANCE(317);
       END_STATE();
     case 274:
-      if (lookahead == 'l') ADVANCE(283);
+      if (lookahead == 'D' ||
+          lookahead == 'd') ADVANCE(318);
       END_STATE();
     case 275:
-      if (lookahead == 'm') ADVANCE(284);
+      if (lookahead == '-') ADVANCE(319);
+      if (lookahead == 'D' ||
+          lookahead == 'd') ADVANCE(320);
       END_STATE();
     case 276:
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(285);
+      if (lookahead == 'n') ADVANCE(321);
       END_STATE();
     case 277:
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(266);
+      if (lookahead == 'c') ADVANCE(322);
       END_STATE();
     case 278:
-      ACCEPT_TOKEN(sym_token_type_cisco_interface_wireless);
-      if (lookahead == '0' ||
-          lookahead == '1') ADVANCE(286);
+      if (lookahead == 'A' ||
+          lookahead == 'a') ADVANCE(323);
       END_STATE();
     case 279:
-      if (lookahead == 'N' ||
-          lookahead == 'n') ADVANCE(287);
+      if (lookahead == 'A' ||
+          lookahead == 'a') ADVANCE(324);
       END_STATE();
     case 280:
-      if (lookahead == 't') ADVANCE(288);
+      if (lookahead == 'm') ADVANCE(325);
       END_STATE();
     case 281:
-      if (lookahead == 'I' ||
-          lookahead == 'i') ADVANCE(289);
+      if (lookahead == 'a') ADVANCE(326);
       END_STATE();
     case 282:
-      if (lookahead == 'n') ADVANCE(76);
+      ACCEPT_TOKEN(sym_token_keyword_cisco_permit_deny_permit);
       END_STATE();
     case 283:
-      ACCEPT_TOKEN(sym_token_type_cisco_interface_port_channel);
-      if (lookahead == '1') ADVANCE(92);
-      if (('2' <= lookahead && lookahead <= '9')) ADVANCE(94);
+      if (lookahead == 'O' ||
+          lookahead == 'o') ADVANCE(327);
       END_STATE();
     case 284:
-      if (lookahead == 'p') ADVANCE(290);
+      if (lookahead == 'F' ||
+          lookahead == 'f') ADVANCE(328);
       END_STATE();
     case 285:
-      ACCEPT_TOKEN(sym_token_type_cisco_interface_cellular);
-      if (lookahead == '.') ADVANCE(276);
-      if (lookahead == '/') ADVANCE(277);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(285);
+      ACCEPT_TOKEN(sym_token_type_cisco_interface_vlan);
+      if (lookahead == '9') ADVANCE(329);
+      if (('0' <= lookahead && lookahead <= '8')) ADVANCE(330);
       END_STATE();
     case 286:
-      ACCEPT_TOKEN(sym_token_type_cisco_interface_wireless);
-      if (lookahead == '.') ADVANCE(291);
-      if (lookahead == '/') ADVANCE(292);
+      ACCEPT_TOKEN(sym_token_type_cisco_interface_vlan);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(331);
       END_STATE();
     case 287:
-      ACCEPT_TOKEN(sym_text_keyword);
-      if (lookahead == ':') ADVANCE(212);
+      ACCEPT_TOKEN(sym_token_type_cisco_interface_vlan);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(332);
       END_STATE();
     case 288:
-      ACCEPT_TOKEN(sym_token_type_cisco_interface_app_gigabitethernet);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(156);
+      if (lookahead == 'f') ADVANCE(333);
       END_STATE();
     case 289:
-      if (lookahead == 'L' ||
-          lookahead == 'l') ADVANCE(293);
+      if (lookahead == 'g') ADVANCE(334);
       END_STATE();
     case 290:
-      if (lookahead == 'l') ADVANCE(294);
+      if (lookahead == 'l') ADVANCE(335);
       END_STATE();
     case 291:
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(295);
+      if (lookahead == 'a') ADVANCE(336);
       END_STATE();
     case 292:
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(296);
+      if (lookahead == 'E' ||
+          lookahead == 'e') ADVANCE(337);
       END_STATE();
     case 293:
-      if (lookahead == 'Y' ||
-          lookahead == 'y') ADVANCE(297);
+      if (lookahead == 'T' ||
+          lookahead == 't') ADVANCE(338);
       END_STATE();
     case 294:
-      if (lookahead == 'a') ADVANCE(298);
+      ACCEPT_TOKEN(sym_token_type_cisco_interface_dialer);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(294);
       END_STATE();
     case 295:
-      ACCEPT_TOKEN(sym_token_type_cisco_interface_wireless);
-      if (lookahead == '.') ADVANCE(299);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(300);
+      if (lookahead == 'a') ADVANCE(339);
       END_STATE();
     case 296:
-      ACCEPT_TOKEN(sym_token_type_cisco_interface_wireless);
-      if (lookahead == '.') ADVANCE(299);
+      if (lookahead == 'T' ||
+          lookahead == 't') ADVANCE(340);
       END_STATE();
     case 297:
-      ACCEPT_TOKEN(sym__keyword_address_family);
+      if (lookahead == 'D' ||
+          lookahead == 'd') ADVANCE(341);
       END_STATE();
     case 298:
-      if (lookahead == 't') ADVANCE(301);
+      if (lookahead == 'P' ||
+          lookahead == 'p') ADVANCE(342);
       END_STATE();
     case 299:
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(300);
+      if (lookahead == 'e') ADVANCE(343);
       END_STATE();
     case 300:
-      ACCEPT_TOKEN(sym_token_type_cisco_interface_wireless);
-      if (lookahead == '.') ADVANCE(302);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(300);
+      ACCEPT_TOKEN(sym_token_keyword_cisco_enable_disable_enable);
+      if (lookahead == 'D' ||
+          lookahead == 'd') ADVANCE(344);
       END_STATE();
     case 301:
-      if (lookahead == 'e') ADVANCE(303);
+      ACCEPT_TOKEN(sym_token_keyword_cisco_add_remove_except);
       END_STATE();
     case 302:
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(304);
+      if (lookahead == 'd') ADVANCE(120);
       END_STATE();
     case 303:
-      ACCEPT_TOKEN(sym_token_type_cisco_interface_virtual_template);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(303);
+      ACCEPT_TOKEN(sym_token_keyword_cisco_inside_outside_inside);
       END_STATE();
     case 304:
+      if (lookahead == 'A' ||
+          lookahead == 'a') ADVANCE(345);
+      END_STATE();
+    case 305:
+      ACCEPT_TOKEN(sym_token_keyword_cisco_allowed_native_native);
+      END_STATE();
+    case 306:
+      ACCEPT_TOKEN(sym_token_keyword_cisco_input_output_output);
+      END_STATE();
+    case 307:
+      if (lookahead == 'E' ||
+          lookahead == 'e') ADVANCE(346);
+      END_STATE();
+    case 308:
+      ACCEPT_TOKEN(sym_text_keyword);
+      END_STATE();
+    case 309:
+      ACCEPT_TOKEN(sym_token_keyword_cisco_add_remove_remove);
+      END_STATE();
+    case 310:
+      ACCEPT_TOKEN(sym__keyword_router);
+      END_STATE();
+    case 311:
+      ACCEPT_TOKEN(sym_token_type_cisco_interface_serial);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(347);
+      END_STATE();
+    case 312:
+      if (lookahead == 'W' ||
+          lookahead == 'w') ADVANCE(348);
+      END_STATE();
+    case 313:
+      if (lookahead == 't') ADVANCE(349);
+      END_STATE();
+    case 314:
+      ACCEPT_TOKEN(sym_token_type_cisco_interface_app_gigabitethernet);
+      if (lookahead == 'e') ADVANCE(350);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(216);
+      END_STATE();
+    case 315:
+      ACCEPT_TOKEN(sym_token_type_cisco_interface_app_gigabitethernet);
+      if (lookahead == '.') ADVANCE(269);
+      if (lookahead == '/') ADVANCE(270);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(315);
+      END_STATE();
+    case 316:
+      if (lookahead == '-') ADVANCE(351);
+      END_STATE();
+    case 317:
+      if (lookahead == 'T' ||
+          lookahead == 't') ADVANCE(352);
+      END_STATE();
+    case 318:
+      ACCEPT_TOKEN(sym_token_keyword_cisco_allowed_native_allowed);
+      END_STATE();
+    case 319:
+      if (lookahead == 'D' ||
+          lookahead == 'd') ADVANCE(320);
+      END_STATE();
+    case 320:
+      if (lookahead == 'o') ADVANCE(353);
+      END_STATE();
+    case 321:
+      if (lookahead == 'e') ADVANCE(354);
+      END_STATE();
+    case 322:
+      if (lookahead == 'k') ADVANCE(110);
+      END_STATE();
+    case 323:
+      if (lookahead == 'N' ||
+          lookahead == 'n') ADVANCE(355);
+      END_STATE();
+    case 324:
+      if (lookahead == 'L' ||
+          lookahead == 'l') ADVANCE(356);
+      if (lookahead == 'N' ||
+          lookahead == 'n') ADVANCE(357);
+      END_STATE();
+    case 325:
+      if (lookahead == 'e') ADVANCE(358);
+      END_STATE();
+    case 326:
+      if (lookahead == 'n') ADVANCE(359);
+      END_STATE();
+    case 327:
+      if (lookahead == 'L' ||
+          lookahead == 'l') ADVANCE(360);
+      END_STATE();
+    case 328:
+      if (lookahead == 'i') ADVANCE(361);
+      END_STATE();
+    case 329:
+      ACCEPT_TOKEN(sym_token_type_cisco_interface_vlan);
+      if (('0' <= lookahead && lookahead <= '4')) ADVANCE(331);
+      END_STATE();
+    case 330:
+      ACCEPT_TOKEN(sym_token_type_cisco_interface_vlan);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(331);
+      END_STATE();
+    case 331:
+      ACCEPT_TOKEN(sym_token_type_cisco_interface_vlan);
+      END_STATE();
+    case 332:
+      ACCEPT_TOKEN(sym_token_type_cisco_interface_vlan);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(331);
+      END_STATE();
+    case 333:
+      if (lookahead == 't') ADVANCE(362);
+      END_STATE();
+    case 334:
+      if (lookahead == 'h') ADVANCE(363);
+      END_STATE();
+    case 335:
+      if (lookahead == '-') ADVANCE(364);
+      END_STATE();
+    case 336:
+      if (lookahead == 'r') ADVANCE(365);
+      END_STATE();
+    case 337:
+      ACCEPT_TOKEN(sym_token_keyword_cisco_enable_disable_disable);
+      if (lookahead == 'D' ||
+          lookahead == 'd') ADVANCE(366);
+      END_STATE();
+    case 338:
+      if (lookahead == 'U' ||
+          lookahead == 'u') ADVANCE(367);
+      END_STATE();
+    case 339:
+      if (lookahead == 'd') ADVANCE(368);
+      END_STATE();
+    case 340:
+      ACCEPT_TOKEN(sym_default_modifier);
+      END_STATE();
+    case 341:
+      ACCEPT_TOKEN(sym_token_keyword_cisco_status_deleted);
+      END_STATE();
+    case 342:
+      if (lookahead == 'T' ||
+          lookahead == 't') ADVANCE(369);
+      END_STATE();
+    case 343:
+      if (lookahead == 't') ADVANCE(370);
+      END_STATE();
+    case 344:
+      ACCEPT_TOKEN(sym_token_keyword_cisco_enable_disable_enable);
+      END_STATE();
+    case 345:
+      if (lookahead == 'C' ||
+          lookahead == 'c') ADVANCE(371);
+      END_STATE();
+    case 346:
+      ACCEPT_TOKEN(sym_token_keyword_cisco_inside_outside_outside);
+      END_STATE();
+    case 347:
+      ACCEPT_TOKEN(sym_token_type_cisco_interface_serial);
+      if (lookahead == '.') ADVANCE(372);
+      if (lookahead == '/') ADVANCE(373);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(347);
+      END_STATE();
+    case 348:
+      if (lookahead == 'N' ||
+          lookahead == 'n') ADVANCE(374);
+      END_STATE();
+    case 349:
+      ACCEPT_TOKEN(sym_token_type_cisco_interface_app_gigabitethernet);
+      if (lookahead == 'E' ||
+          lookahead == 'e') ADVANCE(215);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(216);
+      END_STATE();
+    case 350:
+      if (lookahead == 'r') ADVANCE(375);
+      END_STATE();
+    case 351:
+      if (lookahead == 'F' ||
+          lookahead == 'f') ADVANCE(376);
+      END_STATE();
+    case 352:
+      if (lookahead == 'R' ||
+          lookahead == 'r') ADVANCE(377);
+      END_STATE();
+    case 353:
+      if (lookahead == 'm') ADVANCE(378);
+      END_STATE();
+    case 354:
+      if (lookahead == 't') ADVANCE(370);
+      END_STATE();
+    case 355:
+      ACCEPT_TOKEN(sym_token_keyword_cisco_encapsulation_mac_vlan);
+      END_STATE();
+    case 356:
+      if (lookahead == 'L' ||
+          lookahead == 'l') ADVANCE(379);
+      END_STATE();
+    case 357:
+      if (lookahead == 'Y' ||
+          lookahead == 'y') ADVANCE(380);
+      END_STATE();
+    case 358:
+      if (lookahead == 'n') ADVANCE(381);
+      END_STATE();
+    case 359:
+      if (lookahead == 'n') ADVANCE(382);
+      END_STATE();
+    case 360:
+      if (lookahead == '-') ADVANCE(383);
+      END_STATE();
+    case 361:
+      if (lookahead == 'v') ADVANCE(384);
+      END_STATE();
+    case 362:
+      ACCEPT_TOKEN(sym_token_type_cisco_interface_vasileft);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(362);
+      END_STATE();
+    case 363:
+      if (lookahead == 't') ADVANCE(385);
+      END_STATE();
+    case 364:
+      if (lookahead == 'T' ||
+          lookahead == 't') ADVANCE(386);
+      END_STATE();
+    case 365:
+      ACCEPT_TOKEN(sym_token_type_cisco_interface_cellular);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(387);
+      END_STATE();
+    case 366:
+      ACCEPT_TOKEN(sym_token_keyword_cisco_enable_disable_disable);
+      END_STATE();
+    case 367:
+      if (lookahead == 'N' ||
+          lookahead == 'n') ADVANCE(388);
+      END_STATE();
+    case 368:
+      if (lookahead == 'i') ADVANCE(389);
+      END_STATE();
+    case 369:
+      if (lookahead == 'I' ||
+          lookahead == 'i') ADVANCE(390);
+      END_STATE();
+    case 370:
+      ACCEPT_TOKEN(sym_token_type_cisco_interface_ethernet);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(102);
+      END_STATE();
+    case 371:
+      if (lookahead == 'E' ||
+          lookahead == 'e') ADVANCE(391);
+      END_STATE();
+    case 372:
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(392);
+      END_STATE();
+    case 373:
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(347);
+      END_STATE();
+    case 374:
+      ACCEPT_TOKEN(sym_token_keyword_cisco_shutdown);
+      END_STATE();
+    case 375:
+      if (lookahead == 'n') ADVANCE(393);
+      END_STATE();
+    case 376:
+      if (lookahead == 'A' ||
+          lookahead == 'a') ADVANCE(394);
+      END_STATE();
+    case 377:
+      if (lookahead == 'A' ||
+          lookahead == 'a') ADVANCE(395);
+      END_STATE();
+    case 378:
+      if (lookahead == 'a') ADVANCE(396);
+      END_STATE();
+    case 379:
+      ACCEPT_TOKEN(sym_token_keyword_cisco_match_match_all);
+      END_STATE();
+    case 380:
+      ACCEPT_TOKEN(sym_token_keyword_cisco_match_match_any);
+      END_STATE();
+    case 381:
+      if (lookahead == 't') ADVANCE(174);
+      END_STATE();
+    case 382:
+      if (lookahead == 'e') ADVANCE(397);
+      END_STATE();
+    case 383:
+      if (lookahead == 'V' ||
+          lookahead == 'v') ADVANCE(398);
+      END_STATE();
+    case 384:
+      if (lookahead == 'e') ADVANCE(120);
+      END_STATE();
+    case 385:
+      ACCEPT_TOKEN(sym_token_type_cisco_interface_vasiright);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(385);
+      END_STATE();
+    case 386:
+      if (lookahead == 'e') ADVANCE(399);
+      END_STATE();
+    case 387:
+      ACCEPT_TOKEN(sym_token_type_cisco_interface_cellular);
+      if (lookahead == '.') ADVANCE(400);
+      if (lookahead == '/') ADVANCE(401);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(387);
+      END_STATE();
+    case 388:
+      if (lookahead == 'N' ||
+          lookahead == 'n') ADVANCE(402);
+      END_STATE();
+    case 389:
+      if (lookahead == 'o') ADVANCE(403);
+      END_STATE();
+    case 390:
+      if (lookahead == 'O' ||
+          lookahead == 'o') ADVANCE(404);
+      END_STATE();
+    case 391:
+      ACCEPT_TOKEN(sym__keyword_interface);
+      END_STATE();
+    case 392:
+      ACCEPT_TOKEN(sym_token_type_cisco_interface_serial);
+      if (lookahead == '.') ADVANCE(372);
+      if (lookahead == '/') ADVANCE(373);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(392);
+      END_STATE();
+    case 393:
+      if (lookahead == 'e') ADVANCE(405);
+      END_STATE();
+    case 394:
+      if (lookahead == 'M' ||
+          lookahead == 'm') ADVANCE(406);
+      END_STATE();
+    case 395:
+      if (lookahead == 'T' ||
+          lookahead == 't') ADVANCE(407);
+      END_STATE();
+    case 396:
+      if (lookahead == 'i') ADVANCE(408);
+      END_STATE();
+    case 397:
+      if (lookahead == 'l') ADVANCE(409);
+      END_STATE();
+    case 398:
+      if (lookahead == 'L' ||
+          lookahead == 'l') ADVANCE(410);
+      END_STATE();
+    case 399:
+      if (lookahead == 'm') ADVANCE(411);
+      END_STATE();
+    case 400:
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(412);
+      END_STATE();
+    case 401:
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(387);
+      END_STATE();
+    case 402:
+      if (lookahead == 'E' ||
+          lookahead == 'e') ADVANCE(413);
+      END_STATE();
+    case 403:
       ACCEPT_TOKEN(sym_token_type_cisco_interface_wireless);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(304);
+      if (lookahead == '0' ||
+          lookahead == '1') ADVANCE(414);
+      END_STATE();
+    case 404:
+      if (lookahead == 'N' ||
+          lookahead == 'n') ADVANCE(415);
+      END_STATE();
+    case 405:
+      if (lookahead == 't') ADVANCE(416);
+      END_STATE();
+    case 406:
+      if (lookahead == 'I' ||
+          lookahead == 'i') ADVANCE(417);
+      END_STATE();
+    case 407:
+      if (lookahead == 'I' ||
+          lookahead == 'i') ADVANCE(418);
+      END_STATE();
+    case 408:
+      if (lookahead == 'n') ADVANCE(97);
+      END_STATE();
+    case 409:
+      ACCEPT_TOKEN(sym_token_type_cisco_interface_port_channel);
+      if (lookahead == '1') ADVANCE(115);
+      if (('2' <= lookahead && lookahead <= '9')) ADVANCE(117);
+      END_STATE();
+    case 410:
+      if (lookahead == 'A' ||
+          lookahead == 'a') ADVANCE(419);
+      END_STATE();
+    case 411:
+      if (lookahead == 'p') ADVANCE(420);
+      END_STATE();
+    case 412:
+      ACCEPT_TOKEN(sym_token_type_cisco_interface_cellular);
+      if (lookahead == '.') ADVANCE(400);
+      if (lookahead == '/') ADVANCE(401);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(412);
+      END_STATE();
+    case 413:
+      if (lookahead == 'L' ||
+          lookahead == 'l') ADVANCE(421);
+      END_STATE();
+    case 414:
+      ACCEPT_TOKEN(sym_token_type_cisco_interface_wireless);
+      if (lookahead == '.') ADVANCE(422);
+      if (lookahead == '/') ADVANCE(423);
+      END_STATE();
+    case 415:
+      ACCEPT_TOKEN(sym_text_keyword);
+      if (lookahead == ':') ADVANCE(308);
+      END_STATE();
+    case 416:
+      ACCEPT_TOKEN(sym_token_type_cisco_interface_app_gigabitethernet);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(216);
+      END_STATE();
+    case 417:
+      if (lookahead == 'L' ||
+          lookahead == 'l') ADVANCE(424);
+      END_STATE();
+    case 418:
+      if (lookahead == 'V' ||
+          lookahead == 'v') ADVANCE(425);
+      END_STATE();
+    case 419:
+      if (lookahead == 'N' ||
+          lookahead == 'n') ADVANCE(426);
+      END_STATE();
+    case 420:
+      if (lookahead == 'l') ADVANCE(427);
+      END_STATE();
+    case 421:
+      ACCEPT_TOKEN(sym_token_keyword_cisco_encapsulation_dot1q_tunnel);
+      END_STATE();
+    case 422:
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(428);
+      END_STATE();
+    case 423:
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(429);
+      END_STATE();
+    case 424:
+      if (lookahead == 'Y' ||
+          lookahead == 'y') ADVANCE(430);
+      END_STATE();
+    case 425:
+      if (lookahead == 'E' ||
+          lookahead == 'e') ADVANCE(431);
+      END_STATE();
+    case 426:
+      ACCEPT_TOKEN(sym_token_keyword_cisco_encapsulation_protocol_vlan);
+      END_STATE();
+    case 427:
+      if (lookahead == 'a') ADVANCE(432);
+      END_STATE();
+    case 428:
+      ACCEPT_TOKEN(sym_token_type_cisco_interface_wireless);
+      if (lookahead == '.') ADVANCE(433);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(434);
+      END_STATE();
+    case 429:
+      ACCEPT_TOKEN(sym_token_type_cisco_interface_wireless);
+      if (lookahead == '.') ADVANCE(433);
+      END_STATE();
+    case 430:
+      ACCEPT_TOKEN(sym__keyword_address_family);
+      END_STATE();
+    case 431:
+      if (lookahead == 'L' ||
+          lookahead == 'l') ADVANCE(435);
+      END_STATE();
+    case 432:
+      if (lookahead == 't') ADVANCE(436);
+      END_STATE();
+    case 433:
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(434);
+      END_STATE();
+    case 434:
+      ACCEPT_TOKEN(sym_token_type_cisco_interface_wireless);
+      if (lookahead == '.') ADVANCE(437);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(434);
+      END_STATE();
+    case 435:
+      if (lookahead == 'Y' ||
+          lookahead == 'y') ADVANCE(438);
+      END_STATE();
+    case 436:
+      if (lookahead == 'e') ADVANCE(439);
+      END_STATE();
+    case 437:
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(440);
+      END_STATE();
+    case 438:
+      ACCEPT_TOKEN(sym_token_keyword_cisco_status_administratively_down);
+      if (lookahead == '-') ADVANCE(441);
+      END_STATE();
+    case 439:
+      ACCEPT_TOKEN(sym_token_type_cisco_interface_virtual_template);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(439);
+      END_STATE();
+    case 440:
+      ACCEPT_TOKEN(sym_token_type_cisco_interface_wireless);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(440);
+      END_STATE();
+    case 441:
+      if (lookahead == 'D' ||
+          lookahead == 'd') ADVANCE(442);
+      END_STATE();
+    case 442:
+      if (lookahead == 'O' ||
+          lookahead == 'o') ADVANCE(443);
+      END_STATE();
+    case 443:
+      if (lookahead == 'W' ||
+          lookahead == 'w') ADVANCE(444);
+      END_STATE();
+    case 444:
+      if (lookahead == 'N' ||
+          lookahead == 'n') ADVANCE(445);
+      END_STATE();
+    case 445:
+      ACCEPT_TOKEN(sym_token_keyword_cisco_status_administratively_down);
       END_STATE();
     default:
       return false;
@@ -9472,24 +12442,24 @@ static const TSLexerMode ts_lex_modes[STATE_COUNT] = {
   [15] = {.lex_state = 6, .external_lex_state = 1},
   [16] = {.lex_state = 6, .external_lex_state = 1},
   [17] = {.lex_state = 6, .external_lex_state = 1},
-  [18] = {.lex_state = 6, .external_lex_state = 1},
-  [19] = {.lex_state = 7, .external_lex_state = 1},
+  [18] = {.lex_state = 7, .external_lex_state = 1},
+  [19] = {.lex_state = 6, .external_lex_state = 1},
   [20] = {.lex_state = 7, .external_lex_state = 1},
-  [21] = {.lex_state = 3, .external_lex_state = 1},
+  [21] = {.lex_state = 7, .external_lex_state = 1},
   [22] = {.lex_state = 7, .external_lex_state = 1},
-  [23] = {.lex_state = 7, .external_lex_state = 1},
+  [23] = {.lex_state = 3, .external_lex_state = 1},
   [24] = {.lex_state = 6, .external_lex_state = 1},
   [25] = {.lex_state = 6, .external_lex_state = 1},
   [26] = {.lex_state = 6, .external_lex_state = 1},
   [27] = {.lex_state = 6, .external_lex_state = 1},
   [28] = {.lex_state = 6, .external_lex_state = 1},
-  [29] = {.lex_state = 7, .external_lex_state = 1},
-  [30] = {.lex_state = 7, .external_lex_state = 1},
+  [29] = {.lex_state = 6, .external_lex_state = 1},
+  [30] = {.lex_state = 6, .external_lex_state = 1},
   [31] = {.lex_state = 7, .external_lex_state = 1},
-  [32] = {.lex_state = 0, .external_lex_state = 2},
-  [33] = {.lex_state = 0, .external_lex_state = 2},
-  [34] = {.lex_state = 0, .external_lex_state = 2},
-  [35] = {.lex_state = 0, .external_lex_state = 2},
+  [32] = {.lex_state = 7, .external_lex_state = 1},
+  [33] = {.lex_state = 7, .external_lex_state = 1},
+  [34] = {.lex_state = 7, .external_lex_state = 1},
+  [35] = {.lex_state = 7, .external_lex_state = 1},
   [36] = {.lex_state = 0, .external_lex_state = 2},
   [37] = {.lex_state = 0, .external_lex_state = 2},
   [38] = {.lex_state = 0, .external_lex_state = 2},
@@ -9500,23 +12470,23 @@ static const TSLexerMode ts_lex_modes[STATE_COUNT] = {
   [43] = {.lex_state = 0, .external_lex_state = 2},
   [44] = {.lex_state = 0, .external_lex_state = 2},
   [45] = {.lex_state = 0, .external_lex_state = 2},
-  [46] = {.lex_state = 6, .external_lex_state = 1},
-  [47] = {.lex_state = 6, .external_lex_state = 1},
-  [48] = {.lex_state = 6, .external_lex_state = 1},
-  [49] = {.lex_state = 6, .external_lex_state = 1},
-  [50] = {.lex_state = 0, .external_lex_state = 1},
-  [51] = {.lex_state = 0, .external_lex_state = 1},
-  [52] = {.lex_state = 0, .external_lex_state = 1},
-  [53] = {.lex_state = 0, .external_lex_state = 1},
+  [46] = {.lex_state = 0, .external_lex_state = 2},
+  [47] = {.lex_state = 0, .external_lex_state = 2},
+  [48] = {.lex_state = 0, .external_lex_state = 2},
+  [49] = {.lex_state = 0, .external_lex_state = 2},
+  [50] = {.lex_state = 6, .external_lex_state = 1},
+  [51] = {.lex_state = 6, .external_lex_state = 1},
+  [52] = {.lex_state = 6, .external_lex_state = 1},
+  [53] = {.lex_state = 6, .external_lex_state = 1},
   [54] = {.lex_state = 0, .external_lex_state = 1},
   [55] = {.lex_state = 0, .external_lex_state = 1},
   [56] = {.lex_state = 0, .external_lex_state = 1},
   [57] = {.lex_state = 0, .external_lex_state = 1},
   [58] = {.lex_state = 0, .external_lex_state = 1},
-  [59] = {.lex_state = 0, .external_lex_state = 2},
-  [60] = {.lex_state = 0, .external_lex_state = 2},
-  [61] = {.lex_state = 0, .external_lex_state = 2},
-  [62] = {.lex_state = 0, .external_lex_state = 2},
+  [59] = {.lex_state = 0, .external_lex_state = 1},
+  [60] = {.lex_state = 0, .external_lex_state = 1},
+  [61] = {.lex_state = 0, .external_lex_state = 1},
+  [62] = {.lex_state = 0, .external_lex_state = 1},
   [63] = {.lex_state = 0, .external_lex_state = 2},
   [64] = {.lex_state = 0, .external_lex_state = 2},
   [65] = {.lex_state = 0, .external_lex_state = 2},
@@ -9529,7 +12499,11 @@ static const TSLexerMode ts_lex_modes[STATE_COUNT] = {
   [72] = {.lex_state = 0, .external_lex_state = 2},
   [73] = {.lex_state = 0, .external_lex_state = 2},
   [74] = {.lex_state = 0, .external_lex_state = 2},
-  [75] = {.lex_state = 0},
+  [75] = {.lex_state = 0, .external_lex_state = 2},
+  [76] = {.lex_state = 0, .external_lex_state = 2},
+  [77] = {.lex_state = 0, .external_lex_state = 2},
+  [78] = {.lex_state = 0, .external_lex_state = 2},
+  [79] = {.lex_state = 0},
 };
 
 static const uint16_t ts_parse_table[LARGE_STATE_COUNT][SYMBOL_COUNT] = {
@@ -9542,10 +12516,44 @@ static const uint16_t ts_parse_table[LARGE_STATE_COUNT][SYMBOL_COUNT] = {
     [sym_no_modifier] = ACTIONS(1),
     [sym_default_modifier] = ACTIONS(1),
     [sym_text_keyword] = ACTIONS(1),
+    [sym_token_keyword_cisco_encapsulation_dot1q] = ACTIONS(1),
+    [sym_token_keyword_cisco_encapsulation_dot1q_tunnel] = ACTIONS(1),
+    [sym_token_keyword_cisco_encapsulation_protocol_vlan] = ACTIONS(1),
+    [sym_token_keyword_cisco_encapsulation_mac_vlan] = ACTIONS(1),
+    [sym_token_keyword_cisco_switchport_mode_access] = ACTIONS(1),
+    [sym_token_keyword_cisco_switchport_mode_trunk] = ACTIONS(1),
+    [sym_token_keyword_cisco_shutdown] = ACTIONS(1),
+    [sym_token_keyword_cisco_status_up] = ACTIONS(1),
+    [sym_token_keyword_cisco_status_down] = ACTIONS(1),
+    [sym_token_keyword_cisco_status_deleted] = ACTIONS(1),
+    [sym_token_keyword_cisco_status_administratively_down] = ACTIONS(1),
+    [sym_token_keyword_cisco_enable_disable_enable] = ACTIONS(1),
+    [sym_token_keyword_cisco_enable_disable_disable] = ACTIONS(1),
+    [sym_token_keyword_cisco_match_match_any] = ACTIONS(1),
+    [sym_token_keyword_cisco_match_match_all] = ACTIONS(1),
+    [sym_token_keyword_cisco_add_remove_add] = ACTIONS(1),
+    [sym_token_keyword_cisco_add_remove_remove] = ACTIONS(1),
+    [sym_token_keyword_cisco_add_remove_except] = ACTIONS(1),
+    [sym_token_keyword_cisco_allowed_native_allowed] = ACTIONS(1),
+    [sym_token_keyword_cisco_allowed_native_native] = ACTIONS(1),
+    [sym_token_keyword_cisco_any_all_any] = ACTIONS(1),
+    [sym_token_keyword_cisco_any_all_all] = ACTIONS(1),
+    [sym_token_keyword_cisco_permit_deny_permit] = ACTIONS(1),
+    [sym_token_keyword_cisco_permit_deny_deny] = ACTIONS(1),
+    [sym_token_keyword_cisco_in_out_in] = ACTIONS(1),
+    [sym_token_keyword_cisco_in_out_out] = ACTIONS(1),
+    [sym_token_keyword_cisco_input_output_input] = ACTIONS(1),
+    [sym_token_keyword_cisco_input_output_output] = ACTIONS(1),
+    [sym_token_keyword_cisco_inside_outside_inside] = ACTIONS(1),
+    [sym_token_keyword_cisco_inside_outside_outside] = ACTIONS(1),
+    [sym_token_number_cisco_integer] = ACTIONS(1),
+    [sym_token_number_cisco_range] = ACTIONS(1),
+    [sym_token_number_cisco_hex] = ACTIONS(1),
     [sym_line_comment] = ACTIONS(1),
     [sym__trailing_comment] = ACTIONS(1),
     [sym_quoted_string] = ACTIONS(1),
     [sym_text_value] = ACTIONS(1),
+    [sym_token_tag_cisco_logging_system_message] = ACTIONS(1),
     [sym_token_type_cisco_interface_app_gigabitethernet] = ACTIONS(1),
     [sym_token_type_cisco_interface_async] = ACTIONS(1),
     [sym_token_type_cisco_interface_bdi] = ACTIONS(1),
@@ -9580,19 +12588,19 @@ static const uint16_t ts_parse_table[LARGE_STATE_COUNT][SYMBOL_COUNT] = {
     [sym__address_family_start] = ACTIONS(1),
   },
   [STATE(1)] = {
-    [sym_source_file] = STATE(75),
-    [sym_prompt_block] = STATE(32),
-    [sym_prompt_record] = STATE(34),
-    [sym_prompt_line] = STATE(52),
-    [sym_top_level_line] = STATE(32),
-    [sym_orphan_child_line] = STATE(32),
-    [sym__definition] = STATE(32),
-    [sym_simple_definition] = STATE(32),
-    [sym_definition_line] = STATE(42),
-    [sym_bgp_definition] = STATE(32),
-    [sym_bgp_definition_line] = STATE(40),
-    [sym_address_family_definition_line] = STATE(68),
-    [aux_sym_source_file_repeat1] = STATE(32),
+    [sym_source_file] = STATE(79),
+    [sym_prompt_block] = STATE(36),
+    [sym_prompt_record] = STATE(38),
+    [sym_prompt_line] = STATE(54),
+    [sym_top_level_line] = STATE(36),
+    [sym_orphan_child_line] = STATE(36),
+    [sym__definition] = STATE(36),
+    [sym_simple_definition] = STATE(36),
+    [sym_definition_line] = STATE(44),
+    [sym_bgp_definition] = STATE(36),
+    [sym_bgp_definition_line] = STATE(46),
+    [sym_address_family_definition_line] = STATE(74),
+    [aux_sym_source_file_repeat1] = STATE(36),
     [ts_builtin_sym_end] = ACTIONS(3),
     [sym_prompt] = ACTIONS(5),
     [sym__definition_start] = ACTIONS(7),
@@ -9601,18 +12609,20 @@ static const uint16_t ts_parse_table[LARGE_STATE_COUNT][SYMBOL_COUNT] = {
     [sym__address_family_start] = ACTIONS(13),
   },
   [STATE(2)] = {
-    [sym_line] = STATE(58),
-    [sym__command_record] = STATE(46),
-    [sym__command] = STATE(49),
-    [sym_generic_command] = STATE(49),
-    [sym_text] = STATE(9),
+    [sym_line] = STATE(56),
+    [sym__command_record] = STATE(52),
+    [sym__command] = STATE(50),
+    [sym_generic_command] = STATE(50),
+    [sym_text] = STATE(10),
     [sym_command_modifier] = STATE(8),
-    [sym_interface_command] = STATE(49),
-    [sym_router_command] = STATE(49),
-    [sym_address_family_command] = STATE(49),
-    [sym__cisco_atom] = STATE(9),
+    [sym_interface_command] = STATE(50),
+    [sym_router_command] = STATE(50),
+    [sym_address_family_command] = STATE(50),
+    [sym__cisco_atom] = STATE(10),
+    [sym__cisco_numeric_literal] = STATE(24),
     [sym__cisco_interface_token] = STATE(24),
     [sym__cisco_address_token] = STATE(24),
+    [sym__cisco_keyword_token] = STATE(24),
     [ts_builtin_sym_end] = ACTIONS(15),
     [sym_word] = ACTIONS(17),
     [sym__keyword_interface] = ACTIONS(19),
@@ -9621,110 +12631,90 @@ static const uint16_t ts_parse_table[LARGE_STATE_COUNT][SYMBOL_COUNT] = {
     [sym_no_modifier] = ACTIONS(25),
     [sym_default_modifier] = ACTIONS(25),
     [sym_text_keyword] = ACTIONS(27),
-    [sym_line_comment] = ACTIONS(29),
-    [sym_quoted_string] = ACTIONS(31),
-    [sym_token_type_cisco_interface_app_gigabitethernet] = ACTIONS(33),
-    [sym_token_type_cisco_interface_async] = ACTIONS(33),
-    [sym_token_type_cisco_interface_bdi] = ACTIONS(33),
-    [sym_token_type_cisco_interface_bri] = ACTIONS(33),
-    [sym_token_type_cisco_interface_bvi] = ACTIONS(33),
-    [sym_token_type_cisco_interface_cellular] = ACTIONS(33),
-    [sym_token_type_cisco_interface_dialer] = ACTIONS(33),
-    [sym_token_type_cisco_interface_ethernet] = ACTIONS(33),
-    [sym_token_type_cisco_interface_loopback] = ACTIONS(33),
-    [sym_token_type_cisco_interface_management] = ACTIONS(33),
-    [sym_token_type_cisco_interface_null] = ACTIONS(33),
-    [sym_token_type_cisco_interface_nvi] = ACTIONS(33),
-    [sym_token_type_cisco_interface_port_channel] = ACTIONS(33),
-    [sym_token_type_cisco_interface_serial] = ACTIONS(33),
-    [sym_token_type_cisco_interface_tunnel] = ACTIONS(33),
-    [sym_token_type_cisco_interface_vasileft] = ACTIONS(33),
-    [sym_token_type_cisco_interface_vasiright] = ACTIONS(33),
-    [sym_token_type_cisco_interface_virtual_template] = ACTIONS(33),
-    [sym_token_type_cisco_interface_vlan] = ACTIONS(33),
-    [sym_token_type_cisco_interface_vmi] = ACTIONS(33),
-    [sym_token_type_cisco_interface_wireless] = ACTIONS(33),
-    [sym_token_number_cisco_address_ipv4_cidr] = ACTIONS(35),
-    [sym_token_number_cisco_address_ipv4] = ACTIONS(35),
-    [sym_token_number_cisco_address_ipv6_condensed] = ACTIONS(35),
-    [sym_token_number_cisco_address_ipv6_full] = ACTIONS(35),
-    [sym_token_number_cisco_address_mac] = ACTIONS(35),
+    [sym_token_keyword_cisco_encapsulation_dot1q] = ACTIONS(29),
+    [sym_token_keyword_cisco_encapsulation_dot1q_tunnel] = ACTIONS(29),
+    [sym_token_keyword_cisco_encapsulation_protocol_vlan] = ACTIONS(29),
+    [sym_token_keyword_cisco_encapsulation_mac_vlan] = ACTIONS(29),
+    [sym_token_keyword_cisco_switchport_mode_access] = ACTIONS(29),
+    [sym_token_keyword_cisco_switchport_mode_trunk] = ACTIONS(29),
+    [sym_token_keyword_cisco_shutdown] = ACTIONS(29),
+    [sym_token_keyword_cisco_status_up] = ACTIONS(29),
+    [sym_token_keyword_cisco_status_down] = ACTIONS(29),
+    [sym_token_keyword_cisco_status_deleted] = ACTIONS(29),
+    [sym_token_keyword_cisco_status_administratively_down] = ACTIONS(29),
+    [sym_token_keyword_cisco_enable_disable_enable] = ACTIONS(29),
+    [sym_token_keyword_cisco_enable_disable_disable] = ACTIONS(29),
+    [sym_token_keyword_cisco_match_match_any] = ACTIONS(29),
+    [sym_token_keyword_cisco_match_match_all] = ACTIONS(29),
+    [sym_token_keyword_cisco_add_remove_add] = ACTIONS(29),
+    [sym_token_keyword_cisco_add_remove_remove] = ACTIONS(29),
+    [sym_token_keyword_cisco_add_remove_except] = ACTIONS(29),
+    [sym_token_keyword_cisco_allowed_native_allowed] = ACTIONS(29),
+    [sym_token_keyword_cisco_allowed_native_native] = ACTIONS(29),
+    [sym_token_keyword_cisco_any_all_any] = ACTIONS(29),
+    [sym_token_keyword_cisco_any_all_all] = ACTIONS(29),
+    [sym_token_keyword_cisco_permit_deny_permit] = ACTIONS(29),
+    [sym_token_keyword_cisco_permit_deny_deny] = ACTIONS(29),
+    [sym_token_keyword_cisco_in_out_in] = ACTIONS(29),
+    [sym_token_keyword_cisco_in_out_out] = ACTIONS(29),
+    [sym_token_keyword_cisco_input_output_input] = ACTIONS(29),
+    [sym_token_keyword_cisco_input_output_output] = ACTIONS(29),
+    [sym_token_keyword_cisco_inside_outside_inside] = ACTIONS(29),
+    [sym_token_keyword_cisco_inside_outside_outside] = ACTIONS(29),
+    [sym_token_number_cisco_integer] = ACTIONS(31),
+    [sym_token_number_cisco_range] = ACTIONS(31),
+    [sym_token_number_cisco_hex] = ACTIONS(31),
+    [sym_line_comment] = ACTIONS(33),
+    [sym_quoted_string] = ACTIONS(35),
+    [sym_token_tag_cisco_logging_system_message] = ACTIONS(17),
+    [sym_token_type_cisco_interface_app_gigabitethernet] = ACTIONS(37),
+    [sym_token_type_cisco_interface_async] = ACTIONS(37),
+    [sym_token_type_cisco_interface_bdi] = ACTIONS(37),
+    [sym_token_type_cisco_interface_bri] = ACTIONS(37),
+    [sym_token_type_cisco_interface_bvi] = ACTIONS(37),
+    [sym_token_type_cisco_interface_cellular] = ACTIONS(37),
+    [sym_token_type_cisco_interface_dialer] = ACTIONS(37),
+    [sym_token_type_cisco_interface_ethernet] = ACTIONS(37),
+    [sym_token_type_cisco_interface_loopback] = ACTIONS(37),
+    [sym_token_type_cisco_interface_management] = ACTIONS(37),
+    [sym_token_type_cisco_interface_null] = ACTIONS(37),
+    [sym_token_type_cisco_interface_nvi] = ACTIONS(37),
+    [sym_token_type_cisco_interface_port_channel] = ACTIONS(37),
+    [sym_token_type_cisco_interface_serial] = ACTIONS(37),
+    [sym_token_type_cisco_interface_tunnel] = ACTIONS(37),
+    [sym_token_type_cisco_interface_vasileft] = ACTIONS(37),
+    [sym_token_type_cisco_interface_vasiright] = ACTIONS(37),
+    [sym_token_type_cisco_interface_virtual_template] = ACTIONS(37),
+    [sym_token_type_cisco_interface_vlan] = ACTIONS(37),
+    [sym_token_type_cisco_interface_vmi] = ACTIONS(37),
+    [sym_token_type_cisco_interface_wireless] = ACTIONS(37),
+    [sym_token_number_cisco_address_ipv4_cidr] = ACTIONS(39),
+    [sym_token_number_cisco_address_ipv4] = ACTIONS(39),
+    [sym_token_number_cisco_address_ipv6_condensed] = ACTIONS(39),
+    [sym_token_number_cisco_address_ipv6_full] = ACTIONS(39),
+    [sym_token_number_cisco_address_mac] = ACTIONS(39),
     [sym_prompt] = ACTIONS(15),
-    [sym__newline] = ACTIONS(37),
+    [sym__newline] = ACTIONS(41),
     [sym__definition_start] = ACTIONS(15),
     [sym__ordinary_start] = ACTIONS(15),
     [sym__bgp_start] = ACTIONS(15),
     [sym__address_family_start] = ACTIONS(15),
   },
   [STATE(3)] = {
-    [sym_line] = STATE(56),
-    [sym__command_record] = STATE(46),
-    [sym__command] = STATE(49),
-    [sym_generic_command] = STATE(49),
-    [sym_text] = STATE(9),
-    [sym_command_modifier] = STATE(8),
-    [sym_interface_command] = STATE(49),
-    [sym_router_command] = STATE(49),
-    [sym_address_family_command] = STATE(49),
-    [sym__cisco_atom] = STATE(9),
-    [sym__cisco_interface_token] = STATE(24),
-    [sym__cisco_address_token] = STATE(24),
-    [ts_builtin_sym_end] = ACTIONS(39),
-    [sym_word] = ACTIONS(17),
-    [sym__keyword_interface] = ACTIONS(19),
-    [sym__keyword_router] = ACTIONS(21),
-    [sym__keyword_address_family] = ACTIONS(23),
-    [sym_no_modifier] = ACTIONS(25),
-    [sym_default_modifier] = ACTIONS(25),
-    [sym_text_keyword] = ACTIONS(27),
-    [sym_line_comment] = ACTIONS(29),
-    [sym_quoted_string] = ACTIONS(31),
-    [sym_token_type_cisco_interface_app_gigabitethernet] = ACTIONS(33),
-    [sym_token_type_cisco_interface_async] = ACTIONS(33),
-    [sym_token_type_cisco_interface_bdi] = ACTIONS(33),
-    [sym_token_type_cisco_interface_bri] = ACTIONS(33),
-    [sym_token_type_cisco_interface_bvi] = ACTIONS(33),
-    [sym_token_type_cisco_interface_cellular] = ACTIONS(33),
-    [sym_token_type_cisco_interface_dialer] = ACTIONS(33),
-    [sym_token_type_cisco_interface_ethernet] = ACTIONS(33),
-    [sym_token_type_cisco_interface_loopback] = ACTIONS(33),
-    [sym_token_type_cisco_interface_management] = ACTIONS(33),
-    [sym_token_type_cisco_interface_null] = ACTIONS(33),
-    [sym_token_type_cisco_interface_nvi] = ACTIONS(33),
-    [sym_token_type_cisco_interface_port_channel] = ACTIONS(33),
-    [sym_token_type_cisco_interface_serial] = ACTIONS(33),
-    [sym_token_type_cisco_interface_tunnel] = ACTIONS(33),
-    [sym_token_type_cisco_interface_vasileft] = ACTIONS(33),
-    [sym_token_type_cisco_interface_vasiright] = ACTIONS(33),
-    [sym_token_type_cisco_interface_virtual_template] = ACTIONS(33),
-    [sym_token_type_cisco_interface_vlan] = ACTIONS(33),
-    [sym_token_type_cisco_interface_vmi] = ACTIONS(33),
-    [sym_token_type_cisco_interface_wireless] = ACTIONS(33),
-    [sym_token_number_cisco_address_ipv4_cidr] = ACTIONS(35),
-    [sym_token_number_cisco_address_ipv4] = ACTIONS(35),
-    [sym_token_number_cisco_address_ipv6_condensed] = ACTIONS(35),
-    [sym_token_number_cisco_address_ipv6_full] = ACTIONS(35),
-    [sym_token_number_cisco_address_mac] = ACTIONS(35),
-    [sym_prompt] = ACTIONS(39),
-    [sym__newline] = ACTIONS(41),
-    [sym__definition_start] = ACTIONS(39),
-    [sym__ordinary_start] = ACTIONS(39),
-    [sym__bgp_start] = ACTIONS(39),
-    [sym__address_family_start] = ACTIONS(39),
-  },
-  [STATE(4)] = {
     [sym_line] = STATE(57),
-    [sym__command_record] = STATE(46),
-    [sym__command] = STATE(49),
-    [sym_generic_command] = STATE(49),
-    [sym_text] = STATE(9),
+    [sym__command_record] = STATE(52),
+    [sym__command] = STATE(50),
+    [sym_generic_command] = STATE(50),
+    [sym_text] = STATE(10),
     [sym_command_modifier] = STATE(8),
-    [sym_interface_command] = STATE(49),
-    [sym_router_command] = STATE(49),
-    [sym_address_family_command] = STATE(49),
-    [sym__cisco_atom] = STATE(9),
+    [sym_interface_command] = STATE(50),
+    [sym_router_command] = STATE(50),
+    [sym_address_family_command] = STATE(50),
+    [sym__cisco_atom] = STATE(10),
+    [sym__cisco_numeric_literal] = STATE(24),
     [sym__cisco_interface_token] = STATE(24),
     [sym__cisco_address_token] = STATE(24),
+    [sym__cisco_keyword_token] = STATE(24),
     [ts_builtin_sym_end] = ACTIONS(43),
     [sym_word] = ACTIONS(17),
     [sym__keyword_interface] = ACTIONS(19),
@@ -9733,34 +12723,68 @@ static const uint16_t ts_parse_table[LARGE_STATE_COUNT][SYMBOL_COUNT] = {
     [sym_no_modifier] = ACTIONS(25),
     [sym_default_modifier] = ACTIONS(25),
     [sym_text_keyword] = ACTIONS(27),
-    [sym_line_comment] = ACTIONS(29),
-    [sym_quoted_string] = ACTIONS(31),
-    [sym_token_type_cisco_interface_app_gigabitethernet] = ACTIONS(33),
-    [sym_token_type_cisco_interface_async] = ACTIONS(33),
-    [sym_token_type_cisco_interface_bdi] = ACTIONS(33),
-    [sym_token_type_cisco_interface_bri] = ACTIONS(33),
-    [sym_token_type_cisco_interface_bvi] = ACTIONS(33),
-    [sym_token_type_cisco_interface_cellular] = ACTIONS(33),
-    [sym_token_type_cisco_interface_dialer] = ACTIONS(33),
-    [sym_token_type_cisco_interface_ethernet] = ACTIONS(33),
-    [sym_token_type_cisco_interface_loopback] = ACTIONS(33),
-    [sym_token_type_cisco_interface_management] = ACTIONS(33),
-    [sym_token_type_cisco_interface_null] = ACTIONS(33),
-    [sym_token_type_cisco_interface_nvi] = ACTIONS(33),
-    [sym_token_type_cisco_interface_port_channel] = ACTIONS(33),
-    [sym_token_type_cisco_interface_serial] = ACTIONS(33),
-    [sym_token_type_cisco_interface_tunnel] = ACTIONS(33),
-    [sym_token_type_cisco_interface_vasileft] = ACTIONS(33),
-    [sym_token_type_cisco_interface_vasiright] = ACTIONS(33),
-    [sym_token_type_cisco_interface_virtual_template] = ACTIONS(33),
-    [sym_token_type_cisco_interface_vlan] = ACTIONS(33),
-    [sym_token_type_cisco_interface_vmi] = ACTIONS(33),
-    [sym_token_type_cisco_interface_wireless] = ACTIONS(33),
-    [sym_token_number_cisco_address_ipv4_cidr] = ACTIONS(35),
-    [sym_token_number_cisco_address_ipv4] = ACTIONS(35),
-    [sym_token_number_cisco_address_ipv6_condensed] = ACTIONS(35),
-    [sym_token_number_cisco_address_ipv6_full] = ACTIONS(35),
-    [sym_token_number_cisco_address_mac] = ACTIONS(35),
+    [sym_token_keyword_cisco_encapsulation_dot1q] = ACTIONS(29),
+    [sym_token_keyword_cisco_encapsulation_dot1q_tunnel] = ACTIONS(29),
+    [sym_token_keyword_cisco_encapsulation_protocol_vlan] = ACTIONS(29),
+    [sym_token_keyword_cisco_encapsulation_mac_vlan] = ACTIONS(29),
+    [sym_token_keyword_cisco_switchport_mode_access] = ACTIONS(29),
+    [sym_token_keyword_cisco_switchport_mode_trunk] = ACTIONS(29),
+    [sym_token_keyword_cisco_shutdown] = ACTIONS(29),
+    [sym_token_keyword_cisco_status_up] = ACTIONS(29),
+    [sym_token_keyword_cisco_status_down] = ACTIONS(29),
+    [sym_token_keyword_cisco_status_deleted] = ACTIONS(29),
+    [sym_token_keyword_cisco_status_administratively_down] = ACTIONS(29),
+    [sym_token_keyword_cisco_enable_disable_enable] = ACTIONS(29),
+    [sym_token_keyword_cisco_enable_disable_disable] = ACTIONS(29),
+    [sym_token_keyword_cisco_match_match_any] = ACTIONS(29),
+    [sym_token_keyword_cisco_match_match_all] = ACTIONS(29),
+    [sym_token_keyword_cisco_add_remove_add] = ACTIONS(29),
+    [sym_token_keyword_cisco_add_remove_remove] = ACTIONS(29),
+    [sym_token_keyword_cisco_add_remove_except] = ACTIONS(29),
+    [sym_token_keyword_cisco_allowed_native_allowed] = ACTIONS(29),
+    [sym_token_keyword_cisco_allowed_native_native] = ACTIONS(29),
+    [sym_token_keyword_cisco_any_all_any] = ACTIONS(29),
+    [sym_token_keyword_cisco_any_all_all] = ACTIONS(29),
+    [sym_token_keyword_cisco_permit_deny_permit] = ACTIONS(29),
+    [sym_token_keyword_cisco_permit_deny_deny] = ACTIONS(29),
+    [sym_token_keyword_cisco_in_out_in] = ACTIONS(29),
+    [sym_token_keyword_cisco_in_out_out] = ACTIONS(29),
+    [sym_token_keyword_cisco_input_output_input] = ACTIONS(29),
+    [sym_token_keyword_cisco_input_output_output] = ACTIONS(29),
+    [sym_token_keyword_cisco_inside_outside_inside] = ACTIONS(29),
+    [sym_token_keyword_cisco_inside_outside_outside] = ACTIONS(29),
+    [sym_token_number_cisco_integer] = ACTIONS(31),
+    [sym_token_number_cisco_range] = ACTIONS(31),
+    [sym_token_number_cisco_hex] = ACTIONS(31),
+    [sym_line_comment] = ACTIONS(33),
+    [sym_quoted_string] = ACTIONS(35),
+    [sym_token_tag_cisco_logging_system_message] = ACTIONS(17),
+    [sym_token_type_cisco_interface_app_gigabitethernet] = ACTIONS(37),
+    [sym_token_type_cisco_interface_async] = ACTIONS(37),
+    [sym_token_type_cisco_interface_bdi] = ACTIONS(37),
+    [sym_token_type_cisco_interface_bri] = ACTIONS(37),
+    [sym_token_type_cisco_interface_bvi] = ACTIONS(37),
+    [sym_token_type_cisco_interface_cellular] = ACTIONS(37),
+    [sym_token_type_cisco_interface_dialer] = ACTIONS(37),
+    [sym_token_type_cisco_interface_ethernet] = ACTIONS(37),
+    [sym_token_type_cisco_interface_loopback] = ACTIONS(37),
+    [sym_token_type_cisco_interface_management] = ACTIONS(37),
+    [sym_token_type_cisco_interface_null] = ACTIONS(37),
+    [sym_token_type_cisco_interface_nvi] = ACTIONS(37),
+    [sym_token_type_cisco_interface_port_channel] = ACTIONS(37),
+    [sym_token_type_cisco_interface_serial] = ACTIONS(37),
+    [sym_token_type_cisco_interface_tunnel] = ACTIONS(37),
+    [sym_token_type_cisco_interface_vasileft] = ACTIONS(37),
+    [sym_token_type_cisco_interface_vasiright] = ACTIONS(37),
+    [sym_token_type_cisco_interface_virtual_template] = ACTIONS(37),
+    [sym_token_type_cisco_interface_vlan] = ACTIONS(37),
+    [sym_token_type_cisco_interface_vmi] = ACTIONS(37),
+    [sym_token_type_cisco_interface_wireless] = ACTIONS(37),
+    [sym_token_number_cisco_address_ipv4_cidr] = ACTIONS(39),
+    [sym_token_number_cisco_address_ipv4] = ACTIONS(39),
+    [sym_token_number_cisco_address_ipv6_condensed] = ACTIONS(39),
+    [sym_token_number_cisco_address_ipv6_full] = ACTIONS(39),
+    [sym_token_number_cisco_address_mac] = ACTIONS(39),
     [sym_prompt] = ACTIONS(43),
     [sym__newline] = ACTIONS(45),
     [sym__definition_start] = ACTIONS(43),
@@ -9768,19 +12792,21 @@ static const uint16_t ts_parse_table[LARGE_STATE_COUNT][SYMBOL_COUNT] = {
     [sym__bgp_start] = ACTIONS(43),
     [sym__address_family_start] = ACTIONS(43),
   },
-  [STATE(5)] = {
-    [sym_line] = STATE(51),
-    [sym__command_record] = STATE(46),
-    [sym__command] = STATE(49),
-    [sym_generic_command] = STATE(49),
-    [sym_text] = STATE(9),
+  [STATE(4)] = {
+    [sym_line] = STATE(59),
+    [sym__command_record] = STATE(52),
+    [sym__command] = STATE(50),
+    [sym_generic_command] = STATE(50),
+    [sym_text] = STATE(10),
     [sym_command_modifier] = STATE(8),
-    [sym_interface_command] = STATE(49),
-    [sym_router_command] = STATE(49),
-    [sym_address_family_command] = STATE(49),
-    [sym__cisco_atom] = STATE(9),
+    [sym_interface_command] = STATE(50),
+    [sym_router_command] = STATE(50),
+    [sym_address_family_command] = STATE(50),
+    [sym__cisco_atom] = STATE(10),
+    [sym__cisco_numeric_literal] = STATE(24),
     [sym__cisco_interface_token] = STATE(24),
     [sym__cisco_address_token] = STATE(24),
+    [sym__cisco_keyword_token] = STATE(24),
     [ts_builtin_sym_end] = ACTIONS(47),
     [sym_word] = ACTIONS(17),
     [sym__keyword_interface] = ACTIONS(19),
@@ -9789,34 +12815,68 @@ static const uint16_t ts_parse_table[LARGE_STATE_COUNT][SYMBOL_COUNT] = {
     [sym_no_modifier] = ACTIONS(25),
     [sym_default_modifier] = ACTIONS(25),
     [sym_text_keyword] = ACTIONS(27),
-    [sym_line_comment] = ACTIONS(29),
-    [sym_quoted_string] = ACTIONS(31),
-    [sym_token_type_cisco_interface_app_gigabitethernet] = ACTIONS(33),
-    [sym_token_type_cisco_interface_async] = ACTIONS(33),
-    [sym_token_type_cisco_interface_bdi] = ACTIONS(33),
-    [sym_token_type_cisco_interface_bri] = ACTIONS(33),
-    [sym_token_type_cisco_interface_bvi] = ACTIONS(33),
-    [sym_token_type_cisco_interface_cellular] = ACTIONS(33),
-    [sym_token_type_cisco_interface_dialer] = ACTIONS(33),
-    [sym_token_type_cisco_interface_ethernet] = ACTIONS(33),
-    [sym_token_type_cisco_interface_loopback] = ACTIONS(33),
-    [sym_token_type_cisco_interface_management] = ACTIONS(33),
-    [sym_token_type_cisco_interface_null] = ACTIONS(33),
-    [sym_token_type_cisco_interface_nvi] = ACTIONS(33),
-    [sym_token_type_cisco_interface_port_channel] = ACTIONS(33),
-    [sym_token_type_cisco_interface_serial] = ACTIONS(33),
-    [sym_token_type_cisco_interface_tunnel] = ACTIONS(33),
-    [sym_token_type_cisco_interface_vasileft] = ACTIONS(33),
-    [sym_token_type_cisco_interface_vasiright] = ACTIONS(33),
-    [sym_token_type_cisco_interface_virtual_template] = ACTIONS(33),
-    [sym_token_type_cisco_interface_vlan] = ACTIONS(33),
-    [sym_token_type_cisco_interface_vmi] = ACTIONS(33),
-    [sym_token_type_cisco_interface_wireless] = ACTIONS(33),
-    [sym_token_number_cisco_address_ipv4_cidr] = ACTIONS(35),
-    [sym_token_number_cisco_address_ipv4] = ACTIONS(35),
-    [sym_token_number_cisco_address_ipv6_condensed] = ACTIONS(35),
-    [sym_token_number_cisco_address_ipv6_full] = ACTIONS(35),
-    [sym_token_number_cisco_address_mac] = ACTIONS(35),
+    [sym_token_keyword_cisco_encapsulation_dot1q] = ACTIONS(29),
+    [sym_token_keyword_cisco_encapsulation_dot1q_tunnel] = ACTIONS(29),
+    [sym_token_keyword_cisco_encapsulation_protocol_vlan] = ACTIONS(29),
+    [sym_token_keyword_cisco_encapsulation_mac_vlan] = ACTIONS(29),
+    [sym_token_keyword_cisco_switchport_mode_access] = ACTIONS(29),
+    [sym_token_keyword_cisco_switchport_mode_trunk] = ACTIONS(29),
+    [sym_token_keyword_cisco_shutdown] = ACTIONS(29),
+    [sym_token_keyword_cisco_status_up] = ACTIONS(29),
+    [sym_token_keyword_cisco_status_down] = ACTIONS(29),
+    [sym_token_keyword_cisco_status_deleted] = ACTIONS(29),
+    [sym_token_keyword_cisco_status_administratively_down] = ACTIONS(29),
+    [sym_token_keyword_cisco_enable_disable_enable] = ACTIONS(29),
+    [sym_token_keyword_cisco_enable_disable_disable] = ACTIONS(29),
+    [sym_token_keyword_cisco_match_match_any] = ACTIONS(29),
+    [sym_token_keyword_cisco_match_match_all] = ACTIONS(29),
+    [sym_token_keyword_cisco_add_remove_add] = ACTIONS(29),
+    [sym_token_keyword_cisco_add_remove_remove] = ACTIONS(29),
+    [sym_token_keyword_cisco_add_remove_except] = ACTIONS(29),
+    [sym_token_keyword_cisco_allowed_native_allowed] = ACTIONS(29),
+    [sym_token_keyword_cisco_allowed_native_native] = ACTIONS(29),
+    [sym_token_keyword_cisco_any_all_any] = ACTIONS(29),
+    [sym_token_keyword_cisco_any_all_all] = ACTIONS(29),
+    [sym_token_keyword_cisco_permit_deny_permit] = ACTIONS(29),
+    [sym_token_keyword_cisco_permit_deny_deny] = ACTIONS(29),
+    [sym_token_keyword_cisco_in_out_in] = ACTIONS(29),
+    [sym_token_keyword_cisco_in_out_out] = ACTIONS(29),
+    [sym_token_keyword_cisco_input_output_input] = ACTIONS(29),
+    [sym_token_keyword_cisco_input_output_output] = ACTIONS(29),
+    [sym_token_keyword_cisco_inside_outside_inside] = ACTIONS(29),
+    [sym_token_keyword_cisco_inside_outside_outside] = ACTIONS(29),
+    [sym_token_number_cisco_integer] = ACTIONS(31),
+    [sym_token_number_cisco_range] = ACTIONS(31),
+    [sym_token_number_cisco_hex] = ACTIONS(31),
+    [sym_line_comment] = ACTIONS(33),
+    [sym_quoted_string] = ACTIONS(35),
+    [sym_token_tag_cisco_logging_system_message] = ACTIONS(17),
+    [sym_token_type_cisco_interface_app_gigabitethernet] = ACTIONS(37),
+    [sym_token_type_cisco_interface_async] = ACTIONS(37),
+    [sym_token_type_cisco_interface_bdi] = ACTIONS(37),
+    [sym_token_type_cisco_interface_bri] = ACTIONS(37),
+    [sym_token_type_cisco_interface_bvi] = ACTIONS(37),
+    [sym_token_type_cisco_interface_cellular] = ACTIONS(37),
+    [sym_token_type_cisco_interface_dialer] = ACTIONS(37),
+    [sym_token_type_cisco_interface_ethernet] = ACTIONS(37),
+    [sym_token_type_cisco_interface_loopback] = ACTIONS(37),
+    [sym_token_type_cisco_interface_management] = ACTIONS(37),
+    [sym_token_type_cisco_interface_null] = ACTIONS(37),
+    [sym_token_type_cisco_interface_nvi] = ACTIONS(37),
+    [sym_token_type_cisco_interface_port_channel] = ACTIONS(37),
+    [sym_token_type_cisco_interface_serial] = ACTIONS(37),
+    [sym_token_type_cisco_interface_tunnel] = ACTIONS(37),
+    [sym_token_type_cisco_interface_vasileft] = ACTIONS(37),
+    [sym_token_type_cisco_interface_vasiright] = ACTIONS(37),
+    [sym_token_type_cisco_interface_virtual_template] = ACTIONS(37),
+    [sym_token_type_cisco_interface_vlan] = ACTIONS(37),
+    [sym_token_type_cisco_interface_vmi] = ACTIONS(37),
+    [sym_token_type_cisco_interface_wireless] = ACTIONS(37),
+    [sym_token_number_cisco_address_ipv4_cidr] = ACTIONS(39),
+    [sym_token_number_cisco_address_ipv4] = ACTIONS(39),
+    [sym_token_number_cisco_address_ipv6_condensed] = ACTIONS(39),
+    [sym_token_number_cisco_address_ipv6_full] = ACTIONS(39),
+    [sym_token_number_cisco_address_mac] = ACTIONS(39),
     [sym_prompt] = ACTIONS(47),
     [sym__newline] = ACTIONS(49),
     [sym__definition_start] = ACTIONS(47),
@@ -9824,19 +12884,21 @@ static const uint16_t ts_parse_table[LARGE_STATE_COUNT][SYMBOL_COUNT] = {
     [sym__bgp_start] = ACTIONS(47),
     [sym__address_family_start] = ACTIONS(47),
   },
-  [STATE(6)] = {
-    [sym_line] = STATE(50),
-    [sym__command_record] = STATE(46),
-    [sym__command] = STATE(49),
-    [sym_generic_command] = STATE(49),
-    [sym_text] = STATE(9),
+  [STATE(5)] = {
+    [sym_line] = STATE(62),
+    [sym__command_record] = STATE(52),
+    [sym__command] = STATE(50),
+    [sym_generic_command] = STATE(50),
+    [sym_text] = STATE(10),
     [sym_command_modifier] = STATE(8),
-    [sym_interface_command] = STATE(49),
-    [sym_router_command] = STATE(49),
-    [sym_address_family_command] = STATE(49),
-    [sym__cisco_atom] = STATE(9),
+    [sym_interface_command] = STATE(50),
+    [sym_router_command] = STATE(50),
+    [sym_address_family_command] = STATE(50),
+    [sym__cisco_atom] = STATE(10),
+    [sym__cisco_numeric_literal] = STATE(24),
     [sym__cisco_interface_token] = STATE(24),
     [sym__cisco_address_token] = STATE(24),
+    [sym__cisco_keyword_token] = STATE(24),
     [ts_builtin_sym_end] = ACTIONS(51),
     [sym_word] = ACTIONS(17),
     [sym__keyword_interface] = ACTIONS(19),
@@ -9845,34 +12907,68 @@ static const uint16_t ts_parse_table[LARGE_STATE_COUNT][SYMBOL_COUNT] = {
     [sym_no_modifier] = ACTIONS(25),
     [sym_default_modifier] = ACTIONS(25),
     [sym_text_keyword] = ACTIONS(27),
-    [sym_line_comment] = ACTIONS(29),
-    [sym_quoted_string] = ACTIONS(31),
-    [sym_token_type_cisco_interface_app_gigabitethernet] = ACTIONS(33),
-    [sym_token_type_cisco_interface_async] = ACTIONS(33),
-    [sym_token_type_cisco_interface_bdi] = ACTIONS(33),
-    [sym_token_type_cisco_interface_bri] = ACTIONS(33),
-    [sym_token_type_cisco_interface_bvi] = ACTIONS(33),
-    [sym_token_type_cisco_interface_cellular] = ACTIONS(33),
-    [sym_token_type_cisco_interface_dialer] = ACTIONS(33),
-    [sym_token_type_cisco_interface_ethernet] = ACTIONS(33),
-    [sym_token_type_cisco_interface_loopback] = ACTIONS(33),
-    [sym_token_type_cisco_interface_management] = ACTIONS(33),
-    [sym_token_type_cisco_interface_null] = ACTIONS(33),
-    [sym_token_type_cisco_interface_nvi] = ACTIONS(33),
-    [sym_token_type_cisco_interface_port_channel] = ACTIONS(33),
-    [sym_token_type_cisco_interface_serial] = ACTIONS(33),
-    [sym_token_type_cisco_interface_tunnel] = ACTIONS(33),
-    [sym_token_type_cisco_interface_vasileft] = ACTIONS(33),
-    [sym_token_type_cisco_interface_vasiright] = ACTIONS(33),
-    [sym_token_type_cisco_interface_virtual_template] = ACTIONS(33),
-    [sym_token_type_cisco_interface_vlan] = ACTIONS(33),
-    [sym_token_type_cisco_interface_vmi] = ACTIONS(33),
-    [sym_token_type_cisco_interface_wireless] = ACTIONS(33),
-    [sym_token_number_cisco_address_ipv4_cidr] = ACTIONS(35),
-    [sym_token_number_cisco_address_ipv4] = ACTIONS(35),
-    [sym_token_number_cisco_address_ipv6_condensed] = ACTIONS(35),
-    [sym_token_number_cisco_address_ipv6_full] = ACTIONS(35),
-    [sym_token_number_cisco_address_mac] = ACTIONS(35),
+    [sym_token_keyword_cisco_encapsulation_dot1q] = ACTIONS(29),
+    [sym_token_keyword_cisco_encapsulation_dot1q_tunnel] = ACTIONS(29),
+    [sym_token_keyword_cisco_encapsulation_protocol_vlan] = ACTIONS(29),
+    [sym_token_keyword_cisco_encapsulation_mac_vlan] = ACTIONS(29),
+    [sym_token_keyword_cisco_switchport_mode_access] = ACTIONS(29),
+    [sym_token_keyword_cisco_switchport_mode_trunk] = ACTIONS(29),
+    [sym_token_keyword_cisco_shutdown] = ACTIONS(29),
+    [sym_token_keyword_cisco_status_up] = ACTIONS(29),
+    [sym_token_keyword_cisco_status_down] = ACTIONS(29),
+    [sym_token_keyword_cisco_status_deleted] = ACTIONS(29),
+    [sym_token_keyword_cisco_status_administratively_down] = ACTIONS(29),
+    [sym_token_keyword_cisco_enable_disable_enable] = ACTIONS(29),
+    [sym_token_keyword_cisco_enable_disable_disable] = ACTIONS(29),
+    [sym_token_keyword_cisco_match_match_any] = ACTIONS(29),
+    [sym_token_keyword_cisco_match_match_all] = ACTIONS(29),
+    [sym_token_keyword_cisco_add_remove_add] = ACTIONS(29),
+    [sym_token_keyword_cisco_add_remove_remove] = ACTIONS(29),
+    [sym_token_keyword_cisco_add_remove_except] = ACTIONS(29),
+    [sym_token_keyword_cisco_allowed_native_allowed] = ACTIONS(29),
+    [sym_token_keyword_cisco_allowed_native_native] = ACTIONS(29),
+    [sym_token_keyword_cisco_any_all_any] = ACTIONS(29),
+    [sym_token_keyword_cisco_any_all_all] = ACTIONS(29),
+    [sym_token_keyword_cisco_permit_deny_permit] = ACTIONS(29),
+    [sym_token_keyword_cisco_permit_deny_deny] = ACTIONS(29),
+    [sym_token_keyword_cisco_in_out_in] = ACTIONS(29),
+    [sym_token_keyword_cisco_in_out_out] = ACTIONS(29),
+    [sym_token_keyword_cisco_input_output_input] = ACTIONS(29),
+    [sym_token_keyword_cisco_input_output_output] = ACTIONS(29),
+    [sym_token_keyword_cisco_inside_outside_inside] = ACTIONS(29),
+    [sym_token_keyword_cisco_inside_outside_outside] = ACTIONS(29),
+    [sym_token_number_cisco_integer] = ACTIONS(31),
+    [sym_token_number_cisco_range] = ACTIONS(31),
+    [sym_token_number_cisco_hex] = ACTIONS(31),
+    [sym_line_comment] = ACTIONS(33),
+    [sym_quoted_string] = ACTIONS(35),
+    [sym_token_tag_cisco_logging_system_message] = ACTIONS(17),
+    [sym_token_type_cisco_interface_app_gigabitethernet] = ACTIONS(37),
+    [sym_token_type_cisco_interface_async] = ACTIONS(37),
+    [sym_token_type_cisco_interface_bdi] = ACTIONS(37),
+    [sym_token_type_cisco_interface_bri] = ACTIONS(37),
+    [sym_token_type_cisco_interface_bvi] = ACTIONS(37),
+    [sym_token_type_cisco_interface_cellular] = ACTIONS(37),
+    [sym_token_type_cisco_interface_dialer] = ACTIONS(37),
+    [sym_token_type_cisco_interface_ethernet] = ACTIONS(37),
+    [sym_token_type_cisco_interface_loopback] = ACTIONS(37),
+    [sym_token_type_cisco_interface_management] = ACTIONS(37),
+    [sym_token_type_cisco_interface_null] = ACTIONS(37),
+    [sym_token_type_cisco_interface_nvi] = ACTIONS(37),
+    [sym_token_type_cisco_interface_port_channel] = ACTIONS(37),
+    [sym_token_type_cisco_interface_serial] = ACTIONS(37),
+    [sym_token_type_cisco_interface_tunnel] = ACTIONS(37),
+    [sym_token_type_cisco_interface_vasileft] = ACTIONS(37),
+    [sym_token_type_cisco_interface_vasiright] = ACTIONS(37),
+    [sym_token_type_cisco_interface_virtual_template] = ACTIONS(37),
+    [sym_token_type_cisco_interface_vlan] = ACTIONS(37),
+    [sym_token_type_cisco_interface_vmi] = ACTIONS(37),
+    [sym_token_type_cisco_interface_wireless] = ACTIONS(37),
+    [sym_token_number_cisco_address_ipv4_cidr] = ACTIONS(39),
+    [sym_token_number_cisco_address_ipv4] = ACTIONS(39),
+    [sym_token_number_cisco_address_ipv6_condensed] = ACTIONS(39),
+    [sym_token_number_cisco_address_ipv6_full] = ACTIONS(39),
+    [sym_token_number_cisco_address_mac] = ACTIONS(39),
     [sym_prompt] = ACTIONS(51),
     [sym__newline] = ACTIONS(53),
     [sym__definition_start] = ACTIONS(51),
@@ -9880,18 +12976,21 @@ static const uint16_t ts_parse_table[LARGE_STATE_COUNT][SYMBOL_COUNT] = {
     [sym__bgp_start] = ACTIONS(51),
     [sym__address_family_start] = ACTIONS(51),
   },
-  [STATE(7)] = {
-    [sym__command_record] = STATE(48),
-    [sym__command] = STATE(49),
-    [sym_generic_command] = STATE(49),
-    [sym_text] = STATE(9),
+  [STATE(6)] = {
+    [sym_line] = STATE(61),
+    [sym__command_record] = STATE(52),
+    [sym__command] = STATE(50),
+    [sym_generic_command] = STATE(50),
+    [sym_text] = STATE(10),
     [sym_command_modifier] = STATE(8),
-    [sym_interface_command] = STATE(49),
-    [sym_router_command] = STATE(49),
-    [sym_address_family_command] = STATE(49),
-    [sym__cisco_atom] = STATE(9),
+    [sym_interface_command] = STATE(50),
+    [sym_router_command] = STATE(50),
+    [sym_address_family_command] = STATE(50),
+    [sym__cisco_atom] = STATE(10),
+    [sym__cisco_numeric_literal] = STATE(24),
     [sym__cisco_interface_token] = STATE(24),
     [sym__cisco_address_token] = STATE(24),
+    [sym__cisco_keyword_token] = STATE(24),
     [ts_builtin_sym_end] = ACTIONS(55),
     [sym_word] = ACTIONS(17),
     [sym__keyword_interface] = ACTIONS(19),
@@ -9900,129 +12999,245 @@ static const uint16_t ts_parse_table[LARGE_STATE_COUNT][SYMBOL_COUNT] = {
     [sym_no_modifier] = ACTIONS(25),
     [sym_default_modifier] = ACTIONS(25),
     [sym_text_keyword] = ACTIONS(27),
-    [sym_quoted_string] = ACTIONS(31),
-    [sym_token_type_cisco_interface_app_gigabitethernet] = ACTIONS(33),
-    [sym_token_type_cisco_interface_async] = ACTIONS(33),
-    [sym_token_type_cisco_interface_bdi] = ACTIONS(33),
-    [sym_token_type_cisco_interface_bri] = ACTIONS(33),
-    [sym_token_type_cisco_interface_bvi] = ACTIONS(33),
-    [sym_token_type_cisco_interface_cellular] = ACTIONS(33),
-    [sym_token_type_cisco_interface_dialer] = ACTIONS(33),
-    [sym_token_type_cisco_interface_ethernet] = ACTIONS(33),
-    [sym_token_type_cisco_interface_loopback] = ACTIONS(33),
-    [sym_token_type_cisco_interface_management] = ACTIONS(33),
-    [sym_token_type_cisco_interface_null] = ACTIONS(33),
-    [sym_token_type_cisco_interface_nvi] = ACTIONS(33),
-    [sym_token_type_cisco_interface_port_channel] = ACTIONS(33),
-    [sym_token_type_cisco_interface_serial] = ACTIONS(33),
-    [sym_token_type_cisco_interface_tunnel] = ACTIONS(33),
-    [sym_token_type_cisco_interface_vasileft] = ACTIONS(33),
-    [sym_token_type_cisco_interface_vasiright] = ACTIONS(33),
-    [sym_token_type_cisco_interface_virtual_template] = ACTIONS(33),
-    [sym_token_type_cisco_interface_vlan] = ACTIONS(33),
-    [sym_token_type_cisco_interface_vmi] = ACTIONS(33),
-    [sym_token_type_cisco_interface_wireless] = ACTIONS(33),
-    [sym_token_number_cisco_address_ipv4_cidr] = ACTIONS(35),
-    [sym_token_number_cisco_address_ipv4] = ACTIONS(35),
-    [sym_token_number_cisco_address_ipv6_condensed] = ACTIONS(35),
-    [sym_token_number_cisco_address_ipv6_full] = ACTIONS(35),
-    [sym_token_number_cisco_address_mac] = ACTIONS(35),
+    [sym_token_keyword_cisco_encapsulation_dot1q] = ACTIONS(29),
+    [sym_token_keyword_cisco_encapsulation_dot1q_tunnel] = ACTIONS(29),
+    [sym_token_keyword_cisco_encapsulation_protocol_vlan] = ACTIONS(29),
+    [sym_token_keyword_cisco_encapsulation_mac_vlan] = ACTIONS(29),
+    [sym_token_keyword_cisco_switchport_mode_access] = ACTIONS(29),
+    [sym_token_keyword_cisco_switchport_mode_trunk] = ACTIONS(29),
+    [sym_token_keyword_cisco_shutdown] = ACTIONS(29),
+    [sym_token_keyword_cisco_status_up] = ACTIONS(29),
+    [sym_token_keyword_cisco_status_down] = ACTIONS(29),
+    [sym_token_keyword_cisco_status_deleted] = ACTIONS(29),
+    [sym_token_keyword_cisco_status_administratively_down] = ACTIONS(29),
+    [sym_token_keyword_cisco_enable_disable_enable] = ACTIONS(29),
+    [sym_token_keyword_cisco_enable_disable_disable] = ACTIONS(29),
+    [sym_token_keyword_cisco_match_match_any] = ACTIONS(29),
+    [sym_token_keyword_cisco_match_match_all] = ACTIONS(29),
+    [sym_token_keyword_cisco_add_remove_add] = ACTIONS(29),
+    [sym_token_keyword_cisco_add_remove_remove] = ACTIONS(29),
+    [sym_token_keyword_cisco_add_remove_except] = ACTIONS(29),
+    [sym_token_keyword_cisco_allowed_native_allowed] = ACTIONS(29),
+    [sym_token_keyword_cisco_allowed_native_native] = ACTIONS(29),
+    [sym_token_keyword_cisco_any_all_any] = ACTIONS(29),
+    [sym_token_keyword_cisco_any_all_all] = ACTIONS(29),
+    [sym_token_keyword_cisco_permit_deny_permit] = ACTIONS(29),
+    [sym_token_keyword_cisco_permit_deny_deny] = ACTIONS(29),
+    [sym_token_keyword_cisco_in_out_in] = ACTIONS(29),
+    [sym_token_keyword_cisco_in_out_out] = ACTIONS(29),
+    [sym_token_keyword_cisco_input_output_input] = ACTIONS(29),
+    [sym_token_keyword_cisco_input_output_output] = ACTIONS(29),
+    [sym_token_keyword_cisco_inside_outside_inside] = ACTIONS(29),
+    [sym_token_keyword_cisco_inside_outside_outside] = ACTIONS(29),
+    [sym_token_number_cisco_integer] = ACTIONS(31),
+    [sym_token_number_cisco_range] = ACTIONS(31),
+    [sym_token_number_cisco_hex] = ACTIONS(31),
+    [sym_line_comment] = ACTIONS(33),
+    [sym_quoted_string] = ACTIONS(35),
+    [sym_token_tag_cisco_logging_system_message] = ACTIONS(17),
+    [sym_token_type_cisco_interface_app_gigabitethernet] = ACTIONS(37),
+    [sym_token_type_cisco_interface_async] = ACTIONS(37),
+    [sym_token_type_cisco_interface_bdi] = ACTIONS(37),
+    [sym_token_type_cisco_interface_bri] = ACTIONS(37),
+    [sym_token_type_cisco_interface_bvi] = ACTIONS(37),
+    [sym_token_type_cisco_interface_cellular] = ACTIONS(37),
+    [sym_token_type_cisco_interface_dialer] = ACTIONS(37),
+    [sym_token_type_cisco_interface_ethernet] = ACTIONS(37),
+    [sym_token_type_cisco_interface_loopback] = ACTIONS(37),
+    [sym_token_type_cisco_interface_management] = ACTIONS(37),
+    [sym_token_type_cisco_interface_null] = ACTIONS(37),
+    [sym_token_type_cisco_interface_nvi] = ACTIONS(37),
+    [sym_token_type_cisco_interface_port_channel] = ACTIONS(37),
+    [sym_token_type_cisco_interface_serial] = ACTIONS(37),
+    [sym_token_type_cisco_interface_tunnel] = ACTIONS(37),
+    [sym_token_type_cisco_interface_vasileft] = ACTIONS(37),
+    [sym_token_type_cisco_interface_vasiright] = ACTIONS(37),
+    [sym_token_type_cisco_interface_virtual_template] = ACTIONS(37),
+    [sym_token_type_cisco_interface_vlan] = ACTIONS(37),
+    [sym_token_type_cisco_interface_vmi] = ACTIONS(37),
+    [sym_token_type_cisco_interface_wireless] = ACTIONS(37),
+    [sym_token_number_cisco_address_ipv4_cidr] = ACTIONS(39),
+    [sym_token_number_cisco_address_ipv4] = ACTIONS(39),
+    [sym_token_number_cisco_address_ipv6_condensed] = ACTIONS(39),
+    [sym_token_number_cisco_address_ipv6_full] = ACTIONS(39),
+    [sym_token_number_cisco_address_mac] = ACTIONS(39),
     [sym_prompt] = ACTIONS(55),
-    [sym__newline] = ACTIONS(55),
+    [sym__newline] = ACTIONS(57),
     [sym__definition_start] = ACTIONS(55),
     [sym__ordinary_start] = ACTIONS(55),
     [sym__bgp_start] = ACTIONS(55),
     [sym__address_family_start] = ACTIONS(55),
   },
-  [STATE(8)] = {
-    [sym__command] = STATE(47),
-    [sym_generic_command] = STATE(47),
-    [sym_text] = STATE(9),
-    [sym_interface_command] = STATE(47),
-    [sym_router_command] = STATE(47),
-    [sym_address_family_command] = STATE(47),
-    [sym__cisco_atom] = STATE(9),
+  [STATE(7)] = {
+    [sym__command_record] = STATE(53),
+    [sym__command] = STATE(50),
+    [sym_generic_command] = STATE(50),
+    [sym_text] = STATE(10),
+    [sym_command_modifier] = STATE(8),
+    [sym_interface_command] = STATE(50),
+    [sym_router_command] = STATE(50),
+    [sym_address_family_command] = STATE(50),
+    [sym__cisco_atom] = STATE(10),
+    [sym__cisco_numeric_literal] = STATE(24),
     [sym__cisco_interface_token] = STATE(24),
     [sym__cisco_address_token] = STATE(24),
-    [ts_builtin_sym_end] = ACTIONS(57),
+    [sym__cisco_keyword_token] = STATE(24),
+    [ts_builtin_sym_end] = ACTIONS(59),
+    [sym_word] = ACTIONS(17),
+    [sym__keyword_interface] = ACTIONS(19),
+    [sym__keyword_router] = ACTIONS(21),
+    [sym__keyword_address_family] = ACTIONS(23),
+    [sym_no_modifier] = ACTIONS(25),
+    [sym_default_modifier] = ACTIONS(25),
+    [sym_text_keyword] = ACTIONS(27),
+    [sym_token_keyword_cisco_encapsulation_dot1q] = ACTIONS(29),
+    [sym_token_keyword_cisco_encapsulation_dot1q_tunnel] = ACTIONS(29),
+    [sym_token_keyword_cisco_encapsulation_protocol_vlan] = ACTIONS(29),
+    [sym_token_keyword_cisco_encapsulation_mac_vlan] = ACTIONS(29),
+    [sym_token_keyword_cisco_switchport_mode_access] = ACTIONS(29),
+    [sym_token_keyword_cisco_switchport_mode_trunk] = ACTIONS(29),
+    [sym_token_keyword_cisco_shutdown] = ACTIONS(29),
+    [sym_token_keyword_cisco_status_up] = ACTIONS(29),
+    [sym_token_keyword_cisco_status_down] = ACTIONS(29),
+    [sym_token_keyword_cisco_status_deleted] = ACTIONS(29),
+    [sym_token_keyword_cisco_status_administratively_down] = ACTIONS(29),
+    [sym_token_keyword_cisco_enable_disable_enable] = ACTIONS(29),
+    [sym_token_keyword_cisco_enable_disable_disable] = ACTIONS(29),
+    [sym_token_keyword_cisco_match_match_any] = ACTIONS(29),
+    [sym_token_keyword_cisco_match_match_all] = ACTIONS(29),
+    [sym_token_keyword_cisco_add_remove_add] = ACTIONS(29),
+    [sym_token_keyword_cisco_add_remove_remove] = ACTIONS(29),
+    [sym_token_keyword_cisco_add_remove_except] = ACTIONS(29),
+    [sym_token_keyword_cisco_allowed_native_allowed] = ACTIONS(29),
+    [sym_token_keyword_cisco_allowed_native_native] = ACTIONS(29),
+    [sym_token_keyword_cisco_any_all_any] = ACTIONS(29),
+    [sym_token_keyword_cisco_any_all_all] = ACTIONS(29),
+    [sym_token_keyword_cisco_permit_deny_permit] = ACTIONS(29),
+    [sym_token_keyword_cisco_permit_deny_deny] = ACTIONS(29),
+    [sym_token_keyword_cisco_in_out_in] = ACTIONS(29),
+    [sym_token_keyword_cisco_in_out_out] = ACTIONS(29),
+    [sym_token_keyword_cisco_input_output_input] = ACTIONS(29),
+    [sym_token_keyword_cisco_input_output_output] = ACTIONS(29),
+    [sym_token_keyword_cisco_inside_outside_inside] = ACTIONS(29),
+    [sym_token_keyword_cisco_inside_outside_outside] = ACTIONS(29),
+    [sym_token_number_cisco_integer] = ACTIONS(31),
+    [sym_token_number_cisco_range] = ACTIONS(31),
+    [sym_token_number_cisco_hex] = ACTIONS(31),
+    [sym_quoted_string] = ACTIONS(35),
+    [sym_token_tag_cisco_logging_system_message] = ACTIONS(17),
+    [sym_token_type_cisco_interface_app_gigabitethernet] = ACTIONS(37),
+    [sym_token_type_cisco_interface_async] = ACTIONS(37),
+    [sym_token_type_cisco_interface_bdi] = ACTIONS(37),
+    [sym_token_type_cisco_interface_bri] = ACTIONS(37),
+    [sym_token_type_cisco_interface_bvi] = ACTIONS(37),
+    [sym_token_type_cisco_interface_cellular] = ACTIONS(37),
+    [sym_token_type_cisco_interface_dialer] = ACTIONS(37),
+    [sym_token_type_cisco_interface_ethernet] = ACTIONS(37),
+    [sym_token_type_cisco_interface_loopback] = ACTIONS(37),
+    [sym_token_type_cisco_interface_management] = ACTIONS(37),
+    [sym_token_type_cisco_interface_null] = ACTIONS(37),
+    [sym_token_type_cisco_interface_nvi] = ACTIONS(37),
+    [sym_token_type_cisco_interface_port_channel] = ACTIONS(37),
+    [sym_token_type_cisco_interface_serial] = ACTIONS(37),
+    [sym_token_type_cisco_interface_tunnel] = ACTIONS(37),
+    [sym_token_type_cisco_interface_vasileft] = ACTIONS(37),
+    [sym_token_type_cisco_interface_vasiright] = ACTIONS(37),
+    [sym_token_type_cisco_interface_virtual_template] = ACTIONS(37),
+    [sym_token_type_cisco_interface_vlan] = ACTIONS(37),
+    [sym_token_type_cisco_interface_vmi] = ACTIONS(37),
+    [sym_token_type_cisco_interface_wireless] = ACTIONS(37),
+    [sym_token_number_cisco_address_ipv4_cidr] = ACTIONS(39),
+    [sym_token_number_cisco_address_ipv4] = ACTIONS(39),
+    [sym_token_number_cisco_address_ipv6_condensed] = ACTIONS(39),
+    [sym_token_number_cisco_address_ipv6_full] = ACTIONS(39),
+    [sym_token_number_cisco_address_mac] = ACTIONS(39),
+    [sym_prompt] = ACTIONS(59),
+    [sym__newline] = ACTIONS(59),
+    [sym__definition_start] = ACTIONS(59),
+    [sym__ordinary_start] = ACTIONS(59),
+    [sym__bgp_start] = ACTIONS(59),
+    [sym__address_family_start] = ACTIONS(59),
+  },
+  [STATE(8)] = {
+    [sym__command] = STATE(51),
+    [sym_generic_command] = STATE(51),
+    [sym_text] = STATE(10),
+    [sym_interface_command] = STATE(51),
+    [sym_router_command] = STATE(51),
+    [sym_address_family_command] = STATE(51),
+    [sym__cisco_atom] = STATE(10),
+    [sym__cisco_numeric_literal] = STATE(24),
+    [sym__cisco_interface_token] = STATE(24),
+    [sym__cisco_address_token] = STATE(24),
+    [sym__cisco_keyword_token] = STATE(24),
+    [ts_builtin_sym_end] = ACTIONS(61),
     [sym_word] = ACTIONS(17),
     [sym__keyword_interface] = ACTIONS(19),
     [sym__keyword_router] = ACTIONS(21),
     [sym__keyword_address_family] = ACTIONS(23),
     [sym_text_keyword] = ACTIONS(27),
-    [sym__trailing_comment] = ACTIONS(59),
-    [sym_quoted_string] = ACTIONS(31),
-    [sym_token_type_cisco_interface_app_gigabitethernet] = ACTIONS(33),
-    [sym_token_type_cisco_interface_async] = ACTIONS(33),
-    [sym_token_type_cisco_interface_bdi] = ACTIONS(33),
-    [sym_token_type_cisco_interface_bri] = ACTIONS(33),
-    [sym_token_type_cisco_interface_bvi] = ACTIONS(33),
-    [sym_token_type_cisco_interface_cellular] = ACTIONS(33),
-    [sym_token_type_cisco_interface_dialer] = ACTIONS(33),
-    [sym_token_type_cisco_interface_ethernet] = ACTIONS(33),
-    [sym_token_type_cisco_interface_loopback] = ACTIONS(33),
-    [sym_token_type_cisco_interface_management] = ACTIONS(33),
-    [sym_token_type_cisco_interface_null] = ACTIONS(33),
-    [sym_token_type_cisco_interface_nvi] = ACTIONS(33),
-    [sym_token_type_cisco_interface_port_channel] = ACTIONS(33),
-    [sym_token_type_cisco_interface_serial] = ACTIONS(33),
-    [sym_token_type_cisco_interface_tunnel] = ACTIONS(33),
-    [sym_token_type_cisco_interface_vasileft] = ACTIONS(33),
-    [sym_token_type_cisco_interface_vasiright] = ACTIONS(33),
-    [sym_token_type_cisco_interface_virtual_template] = ACTIONS(33),
-    [sym_token_type_cisco_interface_vlan] = ACTIONS(33),
-    [sym_token_type_cisco_interface_vmi] = ACTIONS(33),
-    [sym_token_type_cisco_interface_wireless] = ACTIONS(33),
-    [sym_token_number_cisco_address_ipv4_cidr] = ACTIONS(35),
-    [sym_token_number_cisco_address_ipv4] = ACTIONS(35),
-    [sym_token_number_cisco_address_ipv6_condensed] = ACTIONS(35),
-    [sym_token_number_cisco_address_ipv6_full] = ACTIONS(35),
-    [sym_token_number_cisco_address_mac] = ACTIONS(35),
-    [sym_prompt] = ACTIONS(57),
-    [sym__newline] = ACTIONS(57),
-    [sym__definition_start] = ACTIONS(57),
-    [sym__ordinary_start] = ACTIONS(57),
-    [sym__bgp_start] = ACTIONS(57),
-    [sym__address_family_start] = ACTIONS(57),
-  },
-  [STATE(9)] = {
-    [sym__argument] = STATE(28),
-    [sym_text] = STATE(28),
-    [sym__cisco_atom] = STATE(28),
-    [sym__cisco_interface_token] = STATE(24),
-    [sym__cisco_address_token] = STATE(24),
-    [aux_sym_generic_command_repeat1] = STATE(15),
-    [ts_builtin_sym_end] = ACTIONS(61),
-    [sym_word] = ACTIONS(17),
-    [sym_text_keyword] = ACTIONS(27),
+    [sym_token_keyword_cisco_encapsulation_dot1q] = ACTIONS(29),
+    [sym_token_keyword_cisco_encapsulation_dot1q_tunnel] = ACTIONS(29),
+    [sym_token_keyword_cisco_encapsulation_protocol_vlan] = ACTIONS(29),
+    [sym_token_keyword_cisco_encapsulation_mac_vlan] = ACTIONS(29),
+    [sym_token_keyword_cisco_switchport_mode_access] = ACTIONS(29),
+    [sym_token_keyword_cisco_switchport_mode_trunk] = ACTIONS(29),
+    [sym_token_keyword_cisco_shutdown] = ACTIONS(29),
+    [sym_token_keyword_cisco_status_up] = ACTIONS(29),
+    [sym_token_keyword_cisco_status_down] = ACTIONS(29),
+    [sym_token_keyword_cisco_status_deleted] = ACTIONS(29),
+    [sym_token_keyword_cisco_status_administratively_down] = ACTIONS(29),
+    [sym_token_keyword_cisco_enable_disable_enable] = ACTIONS(29),
+    [sym_token_keyword_cisco_enable_disable_disable] = ACTIONS(29),
+    [sym_token_keyword_cisco_match_match_any] = ACTIONS(29),
+    [sym_token_keyword_cisco_match_match_all] = ACTIONS(29),
+    [sym_token_keyword_cisco_add_remove_add] = ACTIONS(29),
+    [sym_token_keyword_cisco_add_remove_remove] = ACTIONS(29),
+    [sym_token_keyword_cisco_add_remove_except] = ACTIONS(29),
+    [sym_token_keyword_cisco_allowed_native_allowed] = ACTIONS(29),
+    [sym_token_keyword_cisco_allowed_native_native] = ACTIONS(29),
+    [sym_token_keyword_cisco_any_all_any] = ACTIONS(29),
+    [sym_token_keyword_cisco_any_all_all] = ACTIONS(29),
+    [sym_token_keyword_cisco_permit_deny_permit] = ACTIONS(29),
+    [sym_token_keyword_cisco_permit_deny_deny] = ACTIONS(29),
+    [sym_token_keyword_cisco_in_out_in] = ACTIONS(29),
+    [sym_token_keyword_cisco_in_out_out] = ACTIONS(29),
+    [sym_token_keyword_cisco_input_output_input] = ACTIONS(29),
+    [sym_token_keyword_cisco_input_output_output] = ACTIONS(29),
+    [sym_token_keyword_cisco_inside_outside_inside] = ACTIONS(29),
+    [sym_token_keyword_cisco_inside_outside_outside] = ACTIONS(29),
+    [sym_token_number_cisco_integer] = ACTIONS(31),
+    [sym_token_number_cisco_range] = ACTIONS(31),
+    [sym_token_number_cisco_hex] = ACTIONS(31),
     [sym__trailing_comment] = ACTIONS(63),
-    [sym_quoted_string] = ACTIONS(65),
-    [sym_token_type_cisco_interface_app_gigabitethernet] = ACTIONS(33),
-    [sym_token_type_cisco_interface_async] = ACTIONS(33),
-    [sym_token_type_cisco_interface_bdi] = ACTIONS(33),
-    [sym_token_type_cisco_interface_bri] = ACTIONS(33),
-    [sym_token_type_cisco_interface_bvi] = ACTIONS(33),
-    [sym_token_type_cisco_interface_cellular] = ACTIONS(33),
-    [sym_token_type_cisco_interface_dialer] = ACTIONS(33),
-    [sym_token_type_cisco_interface_ethernet] = ACTIONS(33),
-    [sym_token_type_cisco_interface_loopback] = ACTIONS(33),
-    [sym_token_type_cisco_interface_management] = ACTIONS(33),
-    [sym_token_type_cisco_interface_null] = ACTIONS(33),
-    [sym_token_type_cisco_interface_nvi] = ACTIONS(33),
-    [sym_token_type_cisco_interface_port_channel] = ACTIONS(33),
-    [sym_token_type_cisco_interface_serial] = ACTIONS(33),
-    [sym_token_type_cisco_interface_tunnel] = ACTIONS(33),
-    [sym_token_type_cisco_interface_vasileft] = ACTIONS(33),
-    [sym_token_type_cisco_interface_vasiright] = ACTIONS(33),
-    [sym_token_type_cisco_interface_virtual_template] = ACTIONS(33),
-    [sym_token_type_cisco_interface_vlan] = ACTIONS(33),
-    [sym_token_type_cisco_interface_vmi] = ACTIONS(33),
-    [sym_token_type_cisco_interface_wireless] = ACTIONS(33),
-    [sym_token_number_cisco_address_ipv4_cidr] = ACTIONS(35),
-    [sym_token_number_cisco_address_ipv4] = ACTIONS(35),
-    [sym_token_number_cisco_address_ipv6_condensed] = ACTIONS(35),
-    [sym_token_number_cisco_address_ipv6_full] = ACTIONS(35),
-    [sym_token_number_cisco_address_mac] = ACTIONS(35),
+    [sym_quoted_string] = ACTIONS(35),
+    [sym_token_tag_cisco_logging_system_message] = ACTIONS(17),
+    [sym_token_type_cisco_interface_app_gigabitethernet] = ACTIONS(37),
+    [sym_token_type_cisco_interface_async] = ACTIONS(37),
+    [sym_token_type_cisco_interface_bdi] = ACTIONS(37),
+    [sym_token_type_cisco_interface_bri] = ACTIONS(37),
+    [sym_token_type_cisco_interface_bvi] = ACTIONS(37),
+    [sym_token_type_cisco_interface_cellular] = ACTIONS(37),
+    [sym_token_type_cisco_interface_dialer] = ACTIONS(37),
+    [sym_token_type_cisco_interface_ethernet] = ACTIONS(37),
+    [sym_token_type_cisco_interface_loopback] = ACTIONS(37),
+    [sym_token_type_cisco_interface_management] = ACTIONS(37),
+    [sym_token_type_cisco_interface_null] = ACTIONS(37),
+    [sym_token_type_cisco_interface_nvi] = ACTIONS(37),
+    [sym_token_type_cisco_interface_port_channel] = ACTIONS(37),
+    [sym_token_type_cisco_interface_serial] = ACTIONS(37),
+    [sym_token_type_cisco_interface_tunnel] = ACTIONS(37),
+    [sym_token_type_cisco_interface_vasileft] = ACTIONS(37),
+    [sym_token_type_cisco_interface_vasiright] = ACTIONS(37),
+    [sym_token_type_cisco_interface_virtual_template] = ACTIONS(37),
+    [sym_token_type_cisco_interface_vlan] = ACTIONS(37),
+    [sym_token_type_cisco_interface_vmi] = ACTIONS(37),
+    [sym_token_type_cisco_interface_wireless] = ACTIONS(37),
+    [sym_token_number_cisco_address_ipv4_cidr] = ACTIONS(39),
+    [sym_token_number_cisco_address_ipv4] = ACTIONS(39),
+    [sym_token_number_cisco_address_ipv6_condensed] = ACTIONS(39),
+    [sym_token_number_cisco_address_ipv6_full] = ACTIONS(39),
+    [sym_token_number_cisco_address_mac] = ACTIONS(39),
     [sym_prompt] = ACTIONS(61),
     [sym__newline] = ACTIONS(61),
     [sym__definition_start] = ACTIONS(61),
@@ -10030,89 +13245,161 @@ static const uint16_t ts_parse_table[LARGE_STATE_COUNT][SYMBOL_COUNT] = {
     [sym__bgp_start] = ACTIONS(61),
     [sym__address_family_start] = ACTIONS(61),
   },
-  [STATE(10)] = {
-    [sym__argument] = STATE(28),
-    [sym_text] = STATE(28),
-    [sym__cisco_atom] = STATE(28),
+  [STATE(9)] = {
+    [sym__argument] = STATE(30),
+    [sym_text] = STATE(30),
+    [sym__cisco_atom] = STATE(30),
+    [sym__cisco_numeric_literal] = STATE(24),
     [sym__cisco_interface_token] = STATE(24),
     [sym__cisco_address_token] = STATE(24),
-    [aux_sym_generic_command_repeat1] = STATE(13),
-    [ts_builtin_sym_end] = ACTIONS(67),
+    [sym__cisco_keyword_token] = STATE(24),
+    [aux_sym_generic_command_repeat1] = STATE(16),
+    [ts_builtin_sym_end] = ACTIONS(65),
     [sym_word] = ACTIONS(17),
     [sym_text_keyword] = ACTIONS(27),
-    [sym__trailing_comment] = ACTIONS(69),
-    [sym_quoted_string] = ACTIONS(65),
-    [sym_token_type_cisco_interface_app_gigabitethernet] = ACTIONS(33),
-    [sym_token_type_cisco_interface_async] = ACTIONS(33),
-    [sym_token_type_cisco_interface_bdi] = ACTIONS(33),
-    [sym_token_type_cisco_interface_bri] = ACTIONS(33),
-    [sym_token_type_cisco_interface_bvi] = ACTIONS(33),
-    [sym_token_type_cisco_interface_cellular] = ACTIONS(33),
-    [sym_token_type_cisco_interface_dialer] = ACTIONS(33),
-    [sym_token_type_cisco_interface_ethernet] = ACTIONS(33),
-    [sym_token_type_cisco_interface_loopback] = ACTIONS(33),
-    [sym_token_type_cisco_interface_management] = ACTIONS(33),
-    [sym_token_type_cisco_interface_null] = ACTIONS(33),
-    [sym_token_type_cisco_interface_nvi] = ACTIONS(33),
-    [sym_token_type_cisco_interface_port_channel] = ACTIONS(33),
-    [sym_token_type_cisco_interface_serial] = ACTIONS(33),
-    [sym_token_type_cisco_interface_tunnel] = ACTIONS(33),
-    [sym_token_type_cisco_interface_vasileft] = ACTIONS(33),
-    [sym_token_type_cisco_interface_vasiright] = ACTIONS(33),
-    [sym_token_type_cisco_interface_virtual_template] = ACTIONS(33),
-    [sym_token_type_cisco_interface_vlan] = ACTIONS(33),
-    [sym_token_type_cisco_interface_vmi] = ACTIONS(33),
-    [sym_token_type_cisco_interface_wireless] = ACTIONS(33),
-    [sym_token_number_cisco_address_ipv4_cidr] = ACTIONS(35),
-    [sym_token_number_cisco_address_ipv4] = ACTIONS(35),
-    [sym_token_number_cisco_address_ipv6_condensed] = ACTIONS(35),
-    [sym_token_number_cisco_address_ipv6_full] = ACTIONS(35),
-    [sym_token_number_cisco_address_mac] = ACTIONS(35),
-    [sym_prompt] = ACTIONS(67),
-    [sym__newline] = ACTIONS(67),
-    [sym__definition_start] = ACTIONS(67),
-    [sym__ordinary_start] = ACTIONS(67),
-    [sym__bgp_start] = ACTIONS(67),
-    [sym__address_family_start] = ACTIONS(67),
+    [sym_token_keyword_cisco_encapsulation_dot1q] = ACTIONS(29),
+    [sym_token_keyword_cisco_encapsulation_dot1q_tunnel] = ACTIONS(29),
+    [sym_token_keyword_cisco_encapsulation_protocol_vlan] = ACTIONS(29),
+    [sym_token_keyword_cisco_encapsulation_mac_vlan] = ACTIONS(29),
+    [sym_token_keyword_cisco_switchport_mode_access] = ACTIONS(29),
+    [sym_token_keyword_cisco_switchport_mode_trunk] = ACTIONS(29),
+    [sym_token_keyword_cisco_shutdown] = ACTIONS(29),
+    [sym_token_keyword_cisco_status_up] = ACTIONS(29),
+    [sym_token_keyword_cisco_status_down] = ACTIONS(29),
+    [sym_token_keyword_cisco_status_deleted] = ACTIONS(29),
+    [sym_token_keyword_cisco_status_administratively_down] = ACTIONS(29),
+    [sym_token_keyword_cisco_enable_disable_enable] = ACTIONS(29),
+    [sym_token_keyword_cisco_enable_disable_disable] = ACTIONS(29),
+    [sym_token_keyword_cisco_match_match_any] = ACTIONS(29),
+    [sym_token_keyword_cisco_match_match_all] = ACTIONS(29),
+    [sym_token_keyword_cisco_add_remove_add] = ACTIONS(29),
+    [sym_token_keyword_cisco_add_remove_remove] = ACTIONS(29),
+    [sym_token_keyword_cisco_add_remove_except] = ACTIONS(29),
+    [sym_token_keyword_cisco_allowed_native_allowed] = ACTIONS(29),
+    [sym_token_keyword_cisco_allowed_native_native] = ACTIONS(29),
+    [sym_token_keyword_cisco_any_all_any] = ACTIONS(29),
+    [sym_token_keyword_cisco_any_all_all] = ACTIONS(29),
+    [sym_token_keyword_cisco_permit_deny_permit] = ACTIONS(29),
+    [sym_token_keyword_cisco_permit_deny_deny] = ACTIONS(29),
+    [sym_token_keyword_cisco_in_out_in] = ACTIONS(29),
+    [sym_token_keyword_cisco_in_out_out] = ACTIONS(29),
+    [sym_token_keyword_cisco_input_output_input] = ACTIONS(29),
+    [sym_token_keyword_cisco_input_output_output] = ACTIONS(29),
+    [sym_token_keyword_cisco_inside_outside_inside] = ACTIONS(29),
+    [sym_token_keyword_cisco_inside_outside_outside] = ACTIONS(29),
+    [sym_token_number_cisco_integer] = ACTIONS(31),
+    [sym_token_number_cisco_range] = ACTIONS(31),
+    [sym_token_number_cisco_hex] = ACTIONS(31),
+    [sym__trailing_comment] = ACTIONS(67),
+    [sym_quoted_string] = ACTIONS(69),
+    [sym_token_tag_cisco_logging_system_message] = ACTIONS(17),
+    [sym_token_type_cisco_interface_app_gigabitethernet] = ACTIONS(37),
+    [sym_token_type_cisco_interface_async] = ACTIONS(37),
+    [sym_token_type_cisco_interface_bdi] = ACTIONS(37),
+    [sym_token_type_cisco_interface_bri] = ACTIONS(37),
+    [sym_token_type_cisco_interface_bvi] = ACTIONS(37),
+    [sym_token_type_cisco_interface_cellular] = ACTIONS(37),
+    [sym_token_type_cisco_interface_dialer] = ACTIONS(37),
+    [sym_token_type_cisco_interface_ethernet] = ACTIONS(37),
+    [sym_token_type_cisco_interface_loopback] = ACTIONS(37),
+    [sym_token_type_cisco_interface_management] = ACTIONS(37),
+    [sym_token_type_cisco_interface_null] = ACTIONS(37),
+    [sym_token_type_cisco_interface_nvi] = ACTIONS(37),
+    [sym_token_type_cisco_interface_port_channel] = ACTIONS(37),
+    [sym_token_type_cisco_interface_serial] = ACTIONS(37),
+    [sym_token_type_cisco_interface_tunnel] = ACTIONS(37),
+    [sym_token_type_cisco_interface_vasileft] = ACTIONS(37),
+    [sym_token_type_cisco_interface_vasiright] = ACTIONS(37),
+    [sym_token_type_cisco_interface_virtual_template] = ACTIONS(37),
+    [sym_token_type_cisco_interface_vlan] = ACTIONS(37),
+    [sym_token_type_cisco_interface_vmi] = ACTIONS(37),
+    [sym_token_type_cisco_interface_wireless] = ACTIONS(37),
+    [sym_token_number_cisco_address_ipv4_cidr] = ACTIONS(39),
+    [sym_token_number_cisco_address_ipv4] = ACTIONS(39),
+    [sym_token_number_cisco_address_ipv6_condensed] = ACTIONS(39),
+    [sym_token_number_cisco_address_ipv6_full] = ACTIONS(39),
+    [sym_token_number_cisco_address_mac] = ACTIONS(39),
+    [sym_prompt] = ACTIONS(65),
+    [sym__newline] = ACTIONS(65),
+    [sym__definition_start] = ACTIONS(65),
+    [sym__ordinary_start] = ACTIONS(65),
+    [sym__bgp_start] = ACTIONS(65),
+    [sym__address_family_start] = ACTIONS(65),
   },
-  [STATE(11)] = {
-    [sym__argument] = STATE(28),
-    [sym_text] = STATE(28),
-    [sym__cisco_atom] = STATE(28),
+  [STATE(10)] = {
+    [sym__argument] = STATE(30),
+    [sym_text] = STATE(30),
+    [sym__cisco_atom] = STATE(30),
+    [sym__cisco_numeric_literal] = STATE(24),
     [sym__cisco_interface_token] = STATE(24),
     [sym__cisco_address_token] = STATE(24),
-    [aux_sym_generic_command_repeat1] = STATE(11),
+    [sym__cisco_keyword_token] = STATE(24),
+    [aux_sym_generic_command_repeat1] = STATE(15),
     [ts_builtin_sym_end] = ACTIONS(71),
-    [sym_word] = ACTIONS(73),
-    [sym_text_keyword] = ACTIONS(76),
-    [sym__trailing_comment] = ACTIONS(79),
-    [sym_quoted_string] = ACTIONS(81),
-    [sym_token_type_cisco_interface_app_gigabitethernet] = ACTIONS(84),
-    [sym_token_type_cisco_interface_async] = ACTIONS(84),
-    [sym_token_type_cisco_interface_bdi] = ACTIONS(84),
-    [sym_token_type_cisco_interface_bri] = ACTIONS(84),
-    [sym_token_type_cisco_interface_bvi] = ACTIONS(84),
-    [sym_token_type_cisco_interface_cellular] = ACTIONS(84),
-    [sym_token_type_cisco_interface_dialer] = ACTIONS(84),
-    [sym_token_type_cisco_interface_ethernet] = ACTIONS(84),
-    [sym_token_type_cisco_interface_loopback] = ACTIONS(84),
-    [sym_token_type_cisco_interface_management] = ACTIONS(84),
-    [sym_token_type_cisco_interface_null] = ACTIONS(84),
-    [sym_token_type_cisco_interface_nvi] = ACTIONS(84),
-    [sym_token_type_cisco_interface_port_channel] = ACTIONS(84),
-    [sym_token_type_cisco_interface_serial] = ACTIONS(84),
-    [sym_token_type_cisco_interface_tunnel] = ACTIONS(84),
-    [sym_token_type_cisco_interface_vasileft] = ACTIONS(84),
-    [sym_token_type_cisco_interface_vasiright] = ACTIONS(84),
-    [sym_token_type_cisco_interface_virtual_template] = ACTIONS(84),
-    [sym_token_type_cisco_interface_vlan] = ACTIONS(84),
-    [sym_token_type_cisco_interface_vmi] = ACTIONS(84),
-    [sym_token_type_cisco_interface_wireless] = ACTIONS(84),
-    [sym_token_number_cisco_address_ipv4_cidr] = ACTIONS(87),
-    [sym_token_number_cisco_address_ipv4] = ACTIONS(87),
-    [sym_token_number_cisco_address_ipv6_condensed] = ACTIONS(87),
-    [sym_token_number_cisco_address_ipv6_full] = ACTIONS(87),
-    [sym_token_number_cisco_address_mac] = ACTIONS(87),
+    [sym_word] = ACTIONS(17),
+    [sym_text_keyword] = ACTIONS(27),
+    [sym_token_keyword_cisco_encapsulation_dot1q] = ACTIONS(29),
+    [sym_token_keyword_cisco_encapsulation_dot1q_tunnel] = ACTIONS(29),
+    [sym_token_keyword_cisco_encapsulation_protocol_vlan] = ACTIONS(29),
+    [sym_token_keyword_cisco_encapsulation_mac_vlan] = ACTIONS(29),
+    [sym_token_keyword_cisco_switchport_mode_access] = ACTIONS(29),
+    [sym_token_keyword_cisco_switchport_mode_trunk] = ACTIONS(29),
+    [sym_token_keyword_cisco_shutdown] = ACTIONS(29),
+    [sym_token_keyword_cisco_status_up] = ACTIONS(29),
+    [sym_token_keyword_cisco_status_down] = ACTIONS(29),
+    [sym_token_keyword_cisco_status_deleted] = ACTIONS(29),
+    [sym_token_keyword_cisco_status_administratively_down] = ACTIONS(29),
+    [sym_token_keyword_cisco_enable_disable_enable] = ACTIONS(29),
+    [sym_token_keyword_cisco_enable_disable_disable] = ACTIONS(29),
+    [sym_token_keyword_cisco_match_match_any] = ACTIONS(29),
+    [sym_token_keyword_cisco_match_match_all] = ACTIONS(29),
+    [sym_token_keyword_cisco_add_remove_add] = ACTIONS(29),
+    [sym_token_keyword_cisco_add_remove_remove] = ACTIONS(29),
+    [sym_token_keyword_cisco_add_remove_except] = ACTIONS(29),
+    [sym_token_keyword_cisco_allowed_native_allowed] = ACTIONS(29),
+    [sym_token_keyword_cisco_allowed_native_native] = ACTIONS(29),
+    [sym_token_keyword_cisco_any_all_any] = ACTIONS(29),
+    [sym_token_keyword_cisco_any_all_all] = ACTIONS(29),
+    [sym_token_keyword_cisco_permit_deny_permit] = ACTIONS(29),
+    [sym_token_keyword_cisco_permit_deny_deny] = ACTIONS(29),
+    [sym_token_keyword_cisco_in_out_in] = ACTIONS(29),
+    [sym_token_keyword_cisco_in_out_out] = ACTIONS(29),
+    [sym_token_keyword_cisco_input_output_input] = ACTIONS(29),
+    [sym_token_keyword_cisco_input_output_output] = ACTIONS(29),
+    [sym_token_keyword_cisco_inside_outside_inside] = ACTIONS(29),
+    [sym_token_keyword_cisco_inside_outside_outside] = ACTIONS(29),
+    [sym_token_number_cisco_integer] = ACTIONS(31),
+    [sym_token_number_cisco_range] = ACTIONS(31),
+    [sym_token_number_cisco_hex] = ACTIONS(31),
+    [sym__trailing_comment] = ACTIONS(73),
+    [sym_quoted_string] = ACTIONS(69),
+    [sym_token_tag_cisco_logging_system_message] = ACTIONS(17),
+    [sym_token_type_cisco_interface_app_gigabitethernet] = ACTIONS(37),
+    [sym_token_type_cisco_interface_async] = ACTIONS(37),
+    [sym_token_type_cisco_interface_bdi] = ACTIONS(37),
+    [sym_token_type_cisco_interface_bri] = ACTIONS(37),
+    [sym_token_type_cisco_interface_bvi] = ACTIONS(37),
+    [sym_token_type_cisco_interface_cellular] = ACTIONS(37),
+    [sym_token_type_cisco_interface_dialer] = ACTIONS(37),
+    [sym_token_type_cisco_interface_ethernet] = ACTIONS(37),
+    [sym_token_type_cisco_interface_loopback] = ACTIONS(37),
+    [sym_token_type_cisco_interface_management] = ACTIONS(37),
+    [sym_token_type_cisco_interface_null] = ACTIONS(37),
+    [sym_token_type_cisco_interface_nvi] = ACTIONS(37),
+    [sym_token_type_cisco_interface_port_channel] = ACTIONS(37),
+    [sym_token_type_cisco_interface_serial] = ACTIONS(37),
+    [sym_token_type_cisco_interface_tunnel] = ACTIONS(37),
+    [sym_token_type_cisco_interface_vasileft] = ACTIONS(37),
+    [sym_token_type_cisco_interface_vasiright] = ACTIONS(37),
+    [sym_token_type_cisco_interface_virtual_template] = ACTIONS(37),
+    [sym_token_type_cisco_interface_vlan] = ACTIONS(37),
+    [sym_token_type_cisco_interface_vmi] = ACTIONS(37),
+    [sym_token_type_cisco_interface_wireless] = ACTIONS(37),
+    [sym_token_number_cisco_address_ipv4_cidr] = ACTIONS(39),
+    [sym_token_number_cisco_address_ipv4] = ACTIONS(39),
+    [sym_token_number_cisco_address_ipv6_condensed] = ACTIONS(39),
+    [sym_token_number_cisco_address_ipv6_full] = ACTIONS(39),
+    [sym_token_number_cisco_address_mac] = ACTIONS(39),
     [sym_prompt] = ACTIONS(71),
     [sym__newline] = ACTIONS(71),
     [sym__definition_start] = ACTIONS(71),
@@ -10120,863 +13407,1897 @@ static const uint16_t ts_parse_table[LARGE_STATE_COUNT][SYMBOL_COUNT] = {
     [sym__bgp_start] = ACTIONS(71),
     [sym__address_family_start] = ACTIONS(71),
   },
-  [STATE(12)] = {
-    [sym__argument] = STATE(28),
-    [sym_text] = STATE(28),
-    [sym__cisco_atom] = STATE(28),
+  [STATE(11)] = {
+    [sym__argument] = STATE(30),
+    [sym_text] = STATE(30),
+    [sym__cisco_atom] = STATE(30),
+    [sym__cisco_numeric_literal] = STATE(24),
     [sym__cisco_interface_token] = STATE(24),
     [sym__cisco_address_token] = STATE(24),
-    [aux_sym_generic_command_repeat1] = STATE(17),
-    [ts_builtin_sym_end] = ACTIONS(90),
+    [sym__cisco_keyword_token] = STATE(24),
+    [aux_sym_generic_command_repeat1] = STATE(16),
+    [ts_builtin_sym_end] = ACTIONS(75),
     [sym_word] = ACTIONS(17),
     [sym_text_keyword] = ACTIONS(27),
-    [sym__trailing_comment] = ACTIONS(92),
-    [sym_quoted_string] = ACTIONS(65),
-    [sym_token_type_cisco_interface_app_gigabitethernet] = ACTIONS(33),
-    [sym_token_type_cisco_interface_async] = ACTIONS(33),
-    [sym_token_type_cisco_interface_bdi] = ACTIONS(33),
-    [sym_token_type_cisco_interface_bri] = ACTIONS(33),
-    [sym_token_type_cisco_interface_bvi] = ACTIONS(33),
-    [sym_token_type_cisco_interface_cellular] = ACTIONS(33),
-    [sym_token_type_cisco_interface_dialer] = ACTIONS(33),
-    [sym_token_type_cisco_interface_ethernet] = ACTIONS(33),
-    [sym_token_type_cisco_interface_loopback] = ACTIONS(33),
-    [sym_token_type_cisco_interface_management] = ACTIONS(33),
-    [sym_token_type_cisco_interface_null] = ACTIONS(33),
-    [sym_token_type_cisco_interface_nvi] = ACTIONS(33),
-    [sym_token_type_cisco_interface_port_channel] = ACTIONS(33),
-    [sym_token_type_cisco_interface_serial] = ACTIONS(33),
-    [sym_token_type_cisco_interface_tunnel] = ACTIONS(33),
-    [sym_token_type_cisco_interface_vasileft] = ACTIONS(33),
-    [sym_token_type_cisco_interface_vasiright] = ACTIONS(33),
-    [sym_token_type_cisco_interface_virtual_template] = ACTIONS(33),
-    [sym_token_type_cisco_interface_vlan] = ACTIONS(33),
-    [sym_token_type_cisco_interface_vmi] = ACTIONS(33),
-    [sym_token_type_cisco_interface_wireless] = ACTIONS(33),
-    [sym_token_number_cisco_address_ipv4_cidr] = ACTIONS(35),
-    [sym_token_number_cisco_address_ipv4] = ACTIONS(35),
-    [sym_token_number_cisco_address_ipv6_condensed] = ACTIONS(35),
-    [sym_token_number_cisco_address_ipv6_full] = ACTIONS(35),
-    [sym_token_number_cisco_address_mac] = ACTIONS(35),
-    [sym_prompt] = ACTIONS(90),
-    [sym__newline] = ACTIONS(90),
-    [sym__definition_start] = ACTIONS(90),
-    [sym__ordinary_start] = ACTIONS(90),
-    [sym__bgp_start] = ACTIONS(90),
-    [sym__address_family_start] = ACTIONS(90),
+    [sym_token_keyword_cisco_encapsulation_dot1q] = ACTIONS(29),
+    [sym_token_keyword_cisco_encapsulation_dot1q_tunnel] = ACTIONS(29),
+    [sym_token_keyword_cisco_encapsulation_protocol_vlan] = ACTIONS(29),
+    [sym_token_keyword_cisco_encapsulation_mac_vlan] = ACTIONS(29),
+    [sym_token_keyword_cisco_switchport_mode_access] = ACTIONS(29),
+    [sym_token_keyword_cisco_switchport_mode_trunk] = ACTIONS(29),
+    [sym_token_keyword_cisco_shutdown] = ACTIONS(29),
+    [sym_token_keyword_cisco_status_up] = ACTIONS(29),
+    [sym_token_keyword_cisco_status_down] = ACTIONS(29),
+    [sym_token_keyword_cisco_status_deleted] = ACTIONS(29),
+    [sym_token_keyword_cisco_status_administratively_down] = ACTIONS(29),
+    [sym_token_keyword_cisco_enable_disable_enable] = ACTIONS(29),
+    [sym_token_keyword_cisco_enable_disable_disable] = ACTIONS(29),
+    [sym_token_keyword_cisco_match_match_any] = ACTIONS(29),
+    [sym_token_keyword_cisco_match_match_all] = ACTIONS(29),
+    [sym_token_keyword_cisco_add_remove_add] = ACTIONS(29),
+    [sym_token_keyword_cisco_add_remove_remove] = ACTIONS(29),
+    [sym_token_keyword_cisco_add_remove_except] = ACTIONS(29),
+    [sym_token_keyword_cisco_allowed_native_allowed] = ACTIONS(29),
+    [sym_token_keyword_cisco_allowed_native_native] = ACTIONS(29),
+    [sym_token_keyword_cisco_any_all_any] = ACTIONS(29),
+    [sym_token_keyword_cisco_any_all_all] = ACTIONS(29),
+    [sym_token_keyword_cisco_permit_deny_permit] = ACTIONS(29),
+    [sym_token_keyword_cisco_permit_deny_deny] = ACTIONS(29),
+    [sym_token_keyword_cisco_in_out_in] = ACTIONS(29),
+    [sym_token_keyword_cisco_in_out_out] = ACTIONS(29),
+    [sym_token_keyword_cisco_input_output_input] = ACTIONS(29),
+    [sym_token_keyword_cisco_input_output_output] = ACTIONS(29),
+    [sym_token_keyword_cisco_inside_outside_inside] = ACTIONS(29),
+    [sym_token_keyword_cisco_inside_outside_outside] = ACTIONS(29),
+    [sym_token_number_cisco_integer] = ACTIONS(31),
+    [sym_token_number_cisco_range] = ACTIONS(31),
+    [sym_token_number_cisco_hex] = ACTIONS(31),
+    [sym__trailing_comment] = ACTIONS(77),
+    [sym_quoted_string] = ACTIONS(69),
+    [sym_token_tag_cisco_logging_system_message] = ACTIONS(17),
+    [sym_token_type_cisco_interface_app_gigabitethernet] = ACTIONS(37),
+    [sym_token_type_cisco_interface_async] = ACTIONS(37),
+    [sym_token_type_cisco_interface_bdi] = ACTIONS(37),
+    [sym_token_type_cisco_interface_bri] = ACTIONS(37),
+    [sym_token_type_cisco_interface_bvi] = ACTIONS(37),
+    [sym_token_type_cisco_interface_cellular] = ACTIONS(37),
+    [sym_token_type_cisco_interface_dialer] = ACTIONS(37),
+    [sym_token_type_cisco_interface_ethernet] = ACTIONS(37),
+    [sym_token_type_cisco_interface_loopback] = ACTIONS(37),
+    [sym_token_type_cisco_interface_management] = ACTIONS(37),
+    [sym_token_type_cisco_interface_null] = ACTIONS(37),
+    [sym_token_type_cisco_interface_nvi] = ACTIONS(37),
+    [sym_token_type_cisco_interface_port_channel] = ACTIONS(37),
+    [sym_token_type_cisco_interface_serial] = ACTIONS(37),
+    [sym_token_type_cisco_interface_tunnel] = ACTIONS(37),
+    [sym_token_type_cisco_interface_vasileft] = ACTIONS(37),
+    [sym_token_type_cisco_interface_vasiright] = ACTIONS(37),
+    [sym_token_type_cisco_interface_virtual_template] = ACTIONS(37),
+    [sym_token_type_cisco_interface_vlan] = ACTIONS(37),
+    [sym_token_type_cisco_interface_vmi] = ACTIONS(37),
+    [sym_token_type_cisco_interface_wireless] = ACTIONS(37),
+    [sym_token_number_cisco_address_ipv4_cidr] = ACTIONS(39),
+    [sym_token_number_cisco_address_ipv4] = ACTIONS(39),
+    [sym_token_number_cisco_address_ipv6_condensed] = ACTIONS(39),
+    [sym_token_number_cisco_address_ipv6_full] = ACTIONS(39),
+    [sym_token_number_cisco_address_mac] = ACTIONS(39),
+    [sym_prompt] = ACTIONS(75),
+    [sym__newline] = ACTIONS(75),
+    [sym__definition_start] = ACTIONS(75),
+    [sym__ordinary_start] = ACTIONS(75),
+    [sym__bgp_start] = ACTIONS(75),
+    [sym__address_family_start] = ACTIONS(75),
+  },
+  [STATE(12)] = {
+    [sym__argument] = STATE(30),
+    [sym_text] = STATE(30),
+    [sym__cisco_atom] = STATE(30),
+    [sym__cisco_numeric_literal] = STATE(24),
+    [sym__cisco_interface_token] = STATE(24),
+    [sym__cisco_address_token] = STATE(24),
+    [sym__cisco_keyword_token] = STATE(24),
+    [aux_sym_generic_command_repeat1] = STATE(17),
+    [ts_builtin_sym_end] = ACTIONS(79),
+    [sym_word] = ACTIONS(17),
+    [sym_text_keyword] = ACTIONS(27),
+    [sym_token_keyword_cisco_encapsulation_dot1q] = ACTIONS(29),
+    [sym_token_keyword_cisco_encapsulation_dot1q_tunnel] = ACTIONS(29),
+    [sym_token_keyword_cisco_encapsulation_protocol_vlan] = ACTIONS(29),
+    [sym_token_keyword_cisco_encapsulation_mac_vlan] = ACTIONS(29),
+    [sym_token_keyword_cisco_switchport_mode_access] = ACTIONS(29),
+    [sym_token_keyword_cisco_switchport_mode_trunk] = ACTIONS(29),
+    [sym_token_keyword_cisco_shutdown] = ACTIONS(29),
+    [sym_token_keyword_cisco_status_up] = ACTIONS(29),
+    [sym_token_keyword_cisco_status_down] = ACTIONS(29),
+    [sym_token_keyword_cisco_status_deleted] = ACTIONS(29),
+    [sym_token_keyword_cisco_status_administratively_down] = ACTIONS(29),
+    [sym_token_keyword_cisco_enable_disable_enable] = ACTIONS(29),
+    [sym_token_keyword_cisco_enable_disable_disable] = ACTIONS(29),
+    [sym_token_keyword_cisco_match_match_any] = ACTIONS(29),
+    [sym_token_keyword_cisco_match_match_all] = ACTIONS(29),
+    [sym_token_keyword_cisco_add_remove_add] = ACTIONS(29),
+    [sym_token_keyword_cisco_add_remove_remove] = ACTIONS(29),
+    [sym_token_keyword_cisco_add_remove_except] = ACTIONS(29),
+    [sym_token_keyword_cisco_allowed_native_allowed] = ACTIONS(29),
+    [sym_token_keyword_cisco_allowed_native_native] = ACTIONS(29),
+    [sym_token_keyword_cisco_any_all_any] = ACTIONS(29),
+    [sym_token_keyword_cisco_any_all_all] = ACTIONS(29),
+    [sym_token_keyword_cisco_permit_deny_permit] = ACTIONS(29),
+    [sym_token_keyword_cisco_permit_deny_deny] = ACTIONS(29),
+    [sym_token_keyword_cisco_in_out_in] = ACTIONS(29),
+    [sym_token_keyword_cisco_in_out_out] = ACTIONS(29),
+    [sym_token_keyword_cisco_input_output_input] = ACTIONS(29),
+    [sym_token_keyword_cisco_input_output_output] = ACTIONS(29),
+    [sym_token_keyword_cisco_inside_outside_inside] = ACTIONS(29),
+    [sym_token_keyword_cisco_inside_outside_outside] = ACTIONS(29),
+    [sym_token_number_cisco_integer] = ACTIONS(31),
+    [sym_token_number_cisco_range] = ACTIONS(31),
+    [sym_token_number_cisco_hex] = ACTIONS(31),
+    [sym__trailing_comment] = ACTIONS(81),
+    [sym_quoted_string] = ACTIONS(69),
+    [sym_token_tag_cisco_logging_system_message] = ACTIONS(17),
+    [sym_token_type_cisco_interface_app_gigabitethernet] = ACTIONS(37),
+    [sym_token_type_cisco_interface_async] = ACTIONS(37),
+    [sym_token_type_cisco_interface_bdi] = ACTIONS(37),
+    [sym_token_type_cisco_interface_bri] = ACTIONS(37),
+    [sym_token_type_cisco_interface_bvi] = ACTIONS(37),
+    [sym_token_type_cisco_interface_cellular] = ACTIONS(37),
+    [sym_token_type_cisco_interface_dialer] = ACTIONS(37),
+    [sym_token_type_cisco_interface_ethernet] = ACTIONS(37),
+    [sym_token_type_cisco_interface_loopback] = ACTIONS(37),
+    [sym_token_type_cisco_interface_management] = ACTIONS(37),
+    [sym_token_type_cisco_interface_null] = ACTIONS(37),
+    [sym_token_type_cisco_interface_nvi] = ACTIONS(37),
+    [sym_token_type_cisco_interface_port_channel] = ACTIONS(37),
+    [sym_token_type_cisco_interface_serial] = ACTIONS(37),
+    [sym_token_type_cisco_interface_tunnel] = ACTIONS(37),
+    [sym_token_type_cisco_interface_vasileft] = ACTIONS(37),
+    [sym_token_type_cisco_interface_vasiright] = ACTIONS(37),
+    [sym_token_type_cisco_interface_virtual_template] = ACTIONS(37),
+    [sym_token_type_cisco_interface_vlan] = ACTIONS(37),
+    [sym_token_type_cisco_interface_vmi] = ACTIONS(37),
+    [sym_token_type_cisco_interface_wireless] = ACTIONS(37),
+    [sym_token_number_cisco_address_ipv4_cidr] = ACTIONS(39),
+    [sym_token_number_cisco_address_ipv4] = ACTIONS(39),
+    [sym_token_number_cisco_address_ipv6_condensed] = ACTIONS(39),
+    [sym_token_number_cisco_address_ipv6_full] = ACTIONS(39),
+    [sym_token_number_cisco_address_mac] = ACTIONS(39),
+    [sym_prompt] = ACTIONS(79),
+    [sym__newline] = ACTIONS(79),
+    [sym__definition_start] = ACTIONS(79),
+    [sym__ordinary_start] = ACTIONS(79),
+    [sym__bgp_start] = ACTIONS(79),
+    [sym__address_family_start] = ACTIONS(79),
   },
   [STATE(13)] = {
-    [sym__argument] = STATE(28),
-    [sym_text] = STATE(28),
-    [sym__cisco_atom] = STATE(28),
+    [sym__argument] = STATE(30),
+    [sym_text] = STATE(30),
+    [sym__cisco_atom] = STATE(30),
+    [sym__cisco_numeric_literal] = STATE(24),
     [sym__cisco_interface_token] = STATE(24),
     [sym__cisco_address_token] = STATE(24),
+    [sym__cisco_keyword_token] = STATE(24),
     [aux_sym_generic_command_repeat1] = STATE(11),
-    [ts_builtin_sym_end] = ACTIONS(94),
+    [ts_builtin_sym_end] = ACTIONS(83),
     [sym_word] = ACTIONS(17),
     [sym_text_keyword] = ACTIONS(27),
-    [sym__trailing_comment] = ACTIONS(96),
-    [sym_quoted_string] = ACTIONS(65),
-    [sym_token_type_cisco_interface_app_gigabitethernet] = ACTIONS(33),
-    [sym_token_type_cisco_interface_async] = ACTIONS(33),
-    [sym_token_type_cisco_interface_bdi] = ACTIONS(33),
-    [sym_token_type_cisco_interface_bri] = ACTIONS(33),
-    [sym_token_type_cisco_interface_bvi] = ACTIONS(33),
-    [sym_token_type_cisco_interface_cellular] = ACTIONS(33),
-    [sym_token_type_cisco_interface_dialer] = ACTIONS(33),
-    [sym_token_type_cisco_interface_ethernet] = ACTIONS(33),
-    [sym_token_type_cisco_interface_loopback] = ACTIONS(33),
-    [sym_token_type_cisco_interface_management] = ACTIONS(33),
-    [sym_token_type_cisco_interface_null] = ACTIONS(33),
-    [sym_token_type_cisco_interface_nvi] = ACTIONS(33),
-    [sym_token_type_cisco_interface_port_channel] = ACTIONS(33),
-    [sym_token_type_cisco_interface_serial] = ACTIONS(33),
-    [sym_token_type_cisco_interface_tunnel] = ACTIONS(33),
-    [sym_token_type_cisco_interface_vasileft] = ACTIONS(33),
-    [sym_token_type_cisco_interface_vasiright] = ACTIONS(33),
-    [sym_token_type_cisco_interface_virtual_template] = ACTIONS(33),
-    [sym_token_type_cisco_interface_vlan] = ACTIONS(33),
-    [sym_token_type_cisco_interface_vmi] = ACTIONS(33),
-    [sym_token_type_cisco_interface_wireless] = ACTIONS(33),
-    [sym_token_number_cisco_address_ipv4_cidr] = ACTIONS(35),
-    [sym_token_number_cisco_address_ipv4] = ACTIONS(35),
-    [sym_token_number_cisco_address_ipv6_condensed] = ACTIONS(35),
-    [sym_token_number_cisco_address_ipv6_full] = ACTIONS(35),
-    [sym_token_number_cisco_address_mac] = ACTIONS(35),
-    [sym_prompt] = ACTIONS(94),
-    [sym__newline] = ACTIONS(94),
-    [sym__definition_start] = ACTIONS(94),
-    [sym__ordinary_start] = ACTIONS(94),
-    [sym__bgp_start] = ACTIONS(94),
-    [sym__address_family_start] = ACTIONS(94),
+    [sym_token_keyword_cisco_encapsulation_dot1q] = ACTIONS(29),
+    [sym_token_keyword_cisco_encapsulation_dot1q_tunnel] = ACTIONS(29),
+    [sym_token_keyword_cisco_encapsulation_protocol_vlan] = ACTIONS(29),
+    [sym_token_keyword_cisco_encapsulation_mac_vlan] = ACTIONS(29),
+    [sym_token_keyword_cisco_switchport_mode_access] = ACTIONS(29),
+    [sym_token_keyword_cisco_switchport_mode_trunk] = ACTIONS(29),
+    [sym_token_keyword_cisco_shutdown] = ACTIONS(29),
+    [sym_token_keyword_cisco_status_up] = ACTIONS(29),
+    [sym_token_keyword_cisco_status_down] = ACTIONS(29),
+    [sym_token_keyword_cisco_status_deleted] = ACTIONS(29),
+    [sym_token_keyword_cisco_status_administratively_down] = ACTIONS(29),
+    [sym_token_keyword_cisco_enable_disable_enable] = ACTIONS(29),
+    [sym_token_keyword_cisco_enable_disable_disable] = ACTIONS(29),
+    [sym_token_keyword_cisco_match_match_any] = ACTIONS(29),
+    [sym_token_keyword_cisco_match_match_all] = ACTIONS(29),
+    [sym_token_keyword_cisco_add_remove_add] = ACTIONS(29),
+    [sym_token_keyword_cisco_add_remove_remove] = ACTIONS(29),
+    [sym_token_keyword_cisco_add_remove_except] = ACTIONS(29),
+    [sym_token_keyword_cisco_allowed_native_allowed] = ACTIONS(29),
+    [sym_token_keyword_cisco_allowed_native_native] = ACTIONS(29),
+    [sym_token_keyword_cisco_any_all_any] = ACTIONS(29),
+    [sym_token_keyword_cisco_any_all_all] = ACTIONS(29),
+    [sym_token_keyword_cisco_permit_deny_permit] = ACTIONS(29),
+    [sym_token_keyword_cisco_permit_deny_deny] = ACTIONS(29),
+    [sym_token_keyword_cisco_in_out_in] = ACTIONS(29),
+    [sym_token_keyword_cisco_in_out_out] = ACTIONS(29),
+    [sym_token_keyword_cisco_input_output_input] = ACTIONS(29),
+    [sym_token_keyword_cisco_input_output_output] = ACTIONS(29),
+    [sym_token_keyword_cisco_inside_outside_inside] = ACTIONS(29),
+    [sym_token_keyword_cisco_inside_outside_outside] = ACTIONS(29),
+    [sym_token_number_cisco_integer] = ACTIONS(31),
+    [sym_token_number_cisco_range] = ACTIONS(31),
+    [sym_token_number_cisco_hex] = ACTIONS(31),
+    [sym__trailing_comment] = ACTIONS(85),
+    [sym_quoted_string] = ACTIONS(69),
+    [sym_token_tag_cisco_logging_system_message] = ACTIONS(17),
+    [sym_token_type_cisco_interface_app_gigabitethernet] = ACTIONS(37),
+    [sym_token_type_cisco_interface_async] = ACTIONS(37),
+    [sym_token_type_cisco_interface_bdi] = ACTIONS(37),
+    [sym_token_type_cisco_interface_bri] = ACTIONS(37),
+    [sym_token_type_cisco_interface_bvi] = ACTIONS(37),
+    [sym_token_type_cisco_interface_cellular] = ACTIONS(37),
+    [sym_token_type_cisco_interface_dialer] = ACTIONS(37),
+    [sym_token_type_cisco_interface_ethernet] = ACTIONS(37),
+    [sym_token_type_cisco_interface_loopback] = ACTIONS(37),
+    [sym_token_type_cisco_interface_management] = ACTIONS(37),
+    [sym_token_type_cisco_interface_null] = ACTIONS(37),
+    [sym_token_type_cisco_interface_nvi] = ACTIONS(37),
+    [sym_token_type_cisco_interface_port_channel] = ACTIONS(37),
+    [sym_token_type_cisco_interface_serial] = ACTIONS(37),
+    [sym_token_type_cisco_interface_tunnel] = ACTIONS(37),
+    [sym_token_type_cisco_interface_vasileft] = ACTIONS(37),
+    [sym_token_type_cisco_interface_vasiright] = ACTIONS(37),
+    [sym_token_type_cisco_interface_virtual_template] = ACTIONS(37),
+    [sym_token_type_cisco_interface_vlan] = ACTIONS(37),
+    [sym_token_type_cisco_interface_vmi] = ACTIONS(37),
+    [sym_token_type_cisco_interface_wireless] = ACTIONS(37),
+    [sym_token_number_cisco_address_ipv4_cidr] = ACTIONS(39),
+    [sym_token_number_cisco_address_ipv4] = ACTIONS(39),
+    [sym_token_number_cisco_address_ipv6_condensed] = ACTIONS(39),
+    [sym_token_number_cisco_address_ipv6_full] = ACTIONS(39),
+    [sym_token_number_cisco_address_mac] = ACTIONS(39),
+    [sym_prompt] = ACTIONS(83),
+    [sym__newline] = ACTIONS(83),
+    [sym__definition_start] = ACTIONS(83),
+    [sym__ordinary_start] = ACTIONS(83),
+    [sym__bgp_start] = ACTIONS(83),
+    [sym__address_family_start] = ACTIONS(83),
   },
   [STATE(14)] = {
-    [sym__argument] = STATE(28),
-    [sym_text] = STATE(28),
-    [sym__cisco_atom] = STATE(28),
+    [sym__argument] = STATE(30),
+    [sym_text] = STATE(30),
+    [sym__cisco_atom] = STATE(30),
+    [sym__cisco_numeric_literal] = STATE(24),
     [sym__cisco_interface_token] = STATE(24),
     [sym__cisco_address_token] = STATE(24),
-    [aux_sym_generic_command_repeat1] = STATE(11),
-    [ts_builtin_sym_end] = ACTIONS(98),
+    [sym__cisco_keyword_token] = STATE(24),
+    [aux_sym_generic_command_repeat1] = STATE(9),
+    [ts_builtin_sym_end] = ACTIONS(87),
     [sym_word] = ACTIONS(17),
     [sym_text_keyword] = ACTIONS(27),
-    [sym__trailing_comment] = ACTIONS(100),
-    [sym_quoted_string] = ACTIONS(65),
-    [sym_token_type_cisco_interface_app_gigabitethernet] = ACTIONS(33),
-    [sym_token_type_cisco_interface_async] = ACTIONS(33),
-    [sym_token_type_cisco_interface_bdi] = ACTIONS(33),
-    [sym_token_type_cisco_interface_bri] = ACTIONS(33),
-    [sym_token_type_cisco_interface_bvi] = ACTIONS(33),
-    [sym_token_type_cisco_interface_cellular] = ACTIONS(33),
-    [sym_token_type_cisco_interface_dialer] = ACTIONS(33),
-    [sym_token_type_cisco_interface_ethernet] = ACTIONS(33),
-    [sym_token_type_cisco_interface_loopback] = ACTIONS(33),
-    [sym_token_type_cisco_interface_management] = ACTIONS(33),
-    [sym_token_type_cisco_interface_null] = ACTIONS(33),
-    [sym_token_type_cisco_interface_nvi] = ACTIONS(33),
-    [sym_token_type_cisco_interface_port_channel] = ACTIONS(33),
-    [sym_token_type_cisco_interface_serial] = ACTIONS(33),
-    [sym_token_type_cisco_interface_tunnel] = ACTIONS(33),
-    [sym_token_type_cisco_interface_vasileft] = ACTIONS(33),
-    [sym_token_type_cisco_interface_vasiright] = ACTIONS(33),
-    [sym_token_type_cisco_interface_virtual_template] = ACTIONS(33),
-    [sym_token_type_cisco_interface_vlan] = ACTIONS(33),
-    [sym_token_type_cisco_interface_vmi] = ACTIONS(33),
-    [sym_token_type_cisco_interface_wireless] = ACTIONS(33),
-    [sym_token_number_cisco_address_ipv4_cidr] = ACTIONS(35),
-    [sym_token_number_cisco_address_ipv4] = ACTIONS(35),
-    [sym_token_number_cisco_address_ipv6_condensed] = ACTIONS(35),
-    [sym_token_number_cisco_address_ipv6_full] = ACTIONS(35),
-    [sym_token_number_cisco_address_mac] = ACTIONS(35),
-    [sym_prompt] = ACTIONS(98),
-    [sym__newline] = ACTIONS(98),
-    [sym__definition_start] = ACTIONS(98),
-    [sym__ordinary_start] = ACTIONS(98),
-    [sym__bgp_start] = ACTIONS(98),
-    [sym__address_family_start] = ACTIONS(98),
+    [sym_token_keyword_cisco_encapsulation_dot1q] = ACTIONS(29),
+    [sym_token_keyword_cisco_encapsulation_dot1q_tunnel] = ACTIONS(29),
+    [sym_token_keyword_cisco_encapsulation_protocol_vlan] = ACTIONS(29),
+    [sym_token_keyword_cisco_encapsulation_mac_vlan] = ACTIONS(29),
+    [sym_token_keyword_cisco_switchport_mode_access] = ACTIONS(29),
+    [sym_token_keyword_cisco_switchport_mode_trunk] = ACTIONS(29),
+    [sym_token_keyword_cisco_shutdown] = ACTIONS(29),
+    [sym_token_keyword_cisco_status_up] = ACTIONS(29),
+    [sym_token_keyword_cisco_status_down] = ACTIONS(29),
+    [sym_token_keyword_cisco_status_deleted] = ACTIONS(29),
+    [sym_token_keyword_cisco_status_administratively_down] = ACTIONS(29),
+    [sym_token_keyword_cisco_enable_disable_enable] = ACTIONS(29),
+    [sym_token_keyword_cisco_enable_disable_disable] = ACTIONS(29),
+    [sym_token_keyword_cisco_match_match_any] = ACTIONS(29),
+    [sym_token_keyword_cisco_match_match_all] = ACTIONS(29),
+    [sym_token_keyword_cisco_add_remove_add] = ACTIONS(29),
+    [sym_token_keyword_cisco_add_remove_remove] = ACTIONS(29),
+    [sym_token_keyword_cisco_add_remove_except] = ACTIONS(29),
+    [sym_token_keyword_cisco_allowed_native_allowed] = ACTIONS(29),
+    [sym_token_keyword_cisco_allowed_native_native] = ACTIONS(29),
+    [sym_token_keyword_cisco_any_all_any] = ACTIONS(29),
+    [sym_token_keyword_cisco_any_all_all] = ACTIONS(29),
+    [sym_token_keyword_cisco_permit_deny_permit] = ACTIONS(29),
+    [sym_token_keyword_cisco_permit_deny_deny] = ACTIONS(29),
+    [sym_token_keyword_cisco_in_out_in] = ACTIONS(29),
+    [sym_token_keyword_cisco_in_out_out] = ACTIONS(29),
+    [sym_token_keyword_cisco_input_output_input] = ACTIONS(29),
+    [sym_token_keyword_cisco_input_output_output] = ACTIONS(29),
+    [sym_token_keyword_cisco_inside_outside_inside] = ACTIONS(29),
+    [sym_token_keyword_cisco_inside_outside_outside] = ACTIONS(29),
+    [sym_token_number_cisco_integer] = ACTIONS(31),
+    [sym_token_number_cisco_range] = ACTIONS(31),
+    [sym_token_number_cisco_hex] = ACTIONS(31),
+    [sym__trailing_comment] = ACTIONS(89),
+    [sym_quoted_string] = ACTIONS(69),
+    [sym_token_tag_cisco_logging_system_message] = ACTIONS(17),
+    [sym_token_type_cisco_interface_app_gigabitethernet] = ACTIONS(37),
+    [sym_token_type_cisco_interface_async] = ACTIONS(37),
+    [sym_token_type_cisco_interface_bdi] = ACTIONS(37),
+    [sym_token_type_cisco_interface_bri] = ACTIONS(37),
+    [sym_token_type_cisco_interface_bvi] = ACTIONS(37),
+    [sym_token_type_cisco_interface_cellular] = ACTIONS(37),
+    [sym_token_type_cisco_interface_dialer] = ACTIONS(37),
+    [sym_token_type_cisco_interface_ethernet] = ACTIONS(37),
+    [sym_token_type_cisco_interface_loopback] = ACTIONS(37),
+    [sym_token_type_cisco_interface_management] = ACTIONS(37),
+    [sym_token_type_cisco_interface_null] = ACTIONS(37),
+    [sym_token_type_cisco_interface_nvi] = ACTIONS(37),
+    [sym_token_type_cisco_interface_port_channel] = ACTIONS(37),
+    [sym_token_type_cisco_interface_serial] = ACTIONS(37),
+    [sym_token_type_cisco_interface_tunnel] = ACTIONS(37),
+    [sym_token_type_cisco_interface_vasileft] = ACTIONS(37),
+    [sym_token_type_cisco_interface_vasiright] = ACTIONS(37),
+    [sym_token_type_cisco_interface_virtual_template] = ACTIONS(37),
+    [sym_token_type_cisco_interface_vlan] = ACTIONS(37),
+    [sym_token_type_cisco_interface_vmi] = ACTIONS(37),
+    [sym_token_type_cisco_interface_wireless] = ACTIONS(37),
+    [sym_token_number_cisco_address_ipv4_cidr] = ACTIONS(39),
+    [sym_token_number_cisco_address_ipv4] = ACTIONS(39),
+    [sym_token_number_cisco_address_ipv6_condensed] = ACTIONS(39),
+    [sym_token_number_cisco_address_ipv6_full] = ACTIONS(39),
+    [sym_token_number_cisco_address_mac] = ACTIONS(39),
+    [sym_prompt] = ACTIONS(87),
+    [sym__newline] = ACTIONS(87),
+    [sym__definition_start] = ACTIONS(87),
+    [sym__ordinary_start] = ACTIONS(87),
+    [sym__bgp_start] = ACTIONS(87),
+    [sym__address_family_start] = ACTIONS(87),
   },
   [STATE(15)] = {
-    [sym__argument] = STATE(28),
-    [sym_text] = STATE(28),
-    [sym__cisco_atom] = STATE(28),
+    [sym__argument] = STATE(30),
+    [sym_text] = STATE(30),
+    [sym__cisco_atom] = STATE(30),
+    [sym__cisco_numeric_literal] = STATE(24),
     [sym__cisco_interface_token] = STATE(24),
     [sym__cisco_address_token] = STATE(24),
-    [aux_sym_generic_command_repeat1] = STATE(11),
-    [ts_builtin_sym_end] = ACTIONS(102),
+    [sym__cisco_keyword_token] = STATE(24),
+    [aux_sym_generic_command_repeat1] = STATE(16),
+    [ts_builtin_sym_end] = ACTIONS(91),
     [sym_word] = ACTIONS(17),
     [sym_text_keyword] = ACTIONS(27),
-    [sym__trailing_comment] = ACTIONS(104),
-    [sym_quoted_string] = ACTIONS(65),
-    [sym_token_type_cisco_interface_app_gigabitethernet] = ACTIONS(33),
-    [sym_token_type_cisco_interface_async] = ACTIONS(33),
-    [sym_token_type_cisco_interface_bdi] = ACTIONS(33),
-    [sym_token_type_cisco_interface_bri] = ACTIONS(33),
-    [sym_token_type_cisco_interface_bvi] = ACTIONS(33),
-    [sym_token_type_cisco_interface_cellular] = ACTIONS(33),
-    [sym_token_type_cisco_interface_dialer] = ACTIONS(33),
-    [sym_token_type_cisco_interface_ethernet] = ACTIONS(33),
-    [sym_token_type_cisco_interface_loopback] = ACTIONS(33),
-    [sym_token_type_cisco_interface_management] = ACTIONS(33),
-    [sym_token_type_cisco_interface_null] = ACTIONS(33),
-    [sym_token_type_cisco_interface_nvi] = ACTIONS(33),
-    [sym_token_type_cisco_interface_port_channel] = ACTIONS(33),
-    [sym_token_type_cisco_interface_serial] = ACTIONS(33),
-    [sym_token_type_cisco_interface_tunnel] = ACTIONS(33),
-    [sym_token_type_cisco_interface_vasileft] = ACTIONS(33),
-    [sym_token_type_cisco_interface_vasiright] = ACTIONS(33),
-    [sym_token_type_cisco_interface_virtual_template] = ACTIONS(33),
-    [sym_token_type_cisco_interface_vlan] = ACTIONS(33),
-    [sym_token_type_cisco_interface_vmi] = ACTIONS(33),
-    [sym_token_type_cisco_interface_wireless] = ACTIONS(33),
-    [sym_token_number_cisco_address_ipv4_cidr] = ACTIONS(35),
-    [sym_token_number_cisco_address_ipv4] = ACTIONS(35),
-    [sym_token_number_cisco_address_ipv6_condensed] = ACTIONS(35),
-    [sym_token_number_cisco_address_ipv6_full] = ACTIONS(35),
-    [sym_token_number_cisco_address_mac] = ACTIONS(35),
-    [sym_prompt] = ACTIONS(102),
-    [sym__newline] = ACTIONS(102),
-    [sym__definition_start] = ACTIONS(102),
-    [sym__ordinary_start] = ACTIONS(102),
-    [sym__bgp_start] = ACTIONS(102),
-    [sym__address_family_start] = ACTIONS(102),
+    [sym_token_keyword_cisco_encapsulation_dot1q] = ACTIONS(29),
+    [sym_token_keyword_cisco_encapsulation_dot1q_tunnel] = ACTIONS(29),
+    [sym_token_keyword_cisco_encapsulation_protocol_vlan] = ACTIONS(29),
+    [sym_token_keyword_cisco_encapsulation_mac_vlan] = ACTIONS(29),
+    [sym_token_keyword_cisco_switchport_mode_access] = ACTIONS(29),
+    [sym_token_keyword_cisco_switchport_mode_trunk] = ACTIONS(29),
+    [sym_token_keyword_cisco_shutdown] = ACTIONS(29),
+    [sym_token_keyword_cisco_status_up] = ACTIONS(29),
+    [sym_token_keyword_cisco_status_down] = ACTIONS(29),
+    [sym_token_keyword_cisco_status_deleted] = ACTIONS(29),
+    [sym_token_keyword_cisco_status_administratively_down] = ACTIONS(29),
+    [sym_token_keyword_cisco_enable_disable_enable] = ACTIONS(29),
+    [sym_token_keyword_cisco_enable_disable_disable] = ACTIONS(29),
+    [sym_token_keyword_cisco_match_match_any] = ACTIONS(29),
+    [sym_token_keyword_cisco_match_match_all] = ACTIONS(29),
+    [sym_token_keyword_cisco_add_remove_add] = ACTIONS(29),
+    [sym_token_keyword_cisco_add_remove_remove] = ACTIONS(29),
+    [sym_token_keyword_cisco_add_remove_except] = ACTIONS(29),
+    [sym_token_keyword_cisco_allowed_native_allowed] = ACTIONS(29),
+    [sym_token_keyword_cisco_allowed_native_native] = ACTIONS(29),
+    [sym_token_keyword_cisco_any_all_any] = ACTIONS(29),
+    [sym_token_keyword_cisco_any_all_all] = ACTIONS(29),
+    [sym_token_keyword_cisco_permit_deny_permit] = ACTIONS(29),
+    [sym_token_keyword_cisco_permit_deny_deny] = ACTIONS(29),
+    [sym_token_keyword_cisco_in_out_in] = ACTIONS(29),
+    [sym_token_keyword_cisco_in_out_out] = ACTIONS(29),
+    [sym_token_keyword_cisco_input_output_input] = ACTIONS(29),
+    [sym_token_keyword_cisco_input_output_output] = ACTIONS(29),
+    [sym_token_keyword_cisco_inside_outside_inside] = ACTIONS(29),
+    [sym_token_keyword_cisco_inside_outside_outside] = ACTIONS(29),
+    [sym_token_number_cisco_integer] = ACTIONS(31),
+    [sym_token_number_cisco_range] = ACTIONS(31),
+    [sym_token_number_cisco_hex] = ACTIONS(31),
+    [sym__trailing_comment] = ACTIONS(93),
+    [sym_quoted_string] = ACTIONS(69),
+    [sym_token_tag_cisco_logging_system_message] = ACTIONS(17),
+    [sym_token_type_cisco_interface_app_gigabitethernet] = ACTIONS(37),
+    [sym_token_type_cisco_interface_async] = ACTIONS(37),
+    [sym_token_type_cisco_interface_bdi] = ACTIONS(37),
+    [sym_token_type_cisco_interface_bri] = ACTIONS(37),
+    [sym_token_type_cisco_interface_bvi] = ACTIONS(37),
+    [sym_token_type_cisco_interface_cellular] = ACTIONS(37),
+    [sym_token_type_cisco_interface_dialer] = ACTIONS(37),
+    [sym_token_type_cisco_interface_ethernet] = ACTIONS(37),
+    [sym_token_type_cisco_interface_loopback] = ACTIONS(37),
+    [sym_token_type_cisco_interface_management] = ACTIONS(37),
+    [sym_token_type_cisco_interface_null] = ACTIONS(37),
+    [sym_token_type_cisco_interface_nvi] = ACTIONS(37),
+    [sym_token_type_cisco_interface_port_channel] = ACTIONS(37),
+    [sym_token_type_cisco_interface_serial] = ACTIONS(37),
+    [sym_token_type_cisco_interface_tunnel] = ACTIONS(37),
+    [sym_token_type_cisco_interface_vasileft] = ACTIONS(37),
+    [sym_token_type_cisco_interface_vasiright] = ACTIONS(37),
+    [sym_token_type_cisco_interface_virtual_template] = ACTIONS(37),
+    [sym_token_type_cisco_interface_vlan] = ACTIONS(37),
+    [sym_token_type_cisco_interface_vmi] = ACTIONS(37),
+    [sym_token_type_cisco_interface_wireless] = ACTIONS(37),
+    [sym_token_number_cisco_address_ipv4_cidr] = ACTIONS(39),
+    [sym_token_number_cisco_address_ipv4] = ACTIONS(39),
+    [sym_token_number_cisco_address_ipv6_condensed] = ACTIONS(39),
+    [sym_token_number_cisco_address_ipv6_full] = ACTIONS(39),
+    [sym_token_number_cisco_address_mac] = ACTIONS(39),
+    [sym_prompt] = ACTIONS(91),
+    [sym__newline] = ACTIONS(91),
+    [sym__definition_start] = ACTIONS(91),
+    [sym__ordinary_start] = ACTIONS(91),
+    [sym__bgp_start] = ACTIONS(91),
+    [sym__address_family_start] = ACTIONS(91),
   },
   [STATE(16)] = {
-    [sym__argument] = STATE(28),
-    [sym_text] = STATE(28),
-    [sym__cisco_atom] = STATE(28),
+    [sym__argument] = STATE(30),
+    [sym_text] = STATE(30),
+    [sym__cisco_atom] = STATE(30),
+    [sym__cisco_numeric_literal] = STATE(24),
     [sym__cisco_interface_token] = STATE(24),
     [sym__cisco_address_token] = STATE(24),
-    [aux_sym_generic_command_repeat1] = STATE(14),
-    [ts_builtin_sym_end] = ACTIONS(106),
-    [sym_word] = ACTIONS(17),
-    [sym_text_keyword] = ACTIONS(27),
-    [sym__trailing_comment] = ACTIONS(108),
-    [sym_quoted_string] = ACTIONS(65),
-    [sym_token_type_cisco_interface_app_gigabitethernet] = ACTIONS(33),
-    [sym_token_type_cisco_interface_async] = ACTIONS(33),
-    [sym_token_type_cisco_interface_bdi] = ACTIONS(33),
-    [sym_token_type_cisco_interface_bri] = ACTIONS(33),
-    [sym_token_type_cisco_interface_bvi] = ACTIONS(33),
-    [sym_token_type_cisco_interface_cellular] = ACTIONS(33),
-    [sym_token_type_cisco_interface_dialer] = ACTIONS(33),
-    [sym_token_type_cisco_interface_ethernet] = ACTIONS(33),
-    [sym_token_type_cisco_interface_loopback] = ACTIONS(33),
-    [sym_token_type_cisco_interface_management] = ACTIONS(33),
-    [sym_token_type_cisco_interface_null] = ACTIONS(33),
-    [sym_token_type_cisco_interface_nvi] = ACTIONS(33),
-    [sym_token_type_cisco_interface_port_channel] = ACTIONS(33),
-    [sym_token_type_cisco_interface_serial] = ACTIONS(33),
-    [sym_token_type_cisco_interface_tunnel] = ACTIONS(33),
-    [sym_token_type_cisco_interface_vasileft] = ACTIONS(33),
-    [sym_token_type_cisco_interface_vasiright] = ACTIONS(33),
-    [sym_token_type_cisco_interface_virtual_template] = ACTIONS(33),
-    [sym_token_type_cisco_interface_vlan] = ACTIONS(33),
-    [sym_token_type_cisco_interface_vmi] = ACTIONS(33),
-    [sym_token_type_cisco_interface_wireless] = ACTIONS(33),
-    [sym_token_number_cisco_address_ipv4_cidr] = ACTIONS(35),
-    [sym_token_number_cisco_address_ipv4] = ACTIONS(35),
-    [sym_token_number_cisco_address_ipv6_condensed] = ACTIONS(35),
-    [sym_token_number_cisco_address_ipv6_full] = ACTIONS(35),
-    [sym_token_number_cisco_address_mac] = ACTIONS(35),
-    [sym_prompt] = ACTIONS(106),
-    [sym__newline] = ACTIONS(106),
-    [sym__definition_start] = ACTIONS(106),
-    [sym__ordinary_start] = ACTIONS(106),
-    [sym__bgp_start] = ACTIONS(106),
-    [sym__address_family_start] = ACTIONS(106),
+    [sym__cisco_keyword_token] = STATE(24),
+    [aux_sym_generic_command_repeat1] = STATE(16),
+    [ts_builtin_sym_end] = ACTIONS(95),
+    [sym_word] = ACTIONS(97),
+    [sym_text_keyword] = ACTIONS(100),
+    [sym_token_keyword_cisco_encapsulation_dot1q] = ACTIONS(103),
+    [sym_token_keyword_cisco_encapsulation_dot1q_tunnel] = ACTIONS(103),
+    [sym_token_keyword_cisco_encapsulation_protocol_vlan] = ACTIONS(103),
+    [sym_token_keyword_cisco_encapsulation_mac_vlan] = ACTIONS(103),
+    [sym_token_keyword_cisco_switchport_mode_access] = ACTIONS(103),
+    [sym_token_keyword_cisco_switchport_mode_trunk] = ACTIONS(103),
+    [sym_token_keyword_cisco_shutdown] = ACTIONS(103),
+    [sym_token_keyword_cisco_status_up] = ACTIONS(103),
+    [sym_token_keyword_cisco_status_down] = ACTIONS(103),
+    [sym_token_keyword_cisco_status_deleted] = ACTIONS(103),
+    [sym_token_keyword_cisco_status_administratively_down] = ACTIONS(103),
+    [sym_token_keyword_cisco_enable_disable_enable] = ACTIONS(103),
+    [sym_token_keyword_cisco_enable_disable_disable] = ACTIONS(103),
+    [sym_token_keyword_cisco_match_match_any] = ACTIONS(103),
+    [sym_token_keyword_cisco_match_match_all] = ACTIONS(103),
+    [sym_token_keyword_cisco_add_remove_add] = ACTIONS(103),
+    [sym_token_keyword_cisco_add_remove_remove] = ACTIONS(103),
+    [sym_token_keyword_cisco_add_remove_except] = ACTIONS(103),
+    [sym_token_keyword_cisco_allowed_native_allowed] = ACTIONS(103),
+    [sym_token_keyword_cisco_allowed_native_native] = ACTIONS(103),
+    [sym_token_keyword_cisco_any_all_any] = ACTIONS(103),
+    [sym_token_keyword_cisco_any_all_all] = ACTIONS(103),
+    [sym_token_keyword_cisco_permit_deny_permit] = ACTIONS(103),
+    [sym_token_keyword_cisco_permit_deny_deny] = ACTIONS(103),
+    [sym_token_keyword_cisco_in_out_in] = ACTIONS(103),
+    [sym_token_keyword_cisco_in_out_out] = ACTIONS(103),
+    [sym_token_keyword_cisco_input_output_input] = ACTIONS(103),
+    [sym_token_keyword_cisco_input_output_output] = ACTIONS(103),
+    [sym_token_keyword_cisco_inside_outside_inside] = ACTIONS(103),
+    [sym_token_keyword_cisco_inside_outside_outside] = ACTIONS(103),
+    [sym_token_number_cisco_integer] = ACTIONS(106),
+    [sym_token_number_cisco_range] = ACTIONS(106),
+    [sym_token_number_cisco_hex] = ACTIONS(106),
+    [sym__trailing_comment] = ACTIONS(109),
+    [sym_quoted_string] = ACTIONS(111),
+    [sym_token_tag_cisco_logging_system_message] = ACTIONS(97),
+    [sym_token_type_cisco_interface_app_gigabitethernet] = ACTIONS(114),
+    [sym_token_type_cisco_interface_async] = ACTIONS(114),
+    [sym_token_type_cisco_interface_bdi] = ACTIONS(114),
+    [sym_token_type_cisco_interface_bri] = ACTIONS(114),
+    [sym_token_type_cisco_interface_bvi] = ACTIONS(114),
+    [sym_token_type_cisco_interface_cellular] = ACTIONS(114),
+    [sym_token_type_cisco_interface_dialer] = ACTIONS(114),
+    [sym_token_type_cisco_interface_ethernet] = ACTIONS(114),
+    [sym_token_type_cisco_interface_loopback] = ACTIONS(114),
+    [sym_token_type_cisco_interface_management] = ACTIONS(114),
+    [sym_token_type_cisco_interface_null] = ACTIONS(114),
+    [sym_token_type_cisco_interface_nvi] = ACTIONS(114),
+    [sym_token_type_cisco_interface_port_channel] = ACTIONS(114),
+    [sym_token_type_cisco_interface_serial] = ACTIONS(114),
+    [sym_token_type_cisco_interface_tunnel] = ACTIONS(114),
+    [sym_token_type_cisco_interface_vasileft] = ACTIONS(114),
+    [sym_token_type_cisco_interface_vasiright] = ACTIONS(114),
+    [sym_token_type_cisco_interface_virtual_template] = ACTIONS(114),
+    [sym_token_type_cisco_interface_vlan] = ACTIONS(114),
+    [sym_token_type_cisco_interface_vmi] = ACTIONS(114),
+    [sym_token_type_cisco_interface_wireless] = ACTIONS(114),
+    [sym_token_number_cisco_address_ipv4_cidr] = ACTIONS(117),
+    [sym_token_number_cisco_address_ipv4] = ACTIONS(117),
+    [sym_token_number_cisco_address_ipv6_condensed] = ACTIONS(117),
+    [sym_token_number_cisco_address_ipv6_full] = ACTIONS(117),
+    [sym_token_number_cisco_address_mac] = ACTIONS(117),
+    [sym_prompt] = ACTIONS(95),
+    [sym__newline] = ACTIONS(95),
+    [sym__definition_start] = ACTIONS(95),
+    [sym__ordinary_start] = ACTIONS(95),
+    [sym__bgp_start] = ACTIONS(95),
+    [sym__address_family_start] = ACTIONS(95),
   },
   [STATE(17)] = {
-    [sym__argument] = STATE(28),
-    [sym_text] = STATE(28),
-    [sym__cisco_atom] = STATE(28),
+    [sym__argument] = STATE(30),
+    [sym_text] = STATE(30),
+    [sym__cisco_atom] = STATE(30),
+    [sym__cisco_numeric_literal] = STATE(24),
     [sym__cisco_interface_token] = STATE(24),
     [sym__cisco_address_token] = STATE(24),
-    [aux_sym_generic_command_repeat1] = STATE(11),
-    [ts_builtin_sym_end] = ACTIONS(110),
+    [sym__cisco_keyword_token] = STATE(24),
+    [aux_sym_generic_command_repeat1] = STATE(16),
+    [ts_builtin_sym_end] = ACTIONS(120),
     [sym_word] = ACTIONS(17),
     [sym_text_keyword] = ACTIONS(27),
-    [sym__trailing_comment] = ACTIONS(112),
-    [sym_quoted_string] = ACTIONS(65),
-    [sym_token_type_cisco_interface_app_gigabitethernet] = ACTIONS(33),
-    [sym_token_type_cisco_interface_async] = ACTIONS(33),
-    [sym_token_type_cisco_interface_bdi] = ACTIONS(33),
-    [sym_token_type_cisco_interface_bri] = ACTIONS(33),
-    [sym_token_type_cisco_interface_bvi] = ACTIONS(33),
-    [sym_token_type_cisco_interface_cellular] = ACTIONS(33),
-    [sym_token_type_cisco_interface_dialer] = ACTIONS(33),
-    [sym_token_type_cisco_interface_ethernet] = ACTIONS(33),
-    [sym_token_type_cisco_interface_loopback] = ACTIONS(33),
-    [sym_token_type_cisco_interface_management] = ACTIONS(33),
-    [sym_token_type_cisco_interface_null] = ACTIONS(33),
-    [sym_token_type_cisco_interface_nvi] = ACTIONS(33),
-    [sym_token_type_cisco_interface_port_channel] = ACTIONS(33),
-    [sym_token_type_cisco_interface_serial] = ACTIONS(33),
-    [sym_token_type_cisco_interface_tunnel] = ACTIONS(33),
-    [sym_token_type_cisco_interface_vasileft] = ACTIONS(33),
-    [sym_token_type_cisco_interface_vasiright] = ACTIONS(33),
-    [sym_token_type_cisco_interface_virtual_template] = ACTIONS(33),
-    [sym_token_type_cisco_interface_vlan] = ACTIONS(33),
-    [sym_token_type_cisco_interface_vmi] = ACTIONS(33),
-    [sym_token_type_cisco_interface_wireless] = ACTIONS(33),
-    [sym_token_number_cisco_address_ipv4_cidr] = ACTIONS(35),
-    [sym_token_number_cisco_address_ipv4] = ACTIONS(35),
-    [sym_token_number_cisco_address_ipv6_condensed] = ACTIONS(35),
-    [sym_token_number_cisco_address_ipv6_full] = ACTIONS(35),
-    [sym_token_number_cisco_address_mac] = ACTIONS(35),
-    [sym_prompt] = ACTIONS(110),
-    [sym__newline] = ACTIONS(110),
-    [sym__definition_start] = ACTIONS(110),
-    [sym__ordinary_start] = ACTIONS(110),
-    [sym__bgp_start] = ACTIONS(110),
-    [sym__address_family_start] = ACTIONS(110),
+    [sym_token_keyword_cisco_encapsulation_dot1q] = ACTIONS(29),
+    [sym_token_keyword_cisco_encapsulation_dot1q_tunnel] = ACTIONS(29),
+    [sym_token_keyword_cisco_encapsulation_protocol_vlan] = ACTIONS(29),
+    [sym_token_keyword_cisco_encapsulation_mac_vlan] = ACTIONS(29),
+    [sym_token_keyword_cisco_switchport_mode_access] = ACTIONS(29),
+    [sym_token_keyword_cisco_switchport_mode_trunk] = ACTIONS(29),
+    [sym_token_keyword_cisco_shutdown] = ACTIONS(29),
+    [sym_token_keyword_cisco_status_up] = ACTIONS(29),
+    [sym_token_keyword_cisco_status_down] = ACTIONS(29),
+    [sym_token_keyword_cisco_status_deleted] = ACTIONS(29),
+    [sym_token_keyword_cisco_status_administratively_down] = ACTIONS(29),
+    [sym_token_keyword_cisco_enable_disable_enable] = ACTIONS(29),
+    [sym_token_keyword_cisco_enable_disable_disable] = ACTIONS(29),
+    [sym_token_keyword_cisco_match_match_any] = ACTIONS(29),
+    [sym_token_keyword_cisco_match_match_all] = ACTIONS(29),
+    [sym_token_keyword_cisco_add_remove_add] = ACTIONS(29),
+    [sym_token_keyword_cisco_add_remove_remove] = ACTIONS(29),
+    [sym_token_keyword_cisco_add_remove_except] = ACTIONS(29),
+    [sym_token_keyword_cisco_allowed_native_allowed] = ACTIONS(29),
+    [sym_token_keyword_cisco_allowed_native_native] = ACTIONS(29),
+    [sym_token_keyword_cisco_any_all_any] = ACTIONS(29),
+    [sym_token_keyword_cisco_any_all_all] = ACTIONS(29),
+    [sym_token_keyword_cisco_permit_deny_permit] = ACTIONS(29),
+    [sym_token_keyword_cisco_permit_deny_deny] = ACTIONS(29),
+    [sym_token_keyword_cisco_in_out_in] = ACTIONS(29),
+    [sym_token_keyword_cisco_in_out_out] = ACTIONS(29),
+    [sym_token_keyword_cisco_input_output_input] = ACTIONS(29),
+    [sym_token_keyword_cisco_input_output_output] = ACTIONS(29),
+    [sym_token_keyword_cisco_inside_outside_inside] = ACTIONS(29),
+    [sym_token_keyword_cisco_inside_outside_outside] = ACTIONS(29),
+    [sym_token_number_cisco_integer] = ACTIONS(31),
+    [sym_token_number_cisco_range] = ACTIONS(31),
+    [sym_token_number_cisco_hex] = ACTIONS(31),
+    [sym__trailing_comment] = ACTIONS(122),
+    [sym_quoted_string] = ACTIONS(69),
+    [sym_token_tag_cisco_logging_system_message] = ACTIONS(17),
+    [sym_token_type_cisco_interface_app_gigabitethernet] = ACTIONS(37),
+    [sym_token_type_cisco_interface_async] = ACTIONS(37),
+    [sym_token_type_cisco_interface_bdi] = ACTIONS(37),
+    [sym_token_type_cisco_interface_bri] = ACTIONS(37),
+    [sym_token_type_cisco_interface_bvi] = ACTIONS(37),
+    [sym_token_type_cisco_interface_cellular] = ACTIONS(37),
+    [sym_token_type_cisco_interface_dialer] = ACTIONS(37),
+    [sym_token_type_cisco_interface_ethernet] = ACTIONS(37),
+    [sym_token_type_cisco_interface_loopback] = ACTIONS(37),
+    [sym_token_type_cisco_interface_management] = ACTIONS(37),
+    [sym_token_type_cisco_interface_null] = ACTIONS(37),
+    [sym_token_type_cisco_interface_nvi] = ACTIONS(37),
+    [sym_token_type_cisco_interface_port_channel] = ACTIONS(37),
+    [sym_token_type_cisco_interface_serial] = ACTIONS(37),
+    [sym_token_type_cisco_interface_tunnel] = ACTIONS(37),
+    [sym_token_type_cisco_interface_vasileft] = ACTIONS(37),
+    [sym_token_type_cisco_interface_vasiright] = ACTIONS(37),
+    [sym_token_type_cisco_interface_virtual_template] = ACTIONS(37),
+    [sym_token_type_cisco_interface_vlan] = ACTIONS(37),
+    [sym_token_type_cisco_interface_vmi] = ACTIONS(37),
+    [sym_token_type_cisco_interface_wireless] = ACTIONS(37),
+    [sym_token_number_cisco_address_ipv4_cidr] = ACTIONS(39),
+    [sym_token_number_cisco_address_ipv4] = ACTIONS(39),
+    [sym_token_number_cisco_address_ipv6_condensed] = ACTIONS(39),
+    [sym_token_number_cisco_address_ipv6_full] = ACTIONS(39),
+    [sym_token_number_cisco_address_mac] = ACTIONS(39),
+    [sym_prompt] = ACTIONS(120),
+    [sym__newline] = ACTIONS(120),
+    [sym__definition_start] = ACTIONS(120),
+    [sym__ordinary_start] = ACTIONS(120),
+    [sym__bgp_start] = ACTIONS(120),
+    [sym__address_family_start] = ACTIONS(120),
+  },
+  [STATE(18)] = {
+    [sym__cisco_atom] = STATE(14),
+    [sym__cisco_numeric_literal] = STATE(24),
+    [sym__cisco_interface_token] = STATE(24),
+    [sym__cisco_address_token] = STATE(24),
+    [sym__cisco_keyword_token] = STATE(24),
+    [ts_builtin_sym_end] = ACTIONS(124),
+    [sym_word] = ACTIONS(17),
+    [sym_token_keyword_cisco_encapsulation_dot1q] = ACTIONS(29),
+    [sym_token_keyword_cisco_encapsulation_dot1q_tunnel] = ACTIONS(29),
+    [sym_token_keyword_cisco_encapsulation_protocol_vlan] = ACTIONS(29),
+    [sym_token_keyword_cisco_encapsulation_mac_vlan] = ACTIONS(29),
+    [sym_token_keyword_cisco_switchport_mode_access] = ACTIONS(29),
+    [sym_token_keyword_cisco_switchport_mode_trunk] = ACTIONS(29),
+    [sym_token_keyword_cisco_shutdown] = ACTIONS(29),
+    [sym_token_keyword_cisco_status_up] = ACTIONS(29),
+    [sym_token_keyword_cisco_status_down] = ACTIONS(29),
+    [sym_token_keyword_cisco_status_deleted] = ACTIONS(29),
+    [sym_token_keyword_cisco_status_administratively_down] = ACTIONS(29),
+    [sym_token_keyword_cisco_enable_disable_enable] = ACTIONS(29),
+    [sym_token_keyword_cisco_enable_disable_disable] = ACTIONS(29),
+    [sym_token_keyword_cisco_match_match_any] = ACTIONS(29),
+    [sym_token_keyword_cisco_match_match_all] = ACTIONS(29),
+    [sym_token_keyword_cisco_add_remove_add] = ACTIONS(29),
+    [sym_token_keyword_cisco_add_remove_remove] = ACTIONS(29),
+    [sym_token_keyword_cisco_add_remove_except] = ACTIONS(29),
+    [sym_token_keyword_cisco_allowed_native_allowed] = ACTIONS(29),
+    [sym_token_keyword_cisco_allowed_native_native] = ACTIONS(29),
+    [sym_token_keyword_cisco_any_all_any] = ACTIONS(29),
+    [sym_token_keyword_cisco_any_all_all] = ACTIONS(29),
+    [sym_token_keyword_cisco_permit_deny_permit] = ACTIONS(29),
+    [sym_token_keyword_cisco_permit_deny_deny] = ACTIONS(29),
+    [sym_token_keyword_cisco_in_out_in] = ACTIONS(29),
+    [sym_token_keyword_cisco_in_out_out] = ACTIONS(29),
+    [sym_token_keyword_cisco_input_output_input] = ACTIONS(29),
+    [sym_token_keyword_cisco_input_output_output] = ACTIONS(29),
+    [sym_token_keyword_cisco_inside_outside_inside] = ACTIONS(29),
+    [sym_token_keyword_cisco_inside_outside_outside] = ACTIONS(29),
+    [sym_token_number_cisco_integer] = ACTIONS(31),
+    [sym_token_number_cisco_range] = ACTIONS(31),
+    [sym_token_number_cisco_hex] = ACTIONS(31),
+    [sym__trailing_comment] = ACTIONS(126),
+    [sym_token_tag_cisco_logging_system_message] = ACTIONS(128),
+    [sym_token_type_cisco_interface_app_gigabitethernet] = ACTIONS(37),
+    [sym_token_type_cisco_interface_async] = ACTIONS(37),
+    [sym_token_type_cisco_interface_bdi] = ACTIONS(37),
+    [sym_token_type_cisco_interface_bri] = ACTIONS(37),
+    [sym_token_type_cisco_interface_bvi] = ACTIONS(37),
+    [sym_token_type_cisco_interface_cellular] = ACTIONS(37),
+    [sym_token_type_cisco_interface_dialer] = ACTIONS(37),
+    [sym_token_type_cisco_interface_ethernet] = ACTIONS(37),
+    [sym_token_type_cisco_interface_loopback] = ACTIONS(37),
+    [sym_token_type_cisco_interface_management] = ACTIONS(37),
+    [sym_token_type_cisco_interface_null] = ACTIONS(37),
+    [sym_token_type_cisco_interface_nvi] = ACTIONS(37),
+    [sym_token_type_cisco_interface_port_channel] = ACTIONS(37),
+    [sym_token_type_cisco_interface_serial] = ACTIONS(37),
+    [sym_token_type_cisco_interface_tunnel] = ACTIONS(37),
+    [sym_token_type_cisco_interface_vasileft] = ACTIONS(37),
+    [sym_token_type_cisco_interface_vasiright] = ACTIONS(37),
+    [sym_token_type_cisco_interface_virtual_template] = ACTIONS(37),
+    [sym_token_type_cisco_interface_vlan] = ACTIONS(37),
+    [sym_token_type_cisco_interface_vmi] = ACTIONS(37),
+    [sym_token_type_cisco_interface_wireless] = ACTIONS(37),
+    [sym_token_number_cisco_address_ipv4_cidr] = ACTIONS(39),
+    [sym_token_number_cisco_address_ipv4] = ACTIONS(39),
+    [sym_token_number_cisco_address_ipv6_condensed] = ACTIONS(39),
+    [sym_token_number_cisco_address_ipv6_full] = ACTIONS(39),
+    [sym_token_number_cisco_address_mac] = ACTIONS(39),
+    [sym_prompt] = ACTIONS(124),
+    [sym__newline] = ACTIONS(124),
+    [sym__definition_start] = ACTIONS(124),
+    [sym__ordinary_start] = ACTIONS(124),
+    [sym__bgp_start] = ACTIONS(124),
+    [sym__address_family_start] = ACTIONS(124),
+  },
+  [STATE(19)] = {
+    [ts_builtin_sym_end] = ACTIONS(130),
+    [sym_word] = ACTIONS(132),
+    [sym__keyword_interface] = ACTIONS(132),
+    [sym__keyword_router] = ACTIONS(132),
+    [sym__keyword_address_family] = ACTIONS(132),
+    [sym_text_keyword] = ACTIONS(132),
+    [sym_token_keyword_cisco_encapsulation_dot1q] = ACTIONS(132),
+    [sym_token_keyword_cisco_encapsulation_dot1q_tunnel] = ACTIONS(132),
+    [sym_token_keyword_cisco_encapsulation_protocol_vlan] = ACTIONS(132),
+    [sym_token_keyword_cisco_encapsulation_mac_vlan] = ACTIONS(132),
+    [sym_token_keyword_cisco_switchport_mode_access] = ACTIONS(132),
+    [sym_token_keyword_cisco_switchport_mode_trunk] = ACTIONS(132),
+    [sym_token_keyword_cisco_shutdown] = ACTIONS(132),
+    [sym_token_keyword_cisco_status_up] = ACTIONS(132),
+    [sym_token_keyword_cisco_status_down] = ACTIONS(132),
+    [sym_token_keyword_cisco_status_deleted] = ACTIONS(132),
+    [sym_token_keyword_cisco_status_administratively_down] = ACTIONS(132),
+    [sym_token_keyword_cisco_enable_disable_enable] = ACTIONS(132),
+    [sym_token_keyword_cisco_enable_disable_disable] = ACTIONS(132),
+    [sym_token_keyword_cisco_match_match_any] = ACTIONS(132),
+    [sym_token_keyword_cisco_match_match_all] = ACTIONS(132),
+    [sym_token_keyword_cisco_add_remove_add] = ACTIONS(132),
+    [sym_token_keyword_cisco_add_remove_remove] = ACTIONS(132),
+    [sym_token_keyword_cisco_add_remove_except] = ACTIONS(132),
+    [sym_token_keyword_cisco_allowed_native_allowed] = ACTIONS(132),
+    [sym_token_keyword_cisco_allowed_native_native] = ACTIONS(132),
+    [sym_token_keyword_cisco_any_all_any] = ACTIONS(132),
+    [sym_token_keyword_cisco_any_all_all] = ACTIONS(132),
+    [sym_token_keyword_cisco_permit_deny_permit] = ACTIONS(132),
+    [sym_token_keyword_cisco_permit_deny_deny] = ACTIONS(132),
+    [sym_token_keyword_cisco_in_out_in] = ACTIONS(132),
+    [sym_token_keyword_cisco_in_out_out] = ACTIONS(132),
+    [sym_token_keyword_cisco_input_output_input] = ACTIONS(132),
+    [sym_token_keyword_cisco_input_output_output] = ACTIONS(132),
+    [sym_token_keyword_cisco_inside_outside_inside] = ACTIONS(132),
+    [sym_token_keyword_cisco_inside_outside_outside] = ACTIONS(132),
+    [sym_token_number_cisco_integer] = ACTIONS(132),
+    [sym_token_number_cisco_range] = ACTIONS(132),
+    [sym_token_number_cisco_hex] = ACTIONS(132),
+    [sym__trailing_comment] = ACTIONS(132),
+    [sym_quoted_string] = ACTIONS(130),
+    [sym_token_tag_cisco_logging_system_message] = ACTIONS(132),
+    [sym_token_type_cisco_interface_app_gigabitethernet] = ACTIONS(132),
+    [sym_token_type_cisco_interface_async] = ACTIONS(132),
+    [sym_token_type_cisco_interface_bdi] = ACTIONS(132),
+    [sym_token_type_cisco_interface_bri] = ACTIONS(132),
+    [sym_token_type_cisco_interface_bvi] = ACTIONS(132),
+    [sym_token_type_cisco_interface_cellular] = ACTIONS(132),
+    [sym_token_type_cisco_interface_dialer] = ACTIONS(132),
+    [sym_token_type_cisco_interface_ethernet] = ACTIONS(132),
+    [sym_token_type_cisco_interface_loopback] = ACTIONS(132),
+    [sym_token_type_cisco_interface_management] = ACTIONS(132),
+    [sym_token_type_cisco_interface_null] = ACTIONS(132),
+    [sym_token_type_cisco_interface_nvi] = ACTIONS(132),
+    [sym_token_type_cisco_interface_port_channel] = ACTIONS(132),
+    [sym_token_type_cisco_interface_serial] = ACTIONS(132),
+    [sym_token_type_cisco_interface_tunnel] = ACTIONS(132),
+    [sym_token_type_cisco_interface_vasileft] = ACTIONS(132),
+    [sym_token_type_cisco_interface_vasiright] = ACTIONS(132),
+    [sym_token_type_cisco_interface_virtual_template] = ACTIONS(132),
+    [sym_token_type_cisco_interface_vlan] = ACTIONS(132),
+    [sym_token_type_cisco_interface_vmi] = ACTIONS(132),
+    [sym_token_type_cisco_interface_wireless] = ACTIONS(132),
+    [sym_token_number_cisco_address_ipv4_cidr] = ACTIONS(132),
+    [sym_token_number_cisco_address_ipv4] = ACTIONS(132),
+    [sym_token_number_cisco_address_ipv6_condensed] = ACTIONS(132),
+    [sym_token_number_cisco_address_ipv6_full] = ACTIONS(132),
+    [sym_token_number_cisco_address_mac] = ACTIONS(132),
+    [sym_prompt] = ACTIONS(130),
+    [sym__newline] = ACTIONS(130),
+    [sym__definition_start] = ACTIONS(130),
+    [sym__ordinary_start] = ACTIONS(130),
+    [sym__bgp_start] = ACTIONS(130),
+    [sym__address_family_start] = ACTIONS(130),
+  },
+  [STATE(20)] = {
+    [sym__cisco_atom] = STATE(22),
+    [sym__cisco_numeric_literal] = STATE(34),
+    [sym__cisco_interface_token] = STATE(34),
+    [sym__cisco_address_token] = STATE(34),
+    [sym__cisco_keyword_token] = STATE(34),
+    [ts_builtin_sym_end] = ACTIONS(134),
+    [sym_word] = ACTIONS(136),
+    [sym_token_keyword_cisco_encapsulation_dot1q] = ACTIONS(138),
+    [sym_token_keyword_cisco_encapsulation_dot1q_tunnel] = ACTIONS(138),
+    [sym_token_keyword_cisco_encapsulation_protocol_vlan] = ACTIONS(138),
+    [sym_token_keyword_cisco_encapsulation_mac_vlan] = ACTIONS(138),
+    [sym_token_keyword_cisco_switchport_mode_access] = ACTIONS(138),
+    [sym_token_keyword_cisco_switchport_mode_trunk] = ACTIONS(138),
+    [sym_token_keyword_cisco_shutdown] = ACTIONS(138),
+    [sym_token_keyword_cisco_status_up] = ACTIONS(138),
+    [sym_token_keyword_cisco_status_down] = ACTIONS(138),
+    [sym_token_keyword_cisco_status_deleted] = ACTIONS(138),
+    [sym_token_keyword_cisco_status_administratively_down] = ACTIONS(138),
+    [sym_token_keyword_cisco_enable_disable_enable] = ACTIONS(138),
+    [sym_token_keyword_cisco_enable_disable_disable] = ACTIONS(138),
+    [sym_token_keyword_cisco_match_match_any] = ACTIONS(138),
+    [sym_token_keyword_cisco_match_match_all] = ACTIONS(138),
+    [sym_token_keyword_cisco_add_remove_add] = ACTIONS(138),
+    [sym_token_keyword_cisco_add_remove_remove] = ACTIONS(138),
+    [sym_token_keyword_cisco_add_remove_except] = ACTIONS(138),
+    [sym_token_keyword_cisco_allowed_native_allowed] = ACTIONS(138),
+    [sym_token_keyword_cisco_allowed_native_native] = ACTIONS(138),
+    [sym_token_keyword_cisco_any_all_any] = ACTIONS(138),
+    [sym_token_keyword_cisco_any_all_all] = ACTIONS(138),
+    [sym_token_keyword_cisco_permit_deny_permit] = ACTIONS(138),
+    [sym_token_keyword_cisco_permit_deny_deny] = ACTIONS(138),
+    [sym_token_keyword_cisco_in_out_in] = ACTIONS(138),
+    [sym_token_keyword_cisco_in_out_out] = ACTIONS(138),
+    [sym_token_keyword_cisco_input_output_input] = ACTIONS(138),
+    [sym_token_keyword_cisco_input_output_output] = ACTIONS(138),
+    [sym_token_keyword_cisco_inside_outside_inside] = ACTIONS(138),
+    [sym_token_keyword_cisco_inside_outside_outside] = ACTIONS(138),
+    [sym_token_number_cisco_integer] = ACTIONS(140),
+    [sym_token_number_cisco_range] = ACTIONS(140),
+    [sym_token_number_cisco_hex] = ACTIONS(140),
+    [sym__trailing_comment] = ACTIONS(142),
+    [sym_token_tag_cisco_logging_system_message] = ACTIONS(144),
+    [sym_token_type_cisco_interface_app_gigabitethernet] = ACTIONS(146),
+    [sym_token_type_cisco_interface_async] = ACTIONS(146),
+    [sym_token_type_cisco_interface_bdi] = ACTIONS(146),
+    [sym_token_type_cisco_interface_bri] = ACTIONS(146),
+    [sym_token_type_cisco_interface_bvi] = ACTIONS(146),
+    [sym_token_type_cisco_interface_cellular] = ACTIONS(146),
+    [sym_token_type_cisco_interface_dialer] = ACTIONS(146),
+    [sym_token_type_cisco_interface_ethernet] = ACTIONS(146),
+    [sym_token_type_cisco_interface_loopback] = ACTIONS(146),
+    [sym_token_type_cisco_interface_management] = ACTIONS(146),
+    [sym_token_type_cisco_interface_null] = ACTIONS(146),
+    [sym_token_type_cisco_interface_nvi] = ACTIONS(146),
+    [sym_token_type_cisco_interface_port_channel] = ACTIONS(146),
+    [sym_token_type_cisco_interface_serial] = ACTIONS(146),
+    [sym_token_type_cisco_interface_tunnel] = ACTIONS(146),
+    [sym_token_type_cisco_interface_vasileft] = ACTIONS(146),
+    [sym_token_type_cisco_interface_vasiright] = ACTIONS(146),
+    [sym_token_type_cisco_interface_virtual_template] = ACTIONS(146),
+    [sym_token_type_cisco_interface_vlan] = ACTIONS(146),
+    [sym_token_type_cisco_interface_vmi] = ACTIONS(146),
+    [sym_token_type_cisco_interface_wireless] = ACTIONS(146),
+    [sym_token_number_cisco_address_ipv4_cidr] = ACTIONS(148),
+    [sym_token_number_cisco_address_ipv4] = ACTIONS(148),
+    [sym_token_number_cisco_address_ipv6_condensed] = ACTIONS(148),
+    [sym_token_number_cisco_address_ipv6_full] = ACTIONS(148),
+    [sym_token_number_cisco_address_mac] = ACTIONS(148),
+    [sym_prompt] = ACTIONS(134),
+    [sym__newline] = ACTIONS(134),
+    [sym__definition_start] = ACTIONS(134),
+    [sym__ordinary_start] = ACTIONS(134),
+    [sym__bgp_start] = ACTIONS(134),
+    [sym__address_family_start] = ACTIONS(134),
+  },
+  [STATE(21)] = {
+    [sym__cisco_atom] = STATE(12),
+    [sym__cisco_numeric_literal] = STATE(24),
+    [sym__cisco_interface_token] = STATE(24),
+    [sym__cisco_address_token] = STATE(24),
+    [sym__cisco_keyword_token] = STATE(24),
+    [ts_builtin_sym_end] = ACTIONS(150),
+    [sym_word] = ACTIONS(17),
+    [sym_token_keyword_cisco_encapsulation_dot1q] = ACTIONS(29),
+    [sym_token_keyword_cisco_encapsulation_dot1q_tunnel] = ACTIONS(29),
+    [sym_token_keyword_cisco_encapsulation_protocol_vlan] = ACTIONS(29),
+    [sym_token_keyword_cisco_encapsulation_mac_vlan] = ACTIONS(29),
+    [sym_token_keyword_cisco_switchport_mode_access] = ACTIONS(29),
+    [sym_token_keyword_cisco_switchport_mode_trunk] = ACTIONS(29),
+    [sym_token_keyword_cisco_shutdown] = ACTIONS(29),
+    [sym_token_keyword_cisco_status_up] = ACTIONS(29),
+    [sym_token_keyword_cisco_status_down] = ACTIONS(29),
+    [sym_token_keyword_cisco_status_deleted] = ACTIONS(29),
+    [sym_token_keyword_cisco_status_administratively_down] = ACTIONS(29),
+    [sym_token_keyword_cisco_enable_disable_enable] = ACTIONS(29),
+    [sym_token_keyword_cisco_enable_disable_disable] = ACTIONS(29),
+    [sym_token_keyword_cisco_match_match_any] = ACTIONS(29),
+    [sym_token_keyword_cisco_match_match_all] = ACTIONS(29),
+    [sym_token_keyword_cisco_add_remove_add] = ACTIONS(29),
+    [sym_token_keyword_cisco_add_remove_remove] = ACTIONS(29),
+    [sym_token_keyword_cisco_add_remove_except] = ACTIONS(29),
+    [sym_token_keyword_cisco_allowed_native_allowed] = ACTIONS(29),
+    [sym_token_keyword_cisco_allowed_native_native] = ACTIONS(29),
+    [sym_token_keyword_cisco_any_all_any] = ACTIONS(29),
+    [sym_token_keyword_cisco_any_all_all] = ACTIONS(29),
+    [sym_token_keyword_cisco_permit_deny_permit] = ACTIONS(29),
+    [sym_token_keyword_cisco_permit_deny_deny] = ACTIONS(29),
+    [sym_token_keyword_cisco_in_out_in] = ACTIONS(29),
+    [sym_token_keyword_cisco_in_out_out] = ACTIONS(29),
+    [sym_token_keyword_cisco_input_output_input] = ACTIONS(29),
+    [sym_token_keyword_cisco_input_output_output] = ACTIONS(29),
+    [sym_token_keyword_cisco_inside_outside_inside] = ACTIONS(29),
+    [sym_token_keyword_cisco_inside_outside_outside] = ACTIONS(29),
+    [sym_token_number_cisco_integer] = ACTIONS(31),
+    [sym_token_number_cisco_range] = ACTIONS(31),
+    [sym_token_number_cisco_hex] = ACTIONS(31),
+    [sym__trailing_comment] = ACTIONS(152),
+    [sym_token_tag_cisco_logging_system_message] = ACTIONS(128),
+    [sym_token_type_cisco_interface_app_gigabitethernet] = ACTIONS(37),
+    [sym_token_type_cisco_interface_async] = ACTIONS(37),
+    [sym_token_type_cisco_interface_bdi] = ACTIONS(37),
+    [sym_token_type_cisco_interface_bri] = ACTIONS(37),
+    [sym_token_type_cisco_interface_bvi] = ACTIONS(37),
+    [sym_token_type_cisco_interface_cellular] = ACTIONS(37),
+    [sym_token_type_cisco_interface_dialer] = ACTIONS(37),
+    [sym_token_type_cisco_interface_ethernet] = ACTIONS(37),
+    [sym_token_type_cisco_interface_loopback] = ACTIONS(37),
+    [sym_token_type_cisco_interface_management] = ACTIONS(37),
+    [sym_token_type_cisco_interface_null] = ACTIONS(37),
+    [sym_token_type_cisco_interface_nvi] = ACTIONS(37),
+    [sym_token_type_cisco_interface_port_channel] = ACTIONS(37),
+    [sym_token_type_cisco_interface_serial] = ACTIONS(37),
+    [sym_token_type_cisco_interface_tunnel] = ACTIONS(37),
+    [sym_token_type_cisco_interface_vasileft] = ACTIONS(37),
+    [sym_token_type_cisco_interface_vasiright] = ACTIONS(37),
+    [sym_token_type_cisco_interface_virtual_template] = ACTIONS(37),
+    [sym_token_type_cisco_interface_vlan] = ACTIONS(37),
+    [sym_token_type_cisco_interface_vmi] = ACTIONS(37),
+    [sym_token_type_cisco_interface_wireless] = ACTIONS(37),
+    [sym_token_number_cisco_address_ipv4_cidr] = ACTIONS(39),
+    [sym_token_number_cisco_address_ipv4] = ACTIONS(39),
+    [sym_token_number_cisco_address_ipv6_condensed] = ACTIONS(39),
+    [sym_token_number_cisco_address_ipv6_full] = ACTIONS(39),
+    [sym_token_number_cisco_address_mac] = ACTIONS(39),
+    [sym_prompt] = ACTIONS(150),
+    [sym__newline] = ACTIONS(150),
+    [sym__definition_start] = ACTIONS(150),
+    [sym__ordinary_start] = ACTIONS(150),
+    [sym__bgp_start] = ACTIONS(150),
+    [sym__address_family_start] = ACTIONS(150),
+  },
+  [STATE(22)] = {
+    [sym__cisco_atom] = STATE(13),
+    [sym__cisco_numeric_literal] = STATE(24),
+    [sym__cisco_interface_token] = STATE(24),
+    [sym__cisco_address_token] = STATE(24),
+    [sym__cisco_keyword_token] = STATE(24),
+    [ts_builtin_sym_end] = ACTIONS(154),
+    [sym_word] = ACTIONS(17),
+    [sym_token_keyword_cisco_encapsulation_dot1q] = ACTIONS(29),
+    [sym_token_keyword_cisco_encapsulation_dot1q_tunnel] = ACTIONS(29),
+    [sym_token_keyword_cisco_encapsulation_protocol_vlan] = ACTIONS(29),
+    [sym_token_keyword_cisco_encapsulation_mac_vlan] = ACTIONS(29),
+    [sym_token_keyword_cisco_switchport_mode_access] = ACTIONS(29),
+    [sym_token_keyword_cisco_switchport_mode_trunk] = ACTIONS(29),
+    [sym_token_keyword_cisco_shutdown] = ACTIONS(29),
+    [sym_token_keyword_cisco_status_up] = ACTIONS(29),
+    [sym_token_keyword_cisco_status_down] = ACTIONS(29),
+    [sym_token_keyword_cisco_status_deleted] = ACTIONS(29),
+    [sym_token_keyword_cisco_status_administratively_down] = ACTIONS(29),
+    [sym_token_keyword_cisco_enable_disable_enable] = ACTIONS(29),
+    [sym_token_keyword_cisco_enable_disable_disable] = ACTIONS(29),
+    [sym_token_keyword_cisco_match_match_any] = ACTIONS(29),
+    [sym_token_keyword_cisco_match_match_all] = ACTIONS(29),
+    [sym_token_keyword_cisco_add_remove_add] = ACTIONS(29),
+    [sym_token_keyword_cisco_add_remove_remove] = ACTIONS(29),
+    [sym_token_keyword_cisco_add_remove_except] = ACTIONS(29),
+    [sym_token_keyword_cisco_allowed_native_allowed] = ACTIONS(29),
+    [sym_token_keyword_cisco_allowed_native_native] = ACTIONS(29),
+    [sym_token_keyword_cisco_any_all_any] = ACTIONS(29),
+    [sym_token_keyword_cisco_any_all_all] = ACTIONS(29),
+    [sym_token_keyword_cisco_permit_deny_permit] = ACTIONS(29),
+    [sym_token_keyword_cisco_permit_deny_deny] = ACTIONS(29),
+    [sym_token_keyword_cisco_in_out_in] = ACTIONS(29),
+    [sym_token_keyword_cisco_in_out_out] = ACTIONS(29),
+    [sym_token_keyword_cisco_input_output_input] = ACTIONS(29),
+    [sym_token_keyword_cisco_input_output_output] = ACTIONS(29),
+    [sym_token_keyword_cisco_inside_outside_inside] = ACTIONS(29),
+    [sym_token_keyword_cisco_inside_outside_outside] = ACTIONS(29),
+    [sym_token_number_cisco_integer] = ACTIONS(31),
+    [sym_token_number_cisco_range] = ACTIONS(31),
+    [sym_token_number_cisco_hex] = ACTIONS(31),
+    [sym__trailing_comment] = ACTIONS(156),
+    [sym_token_tag_cisco_logging_system_message] = ACTIONS(128),
+    [sym_token_type_cisco_interface_app_gigabitethernet] = ACTIONS(37),
+    [sym_token_type_cisco_interface_async] = ACTIONS(37),
+    [sym_token_type_cisco_interface_bdi] = ACTIONS(37),
+    [sym_token_type_cisco_interface_bri] = ACTIONS(37),
+    [sym_token_type_cisco_interface_bvi] = ACTIONS(37),
+    [sym_token_type_cisco_interface_cellular] = ACTIONS(37),
+    [sym_token_type_cisco_interface_dialer] = ACTIONS(37),
+    [sym_token_type_cisco_interface_ethernet] = ACTIONS(37),
+    [sym_token_type_cisco_interface_loopback] = ACTIONS(37),
+    [sym_token_type_cisco_interface_management] = ACTIONS(37),
+    [sym_token_type_cisco_interface_null] = ACTIONS(37),
+    [sym_token_type_cisco_interface_nvi] = ACTIONS(37),
+    [sym_token_type_cisco_interface_port_channel] = ACTIONS(37),
+    [sym_token_type_cisco_interface_serial] = ACTIONS(37),
+    [sym_token_type_cisco_interface_tunnel] = ACTIONS(37),
+    [sym_token_type_cisco_interface_vasileft] = ACTIONS(37),
+    [sym_token_type_cisco_interface_vasiright] = ACTIONS(37),
+    [sym_token_type_cisco_interface_virtual_template] = ACTIONS(37),
+    [sym_token_type_cisco_interface_vlan] = ACTIONS(37),
+    [sym_token_type_cisco_interface_vmi] = ACTIONS(37),
+    [sym_token_type_cisco_interface_wireless] = ACTIONS(37),
+    [sym_token_number_cisco_address_ipv4_cidr] = ACTIONS(39),
+    [sym_token_number_cisco_address_ipv4] = ACTIONS(39),
+    [sym_token_number_cisco_address_ipv6_condensed] = ACTIONS(39),
+    [sym_token_number_cisco_address_ipv6_full] = ACTIONS(39),
+    [sym_token_number_cisco_address_mac] = ACTIONS(39),
+    [sym_prompt] = ACTIONS(154),
+    [sym__newline] = ACTIONS(154),
+    [sym__definition_start] = ACTIONS(154),
+    [sym__ordinary_start] = ACTIONS(154),
+    [sym__bgp_start] = ACTIONS(154),
+    [sym__address_family_start] = ACTIONS(154),
+  },
+  [STATE(23)] = {
+    [ts_builtin_sym_end] = ACTIONS(158),
+    [sym_word] = ACTIONS(160),
+    [sym_text_keyword] = ACTIONS(160),
+    [sym_token_keyword_cisco_encapsulation_dot1q] = ACTIONS(160),
+    [sym_token_keyword_cisco_encapsulation_dot1q_tunnel] = ACTIONS(160),
+    [sym_token_keyword_cisco_encapsulation_protocol_vlan] = ACTIONS(160),
+    [sym_token_keyword_cisco_encapsulation_mac_vlan] = ACTIONS(160),
+    [sym_token_keyword_cisco_switchport_mode_access] = ACTIONS(160),
+    [sym_token_keyword_cisco_switchport_mode_trunk] = ACTIONS(160),
+    [sym_token_keyword_cisco_shutdown] = ACTIONS(160),
+    [sym_token_keyword_cisco_status_up] = ACTIONS(160),
+    [sym_token_keyword_cisco_status_down] = ACTIONS(160),
+    [sym_token_keyword_cisco_status_deleted] = ACTIONS(160),
+    [sym_token_keyword_cisco_status_administratively_down] = ACTIONS(160),
+    [sym_token_keyword_cisco_enable_disable_enable] = ACTIONS(160),
+    [sym_token_keyword_cisco_enable_disable_disable] = ACTIONS(160),
+    [sym_token_keyword_cisco_match_match_any] = ACTIONS(160),
+    [sym_token_keyword_cisco_match_match_all] = ACTIONS(160),
+    [sym_token_keyword_cisco_add_remove_add] = ACTIONS(160),
+    [sym_token_keyword_cisco_add_remove_remove] = ACTIONS(160),
+    [sym_token_keyword_cisco_add_remove_except] = ACTIONS(160),
+    [sym_token_keyword_cisco_allowed_native_allowed] = ACTIONS(160),
+    [sym_token_keyword_cisco_allowed_native_native] = ACTIONS(160),
+    [sym_token_keyword_cisco_any_all_any] = ACTIONS(160),
+    [sym_token_keyword_cisco_any_all_all] = ACTIONS(160),
+    [sym_token_keyword_cisco_permit_deny_permit] = ACTIONS(160),
+    [sym_token_keyword_cisco_permit_deny_deny] = ACTIONS(160),
+    [sym_token_keyword_cisco_in_out_in] = ACTIONS(160),
+    [sym_token_keyword_cisco_in_out_out] = ACTIONS(160),
+    [sym_token_keyword_cisco_input_output_input] = ACTIONS(160),
+    [sym_token_keyword_cisco_input_output_output] = ACTIONS(160),
+    [sym_token_keyword_cisco_inside_outside_inside] = ACTIONS(160),
+    [sym_token_keyword_cisco_inside_outside_outside] = ACTIONS(160),
+    [sym_token_number_cisco_integer] = ACTIONS(160),
+    [sym_token_number_cisco_range] = ACTIONS(160),
+    [sym_token_number_cisco_hex] = ACTIONS(160),
+    [sym__trailing_comment] = ACTIONS(160),
+    [sym_quoted_string] = ACTIONS(158),
+    [sym_text_value] = ACTIONS(162),
+    [sym_token_tag_cisco_logging_system_message] = ACTIONS(160),
+    [sym_token_type_cisco_interface_app_gigabitethernet] = ACTIONS(160),
+    [sym_token_type_cisco_interface_async] = ACTIONS(160),
+    [sym_token_type_cisco_interface_bdi] = ACTIONS(160),
+    [sym_token_type_cisco_interface_bri] = ACTIONS(160),
+    [sym_token_type_cisco_interface_bvi] = ACTIONS(160),
+    [sym_token_type_cisco_interface_cellular] = ACTIONS(160),
+    [sym_token_type_cisco_interface_dialer] = ACTIONS(160),
+    [sym_token_type_cisco_interface_ethernet] = ACTIONS(160),
+    [sym_token_type_cisco_interface_loopback] = ACTIONS(160),
+    [sym_token_type_cisco_interface_management] = ACTIONS(160),
+    [sym_token_type_cisco_interface_null] = ACTIONS(160),
+    [sym_token_type_cisco_interface_nvi] = ACTIONS(160),
+    [sym_token_type_cisco_interface_port_channel] = ACTIONS(160),
+    [sym_token_type_cisco_interface_serial] = ACTIONS(160),
+    [sym_token_type_cisco_interface_tunnel] = ACTIONS(160),
+    [sym_token_type_cisco_interface_vasileft] = ACTIONS(160),
+    [sym_token_type_cisco_interface_vasiright] = ACTIONS(160),
+    [sym_token_type_cisco_interface_virtual_template] = ACTIONS(160),
+    [sym_token_type_cisco_interface_vlan] = ACTIONS(160),
+    [sym_token_type_cisco_interface_vmi] = ACTIONS(160),
+    [sym_token_type_cisco_interface_wireless] = ACTIONS(160),
+    [sym_token_number_cisco_address_ipv4_cidr] = ACTIONS(160),
+    [sym_token_number_cisco_address_ipv4] = ACTIONS(160),
+    [sym_token_number_cisco_address_ipv6_condensed] = ACTIONS(160),
+    [sym_token_number_cisco_address_ipv6_full] = ACTIONS(160),
+    [sym_token_number_cisco_address_mac] = ACTIONS(160),
+    [sym_prompt] = ACTIONS(158),
+    [sym__newline] = ACTIONS(158),
+    [sym__definition_start] = ACTIONS(158),
+    [sym__ordinary_start] = ACTIONS(158),
+    [sym__bgp_start] = ACTIONS(158),
+    [sym__address_family_start] = ACTIONS(158),
+  },
+  [STATE(24)] = {
+    [ts_builtin_sym_end] = ACTIONS(164),
+    [sym_word] = ACTIONS(166),
+    [sym_text_keyword] = ACTIONS(166),
+    [sym_token_keyword_cisco_encapsulation_dot1q] = ACTIONS(166),
+    [sym_token_keyword_cisco_encapsulation_dot1q_tunnel] = ACTIONS(166),
+    [sym_token_keyword_cisco_encapsulation_protocol_vlan] = ACTIONS(166),
+    [sym_token_keyword_cisco_encapsulation_mac_vlan] = ACTIONS(166),
+    [sym_token_keyword_cisco_switchport_mode_access] = ACTIONS(166),
+    [sym_token_keyword_cisco_switchport_mode_trunk] = ACTIONS(166),
+    [sym_token_keyword_cisco_shutdown] = ACTIONS(166),
+    [sym_token_keyword_cisco_status_up] = ACTIONS(166),
+    [sym_token_keyword_cisco_status_down] = ACTIONS(166),
+    [sym_token_keyword_cisco_status_deleted] = ACTIONS(166),
+    [sym_token_keyword_cisco_status_administratively_down] = ACTIONS(166),
+    [sym_token_keyword_cisco_enable_disable_enable] = ACTIONS(166),
+    [sym_token_keyword_cisco_enable_disable_disable] = ACTIONS(166),
+    [sym_token_keyword_cisco_match_match_any] = ACTIONS(166),
+    [sym_token_keyword_cisco_match_match_all] = ACTIONS(166),
+    [sym_token_keyword_cisco_add_remove_add] = ACTIONS(166),
+    [sym_token_keyword_cisco_add_remove_remove] = ACTIONS(166),
+    [sym_token_keyword_cisco_add_remove_except] = ACTIONS(166),
+    [sym_token_keyword_cisco_allowed_native_allowed] = ACTIONS(166),
+    [sym_token_keyword_cisco_allowed_native_native] = ACTIONS(166),
+    [sym_token_keyword_cisco_any_all_any] = ACTIONS(166),
+    [sym_token_keyword_cisco_any_all_all] = ACTIONS(166),
+    [sym_token_keyword_cisco_permit_deny_permit] = ACTIONS(166),
+    [sym_token_keyword_cisco_permit_deny_deny] = ACTIONS(166),
+    [sym_token_keyword_cisco_in_out_in] = ACTIONS(166),
+    [sym_token_keyword_cisco_in_out_out] = ACTIONS(166),
+    [sym_token_keyword_cisco_input_output_input] = ACTIONS(166),
+    [sym_token_keyword_cisco_input_output_output] = ACTIONS(166),
+    [sym_token_keyword_cisco_inside_outside_inside] = ACTIONS(166),
+    [sym_token_keyword_cisco_inside_outside_outside] = ACTIONS(166),
+    [sym_token_number_cisco_integer] = ACTIONS(166),
+    [sym_token_number_cisco_range] = ACTIONS(166),
+    [sym_token_number_cisco_hex] = ACTIONS(166),
+    [sym__trailing_comment] = ACTIONS(166),
+    [sym_quoted_string] = ACTIONS(164),
+    [sym_token_tag_cisco_logging_system_message] = ACTIONS(166),
+    [sym_token_type_cisco_interface_app_gigabitethernet] = ACTIONS(166),
+    [sym_token_type_cisco_interface_async] = ACTIONS(166),
+    [sym_token_type_cisco_interface_bdi] = ACTIONS(166),
+    [sym_token_type_cisco_interface_bri] = ACTIONS(166),
+    [sym_token_type_cisco_interface_bvi] = ACTIONS(166),
+    [sym_token_type_cisco_interface_cellular] = ACTIONS(166),
+    [sym_token_type_cisco_interface_dialer] = ACTIONS(166),
+    [sym_token_type_cisco_interface_ethernet] = ACTIONS(166),
+    [sym_token_type_cisco_interface_loopback] = ACTIONS(166),
+    [sym_token_type_cisco_interface_management] = ACTIONS(166),
+    [sym_token_type_cisco_interface_null] = ACTIONS(166),
+    [sym_token_type_cisco_interface_nvi] = ACTIONS(166),
+    [sym_token_type_cisco_interface_port_channel] = ACTIONS(166),
+    [sym_token_type_cisco_interface_serial] = ACTIONS(166),
+    [sym_token_type_cisco_interface_tunnel] = ACTIONS(166),
+    [sym_token_type_cisco_interface_vasileft] = ACTIONS(166),
+    [sym_token_type_cisco_interface_vasiright] = ACTIONS(166),
+    [sym_token_type_cisco_interface_virtual_template] = ACTIONS(166),
+    [sym_token_type_cisco_interface_vlan] = ACTIONS(166),
+    [sym_token_type_cisco_interface_vmi] = ACTIONS(166),
+    [sym_token_type_cisco_interface_wireless] = ACTIONS(166),
+    [sym_token_number_cisco_address_ipv4_cidr] = ACTIONS(166),
+    [sym_token_number_cisco_address_ipv4] = ACTIONS(166),
+    [sym_token_number_cisco_address_ipv6_condensed] = ACTIONS(166),
+    [sym_token_number_cisco_address_ipv6_full] = ACTIONS(166),
+    [sym_token_number_cisco_address_mac] = ACTIONS(166),
+    [sym_prompt] = ACTIONS(164),
+    [sym__newline] = ACTIONS(164),
+    [sym__definition_start] = ACTIONS(164),
+    [sym__ordinary_start] = ACTIONS(164),
+    [sym__bgp_start] = ACTIONS(164),
+    [sym__address_family_start] = ACTIONS(164),
+  },
+  [STATE(25)] = {
+    [ts_builtin_sym_end] = ACTIONS(168),
+    [sym_word] = ACTIONS(170),
+    [sym_text_keyword] = ACTIONS(170),
+    [sym_token_keyword_cisco_encapsulation_dot1q] = ACTIONS(170),
+    [sym_token_keyword_cisco_encapsulation_dot1q_tunnel] = ACTIONS(170),
+    [sym_token_keyword_cisco_encapsulation_protocol_vlan] = ACTIONS(170),
+    [sym_token_keyword_cisco_encapsulation_mac_vlan] = ACTIONS(170),
+    [sym_token_keyword_cisco_switchport_mode_access] = ACTIONS(170),
+    [sym_token_keyword_cisco_switchport_mode_trunk] = ACTIONS(170),
+    [sym_token_keyword_cisco_shutdown] = ACTIONS(170),
+    [sym_token_keyword_cisco_status_up] = ACTIONS(170),
+    [sym_token_keyword_cisco_status_down] = ACTIONS(170),
+    [sym_token_keyword_cisco_status_deleted] = ACTIONS(170),
+    [sym_token_keyword_cisco_status_administratively_down] = ACTIONS(170),
+    [sym_token_keyword_cisco_enable_disable_enable] = ACTIONS(170),
+    [sym_token_keyword_cisco_enable_disable_disable] = ACTIONS(170),
+    [sym_token_keyword_cisco_match_match_any] = ACTIONS(170),
+    [sym_token_keyword_cisco_match_match_all] = ACTIONS(170),
+    [sym_token_keyword_cisco_add_remove_add] = ACTIONS(170),
+    [sym_token_keyword_cisco_add_remove_remove] = ACTIONS(170),
+    [sym_token_keyword_cisco_add_remove_except] = ACTIONS(170),
+    [sym_token_keyword_cisco_allowed_native_allowed] = ACTIONS(170),
+    [sym_token_keyword_cisco_allowed_native_native] = ACTIONS(170),
+    [sym_token_keyword_cisco_any_all_any] = ACTIONS(170),
+    [sym_token_keyword_cisco_any_all_all] = ACTIONS(170),
+    [sym_token_keyword_cisco_permit_deny_permit] = ACTIONS(170),
+    [sym_token_keyword_cisco_permit_deny_deny] = ACTIONS(170),
+    [sym_token_keyword_cisco_in_out_in] = ACTIONS(170),
+    [sym_token_keyword_cisco_in_out_out] = ACTIONS(170),
+    [sym_token_keyword_cisco_input_output_input] = ACTIONS(170),
+    [sym_token_keyword_cisco_input_output_output] = ACTIONS(170),
+    [sym_token_keyword_cisco_inside_outside_inside] = ACTIONS(170),
+    [sym_token_keyword_cisco_inside_outside_outside] = ACTIONS(170),
+    [sym_token_number_cisco_integer] = ACTIONS(170),
+    [sym_token_number_cisco_range] = ACTIONS(170),
+    [sym_token_number_cisco_hex] = ACTIONS(170),
+    [sym__trailing_comment] = ACTIONS(170),
+    [sym_quoted_string] = ACTIONS(168),
+    [sym_token_tag_cisco_logging_system_message] = ACTIONS(170),
+    [sym_token_type_cisco_interface_app_gigabitethernet] = ACTIONS(170),
+    [sym_token_type_cisco_interface_async] = ACTIONS(170),
+    [sym_token_type_cisco_interface_bdi] = ACTIONS(170),
+    [sym_token_type_cisco_interface_bri] = ACTIONS(170),
+    [sym_token_type_cisco_interface_bvi] = ACTIONS(170),
+    [sym_token_type_cisco_interface_cellular] = ACTIONS(170),
+    [sym_token_type_cisco_interface_dialer] = ACTIONS(170),
+    [sym_token_type_cisco_interface_ethernet] = ACTIONS(170),
+    [sym_token_type_cisco_interface_loopback] = ACTIONS(170),
+    [sym_token_type_cisco_interface_management] = ACTIONS(170),
+    [sym_token_type_cisco_interface_null] = ACTIONS(170),
+    [sym_token_type_cisco_interface_nvi] = ACTIONS(170),
+    [sym_token_type_cisco_interface_port_channel] = ACTIONS(170),
+    [sym_token_type_cisco_interface_serial] = ACTIONS(170),
+    [sym_token_type_cisco_interface_tunnel] = ACTIONS(170),
+    [sym_token_type_cisco_interface_vasileft] = ACTIONS(170),
+    [sym_token_type_cisco_interface_vasiright] = ACTIONS(170),
+    [sym_token_type_cisco_interface_virtual_template] = ACTIONS(170),
+    [sym_token_type_cisco_interface_vlan] = ACTIONS(170),
+    [sym_token_type_cisco_interface_vmi] = ACTIONS(170),
+    [sym_token_type_cisco_interface_wireless] = ACTIONS(170),
+    [sym_token_number_cisco_address_ipv4_cidr] = ACTIONS(170),
+    [sym_token_number_cisco_address_ipv4] = ACTIONS(170),
+    [sym_token_number_cisco_address_ipv6_condensed] = ACTIONS(170),
+    [sym_token_number_cisco_address_ipv6_full] = ACTIONS(170),
+    [sym_token_number_cisco_address_mac] = ACTIONS(170),
+    [sym_prompt] = ACTIONS(168),
+    [sym__newline] = ACTIONS(168),
+    [sym__definition_start] = ACTIONS(168),
+    [sym__ordinary_start] = ACTIONS(168),
+    [sym__bgp_start] = ACTIONS(168),
+    [sym__address_family_start] = ACTIONS(168),
+  },
+  [STATE(26)] = {
+    [ts_builtin_sym_end] = ACTIONS(172),
+    [sym_word] = ACTIONS(174),
+    [sym_text_keyword] = ACTIONS(174),
+    [sym_token_keyword_cisco_encapsulation_dot1q] = ACTIONS(174),
+    [sym_token_keyword_cisco_encapsulation_dot1q_tunnel] = ACTIONS(174),
+    [sym_token_keyword_cisco_encapsulation_protocol_vlan] = ACTIONS(174),
+    [sym_token_keyword_cisco_encapsulation_mac_vlan] = ACTIONS(174),
+    [sym_token_keyword_cisco_switchport_mode_access] = ACTIONS(174),
+    [sym_token_keyword_cisco_switchport_mode_trunk] = ACTIONS(174),
+    [sym_token_keyword_cisco_shutdown] = ACTIONS(174),
+    [sym_token_keyword_cisco_status_up] = ACTIONS(174),
+    [sym_token_keyword_cisco_status_down] = ACTIONS(174),
+    [sym_token_keyword_cisco_status_deleted] = ACTIONS(174),
+    [sym_token_keyword_cisco_status_administratively_down] = ACTIONS(174),
+    [sym_token_keyword_cisco_enable_disable_enable] = ACTIONS(174),
+    [sym_token_keyword_cisco_enable_disable_disable] = ACTIONS(174),
+    [sym_token_keyword_cisco_match_match_any] = ACTIONS(174),
+    [sym_token_keyword_cisco_match_match_all] = ACTIONS(174),
+    [sym_token_keyword_cisco_add_remove_add] = ACTIONS(174),
+    [sym_token_keyword_cisco_add_remove_remove] = ACTIONS(174),
+    [sym_token_keyword_cisco_add_remove_except] = ACTIONS(174),
+    [sym_token_keyword_cisco_allowed_native_allowed] = ACTIONS(174),
+    [sym_token_keyword_cisco_allowed_native_native] = ACTIONS(174),
+    [sym_token_keyword_cisco_any_all_any] = ACTIONS(174),
+    [sym_token_keyword_cisco_any_all_all] = ACTIONS(174),
+    [sym_token_keyword_cisco_permit_deny_permit] = ACTIONS(174),
+    [sym_token_keyword_cisco_permit_deny_deny] = ACTIONS(174),
+    [sym_token_keyword_cisco_in_out_in] = ACTIONS(174),
+    [sym_token_keyword_cisco_in_out_out] = ACTIONS(174),
+    [sym_token_keyword_cisco_input_output_input] = ACTIONS(174),
+    [sym_token_keyword_cisco_input_output_output] = ACTIONS(174),
+    [sym_token_keyword_cisco_inside_outside_inside] = ACTIONS(174),
+    [sym_token_keyword_cisco_inside_outside_outside] = ACTIONS(174),
+    [sym_token_number_cisco_integer] = ACTIONS(174),
+    [sym_token_number_cisco_range] = ACTIONS(174),
+    [sym_token_number_cisco_hex] = ACTIONS(174),
+    [sym__trailing_comment] = ACTIONS(174),
+    [sym_quoted_string] = ACTIONS(172),
+    [sym_token_tag_cisco_logging_system_message] = ACTIONS(174),
+    [sym_token_type_cisco_interface_app_gigabitethernet] = ACTIONS(174),
+    [sym_token_type_cisco_interface_async] = ACTIONS(174),
+    [sym_token_type_cisco_interface_bdi] = ACTIONS(174),
+    [sym_token_type_cisco_interface_bri] = ACTIONS(174),
+    [sym_token_type_cisco_interface_bvi] = ACTIONS(174),
+    [sym_token_type_cisco_interface_cellular] = ACTIONS(174),
+    [sym_token_type_cisco_interface_dialer] = ACTIONS(174),
+    [sym_token_type_cisco_interface_ethernet] = ACTIONS(174),
+    [sym_token_type_cisco_interface_loopback] = ACTIONS(174),
+    [sym_token_type_cisco_interface_management] = ACTIONS(174),
+    [sym_token_type_cisco_interface_null] = ACTIONS(174),
+    [sym_token_type_cisco_interface_nvi] = ACTIONS(174),
+    [sym_token_type_cisco_interface_port_channel] = ACTIONS(174),
+    [sym_token_type_cisco_interface_serial] = ACTIONS(174),
+    [sym_token_type_cisco_interface_tunnel] = ACTIONS(174),
+    [sym_token_type_cisco_interface_vasileft] = ACTIONS(174),
+    [sym_token_type_cisco_interface_vasiright] = ACTIONS(174),
+    [sym_token_type_cisco_interface_virtual_template] = ACTIONS(174),
+    [sym_token_type_cisco_interface_vlan] = ACTIONS(174),
+    [sym_token_type_cisco_interface_vmi] = ACTIONS(174),
+    [sym_token_type_cisco_interface_wireless] = ACTIONS(174),
+    [sym_token_number_cisco_address_ipv4_cidr] = ACTIONS(174),
+    [sym_token_number_cisco_address_ipv4] = ACTIONS(174),
+    [sym_token_number_cisco_address_ipv6_condensed] = ACTIONS(174),
+    [sym_token_number_cisco_address_ipv6_full] = ACTIONS(174),
+    [sym_token_number_cisco_address_mac] = ACTIONS(174),
+    [sym_prompt] = ACTIONS(172),
+    [sym__newline] = ACTIONS(172),
+    [sym__definition_start] = ACTIONS(172),
+    [sym__ordinary_start] = ACTIONS(172),
+    [sym__bgp_start] = ACTIONS(172),
+    [sym__address_family_start] = ACTIONS(172),
+  },
+  [STATE(27)] = {
+    [ts_builtin_sym_end] = ACTIONS(176),
+    [sym_word] = ACTIONS(178),
+    [sym_text_keyword] = ACTIONS(178),
+    [sym_token_keyword_cisco_encapsulation_dot1q] = ACTIONS(178),
+    [sym_token_keyword_cisco_encapsulation_dot1q_tunnel] = ACTIONS(178),
+    [sym_token_keyword_cisco_encapsulation_protocol_vlan] = ACTIONS(178),
+    [sym_token_keyword_cisco_encapsulation_mac_vlan] = ACTIONS(178),
+    [sym_token_keyword_cisco_switchport_mode_access] = ACTIONS(178),
+    [sym_token_keyword_cisco_switchport_mode_trunk] = ACTIONS(178),
+    [sym_token_keyword_cisco_shutdown] = ACTIONS(178),
+    [sym_token_keyword_cisco_status_up] = ACTIONS(178),
+    [sym_token_keyword_cisco_status_down] = ACTIONS(178),
+    [sym_token_keyword_cisco_status_deleted] = ACTIONS(178),
+    [sym_token_keyword_cisco_status_administratively_down] = ACTIONS(178),
+    [sym_token_keyword_cisco_enable_disable_enable] = ACTIONS(178),
+    [sym_token_keyword_cisco_enable_disable_disable] = ACTIONS(178),
+    [sym_token_keyword_cisco_match_match_any] = ACTIONS(178),
+    [sym_token_keyword_cisco_match_match_all] = ACTIONS(178),
+    [sym_token_keyword_cisco_add_remove_add] = ACTIONS(178),
+    [sym_token_keyword_cisco_add_remove_remove] = ACTIONS(178),
+    [sym_token_keyword_cisco_add_remove_except] = ACTIONS(178),
+    [sym_token_keyword_cisco_allowed_native_allowed] = ACTIONS(178),
+    [sym_token_keyword_cisco_allowed_native_native] = ACTIONS(178),
+    [sym_token_keyword_cisco_any_all_any] = ACTIONS(178),
+    [sym_token_keyword_cisco_any_all_all] = ACTIONS(178),
+    [sym_token_keyword_cisco_permit_deny_permit] = ACTIONS(178),
+    [sym_token_keyword_cisco_permit_deny_deny] = ACTIONS(178),
+    [sym_token_keyword_cisco_in_out_in] = ACTIONS(178),
+    [sym_token_keyword_cisco_in_out_out] = ACTIONS(178),
+    [sym_token_keyword_cisco_input_output_input] = ACTIONS(178),
+    [sym_token_keyword_cisco_input_output_output] = ACTIONS(178),
+    [sym_token_keyword_cisco_inside_outside_inside] = ACTIONS(178),
+    [sym_token_keyword_cisco_inside_outside_outside] = ACTIONS(178),
+    [sym_token_number_cisco_integer] = ACTIONS(178),
+    [sym_token_number_cisco_range] = ACTIONS(178),
+    [sym_token_number_cisco_hex] = ACTIONS(178),
+    [sym__trailing_comment] = ACTIONS(178),
+    [sym_quoted_string] = ACTIONS(176),
+    [sym_token_tag_cisco_logging_system_message] = ACTIONS(178),
+    [sym_token_type_cisco_interface_app_gigabitethernet] = ACTIONS(178),
+    [sym_token_type_cisco_interface_async] = ACTIONS(178),
+    [sym_token_type_cisco_interface_bdi] = ACTIONS(178),
+    [sym_token_type_cisco_interface_bri] = ACTIONS(178),
+    [sym_token_type_cisco_interface_bvi] = ACTIONS(178),
+    [sym_token_type_cisco_interface_cellular] = ACTIONS(178),
+    [sym_token_type_cisco_interface_dialer] = ACTIONS(178),
+    [sym_token_type_cisco_interface_ethernet] = ACTIONS(178),
+    [sym_token_type_cisco_interface_loopback] = ACTIONS(178),
+    [sym_token_type_cisco_interface_management] = ACTIONS(178),
+    [sym_token_type_cisco_interface_null] = ACTIONS(178),
+    [sym_token_type_cisco_interface_nvi] = ACTIONS(178),
+    [sym_token_type_cisco_interface_port_channel] = ACTIONS(178),
+    [sym_token_type_cisco_interface_serial] = ACTIONS(178),
+    [sym_token_type_cisco_interface_tunnel] = ACTIONS(178),
+    [sym_token_type_cisco_interface_vasileft] = ACTIONS(178),
+    [sym_token_type_cisco_interface_vasiright] = ACTIONS(178),
+    [sym_token_type_cisco_interface_virtual_template] = ACTIONS(178),
+    [sym_token_type_cisco_interface_vlan] = ACTIONS(178),
+    [sym_token_type_cisco_interface_vmi] = ACTIONS(178),
+    [sym_token_type_cisco_interface_wireless] = ACTIONS(178),
+    [sym_token_number_cisco_address_ipv4_cidr] = ACTIONS(178),
+    [sym_token_number_cisco_address_ipv4] = ACTIONS(178),
+    [sym_token_number_cisco_address_ipv6_condensed] = ACTIONS(178),
+    [sym_token_number_cisco_address_ipv6_full] = ACTIONS(178),
+    [sym_token_number_cisco_address_mac] = ACTIONS(178),
+    [sym_prompt] = ACTIONS(176),
+    [sym__newline] = ACTIONS(176),
+    [sym__definition_start] = ACTIONS(176),
+    [sym__ordinary_start] = ACTIONS(176),
+    [sym__bgp_start] = ACTIONS(176),
+    [sym__address_family_start] = ACTIONS(176),
+  },
+  [STATE(28)] = {
+    [ts_builtin_sym_end] = ACTIONS(180),
+    [sym_word] = ACTIONS(182),
+    [sym_text_keyword] = ACTIONS(182),
+    [sym_token_keyword_cisco_encapsulation_dot1q] = ACTIONS(182),
+    [sym_token_keyword_cisco_encapsulation_dot1q_tunnel] = ACTIONS(182),
+    [sym_token_keyword_cisco_encapsulation_protocol_vlan] = ACTIONS(182),
+    [sym_token_keyword_cisco_encapsulation_mac_vlan] = ACTIONS(182),
+    [sym_token_keyword_cisco_switchport_mode_access] = ACTIONS(182),
+    [sym_token_keyword_cisco_switchport_mode_trunk] = ACTIONS(182),
+    [sym_token_keyword_cisco_shutdown] = ACTIONS(182),
+    [sym_token_keyword_cisco_status_up] = ACTIONS(182),
+    [sym_token_keyword_cisco_status_down] = ACTIONS(182),
+    [sym_token_keyword_cisco_status_deleted] = ACTIONS(182),
+    [sym_token_keyword_cisco_status_administratively_down] = ACTIONS(182),
+    [sym_token_keyword_cisco_enable_disable_enable] = ACTIONS(182),
+    [sym_token_keyword_cisco_enable_disable_disable] = ACTIONS(182),
+    [sym_token_keyword_cisco_match_match_any] = ACTIONS(182),
+    [sym_token_keyword_cisco_match_match_all] = ACTIONS(182),
+    [sym_token_keyword_cisco_add_remove_add] = ACTIONS(182),
+    [sym_token_keyword_cisco_add_remove_remove] = ACTIONS(182),
+    [sym_token_keyword_cisco_add_remove_except] = ACTIONS(182),
+    [sym_token_keyword_cisco_allowed_native_allowed] = ACTIONS(182),
+    [sym_token_keyword_cisco_allowed_native_native] = ACTIONS(182),
+    [sym_token_keyword_cisco_any_all_any] = ACTIONS(182),
+    [sym_token_keyword_cisco_any_all_all] = ACTIONS(182),
+    [sym_token_keyword_cisco_permit_deny_permit] = ACTIONS(182),
+    [sym_token_keyword_cisco_permit_deny_deny] = ACTIONS(182),
+    [sym_token_keyword_cisco_in_out_in] = ACTIONS(182),
+    [sym_token_keyword_cisco_in_out_out] = ACTIONS(182),
+    [sym_token_keyword_cisco_input_output_input] = ACTIONS(182),
+    [sym_token_keyword_cisco_input_output_output] = ACTIONS(182),
+    [sym_token_keyword_cisco_inside_outside_inside] = ACTIONS(182),
+    [sym_token_keyword_cisco_inside_outside_outside] = ACTIONS(182),
+    [sym_token_number_cisco_integer] = ACTIONS(182),
+    [sym_token_number_cisco_range] = ACTIONS(182),
+    [sym_token_number_cisco_hex] = ACTIONS(182),
+    [sym__trailing_comment] = ACTIONS(182),
+    [sym_quoted_string] = ACTIONS(180),
+    [sym_token_tag_cisco_logging_system_message] = ACTIONS(182),
+    [sym_token_type_cisco_interface_app_gigabitethernet] = ACTIONS(182),
+    [sym_token_type_cisco_interface_async] = ACTIONS(182),
+    [sym_token_type_cisco_interface_bdi] = ACTIONS(182),
+    [sym_token_type_cisco_interface_bri] = ACTIONS(182),
+    [sym_token_type_cisco_interface_bvi] = ACTIONS(182),
+    [sym_token_type_cisco_interface_cellular] = ACTIONS(182),
+    [sym_token_type_cisco_interface_dialer] = ACTIONS(182),
+    [sym_token_type_cisco_interface_ethernet] = ACTIONS(182),
+    [sym_token_type_cisco_interface_loopback] = ACTIONS(182),
+    [sym_token_type_cisco_interface_management] = ACTIONS(182),
+    [sym_token_type_cisco_interface_null] = ACTIONS(182),
+    [sym_token_type_cisco_interface_nvi] = ACTIONS(182),
+    [sym_token_type_cisco_interface_port_channel] = ACTIONS(182),
+    [sym_token_type_cisco_interface_serial] = ACTIONS(182),
+    [sym_token_type_cisco_interface_tunnel] = ACTIONS(182),
+    [sym_token_type_cisco_interface_vasileft] = ACTIONS(182),
+    [sym_token_type_cisco_interface_vasiright] = ACTIONS(182),
+    [sym_token_type_cisco_interface_virtual_template] = ACTIONS(182),
+    [sym_token_type_cisco_interface_vlan] = ACTIONS(182),
+    [sym_token_type_cisco_interface_vmi] = ACTIONS(182),
+    [sym_token_type_cisco_interface_wireless] = ACTIONS(182),
+    [sym_token_number_cisco_address_ipv4_cidr] = ACTIONS(182),
+    [sym_token_number_cisco_address_ipv4] = ACTIONS(182),
+    [sym_token_number_cisco_address_ipv6_condensed] = ACTIONS(182),
+    [sym_token_number_cisco_address_ipv6_full] = ACTIONS(182),
+    [sym_token_number_cisco_address_mac] = ACTIONS(182),
+    [sym_prompt] = ACTIONS(180),
+    [sym__newline] = ACTIONS(180),
+    [sym__definition_start] = ACTIONS(180),
+    [sym__ordinary_start] = ACTIONS(180),
+    [sym__bgp_start] = ACTIONS(180),
+    [sym__address_family_start] = ACTIONS(180),
+  },
+  [STATE(29)] = {
+    [ts_builtin_sym_end] = ACTIONS(184),
+    [sym_word] = ACTIONS(186),
+    [sym_text_keyword] = ACTIONS(186),
+    [sym_token_keyword_cisco_encapsulation_dot1q] = ACTIONS(186),
+    [sym_token_keyword_cisco_encapsulation_dot1q_tunnel] = ACTIONS(186),
+    [sym_token_keyword_cisco_encapsulation_protocol_vlan] = ACTIONS(186),
+    [sym_token_keyword_cisco_encapsulation_mac_vlan] = ACTIONS(186),
+    [sym_token_keyword_cisco_switchport_mode_access] = ACTIONS(186),
+    [sym_token_keyword_cisco_switchport_mode_trunk] = ACTIONS(186),
+    [sym_token_keyword_cisco_shutdown] = ACTIONS(186),
+    [sym_token_keyword_cisco_status_up] = ACTIONS(186),
+    [sym_token_keyword_cisco_status_down] = ACTIONS(186),
+    [sym_token_keyword_cisco_status_deleted] = ACTIONS(186),
+    [sym_token_keyword_cisco_status_administratively_down] = ACTIONS(186),
+    [sym_token_keyword_cisco_enable_disable_enable] = ACTIONS(186),
+    [sym_token_keyword_cisco_enable_disable_disable] = ACTIONS(186),
+    [sym_token_keyword_cisco_match_match_any] = ACTIONS(186),
+    [sym_token_keyword_cisco_match_match_all] = ACTIONS(186),
+    [sym_token_keyword_cisco_add_remove_add] = ACTIONS(186),
+    [sym_token_keyword_cisco_add_remove_remove] = ACTIONS(186),
+    [sym_token_keyword_cisco_add_remove_except] = ACTIONS(186),
+    [sym_token_keyword_cisco_allowed_native_allowed] = ACTIONS(186),
+    [sym_token_keyword_cisco_allowed_native_native] = ACTIONS(186),
+    [sym_token_keyword_cisco_any_all_any] = ACTIONS(186),
+    [sym_token_keyword_cisco_any_all_all] = ACTIONS(186),
+    [sym_token_keyword_cisco_permit_deny_permit] = ACTIONS(186),
+    [sym_token_keyword_cisco_permit_deny_deny] = ACTIONS(186),
+    [sym_token_keyword_cisco_in_out_in] = ACTIONS(186),
+    [sym_token_keyword_cisco_in_out_out] = ACTIONS(186),
+    [sym_token_keyword_cisco_input_output_input] = ACTIONS(186),
+    [sym_token_keyword_cisco_input_output_output] = ACTIONS(186),
+    [sym_token_keyword_cisco_inside_outside_inside] = ACTIONS(186),
+    [sym_token_keyword_cisco_inside_outside_outside] = ACTIONS(186),
+    [sym_token_number_cisco_integer] = ACTIONS(186),
+    [sym_token_number_cisco_range] = ACTIONS(186),
+    [sym_token_number_cisco_hex] = ACTIONS(186),
+    [sym__trailing_comment] = ACTIONS(186),
+    [sym_quoted_string] = ACTIONS(184),
+    [sym_token_tag_cisco_logging_system_message] = ACTIONS(186),
+    [sym_token_type_cisco_interface_app_gigabitethernet] = ACTIONS(186),
+    [sym_token_type_cisco_interface_async] = ACTIONS(186),
+    [sym_token_type_cisco_interface_bdi] = ACTIONS(186),
+    [sym_token_type_cisco_interface_bri] = ACTIONS(186),
+    [sym_token_type_cisco_interface_bvi] = ACTIONS(186),
+    [sym_token_type_cisco_interface_cellular] = ACTIONS(186),
+    [sym_token_type_cisco_interface_dialer] = ACTIONS(186),
+    [sym_token_type_cisco_interface_ethernet] = ACTIONS(186),
+    [sym_token_type_cisco_interface_loopback] = ACTIONS(186),
+    [sym_token_type_cisco_interface_management] = ACTIONS(186),
+    [sym_token_type_cisco_interface_null] = ACTIONS(186),
+    [sym_token_type_cisco_interface_nvi] = ACTIONS(186),
+    [sym_token_type_cisco_interface_port_channel] = ACTIONS(186),
+    [sym_token_type_cisco_interface_serial] = ACTIONS(186),
+    [sym_token_type_cisco_interface_tunnel] = ACTIONS(186),
+    [sym_token_type_cisco_interface_vasileft] = ACTIONS(186),
+    [sym_token_type_cisco_interface_vasiright] = ACTIONS(186),
+    [sym_token_type_cisco_interface_virtual_template] = ACTIONS(186),
+    [sym_token_type_cisco_interface_vlan] = ACTIONS(186),
+    [sym_token_type_cisco_interface_vmi] = ACTIONS(186),
+    [sym_token_type_cisco_interface_wireless] = ACTIONS(186),
+    [sym_token_number_cisco_address_ipv4_cidr] = ACTIONS(186),
+    [sym_token_number_cisco_address_ipv4] = ACTIONS(186),
+    [sym_token_number_cisco_address_ipv6_condensed] = ACTIONS(186),
+    [sym_token_number_cisco_address_ipv6_full] = ACTIONS(186),
+    [sym_token_number_cisco_address_mac] = ACTIONS(186),
+    [sym_prompt] = ACTIONS(184),
+    [sym__newline] = ACTIONS(184),
+    [sym__definition_start] = ACTIONS(184),
+    [sym__ordinary_start] = ACTIONS(184),
+    [sym__bgp_start] = ACTIONS(184),
+    [sym__address_family_start] = ACTIONS(184),
+  },
+  [STATE(30)] = {
+    [ts_builtin_sym_end] = ACTIONS(188),
+    [sym_word] = ACTIONS(190),
+    [sym_text_keyword] = ACTIONS(190),
+    [sym_token_keyword_cisco_encapsulation_dot1q] = ACTIONS(190),
+    [sym_token_keyword_cisco_encapsulation_dot1q_tunnel] = ACTIONS(190),
+    [sym_token_keyword_cisco_encapsulation_protocol_vlan] = ACTIONS(190),
+    [sym_token_keyword_cisco_encapsulation_mac_vlan] = ACTIONS(190),
+    [sym_token_keyword_cisco_switchport_mode_access] = ACTIONS(190),
+    [sym_token_keyword_cisco_switchport_mode_trunk] = ACTIONS(190),
+    [sym_token_keyword_cisco_shutdown] = ACTIONS(190),
+    [sym_token_keyword_cisco_status_up] = ACTIONS(190),
+    [sym_token_keyword_cisco_status_down] = ACTIONS(190),
+    [sym_token_keyword_cisco_status_deleted] = ACTIONS(190),
+    [sym_token_keyword_cisco_status_administratively_down] = ACTIONS(190),
+    [sym_token_keyword_cisco_enable_disable_enable] = ACTIONS(190),
+    [sym_token_keyword_cisco_enable_disable_disable] = ACTIONS(190),
+    [sym_token_keyword_cisco_match_match_any] = ACTIONS(190),
+    [sym_token_keyword_cisco_match_match_all] = ACTIONS(190),
+    [sym_token_keyword_cisco_add_remove_add] = ACTIONS(190),
+    [sym_token_keyword_cisco_add_remove_remove] = ACTIONS(190),
+    [sym_token_keyword_cisco_add_remove_except] = ACTIONS(190),
+    [sym_token_keyword_cisco_allowed_native_allowed] = ACTIONS(190),
+    [sym_token_keyword_cisco_allowed_native_native] = ACTIONS(190),
+    [sym_token_keyword_cisco_any_all_any] = ACTIONS(190),
+    [sym_token_keyword_cisco_any_all_all] = ACTIONS(190),
+    [sym_token_keyword_cisco_permit_deny_permit] = ACTIONS(190),
+    [sym_token_keyword_cisco_permit_deny_deny] = ACTIONS(190),
+    [sym_token_keyword_cisco_in_out_in] = ACTIONS(190),
+    [sym_token_keyword_cisco_in_out_out] = ACTIONS(190),
+    [sym_token_keyword_cisco_input_output_input] = ACTIONS(190),
+    [sym_token_keyword_cisco_input_output_output] = ACTIONS(190),
+    [sym_token_keyword_cisco_inside_outside_inside] = ACTIONS(190),
+    [sym_token_keyword_cisco_inside_outside_outside] = ACTIONS(190),
+    [sym_token_number_cisco_integer] = ACTIONS(190),
+    [sym_token_number_cisco_range] = ACTIONS(190),
+    [sym_token_number_cisco_hex] = ACTIONS(190),
+    [sym__trailing_comment] = ACTIONS(190),
+    [sym_quoted_string] = ACTIONS(188),
+    [sym_token_tag_cisco_logging_system_message] = ACTIONS(190),
+    [sym_token_type_cisco_interface_app_gigabitethernet] = ACTIONS(190),
+    [sym_token_type_cisco_interface_async] = ACTIONS(190),
+    [sym_token_type_cisco_interface_bdi] = ACTIONS(190),
+    [sym_token_type_cisco_interface_bri] = ACTIONS(190),
+    [sym_token_type_cisco_interface_bvi] = ACTIONS(190),
+    [sym_token_type_cisco_interface_cellular] = ACTIONS(190),
+    [sym_token_type_cisco_interface_dialer] = ACTIONS(190),
+    [sym_token_type_cisco_interface_ethernet] = ACTIONS(190),
+    [sym_token_type_cisco_interface_loopback] = ACTIONS(190),
+    [sym_token_type_cisco_interface_management] = ACTIONS(190),
+    [sym_token_type_cisco_interface_null] = ACTIONS(190),
+    [sym_token_type_cisco_interface_nvi] = ACTIONS(190),
+    [sym_token_type_cisco_interface_port_channel] = ACTIONS(190),
+    [sym_token_type_cisco_interface_serial] = ACTIONS(190),
+    [sym_token_type_cisco_interface_tunnel] = ACTIONS(190),
+    [sym_token_type_cisco_interface_vasileft] = ACTIONS(190),
+    [sym_token_type_cisco_interface_vasiright] = ACTIONS(190),
+    [sym_token_type_cisco_interface_virtual_template] = ACTIONS(190),
+    [sym_token_type_cisco_interface_vlan] = ACTIONS(190),
+    [sym_token_type_cisco_interface_vmi] = ACTIONS(190),
+    [sym_token_type_cisco_interface_wireless] = ACTIONS(190),
+    [sym_token_number_cisco_address_ipv4_cidr] = ACTIONS(190),
+    [sym_token_number_cisco_address_ipv4] = ACTIONS(190),
+    [sym_token_number_cisco_address_ipv6_condensed] = ACTIONS(190),
+    [sym_token_number_cisco_address_ipv6_full] = ACTIONS(190),
+    [sym_token_number_cisco_address_mac] = ACTIONS(190),
+    [sym_prompt] = ACTIONS(188),
+    [sym__newline] = ACTIONS(188),
+    [sym__definition_start] = ACTIONS(188),
+    [sym__ordinary_start] = ACTIONS(188),
+    [sym__bgp_start] = ACTIONS(188),
+    [sym__address_family_start] = ACTIONS(188),
+  },
+  [STATE(31)] = {
+    [ts_builtin_sym_end] = ACTIONS(168),
+    [sym_word] = ACTIONS(170),
+    [sym_token_keyword_cisco_encapsulation_dot1q] = ACTIONS(170),
+    [sym_token_keyword_cisco_encapsulation_dot1q_tunnel] = ACTIONS(170),
+    [sym_token_keyword_cisco_encapsulation_protocol_vlan] = ACTIONS(170),
+    [sym_token_keyword_cisco_encapsulation_mac_vlan] = ACTIONS(170),
+    [sym_token_keyword_cisco_switchport_mode_access] = ACTIONS(170),
+    [sym_token_keyword_cisco_switchport_mode_trunk] = ACTIONS(170),
+    [sym_token_keyword_cisco_shutdown] = ACTIONS(170),
+    [sym_token_keyword_cisco_status_up] = ACTIONS(170),
+    [sym_token_keyword_cisco_status_down] = ACTIONS(170),
+    [sym_token_keyword_cisco_status_deleted] = ACTIONS(170),
+    [sym_token_keyword_cisco_status_administratively_down] = ACTIONS(170),
+    [sym_token_keyword_cisco_enable_disable_enable] = ACTIONS(170),
+    [sym_token_keyword_cisco_enable_disable_disable] = ACTIONS(170),
+    [sym_token_keyword_cisco_match_match_any] = ACTIONS(170),
+    [sym_token_keyword_cisco_match_match_all] = ACTIONS(170),
+    [sym_token_keyword_cisco_add_remove_add] = ACTIONS(170),
+    [sym_token_keyword_cisco_add_remove_remove] = ACTIONS(170),
+    [sym_token_keyword_cisco_add_remove_except] = ACTIONS(170),
+    [sym_token_keyword_cisco_allowed_native_allowed] = ACTIONS(170),
+    [sym_token_keyword_cisco_allowed_native_native] = ACTIONS(170),
+    [sym_token_keyword_cisco_any_all_any] = ACTIONS(170),
+    [sym_token_keyword_cisco_any_all_all] = ACTIONS(170),
+    [sym_token_keyword_cisco_permit_deny_permit] = ACTIONS(170),
+    [sym_token_keyword_cisco_permit_deny_deny] = ACTIONS(170),
+    [sym_token_keyword_cisco_in_out_in] = ACTIONS(170),
+    [sym_token_keyword_cisco_in_out_out] = ACTIONS(170),
+    [sym_token_keyword_cisco_input_output_input] = ACTIONS(170),
+    [sym_token_keyword_cisco_input_output_output] = ACTIONS(170),
+    [sym_token_keyword_cisco_inside_outside_inside] = ACTIONS(170),
+    [sym_token_keyword_cisco_inside_outside_outside] = ACTIONS(170),
+    [sym_token_number_cisco_integer] = ACTIONS(170),
+    [sym_token_number_cisco_range] = ACTIONS(170),
+    [sym_token_number_cisco_hex] = ACTIONS(170),
+    [sym__trailing_comment] = ACTIONS(170),
+    [sym_token_tag_cisco_logging_system_message] = ACTIONS(168),
+    [sym_token_type_cisco_interface_app_gigabitethernet] = ACTIONS(170),
+    [sym_token_type_cisco_interface_async] = ACTIONS(170),
+    [sym_token_type_cisco_interface_bdi] = ACTIONS(170),
+    [sym_token_type_cisco_interface_bri] = ACTIONS(170),
+    [sym_token_type_cisco_interface_bvi] = ACTIONS(170),
+    [sym_token_type_cisco_interface_cellular] = ACTIONS(170),
+    [sym_token_type_cisco_interface_dialer] = ACTIONS(170),
+    [sym_token_type_cisco_interface_ethernet] = ACTIONS(170),
+    [sym_token_type_cisco_interface_loopback] = ACTIONS(170),
+    [sym_token_type_cisco_interface_management] = ACTIONS(170),
+    [sym_token_type_cisco_interface_null] = ACTIONS(170),
+    [sym_token_type_cisco_interface_nvi] = ACTIONS(170),
+    [sym_token_type_cisco_interface_port_channel] = ACTIONS(170),
+    [sym_token_type_cisco_interface_serial] = ACTIONS(170),
+    [sym_token_type_cisco_interface_tunnel] = ACTIONS(170),
+    [sym_token_type_cisco_interface_vasileft] = ACTIONS(170),
+    [sym_token_type_cisco_interface_vasiright] = ACTIONS(170),
+    [sym_token_type_cisco_interface_virtual_template] = ACTIONS(170),
+    [sym_token_type_cisco_interface_vlan] = ACTIONS(170),
+    [sym_token_type_cisco_interface_vmi] = ACTIONS(170),
+    [sym_token_type_cisco_interface_wireless] = ACTIONS(170),
+    [sym_token_number_cisco_address_ipv4_cidr] = ACTIONS(170),
+    [sym_token_number_cisco_address_ipv4] = ACTIONS(170),
+    [sym_token_number_cisco_address_ipv6_condensed] = ACTIONS(170),
+    [sym_token_number_cisco_address_ipv6_full] = ACTIONS(170),
+    [sym_token_number_cisco_address_mac] = ACTIONS(170),
+    [sym_prompt] = ACTIONS(168),
+    [sym__newline] = ACTIONS(168),
+    [sym__definition_start] = ACTIONS(168),
+    [sym__ordinary_start] = ACTIONS(168),
+    [sym__bgp_start] = ACTIONS(168),
+    [sym__address_family_start] = ACTIONS(168),
+  },
+  [STATE(32)] = {
+    [ts_builtin_sym_end] = ACTIONS(176),
+    [sym_word] = ACTIONS(178),
+    [sym_token_keyword_cisco_encapsulation_dot1q] = ACTIONS(178),
+    [sym_token_keyword_cisco_encapsulation_dot1q_tunnel] = ACTIONS(178),
+    [sym_token_keyword_cisco_encapsulation_protocol_vlan] = ACTIONS(178),
+    [sym_token_keyword_cisco_encapsulation_mac_vlan] = ACTIONS(178),
+    [sym_token_keyword_cisco_switchport_mode_access] = ACTIONS(178),
+    [sym_token_keyword_cisco_switchport_mode_trunk] = ACTIONS(178),
+    [sym_token_keyword_cisco_shutdown] = ACTIONS(178),
+    [sym_token_keyword_cisco_status_up] = ACTIONS(178),
+    [sym_token_keyword_cisco_status_down] = ACTIONS(178),
+    [sym_token_keyword_cisco_status_deleted] = ACTIONS(178),
+    [sym_token_keyword_cisco_status_administratively_down] = ACTIONS(178),
+    [sym_token_keyword_cisco_enable_disable_enable] = ACTIONS(178),
+    [sym_token_keyword_cisco_enable_disable_disable] = ACTIONS(178),
+    [sym_token_keyword_cisco_match_match_any] = ACTIONS(178),
+    [sym_token_keyword_cisco_match_match_all] = ACTIONS(178),
+    [sym_token_keyword_cisco_add_remove_add] = ACTIONS(178),
+    [sym_token_keyword_cisco_add_remove_remove] = ACTIONS(178),
+    [sym_token_keyword_cisco_add_remove_except] = ACTIONS(178),
+    [sym_token_keyword_cisco_allowed_native_allowed] = ACTIONS(178),
+    [sym_token_keyword_cisco_allowed_native_native] = ACTIONS(178),
+    [sym_token_keyword_cisco_any_all_any] = ACTIONS(178),
+    [sym_token_keyword_cisco_any_all_all] = ACTIONS(178),
+    [sym_token_keyword_cisco_permit_deny_permit] = ACTIONS(178),
+    [sym_token_keyword_cisco_permit_deny_deny] = ACTIONS(178),
+    [sym_token_keyword_cisco_in_out_in] = ACTIONS(178),
+    [sym_token_keyword_cisco_in_out_out] = ACTIONS(178),
+    [sym_token_keyword_cisco_input_output_input] = ACTIONS(178),
+    [sym_token_keyword_cisco_input_output_output] = ACTIONS(178),
+    [sym_token_keyword_cisco_inside_outside_inside] = ACTIONS(178),
+    [sym_token_keyword_cisco_inside_outside_outside] = ACTIONS(178),
+    [sym_token_number_cisco_integer] = ACTIONS(178),
+    [sym_token_number_cisco_range] = ACTIONS(178),
+    [sym_token_number_cisco_hex] = ACTIONS(178),
+    [sym__trailing_comment] = ACTIONS(178),
+    [sym_token_tag_cisco_logging_system_message] = ACTIONS(176),
+    [sym_token_type_cisco_interface_app_gigabitethernet] = ACTIONS(178),
+    [sym_token_type_cisco_interface_async] = ACTIONS(178),
+    [sym_token_type_cisco_interface_bdi] = ACTIONS(178),
+    [sym_token_type_cisco_interface_bri] = ACTIONS(178),
+    [sym_token_type_cisco_interface_bvi] = ACTIONS(178),
+    [sym_token_type_cisco_interface_cellular] = ACTIONS(178),
+    [sym_token_type_cisco_interface_dialer] = ACTIONS(178),
+    [sym_token_type_cisco_interface_ethernet] = ACTIONS(178),
+    [sym_token_type_cisco_interface_loopback] = ACTIONS(178),
+    [sym_token_type_cisco_interface_management] = ACTIONS(178),
+    [sym_token_type_cisco_interface_null] = ACTIONS(178),
+    [sym_token_type_cisco_interface_nvi] = ACTIONS(178),
+    [sym_token_type_cisco_interface_port_channel] = ACTIONS(178),
+    [sym_token_type_cisco_interface_serial] = ACTIONS(178),
+    [sym_token_type_cisco_interface_tunnel] = ACTIONS(178),
+    [sym_token_type_cisco_interface_vasileft] = ACTIONS(178),
+    [sym_token_type_cisco_interface_vasiright] = ACTIONS(178),
+    [sym_token_type_cisco_interface_virtual_template] = ACTIONS(178),
+    [sym_token_type_cisco_interface_vlan] = ACTIONS(178),
+    [sym_token_type_cisco_interface_vmi] = ACTIONS(178),
+    [sym_token_type_cisco_interface_wireless] = ACTIONS(178),
+    [sym_token_number_cisco_address_ipv4_cidr] = ACTIONS(178),
+    [sym_token_number_cisco_address_ipv4] = ACTIONS(178),
+    [sym_token_number_cisco_address_ipv6_condensed] = ACTIONS(178),
+    [sym_token_number_cisco_address_ipv6_full] = ACTIONS(178),
+    [sym_token_number_cisco_address_mac] = ACTIONS(178),
+    [sym_prompt] = ACTIONS(176),
+    [sym__newline] = ACTIONS(176),
+    [sym__definition_start] = ACTIONS(176),
+    [sym__ordinary_start] = ACTIONS(176),
+    [sym__bgp_start] = ACTIONS(176),
+    [sym__address_family_start] = ACTIONS(176),
+  },
+  [STATE(33)] = {
+    [ts_builtin_sym_end] = ACTIONS(172),
+    [sym_word] = ACTIONS(174),
+    [sym_token_keyword_cisco_encapsulation_dot1q] = ACTIONS(174),
+    [sym_token_keyword_cisco_encapsulation_dot1q_tunnel] = ACTIONS(174),
+    [sym_token_keyword_cisco_encapsulation_protocol_vlan] = ACTIONS(174),
+    [sym_token_keyword_cisco_encapsulation_mac_vlan] = ACTIONS(174),
+    [sym_token_keyword_cisco_switchport_mode_access] = ACTIONS(174),
+    [sym_token_keyword_cisco_switchport_mode_trunk] = ACTIONS(174),
+    [sym_token_keyword_cisco_shutdown] = ACTIONS(174),
+    [sym_token_keyword_cisco_status_up] = ACTIONS(174),
+    [sym_token_keyword_cisco_status_down] = ACTIONS(174),
+    [sym_token_keyword_cisco_status_deleted] = ACTIONS(174),
+    [sym_token_keyword_cisco_status_administratively_down] = ACTIONS(174),
+    [sym_token_keyword_cisco_enable_disable_enable] = ACTIONS(174),
+    [sym_token_keyword_cisco_enable_disable_disable] = ACTIONS(174),
+    [sym_token_keyword_cisco_match_match_any] = ACTIONS(174),
+    [sym_token_keyword_cisco_match_match_all] = ACTIONS(174),
+    [sym_token_keyword_cisco_add_remove_add] = ACTIONS(174),
+    [sym_token_keyword_cisco_add_remove_remove] = ACTIONS(174),
+    [sym_token_keyword_cisco_add_remove_except] = ACTIONS(174),
+    [sym_token_keyword_cisco_allowed_native_allowed] = ACTIONS(174),
+    [sym_token_keyword_cisco_allowed_native_native] = ACTIONS(174),
+    [sym_token_keyword_cisco_any_all_any] = ACTIONS(174),
+    [sym_token_keyword_cisco_any_all_all] = ACTIONS(174),
+    [sym_token_keyword_cisco_permit_deny_permit] = ACTIONS(174),
+    [sym_token_keyword_cisco_permit_deny_deny] = ACTIONS(174),
+    [sym_token_keyword_cisco_in_out_in] = ACTIONS(174),
+    [sym_token_keyword_cisco_in_out_out] = ACTIONS(174),
+    [sym_token_keyword_cisco_input_output_input] = ACTIONS(174),
+    [sym_token_keyword_cisco_input_output_output] = ACTIONS(174),
+    [sym_token_keyword_cisco_inside_outside_inside] = ACTIONS(174),
+    [sym_token_keyword_cisco_inside_outside_outside] = ACTIONS(174),
+    [sym_token_number_cisco_integer] = ACTIONS(174),
+    [sym_token_number_cisco_range] = ACTIONS(174),
+    [sym_token_number_cisco_hex] = ACTIONS(174),
+    [sym__trailing_comment] = ACTIONS(174),
+    [sym_token_tag_cisco_logging_system_message] = ACTIONS(172),
+    [sym_token_type_cisco_interface_app_gigabitethernet] = ACTIONS(174),
+    [sym_token_type_cisco_interface_async] = ACTIONS(174),
+    [sym_token_type_cisco_interface_bdi] = ACTIONS(174),
+    [sym_token_type_cisco_interface_bri] = ACTIONS(174),
+    [sym_token_type_cisco_interface_bvi] = ACTIONS(174),
+    [sym_token_type_cisco_interface_cellular] = ACTIONS(174),
+    [sym_token_type_cisco_interface_dialer] = ACTIONS(174),
+    [sym_token_type_cisco_interface_ethernet] = ACTIONS(174),
+    [sym_token_type_cisco_interface_loopback] = ACTIONS(174),
+    [sym_token_type_cisco_interface_management] = ACTIONS(174),
+    [sym_token_type_cisco_interface_null] = ACTIONS(174),
+    [sym_token_type_cisco_interface_nvi] = ACTIONS(174),
+    [sym_token_type_cisco_interface_port_channel] = ACTIONS(174),
+    [sym_token_type_cisco_interface_serial] = ACTIONS(174),
+    [sym_token_type_cisco_interface_tunnel] = ACTIONS(174),
+    [sym_token_type_cisco_interface_vasileft] = ACTIONS(174),
+    [sym_token_type_cisco_interface_vasiright] = ACTIONS(174),
+    [sym_token_type_cisco_interface_virtual_template] = ACTIONS(174),
+    [sym_token_type_cisco_interface_vlan] = ACTIONS(174),
+    [sym_token_type_cisco_interface_vmi] = ACTIONS(174),
+    [sym_token_type_cisco_interface_wireless] = ACTIONS(174),
+    [sym_token_number_cisco_address_ipv4_cidr] = ACTIONS(174),
+    [sym_token_number_cisco_address_ipv4] = ACTIONS(174),
+    [sym_token_number_cisco_address_ipv6_condensed] = ACTIONS(174),
+    [sym_token_number_cisco_address_ipv6_full] = ACTIONS(174),
+    [sym_token_number_cisco_address_mac] = ACTIONS(174),
+    [sym_prompt] = ACTIONS(172),
+    [sym__newline] = ACTIONS(172),
+    [sym__definition_start] = ACTIONS(172),
+    [sym__ordinary_start] = ACTIONS(172),
+    [sym__bgp_start] = ACTIONS(172),
+    [sym__address_family_start] = ACTIONS(172),
+  },
+  [STATE(34)] = {
+    [ts_builtin_sym_end] = ACTIONS(164),
+    [sym_word] = ACTIONS(166),
+    [sym_token_keyword_cisco_encapsulation_dot1q] = ACTIONS(166),
+    [sym_token_keyword_cisco_encapsulation_dot1q_tunnel] = ACTIONS(166),
+    [sym_token_keyword_cisco_encapsulation_protocol_vlan] = ACTIONS(166),
+    [sym_token_keyword_cisco_encapsulation_mac_vlan] = ACTIONS(166),
+    [sym_token_keyword_cisco_switchport_mode_access] = ACTIONS(166),
+    [sym_token_keyword_cisco_switchport_mode_trunk] = ACTIONS(166),
+    [sym_token_keyword_cisco_shutdown] = ACTIONS(166),
+    [sym_token_keyword_cisco_status_up] = ACTIONS(166),
+    [sym_token_keyword_cisco_status_down] = ACTIONS(166),
+    [sym_token_keyword_cisco_status_deleted] = ACTIONS(166),
+    [sym_token_keyword_cisco_status_administratively_down] = ACTIONS(166),
+    [sym_token_keyword_cisco_enable_disable_enable] = ACTIONS(166),
+    [sym_token_keyword_cisco_enable_disable_disable] = ACTIONS(166),
+    [sym_token_keyword_cisco_match_match_any] = ACTIONS(166),
+    [sym_token_keyword_cisco_match_match_all] = ACTIONS(166),
+    [sym_token_keyword_cisco_add_remove_add] = ACTIONS(166),
+    [sym_token_keyword_cisco_add_remove_remove] = ACTIONS(166),
+    [sym_token_keyword_cisco_add_remove_except] = ACTIONS(166),
+    [sym_token_keyword_cisco_allowed_native_allowed] = ACTIONS(166),
+    [sym_token_keyword_cisco_allowed_native_native] = ACTIONS(166),
+    [sym_token_keyword_cisco_any_all_any] = ACTIONS(166),
+    [sym_token_keyword_cisco_any_all_all] = ACTIONS(166),
+    [sym_token_keyword_cisco_permit_deny_permit] = ACTIONS(166),
+    [sym_token_keyword_cisco_permit_deny_deny] = ACTIONS(166),
+    [sym_token_keyword_cisco_in_out_in] = ACTIONS(166),
+    [sym_token_keyword_cisco_in_out_out] = ACTIONS(166),
+    [sym_token_keyword_cisco_input_output_input] = ACTIONS(166),
+    [sym_token_keyword_cisco_input_output_output] = ACTIONS(166),
+    [sym_token_keyword_cisco_inside_outside_inside] = ACTIONS(166),
+    [sym_token_keyword_cisco_inside_outside_outside] = ACTIONS(166),
+    [sym_token_number_cisco_integer] = ACTIONS(166),
+    [sym_token_number_cisco_range] = ACTIONS(166),
+    [sym_token_number_cisco_hex] = ACTIONS(166),
+    [sym__trailing_comment] = ACTIONS(166),
+    [sym_token_tag_cisco_logging_system_message] = ACTIONS(164),
+    [sym_token_type_cisco_interface_app_gigabitethernet] = ACTIONS(166),
+    [sym_token_type_cisco_interface_async] = ACTIONS(166),
+    [sym_token_type_cisco_interface_bdi] = ACTIONS(166),
+    [sym_token_type_cisco_interface_bri] = ACTIONS(166),
+    [sym_token_type_cisco_interface_bvi] = ACTIONS(166),
+    [sym_token_type_cisco_interface_cellular] = ACTIONS(166),
+    [sym_token_type_cisco_interface_dialer] = ACTIONS(166),
+    [sym_token_type_cisco_interface_ethernet] = ACTIONS(166),
+    [sym_token_type_cisco_interface_loopback] = ACTIONS(166),
+    [sym_token_type_cisco_interface_management] = ACTIONS(166),
+    [sym_token_type_cisco_interface_null] = ACTIONS(166),
+    [sym_token_type_cisco_interface_nvi] = ACTIONS(166),
+    [sym_token_type_cisco_interface_port_channel] = ACTIONS(166),
+    [sym_token_type_cisco_interface_serial] = ACTIONS(166),
+    [sym_token_type_cisco_interface_tunnel] = ACTIONS(166),
+    [sym_token_type_cisco_interface_vasileft] = ACTIONS(166),
+    [sym_token_type_cisco_interface_vasiright] = ACTIONS(166),
+    [sym_token_type_cisco_interface_virtual_template] = ACTIONS(166),
+    [sym_token_type_cisco_interface_vlan] = ACTIONS(166),
+    [sym_token_type_cisco_interface_vmi] = ACTIONS(166),
+    [sym_token_type_cisco_interface_wireless] = ACTIONS(166),
+    [sym_token_number_cisco_address_ipv4_cidr] = ACTIONS(166),
+    [sym_token_number_cisco_address_ipv4] = ACTIONS(166),
+    [sym_token_number_cisco_address_ipv6_condensed] = ACTIONS(166),
+    [sym_token_number_cisco_address_ipv6_full] = ACTIONS(166),
+    [sym_token_number_cisco_address_mac] = ACTIONS(166),
+    [sym_prompt] = ACTIONS(164),
+    [sym__newline] = ACTIONS(164),
+    [sym__definition_start] = ACTIONS(164),
+    [sym__ordinary_start] = ACTIONS(164),
+    [sym__bgp_start] = ACTIONS(164),
+    [sym__address_family_start] = ACTIONS(164),
+  },
+  [STATE(35)] = {
+    [ts_builtin_sym_end] = ACTIONS(180),
+    [sym_word] = ACTIONS(182),
+    [sym_token_keyword_cisco_encapsulation_dot1q] = ACTIONS(182),
+    [sym_token_keyword_cisco_encapsulation_dot1q_tunnel] = ACTIONS(182),
+    [sym_token_keyword_cisco_encapsulation_protocol_vlan] = ACTIONS(182),
+    [sym_token_keyword_cisco_encapsulation_mac_vlan] = ACTIONS(182),
+    [sym_token_keyword_cisco_switchport_mode_access] = ACTIONS(182),
+    [sym_token_keyword_cisco_switchport_mode_trunk] = ACTIONS(182),
+    [sym_token_keyword_cisco_shutdown] = ACTIONS(182),
+    [sym_token_keyword_cisco_status_up] = ACTIONS(182),
+    [sym_token_keyword_cisco_status_down] = ACTIONS(182),
+    [sym_token_keyword_cisco_status_deleted] = ACTIONS(182),
+    [sym_token_keyword_cisco_status_administratively_down] = ACTIONS(182),
+    [sym_token_keyword_cisco_enable_disable_enable] = ACTIONS(182),
+    [sym_token_keyword_cisco_enable_disable_disable] = ACTIONS(182),
+    [sym_token_keyword_cisco_match_match_any] = ACTIONS(182),
+    [sym_token_keyword_cisco_match_match_all] = ACTIONS(182),
+    [sym_token_keyword_cisco_add_remove_add] = ACTIONS(182),
+    [sym_token_keyword_cisco_add_remove_remove] = ACTIONS(182),
+    [sym_token_keyword_cisco_add_remove_except] = ACTIONS(182),
+    [sym_token_keyword_cisco_allowed_native_allowed] = ACTIONS(182),
+    [sym_token_keyword_cisco_allowed_native_native] = ACTIONS(182),
+    [sym_token_keyword_cisco_any_all_any] = ACTIONS(182),
+    [sym_token_keyword_cisco_any_all_all] = ACTIONS(182),
+    [sym_token_keyword_cisco_permit_deny_permit] = ACTIONS(182),
+    [sym_token_keyword_cisco_permit_deny_deny] = ACTIONS(182),
+    [sym_token_keyword_cisco_in_out_in] = ACTIONS(182),
+    [sym_token_keyword_cisco_in_out_out] = ACTIONS(182),
+    [sym_token_keyword_cisco_input_output_input] = ACTIONS(182),
+    [sym_token_keyword_cisco_input_output_output] = ACTIONS(182),
+    [sym_token_keyword_cisco_inside_outside_inside] = ACTIONS(182),
+    [sym_token_keyword_cisco_inside_outside_outside] = ACTIONS(182),
+    [sym_token_number_cisco_integer] = ACTIONS(182),
+    [sym_token_number_cisco_range] = ACTIONS(182),
+    [sym_token_number_cisco_hex] = ACTIONS(182),
+    [sym__trailing_comment] = ACTIONS(182),
+    [sym_token_tag_cisco_logging_system_message] = ACTIONS(180),
+    [sym_token_type_cisco_interface_app_gigabitethernet] = ACTIONS(182),
+    [sym_token_type_cisco_interface_async] = ACTIONS(182),
+    [sym_token_type_cisco_interface_bdi] = ACTIONS(182),
+    [sym_token_type_cisco_interface_bri] = ACTIONS(182),
+    [sym_token_type_cisco_interface_bvi] = ACTIONS(182),
+    [sym_token_type_cisco_interface_cellular] = ACTIONS(182),
+    [sym_token_type_cisco_interface_dialer] = ACTIONS(182),
+    [sym_token_type_cisco_interface_ethernet] = ACTIONS(182),
+    [sym_token_type_cisco_interface_loopback] = ACTIONS(182),
+    [sym_token_type_cisco_interface_management] = ACTIONS(182),
+    [sym_token_type_cisco_interface_null] = ACTIONS(182),
+    [sym_token_type_cisco_interface_nvi] = ACTIONS(182),
+    [sym_token_type_cisco_interface_port_channel] = ACTIONS(182),
+    [sym_token_type_cisco_interface_serial] = ACTIONS(182),
+    [sym_token_type_cisco_interface_tunnel] = ACTIONS(182),
+    [sym_token_type_cisco_interface_vasileft] = ACTIONS(182),
+    [sym_token_type_cisco_interface_vasiright] = ACTIONS(182),
+    [sym_token_type_cisco_interface_virtual_template] = ACTIONS(182),
+    [sym_token_type_cisco_interface_vlan] = ACTIONS(182),
+    [sym_token_type_cisco_interface_vmi] = ACTIONS(182),
+    [sym_token_type_cisco_interface_wireless] = ACTIONS(182),
+    [sym_token_number_cisco_address_ipv4_cidr] = ACTIONS(182),
+    [sym_token_number_cisco_address_ipv4] = ACTIONS(182),
+    [sym_token_number_cisco_address_ipv6_condensed] = ACTIONS(182),
+    [sym_token_number_cisco_address_ipv6_full] = ACTIONS(182),
+    [sym_token_number_cisco_address_mac] = ACTIONS(182),
+    [sym_prompt] = ACTIONS(180),
+    [sym__newline] = ACTIONS(180),
+    [sym__definition_start] = ACTIONS(180),
+    [sym__ordinary_start] = ACTIONS(180),
+    [sym__bgp_start] = ACTIONS(180),
+    [sym__address_family_start] = ACTIONS(180),
   },
 };
 
 static const uint16_t ts_small_parse_table[] = {
-  [0] = 2,
-    ACTIONS(114), 8,
-      sym_prompt,
-      sym__newline,
-      sym__definition_start,
-      sym__ordinary_start,
-      sym__bgp_start,
-      sym__address_family_start,
-      ts_builtin_sym_end,
-      sym_quoted_string,
-    ACTIONS(116), 32,
-      sym__keyword_interface,
-      sym__keyword_router,
-      sym__keyword_address_family,
-      sym_text_keyword,
-      sym__trailing_comment,
-      sym_token_type_cisco_interface_app_gigabitethernet,
-      sym_token_type_cisco_interface_async,
-      sym_token_type_cisco_interface_bdi,
-      sym_token_type_cisco_interface_bri,
-      sym_token_type_cisco_interface_bvi,
-      sym_token_type_cisco_interface_cellular,
-      sym_token_type_cisco_interface_dialer,
-      sym_token_type_cisco_interface_ethernet,
-      sym_token_type_cisco_interface_loopback,
-      sym_token_type_cisco_interface_management,
-      sym_token_type_cisco_interface_null,
-      sym_token_type_cisco_interface_nvi,
-      sym_token_type_cisco_interface_port_channel,
-      sym_token_type_cisco_interface_serial,
-      sym_token_type_cisco_interface_tunnel,
-      sym_token_type_cisco_interface_vasileft,
-      sym_token_type_cisco_interface_vasiright,
-      sym_token_type_cisco_interface_virtual_template,
-      sym_token_type_cisco_interface_vlan,
-      sym_token_type_cisco_interface_vmi,
-      sym_token_type_cisco_interface_wireless,
-      sym_token_number_cisco_address_ipv4_cidr,
-      sym_token_number_cisco_address_ipv4,
-      sym_token_number_cisco_address_ipv6_condensed,
-      sym_token_number_cisco_address_ipv6_full,
-      sym_token_number_cisco_address_mac,
-      sym_word,
-  [45] = 7,
-    ACTIONS(120), 1,
-      sym_word,
-    ACTIONS(122), 1,
-      sym__trailing_comment,
-    STATE(23), 1,
-      sym__cisco_atom,
-    STATE(31), 2,
-      sym__cisco_interface_token,
-      sym__cisco_address_token,
-    ACTIONS(126), 5,
-      sym_token_number_cisco_address_ipv4_cidr,
-      sym_token_number_cisco_address_ipv4,
-      sym_token_number_cisco_address_ipv6_condensed,
-      sym_token_number_cisco_address_ipv6_full,
-      sym_token_number_cisco_address_mac,
-    ACTIONS(118), 7,
-      sym_prompt,
-      sym__newline,
-      sym__definition_start,
-      sym__ordinary_start,
-      sym__bgp_start,
-      sym__address_family_start,
-      ts_builtin_sym_end,
-    ACTIONS(124), 21,
-      sym_token_type_cisco_interface_app_gigabitethernet,
-      sym_token_type_cisco_interface_async,
-      sym_token_type_cisco_interface_bdi,
-      sym_token_type_cisco_interface_bri,
-      sym_token_type_cisco_interface_bvi,
-      sym_token_type_cisco_interface_cellular,
-      sym_token_type_cisco_interface_dialer,
-      sym_token_type_cisco_interface_ethernet,
-      sym_token_type_cisco_interface_loopback,
-      sym_token_type_cisco_interface_management,
-      sym_token_type_cisco_interface_null,
-      sym_token_type_cisco_interface_nvi,
-      sym_token_type_cisco_interface_port_channel,
-      sym_token_type_cisco_interface_serial,
-      sym_token_type_cisco_interface_tunnel,
-      sym_token_type_cisco_interface_vasileft,
-      sym_token_type_cisco_interface_vasiright,
-      sym_token_type_cisco_interface_virtual_template,
-      sym_token_type_cisco_interface_vlan,
-      sym_token_type_cisco_interface_vmi,
-      sym_token_type_cisco_interface_wireless,
-  [98] = 7,
-    ACTIONS(17), 1,
-      sym_word,
-    ACTIONS(130), 1,
-      sym__trailing_comment,
-    STATE(12), 1,
-      sym__cisco_atom,
-    STATE(24), 2,
-      sym__cisco_interface_token,
-      sym__cisco_address_token,
-    ACTIONS(35), 5,
-      sym_token_number_cisco_address_ipv4_cidr,
-      sym_token_number_cisco_address_ipv4,
-      sym_token_number_cisco_address_ipv6_condensed,
-      sym_token_number_cisco_address_ipv6_full,
-      sym_token_number_cisco_address_mac,
-    ACTIONS(128), 7,
-      sym_prompt,
-      sym__newline,
-      sym__definition_start,
-      sym__ordinary_start,
-      sym__bgp_start,
-      sym__address_family_start,
-      ts_builtin_sym_end,
-    ACTIONS(33), 21,
-      sym_token_type_cisco_interface_app_gigabitethernet,
-      sym_token_type_cisco_interface_async,
-      sym_token_type_cisco_interface_bdi,
-      sym_token_type_cisco_interface_bri,
-      sym_token_type_cisco_interface_bvi,
-      sym_token_type_cisco_interface_cellular,
-      sym_token_type_cisco_interface_dialer,
-      sym_token_type_cisco_interface_ethernet,
-      sym_token_type_cisco_interface_loopback,
-      sym_token_type_cisco_interface_management,
-      sym_token_type_cisco_interface_null,
-      sym_token_type_cisco_interface_nvi,
-      sym_token_type_cisco_interface_port_channel,
-      sym_token_type_cisco_interface_serial,
-      sym_token_type_cisco_interface_tunnel,
-      sym_token_type_cisco_interface_vasileft,
-      sym_token_type_cisco_interface_vasiright,
-      sym_token_type_cisco_interface_virtual_template,
-      sym_token_type_cisco_interface_vlan,
-      sym_token_type_cisco_interface_vmi,
-      sym_token_type_cisco_interface_wireless,
-  [151] = 3,
-    ACTIONS(136), 1,
-      sym_text_value,
-    ACTIONS(132), 8,
-      sym_prompt,
-      sym__newline,
-      sym__definition_start,
-      sym__ordinary_start,
-      sym__bgp_start,
-      sym__address_family_start,
-      ts_builtin_sym_end,
-      sym_quoted_string,
-    ACTIONS(134), 29,
-      sym_text_keyword,
-      sym__trailing_comment,
-      sym_token_type_cisco_interface_app_gigabitethernet,
-      sym_token_type_cisco_interface_async,
-      sym_token_type_cisco_interface_bdi,
-      sym_token_type_cisco_interface_bri,
-      sym_token_type_cisco_interface_bvi,
-      sym_token_type_cisco_interface_cellular,
-      sym_token_type_cisco_interface_dialer,
-      sym_token_type_cisco_interface_ethernet,
-      sym_token_type_cisco_interface_loopback,
-      sym_token_type_cisco_interface_management,
-      sym_token_type_cisco_interface_null,
-      sym_token_type_cisco_interface_nvi,
-      sym_token_type_cisco_interface_port_channel,
-      sym_token_type_cisco_interface_serial,
-      sym_token_type_cisco_interface_tunnel,
-      sym_token_type_cisco_interface_vasileft,
-      sym_token_type_cisco_interface_vasiright,
-      sym_token_type_cisco_interface_virtual_template,
-      sym_token_type_cisco_interface_vlan,
-      sym_token_type_cisco_interface_vmi,
-      sym_token_type_cisco_interface_wireless,
-      sym_token_number_cisco_address_ipv4_cidr,
-      sym_token_number_cisco_address_ipv4,
-      sym_token_number_cisco_address_ipv6_condensed,
-      sym_token_number_cisco_address_ipv6_full,
-      sym_token_number_cisco_address_mac,
-      sym_word,
-  [196] = 7,
-    ACTIONS(17), 1,
-      sym_word,
-    ACTIONS(140), 1,
-      sym__trailing_comment,
-    STATE(10), 1,
-      sym__cisco_atom,
-    STATE(24), 2,
-      sym__cisco_interface_token,
-      sym__cisco_address_token,
-    ACTIONS(35), 5,
-      sym_token_number_cisco_address_ipv4_cidr,
-      sym_token_number_cisco_address_ipv4,
-      sym_token_number_cisco_address_ipv6_condensed,
-      sym_token_number_cisco_address_ipv6_full,
-      sym_token_number_cisco_address_mac,
-    ACTIONS(138), 7,
-      sym_prompt,
-      sym__newline,
-      sym__definition_start,
-      sym__ordinary_start,
-      sym__bgp_start,
-      sym__address_family_start,
-      ts_builtin_sym_end,
-    ACTIONS(33), 21,
-      sym_token_type_cisco_interface_app_gigabitethernet,
-      sym_token_type_cisco_interface_async,
-      sym_token_type_cisco_interface_bdi,
-      sym_token_type_cisco_interface_bri,
-      sym_token_type_cisco_interface_bvi,
-      sym_token_type_cisco_interface_cellular,
-      sym_token_type_cisco_interface_dialer,
-      sym_token_type_cisco_interface_ethernet,
-      sym_token_type_cisco_interface_loopback,
-      sym_token_type_cisco_interface_management,
-      sym_token_type_cisco_interface_null,
-      sym_token_type_cisco_interface_nvi,
-      sym_token_type_cisco_interface_port_channel,
-      sym_token_type_cisco_interface_serial,
-      sym_token_type_cisco_interface_tunnel,
-      sym_token_type_cisco_interface_vasileft,
-      sym_token_type_cisco_interface_vasiright,
-      sym_token_type_cisco_interface_virtual_template,
-      sym_token_type_cisco_interface_vlan,
-      sym_token_type_cisco_interface_vmi,
-      sym_token_type_cisco_interface_wireless,
-  [249] = 7,
-    ACTIONS(17), 1,
-      sym_word,
-    ACTIONS(144), 1,
-      sym__trailing_comment,
-    STATE(16), 1,
-      sym__cisco_atom,
-    STATE(24), 2,
-      sym__cisco_interface_token,
-      sym__cisco_address_token,
-    ACTIONS(35), 5,
-      sym_token_number_cisco_address_ipv4_cidr,
-      sym_token_number_cisco_address_ipv4,
-      sym_token_number_cisco_address_ipv6_condensed,
-      sym_token_number_cisco_address_ipv6_full,
-      sym_token_number_cisco_address_mac,
-    ACTIONS(142), 7,
-      sym_prompt,
-      sym__newline,
-      sym__definition_start,
-      sym__ordinary_start,
-      sym__bgp_start,
-      sym__address_family_start,
-      ts_builtin_sym_end,
-    ACTIONS(33), 21,
-      sym_token_type_cisco_interface_app_gigabitethernet,
-      sym_token_type_cisco_interface_async,
-      sym_token_type_cisco_interface_bdi,
-      sym_token_type_cisco_interface_bri,
-      sym_token_type_cisco_interface_bvi,
-      sym_token_type_cisco_interface_cellular,
-      sym_token_type_cisco_interface_dialer,
-      sym_token_type_cisco_interface_ethernet,
-      sym_token_type_cisco_interface_loopback,
-      sym_token_type_cisco_interface_management,
-      sym_token_type_cisco_interface_null,
-      sym_token_type_cisco_interface_nvi,
-      sym_token_type_cisco_interface_port_channel,
-      sym_token_type_cisco_interface_serial,
-      sym_token_type_cisco_interface_tunnel,
-      sym_token_type_cisco_interface_vasileft,
-      sym_token_type_cisco_interface_vasiright,
-      sym_token_type_cisco_interface_virtual_template,
-      sym_token_type_cisco_interface_vlan,
-      sym_token_type_cisco_interface_vmi,
-      sym_token_type_cisco_interface_wireless,
-  [302] = 2,
-    ACTIONS(146), 8,
-      sym_prompt,
-      sym__newline,
-      sym__definition_start,
-      sym__ordinary_start,
-      sym__bgp_start,
-      sym__address_family_start,
-      ts_builtin_sym_end,
-      sym_quoted_string,
-    ACTIONS(148), 29,
-      sym_text_keyword,
-      sym__trailing_comment,
-      sym_token_type_cisco_interface_app_gigabitethernet,
-      sym_token_type_cisco_interface_async,
-      sym_token_type_cisco_interface_bdi,
-      sym_token_type_cisco_interface_bri,
-      sym_token_type_cisco_interface_bvi,
-      sym_token_type_cisco_interface_cellular,
-      sym_token_type_cisco_interface_dialer,
-      sym_token_type_cisco_interface_ethernet,
-      sym_token_type_cisco_interface_loopback,
-      sym_token_type_cisco_interface_management,
-      sym_token_type_cisco_interface_null,
-      sym_token_type_cisco_interface_nvi,
-      sym_token_type_cisco_interface_port_channel,
-      sym_token_type_cisco_interface_serial,
-      sym_token_type_cisco_interface_tunnel,
-      sym_token_type_cisco_interface_vasileft,
-      sym_token_type_cisco_interface_vasiright,
-      sym_token_type_cisco_interface_virtual_template,
-      sym_token_type_cisco_interface_vlan,
-      sym_token_type_cisco_interface_vmi,
-      sym_token_type_cisco_interface_wireless,
-      sym_token_number_cisco_address_ipv4_cidr,
-      sym_token_number_cisco_address_ipv4,
-      sym_token_number_cisco_address_ipv6_condensed,
-      sym_token_number_cisco_address_ipv6_full,
-      sym_token_number_cisco_address_mac,
-      sym_word,
-  [344] = 2,
-    ACTIONS(150), 8,
-      sym_prompt,
-      sym__newline,
-      sym__definition_start,
-      sym__ordinary_start,
-      sym__bgp_start,
-      sym__address_family_start,
-      ts_builtin_sym_end,
-      sym_quoted_string,
-    ACTIONS(152), 29,
-      sym_text_keyword,
-      sym__trailing_comment,
-      sym_token_type_cisco_interface_app_gigabitethernet,
-      sym_token_type_cisco_interface_async,
-      sym_token_type_cisco_interface_bdi,
-      sym_token_type_cisco_interface_bri,
-      sym_token_type_cisco_interface_bvi,
-      sym_token_type_cisco_interface_cellular,
-      sym_token_type_cisco_interface_dialer,
-      sym_token_type_cisco_interface_ethernet,
-      sym_token_type_cisco_interface_loopback,
-      sym_token_type_cisco_interface_management,
-      sym_token_type_cisco_interface_null,
-      sym_token_type_cisco_interface_nvi,
-      sym_token_type_cisco_interface_port_channel,
-      sym_token_type_cisco_interface_serial,
-      sym_token_type_cisco_interface_tunnel,
-      sym_token_type_cisco_interface_vasileft,
-      sym_token_type_cisco_interface_vasiright,
-      sym_token_type_cisco_interface_virtual_template,
-      sym_token_type_cisco_interface_vlan,
-      sym_token_type_cisco_interface_vmi,
-      sym_token_type_cisco_interface_wireless,
-      sym_token_number_cisco_address_ipv4_cidr,
-      sym_token_number_cisco_address_ipv4,
-      sym_token_number_cisco_address_ipv6_condensed,
-      sym_token_number_cisco_address_ipv6_full,
-      sym_token_number_cisco_address_mac,
-      sym_word,
-  [386] = 2,
-    ACTIONS(154), 8,
-      sym_prompt,
-      sym__newline,
-      sym__definition_start,
-      sym__ordinary_start,
-      sym__bgp_start,
-      sym__address_family_start,
-      ts_builtin_sym_end,
-      sym_quoted_string,
-    ACTIONS(156), 29,
-      sym_text_keyword,
-      sym__trailing_comment,
-      sym_token_type_cisco_interface_app_gigabitethernet,
-      sym_token_type_cisco_interface_async,
-      sym_token_type_cisco_interface_bdi,
-      sym_token_type_cisco_interface_bri,
-      sym_token_type_cisco_interface_bvi,
-      sym_token_type_cisco_interface_cellular,
-      sym_token_type_cisco_interface_dialer,
-      sym_token_type_cisco_interface_ethernet,
-      sym_token_type_cisco_interface_loopback,
-      sym_token_type_cisco_interface_management,
-      sym_token_type_cisco_interface_null,
-      sym_token_type_cisco_interface_nvi,
-      sym_token_type_cisco_interface_port_channel,
-      sym_token_type_cisco_interface_serial,
-      sym_token_type_cisco_interface_tunnel,
-      sym_token_type_cisco_interface_vasileft,
-      sym_token_type_cisco_interface_vasiright,
-      sym_token_type_cisco_interface_virtual_template,
-      sym_token_type_cisco_interface_vlan,
-      sym_token_type_cisco_interface_vmi,
-      sym_token_type_cisco_interface_wireless,
-      sym_token_number_cisco_address_ipv4_cidr,
-      sym_token_number_cisco_address_ipv4,
-      sym_token_number_cisco_address_ipv6_condensed,
-      sym_token_number_cisco_address_ipv6_full,
-      sym_token_number_cisco_address_mac,
-      sym_word,
-  [428] = 2,
-    ACTIONS(158), 8,
-      sym_prompt,
-      sym__newline,
-      sym__definition_start,
-      sym__ordinary_start,
-      sym__bgp_start,
-      sym__address_family_start,
-      ts_builtin_sym_end,
-      sym_quoted_string,
-    ACTIONS(160), 29,
-      sym_text_keyword,
-      sym__trailing_comment,
-      sym_token_type_cisco_interface_app_gigabitethernet,
-      sym_token_type_cisco_interface_async,
-      sym_token_type_cisco_interface_bdi,
-      sym_token_type_cisco_interface_bri,
-      sym_token_type_cisco_interface_bvi,
-      sym_token_type_cisco_interface_cellular,
-      sym_token_type_cisco_interface_dialer,
-      sym_token_type_cisco_interface_ethernet,
-      sym_token_type_cisco_interface_loopback,
-      sym_token_type_cisco_interface_management,
-      sym_token_type_cisco_interface_null,
-      sym_token_type_cisco_interface_nvi,
-      sym_token_type_cisco_interface_port_channel,
-      sym_token_type_cisco_interface_serial,
-      sym_token_type_cisco_interface_tunnel,
-      sym_token_type_cisco_interface_vasileft,
-      sym_token_type_cisco_interface_vasiright,
-      sym_token_type_cisco_interface_virtual_template,
-      sym_token_type_cisco_interface_vlan,
-      sym_token_type_cisco_interface_vmi,
-      sym_token_type_cisco_interface_wireless,
-      sym_token_number_cisco_address_ipv4_cidr,
-      sym_token_number_cisco_address_ipv4,
-      sym_token_number_cisco_address_ipv6_condensed,
-      sym_token_number_cisco_address_ipv6_full,
-      sym_token_number_cisco_address_mac,
-      sym_word,
-  [470] = 2,
-    ACTIONS(162), 8,
-      sym_prompt,
-      sym__newline,
-      sym__definition_start,
-      sym__ordinary_start,
-      sym__bgp_start,
-      sym__address_family_start,
-      ts_builtin_sym_end,
-      sym_quoted_string,
-    ACTIONS(164), 29,
-      sym_text_keyword,
-      sym__trailing_comment,
-      sym_token_type_cisco_interface_app_gigabitethernet,
-      sym_token_type_cisco_interface_async,
-      sym_token_type_cisco_interface_bdi,
-      sym_token_type_cisco_interface_bri,
-      sym_token_type_cisco_interface_bvi,
-      sym_token_type_cisco_interface_cellular,
-      sym_token_type_cisco_interface_dialer,
-      sym_token_type_cisco_interface_ethernet,
-      sym_token_type_cisco_interface_loopback,
-      sym_token_type_cisco_interface_management,
-      sym_token_type_cisco_interface_null,
-      sym_token_type_cisco_interface_nvi,
-      sym_token_type_cisco_interface_port_channel,
-      sym_token_type_cisco_interface_serial,
-      sym_token_type_cisco_interface_tunnel,
-      sym_token_type_cisco_interface_vasileft,
-      sym_token_type_cisco_interface_vasiright,
-      sym_token_type_cisco_interface_virtual_template,
-      sym_token_type_cisco_interface_vlan,
-      sym_token_type_cisco_interface_vmi,
-      sym_token_type_cisco_interface_wireless,
-      sym_token_number_cisco_address_ipv4_cidr,
-      sym_token_number_cisco_address_ipv4,
-      sym_token_number_cisco_address_ipv6_condensed,
-      sym_token_number_cisco_address_ipv6_full,
-      sym_token_number_cisco_address_mac,
-      sym_word,
-  [512] = 2,
-    ACTIONS(150), 7,
-      sym_prompt,
-      sym__newline,
-      sym__definition_start,
-      sym__ordinary_start,
-      sym__bgp_start,
-      sym__address_family_start,
-      ts_builtin_sym_end,
-    ACTIONS(152), 28,
-      sym__trailing_comment,
-      sym_token_type_cisco_interface_app_gigabitethernet,
-      sym_token_type_cisco_interface_async,
-      sym_token_type_cisco_interface_bdi,
-      sym_token_type_cisco_interface_bri,
-      sym_token_type_cisco_interface_bvi,
-      sym_token_type_cisco_interface_cellular,
-      sym_token_type_cisco_interface_dialer,
-      sym_token_type_cisco_interface_ethernet,
-      sym_token_type_cisco_interface_loopback,
-      sym_token_type_cisco_interface_management,
-      sym_token_type_cisco_interface_null,
-      sym_token_type_cisco_interface_nvi,
-      sym_token_type_cisco_interface_port_channel,
-      sym_token_type_cisco_interface_serial,
-      sym_token_type_cisco_interface_tunnel,
-      sym_token_type_cisco_interface_vasileft,
-      sym_token_type_cisco_interface_vasiright,
-      sym_token_type_cisco_interface_virtual_template,
-      sym_token_type_cisco_interface_vlan,
-      sym_token_type_cisco_interface_vmi,
-      sym_token_type_cisco_interface_wireless,
-      sym_token_number_cisco_address_ipv4_cidr,
-      sym_token_number_cisco_address_ipv4,
-      sym_token_number_cisco_address_ipv6_condensed,
-      sym_token_number_cisco_address_ipv6_full,
-      sym_token_number_cisco_address_mac,
-      sym_word,
-  [552] = 2,
-    ACTIONS(154), 7,
-      sym_prompt,
-      sym__newline,
-      sym__definition_start,
-      sym__ordinary_start,
-      sym__bgp_start,
-      sym__address_family_start,
-      ts_builtin_sym_end,
-    ACTIONS(156), 28,
-      sym__trailing_comment,
-      sym_token_type_cisco_interface_app_gigabitethernet,
-      sym_token_type_cisco_interface_async,
-      sym_token_type_cisco_interface_bdi,
-      sym_token_type_cisco_interface_bri,
-      sym_token_type_cisco_interface_bvi,
-      sym_token_type_cisco_interface_cellular,
-      sym_token_type_cisco_interface_dialer,
-      sym_token_type_cisco_interface_ethernet,
-      sym_token_type_cisco_interface_loopback,
-      sym_token_type_cisco_interface_management,
-      sym_token_type_cisco_interface_null,
-      sym_token_type_cisco_interface_nvi,
-      sym_token_type_cisco_interface_port_channel,
-      sym_token_type_cisco_interface_serial,
-      sym_token_type_cisco_interface_tunnel,
-      sym_token_type_cisco_interface_vasileft,
-      sym_token_type_cisco_interface_vasiright,
-      sym_token_type_cisco_interface_virtual_template,
-      sym_token_type_cisco_interface_vlan,
-      sym_token_type_cisco_interface_vmi,
-      sym_token_type_cisco_interface_wireless,
-      sym_token_number_cisco_address_ipv4_cidr,
-      sym_token_number_cisco_address_ipv4,
-      sym_token_number_cisco_address_ipv6_condensed,
-      sym_token_number_cisco_address_ipv6_full,
-      sym_token_number_cisco_address_mac,
-      sym_word,
-  [592] = 2,
-    ACTIONS(146), 7,
-      sym_prompt,
-      sym__newline,
-      sym__definition_start,
-      sym__ordinary_start,
-      sym__bgp_start,
-      sym__address_family_start,
-      ts_builtin_sym_end,
-    ACTIONS(148), 28,
-      sym__trailing_comment,
-      sym_token_type_cisco_interface_app_gigabitethernet,
-      sym_token_type_cisco_interface_async,
-      sym_token_type_cisco_interface_bdi,
-      sym_token_type_cisco_interface_bri,
-      sym_token_type_cisco_interface_bvi,
-      sym_token_type_cisco_interface_cellular,
-      sym_token_type_cisco_interface_dialer,
-      sym_token_type_cisco_interface_ethernet,
-      sym_token_type_cisco_interface_loopback,
-      sym_token_type_cisco_interface_management,
-      sym_token_type_cisco_interface_null,
-      sym_token_type_cisco_interface_nvi,
-      sym_token_type_cisco_interface_port_channel,
-      sym_token_type_cisco_interface_serial,
-      sym_token_type_cisco_interface_tunnel,
-      sym_token_type_cisco_interface_vasileft,
-      sym_token_type_cisco_interface_vasiright,
-      sym_token_type_cisco_interface_virtual_template,
-      sym_token_type_cisco_interface_vlan,
-      sym_token_type_cisco_interface_vmi,
-      sym_token_type_cisco_interface_wireless,
-      sym_token_number_cisco_address_ipv4_cidr,
-      sym_token_number_cisco_address_ipv4,
-      sym_token_number_cisco_address_ipv6_condensed,
-      sym_token_number_cisco_address_ipv6_full,
-      sym_token_number_cisco_address_mac,
-      sym_word,
-  [632] = 12,
+  [0] = 12,
     ACTIONS(5), 1,
       sym_prompt,
     ACTIONS(7), 1,
@@ -10987,19 +15308,19 @@ static const uint16_t ts_small_parse_table[] = {
       sym__bgp_start,
     ACTIONS(13), 1,
       sym__address_family_start,
-    ACTIONS(166), 1,
+    ACTIONS(192), 1,
       ts_builtin_sym_end,
-    STATE(34), 1,
+    STATE(38), 1,
       sym_prompt_record,
-    STATE(40), 1,
-      sym_bgp_definition_line,
-    STATE(42), 1,
+    STATE(44), 1,
       sym_definition_line,
-    STATE(52), 1,
+    STATE(46), 1,
+      sym_bgp_definition_line,
+    STATE(54), 1,
       sym_prompt_line,
-    STATE(68), 1,
+    STATE(74), 1,
       sym_address_family_definition_line,
-    STATE(33), 7,
+    STATE(37), 7,
       sym_prompt_block,
       sym_top_level_line,
       sym_orphan_child_line,
@@ -11007,281 +15328,280 @@ static const uint16_t ts_small_parse_table[] = {
       sym_simple_definition,
       sym_bgp_definition,
       aux_sym_source_file_repeat1,
-  [675] = 12,
-    ACTIONS(168), 1,
+  [43] = 12,
+    ACTIONS(194), 1,
       ts_builtin_sym_end,
-    ACTIONS(170), 1,
-      sym_prompt,
-    ACTIONS(173), 1,
-      sym__definition_start,
-    ACTIONS(176), 1,
-      sym__ordinary_start,
-    ACTIONS(179), 1,
-      sym__bgp_start,
-    ACTIONS(182), 1,
-      sym__address_family_start,
-    STATE(34), 1,
-      sym_prompt_record,
-    STATE(40), 1,
-      sym_bgp_definition_line,
-    STATE(42), 1,
-      sym_definition_line,
-    STATE(52), 1,
-      sym_prompt_line,
-    STATE(68), 1,
-      sym_address_family_definition_line,
-    STATE(33), 7,
-      sym_prompt_block,
-      sym_top_level_line,
-      sym_orphan_child_line,
-      sym__definition,
-      sym_simple_definition,
-      sym_bgp_definition,
-      aux_sym_source_file_repeat1,
-  [718] = 10,
-    ACTIONS(7), 1,
-      sym__definition_start,
-    ACTIONS(11), 1,
-      sym__bgp_start,
-    ACTIONS(13), 1,
-      sym__address_family_start,
-    ACTIONS(187), 1,
-      sym__ordinary_start,
-    STATE(40), 1,
-      sym_bgp_definition_line,
-    STATE(42), 1,
-      sym_definition_line,
-    STATE(68), 1,
-      sym_address_family_definition_line,
-    ACTIONS(185), 2,
-      sym_prompt,
-      ts_builtin_sym_end,
-    STATE(69), 2,
-      sym_ordinary_line,
-      sym_orphan_child_line,
-    STATE(35), 5,
-      sym_prompt_body_line,
-      sym__definition,
-      sym_simple_definition,
-      sym_bgp_definition,
-      aux_sym_prompt_block_repeat1,
-  [755] = 10,
-    ACTIONS(7), 1,
-      sym__definition_start,
-    ACTIONS(11), 1,
-      sym__bgp_start,
-    ACTIONS(13), 1,
-      sym__address_family_start,
-    ACTIONS(187), 1,
-      sym__ordinary_start,
-    STATE(40), 1,
-      sym_bgp_definition_line,
-    STATE(42), 1,
-      sym_definition_line,
-    STATE(68), 1,
-      sym_address_family_definition_line,
-    ACTIONS(189), 2,
-      sym_prompt,
-      ts_builtin_sym_end,
-    STATE(69), 2,
-      sym_ordinary_line,
-      sym_orphan_child_line,
-    STATE(36), 5,
-      sym_prompt_body_line,
-      sym__definition,
-      sym_simple_definition,
-      sym_bgp_definition,
-      aux_sym_prompt_block_repeat1,
-  [792] = 10,
-    ACTIONS(193), 1,
-      sym__definition_start,
     ACTIONS(196), 1,
-      sym__ordinary_start,
+      sym_prompt,
     ACTIONS(199), 1,
-      sym__bgp_start,
+      sym__definition_start,
     ACTIONS(202), 1,
+      sym__ordinary_start,
+    ACTIONS(205), 1,
+      sym__bgp_start,
+    ACTIONS(208), 1,
       sym__address_family_start,
-    STATE(40), 1,
-      sym_bgp_definition_line,
-    STATE(42), 1,
+    STATE(38), 1,
+      sym_prompt_record,
+    STATE(44), 1,
       sym_definition_line,
-    STATE(68), 1,
+    STATE(46), 1,
+      sym_bgp_definition_line,
+    STATE(54), 1,
+      sym_prompt_line,
+    STATE(74), 1,
       sym_address_family_definition_line,
-    ACTIONS(191), 2,
+    STATE(37), 7,
+      sym_prompt_block,
+      sym_top_level_line,
+      sym_orphan_child_line,
+      sym__definition,
+      sym_simple_definition,
+      sym_bgp_definition,
+      aux_sym_source_file_repeat1,
+  [86] = 10,
+    ACTIONS(7), 1,
+      sym__definition_start,
+    ACTIONS(11), 1,
+      sym__bgp_start,
+    ACTIONS(13), 1,
+      sym__address_family_start,
+    ACTIONS(213), 1,
+      sym__ordinary_start,
+    STATE(44), 1,
+      sym_definition_line,
+    STATE(46), 1,
+      sym_bgp_definition_line,
+    STATE(74), 1,
+      sym_address_family_definition_line,
+    ACTIONS(211), 2,
       sym_prompt,
       ts_builtin_sym_end,
-    STATE(69), 2,
+    STATE(75), 2,
       sym_ordinary_line,
       sym_orphan_child_line,
-    STATE(36), 5,
+    STATE(39), 5,
       sym_prompt_body_line,
       sym__definition,
       sym_simple_definition,
       sym_bgp_definition,
       aux_sym_prompt_block_repeat1,
-  [829] = 6,
+  [123] = 10,
+    ACTIONS(7), 1,
+      sym__definition_start,
+    ACTIONS(11), 1,
+      sym__bgp_start,
     ACTIONS(13), 1,
       sym__address_family_start,
-    ACTIONS(187), 1,
+    ACTIONS(213), 1,
       sym__ordinary_start,
-    STATE(43), 1,
-      sym_address_family_definition_line,
+    STATE(44), 1,
+      sym_definition_line,
+    STATE(46), 1,
+      sym_bgp_definition_line,
     STATE(74), 1,
+      sym_address_family_definition_line,
+    ACTIONS(215), 2,
+      sym_prompt,
+      ts_builtin_sym_end,
+    STATE(75), 2,
       sym_ordinary_line,
-    STATE(39), 3,
+      sym_orphan_child_line,
+    STATE(40), 5,
+      sym_prompt_body_line,
+      sym__definition,
+      sym_simple_definition,
+      sym_bgp_definition,
+      aux_sym_prompt_block_repeat1,
+  [160] = 10,
+    ACTIONS(219), 1,
+      sym__definition_start,
+    ACTIONS(222), 1,
+      sym__ordinary_start,
+    ACTIONS(225), 1,
+      sym__bgp_start,
+    ACTIONS(228), 1,
+      sym__address_family_start,
+    STATE(44), 1,
+      sym_definition_line,
+    STATE(46), 1,
+      sym_bgp_definition_line,
+    STATE(74), 1,
+      sym_address_family_definition_line,
+    ACTIONS(217), 2,
+      sym_prompt,
+      ts_builtin_sym_end,
+    STATE(75), 2,
+      sym_ordinary_line,
+      sym_orphan_child_line,
+    STATE(40), 5,
+      sym_prompt_body_line,
+      sym__definition,
+      sym_simple_definition,
+      sym_bgp_definition,
+      aux_sym_prompt_block_repeat1,
+  [197] = 6,
+    ACTIONS(13), 1,
+      sym__address_family_start,
+    ACTIONS(213), 1,
+      sym__ordinary_start,
+    STATE(47), 1,
+      sym_address_family_definition_line,
+    STATE(73), 1,
+      sym_ordinary_line,
+    STATE(43), 3,
       sym_bgp_body_line,
       sym_address_family_definition,
       aux_sym_bgp_definition_repeat1,
-    ACTIONS(205), 4,
+    ACTIONS(231), 4,
       sym_prompt,
       sym__definition_start,
       sym__bgp_start,
       ts_builtin_sym_end,
-  [853] = 6,
-    ACTIONS(209), 1,
-      sym__ordinary_start,
-    ACTIONS(212), 1,
+  [221] = 6,
+    ACTIONS(13), 1,
       sym__address_family_start,
-    STATE(68), 1,
-      sym_address_family_definition_line,
-    STATE(38), 2,
-      sym_definition_body_line,
-      aux_sym_simple_definition_repeat1,
-    STATE(72), 2,
-      sym_ordinary_line,
-      sym_orphan_child_line,
-    ACTIONS(207), 4,
-      sym_prompt,
-      sym__definition_start,
-      sym__bgp_start,
-      ts_builtin_sym_end,
-  [877] = 6,
-    ACTIONS(217), 1,
+    ACTIONS(213), 1,
       sym__ordinary_start,
-    ACTIONS(220), 1,
-      sym__address_family_start,
-    STATE(43), 1,
-      sym_address_family_definition_line,
     STATE(74), 1,
-      sym_ordinary_line,
-    STATE(39), 3,
-      sym_bgp_body_line,
-      sym_address_family_definition,
-      aux_sym_bgp_definition_repeat1,
-    ACTIONS(215), 4,
-      sym_prompt,
-      sym__definition_start,
-      sym__bgp_start,
-      ts_builtin_sym_end,
-  [901] = 6,
-    ACTIONS(13), 1,
-      sym__address_family_start,
-    ACTIONS(187), 1,
-      sym__ordinary_start,
-    STATE(43), 1,
       sym_address_family_definition_line,
-    STATE(74), 1,
-      sym_ordinary_line,
-    STATE(37), 3,
-      sym_bgp_body_line,
-      sym_address_family_definition,
-      aux_sym_bgp_definition_repeat1,
-    ACTIONS(223), 4,
-      sym_prompt,
-      sym__definition_start,
-      sym__bgp_start,
-      ts_builtin_sym_end,
-  [925] = 6,
-    ACTIONS(13), 1,
-      sym__address_family_start,
-    ACTIONS(187), 1,
-      sym__ordinary_start,
-    STATE(68), 1,
-      sym_address_family_definition_line,
-    STATE(38), 2,
-      sym_definition_body_line,
-      aux_sym_simple_definition_repeat1,
-    STATE(72), 2,
-      sym_ordinary_line,
-      sym_orphan_child_line,
-    ACTIONS(225), 4,
-      sym_prompt,
-      sym__definition_start,
-      sym__bgp_start,
-      ts_builtin_sym_end,
-  [949] = 6,
-    ACTIONS(13), 1,
-      sym__address_family_start,
-    ACTIONS(187), 1,
-      sym__ordinary_start,
-    STATE(68), 1,
-      sym_address_family_definition_line,
-    STATE(41), 2,
-      sym_definition_body_line,
-      aux_sym_simple_definition_repeat1,
-    STATE(72), 2,
-      sym_ordinary_line,
-      sym_orphan_child_line,
-    ACTIONS(227), 4,
-      sym_prompt,
-      sym__definition_start,
-      sym__bgp_start,
-      ts_builtin_sym_end,
-  [973] = 4,
-    ACTIONS(187), 1,
-      sym__ordinary_start,
-    STATE(70), 1,
-      sym_ordinary_line,
-    STATE(44), 2,
-      sym_address_family_body_line,
-      aux_sym_address_family_definition_repeat1,
-    ACTIONS(229), 5,
-      sym_prompt,
-      sym__definition_start,
-      sym__bgp_start,
-      sym__address_family_start,
-      ts_builtin_sym_end,
-  [991] = 4,
-    ACTIONS(187), 1,
-      sym__ordinary_start,
-    STATE(70), 1,
-      sym_ordinary_line,
     STATE(45), 2,
-      sym_address_family_body_line,
-      aux_sym_address_family_definition_repeat1,
-    ACTIONS(231), 5,
-      sym_prompt,
-      sym__definition_start,
-      sym__bgp_start,
-      sym__address_family_start,
-      ts_builtin_sym_end,
-  [1009] = 4,
-    ACTIONS(235), 1,
-      sym__ordinary_start,
-    STATE(70), 1,
+      sym_definition_body_line,
+      aux_sym_simple_definition_repeat1,
+    STATE(78), 2,
       sym_ordinary_line,
-    STATE(45), 2,
-      sym_address_family_body_line,
-      aux_sym_address_family_definition_repeat1,
-    ACTIONS(233), 5,
+      sym_orphan_child_line,
+    ACTIONS(233), 4,
       sym_prompt,
       sym__definition_start,
       sym__bgp_start,
-      sym__address_family_start,
       ts_builtin_sym_end,
-  [1027] = 2,
+  [245] = 6,
+    ACTIONS(237), 1,
+      sym__ordinary_start,
     ACTIONS(240), 1,
+      sym__address_family_start,
+    STATE(47), 1,
+      sym_address_family_definition_line,
+    STATE(73), 1,
+      sym_ordinary_line,
+    STATE(43), 3,
+      sym_bgp_body_line,
+      sym_address_family_definition,
+      aux_sym_bgp_definition_repeat1,
+    ACTIONS(235), 4,
+      sym_prompt,
+      sym__definition_start,
+      sym__bgp_start,
+      ts_builtin_sym_end,
+  [269] = 6,
+    ACTIONS(13), 1,
+      sym__address_family_start,
+    ACTIONS(213), 1,
+      sym__ordinary_start,
+    STATE(74), 1,
+      sym_address_family_definition_line,
+    STATE(42), 2,
+      sym_definition_body_line,
+      aux_sym_simple_definition_repeat1,
+    STATE(78), 2,
+      sym_ordinary_line,
+      sym_orphan_child_line,
+    ACTIONS(243), 4,
+      sym_prompt,
+      sym__definition_start,
+      sym__bgp_start,
+      ts_builtin_sym_end,
+  [293] = 6,
+    ACTIONS(247), 1,
+      sym__ordinary_start,
+    ACTIONS(250), 1,
+      sym__address_family_start,
+    STATE(74), 1,
+      sym_address_family_definition_line,
+    STATE(45), 2,
+      sym_definition_body_line,
+      aux_sym_simple_definition_repeat1,
+    STATE(78), 2,
+      sym_ordinary_line,
+      sym_orphan_child_line,
+    ACTIONS(245), 4,
+      sym_prompt,
+      sym__definition_start,
+      sym__bgp_start,
+      ts_builtin_sym_end,
+  [317] = 6,
+    ACTIONS(13), 1,
+      sym__address_family_start,
+    ACTIONS(213), 1,
+      sym__ordinary_start,
+    STATE(47), 1,
+      sym_address_family_definition_line,
+    STATE(73), 1,
+      sym_ordinary_line,
+    STATE(41), 3,
+      sym_bgp_body_line,
+      sym_address_family_definition,
+      aux_sym_bgp_definition_repeat1,
+    ACTIONS(253), 4,
+      sym_prompt,
+      sym__definition_start,
+      sym__bgp_start,
+      ts_builtin_sym_end,
+  [341] = 4,
+    ACTIONS(213), 1,
+      sym__ordinary_start,
+    STATE(69), 1,
+      sym_ordinary_line,
+    STATE(48), 2,
+      sym_address_family_body_line,
+      aux_sym_address_family_definition_repeat1,
+    ACTIONS(255), 5,
+      sym_prompt,
+      sym__definition_start,
+      sym__bgp_start,
+      sym__address_family_start,
+      ts_builtin_sym_end,
+  [359] = 4,
+    ACTIONS(213), 1,
+      sym__ordinary_start,
+    STATE(69), 1,
+      sym_ordinary_line,
+    STATE(49), 2,
+      sym_address_family_body_line,
+      aux_sym_address_family_definition_repeat1,
+    ACTIONS(257), 5,
+      sym_prompt,
+      sym__definition_start,
+      sym__bgp_start,
+      sym__address_family_start,
+      ts_builtin_sym_end,
+  [377] = 4,
+    ACTIONS(261), 1,
+      sym__ordinary_start,
+    STATE(69), 1,
+      sym_ordinary_line,
+    STATE(49), 2,
+      sym_address_family_body_line,
+      aux_sym_address_family_definition_repeat1,
+    ACTIONS(259), 5,
+      sym_prompt,
+      sym__definition_start,
+      sym__bgp_start,
+      sym__address_family_start,
+      ts_builtin_sym_end,
+  [395] = 1,
+    ACTIONS(264), 8,
+      sym_prompt,
+      sym__newline,
+      sym__definition_start,
+      sym__ordinary_start,
+      sym__bgp_start,
+      sym__address_family_start,
+      ts_builtin_sym_end,
       sym__trailing_comment,
-    ACTIONS(238), 7,
-      sym_prompt,
-      sym__newline,
-      sym__definition_start,
-      sym__ordinary_start,
-      sym__bgp_start,
-      sym__address_family_start,
-      ts_builtin_sym_end,
-  [1040] = 1,
-    ACTIONS(242), 8,
+  [406] = 1,
+    ACTIONS(266), 8,
       sym_prompt,
       sym__newline,
       sym__definition_start,
@@ -11290,105 +15610,29 @@ static const uint16_t ts_small_parse_table[] = {
       sym__address_family_start,
       ts_builtin_sym_end,
       sym__trailing_comment,
-  [1051] = 2,
-    ACTIONS(246), 1,
-      sym__trailing_comment,
-    ACTIONS(244), 7,
-      sym_prompt,
-      sym__newline,
-      sym__definition_start,
-      sym__ordinary_start,
-      sym__bgp_start,
-      sym__address_family_start,
-      ts_builtin_sym_end,
-  [1064] = 1,
-    ACTIONS(248), 8,
-      sym_prompt,
-      sym__newline,
-      sym__definition_start,
-      sym__ordinary_start,
-      sym__bgp_start,
-      sym__address_family_start,
-      ts_builtin_sym_end,
-      sym__trailing_comment,
-  [1075] = 2,
-    ACTIONS(252), 1,
-      sym__newline,
-    ACTIONS(250), 6,
-      sym_prompt,
-      sym__definition_start,
-      sym__ordinary_start,
-      sym__bgp_start,
-      sym__address_family_start,
-      ts_builtin_sym_end,
-  [1087] = 2,
-    ACTIONS(256), 1,
-      sym__newline,
-    ACTIONS(254), 6,
-      sym_prompt,
-      sym__definition_start,
-      sym__ordinary_start,
-      sym__bgp_start,
-      sym__address_family_start,
-      ts_builtin_sym_end,
-  [1099] = 2,
-    ACTIONS(260), 1,
-      sym__newline,
-    ACTIONS(258), 6,
-      sym_prompt,
-      sym__definition_start,
-      sym__ordinary_start,
-      sym__bgp_start,
-      sym__address_family_start,
-      ts_builtin_sym_end,
-  [1111] = 1,
-    ACTIONS(262), 7,
-      sym_prompt,
-      sym__newline,
-      sym__definition_start,
-      sym__ordinary_start,
-      sym__bgp_start,
-      sym__address_family_start,
-      ts_builtin_sym_end,
-  [1121] = 1,
-    ACTIONS(264), 7,
-      sym_prompt,
-      sym__newline,
-      sym__definition_start,
-      sym__ordinary_start,
-      sym__bgp_start,
-      sym__address_family_start,
-      ts_builtin_sym_end,
-  [1131] = 1,
-    ACTIONS(266), 7,
-      sym_prompt,
-      sym__newline,
-      sym__definition_start,
-      sym__ordinary_start,
-      sym__bgp_start,
-      sym__address_family_start,
-      ts_builtin_sym_end,
-  [1141] = 2,
+  [417] = 2,
     ACTIONS(270), 1,
-      sym__newline,
-    ACTIONS(268), 6,
+      sym__trailing_comment,
+    ACTIONS(268), 7,
       sym_prompt,
+      sym__newline,
       sym__definition_start,
       sym__ordinary_start,
       sym__bgp_start,
       sym__address_family_start,
       ts_builtin_sym_end,
-  [1153] = 2,
+  [430] = 2,
     ACTIONS(274), 1,
-      sym__newline,
-    ACTIONS(272), 6,
+      sym__trailing_comment,
+    ACTIONS(272), 7,
       sym_prompt,
+      sym__newline,
       sym__definition_start,
       sym__ordinary_start,
       sym__bgp_start,
       sym__address_family_start,
       ts_builtin_sym_end,
-  [1165] = 2,
+  [443] = 2,
     ACTIONS(278), 1,
       sym__newline,
     ACTIONS(276), 6,
@@ -11398,39 +15642,18 @@ static const uint16_t ts_small_parse_table[] = {
       sym__bgp_start,
       sym__address_family_start,
       ts_builtin_sym_end,
-  [1177] = 1,
-    ACTIONS(254), 6,
+  [455] = 1,
+    ACTIONS(280), 7,
       sym_prompt,
+      sym__newline,
       sym__definition_start,
       sym__ordinary_start,
       sym__bgp_start,
       sym__address_family_start,
       ts_builtin_sym_end,
-  [1186] = 1,
-    ACTIONS(268), 6,
-      sym_prompt,
-      sym__definition_start,
-      sym__ordinary_start,
-      sym__bgp_start,
-      sym__address_family_start,
-      ts_builtin_sym_end,
-  [1195] = 1,
-    ACTIONS(280), 6,
-      sym_prompt,
-      sym__definition_start,
-      sym__ordinary_start,
-      sym__bgp_start,
-      sym__address_family_start,
-      ts_builtin_sym_end,
-  [1204] = 1,
-    ACTIONS(250), 6,
-      sym_prompt,
-      sym__definition_start,
-      sym__ordinary_start,
-      sym__bgp_start,
-      sym__address_family_start,
-      ts_builtin_sym_end,
-  [1213] = 1,
+  [465] = 2,
+    ACTIONS(284), 1,
+      sym__newline,
     ACTIONS(282), 6,
       sym_prompt,
       sym__definition_start,
@@ -11438,15 +15661,9 @@ static const uint16_t ts_small_parse_table[] = {
       sym__bgp_start,
       sym__address_family_start,
       ts_builtin_sym_end,
-  [1222] = 1,
-    ACTIONS(284), 6,
-      sym_prompt,
-      sym__definition_start,
-      sym__ordinary_start,
-      sym__bgp_start,
-      sym__address_family_start,
-      ts_builtin_sym_end,
-  [1231] = 1,
+  [477] = 2,
+    ACTIONS(288), 1,
+      sym__newline,
     ACTIONS(286), 6,
       sym_prompt,
       sym__definition_start,
@@ -11454,39 +15671,18 @@ static const uint16_t ts_small_parse_table[] = {
       sym__bgp_start,
       sym__address_family_start,
       ts_builtin_sym_end,
-  [1240] = 1,
-    ACTIONS(276), 6,
+  [489] = 1,
+    ACTIONS(290), 7,
       sym_prompt,
+      sym__newline,
       sym__definition_start,
       sym__ordinary_start,
       sym__bgp_start,
       sym__address_family_start,
       ts_builtin_sym_end,
-  [1249] = 1,
-    ACTIONS(272), 6,
-      sym_prompt,
-      sym__definition_start,
-      sym__ordinary_start,
-      sym__bgp_start,
-      sym__address_family_start,
-      ts_builtin_sym_end,
-  [1258] = 1,
-    ACTIONS(288), 6,
-      sym_prompt,
-      sym__definition_start,
-      sym__ordinary_start,
-      sym__bgp_start,
-      sym__address_family_start,
-      ts_builtin_sym_end,
-  [1267] = 1,
-    ACTIONS(290), 6,
-      sym_prompt,
-      sym__definition_start,
-      sym__ordinary_start,
-      sym__bgp_start,
-      sym__address_family_start,
-      ts_builtin_sym_end,
-  [1276] = 1,
+  [499] = 2,
+    ACTIONS(294), 1,
+      sym__newline,
     ACTIONS(292), 6,
       sym_prompt,
       sym__definition_start,
@@ -11494,23 +15690,18 @@ static const uint16_t ts_small_parse_table[] = {
       sym__bgp_start,
       sym__address_family_start,
       ts_builtin_sym_end,
-  [1285] = 1,
-    ACTIONS(294), 6,
+  [511] = 1,
+    ACTIONS(296), 7,
       sym_prompt,
+      sym__newline,
       sym__definition_start,
       sym__ordinary_start,
       sym__bgp_start,
       sym__address_family_start,
       ts_builtin_sym_end,
-  [1294] = 1,
-    ACTIONS(296), 6,
-      sym_prompt,
-      sym__definition_start,
-      sym__ordinary_start,
-      sym__bgp_start,
-      sym__address_family_start,
-      ts_builtin_sym_end,
-  [1303] = 1,
+  [521] = 2,
+    ACTIONS(300), 1,
+      sym__newline,
     ACTIONS(298), 6,
       sym_prompt,
       sym__definition_start,
@@ -11518,78 +15709,194 @@ static const uint16_t ts_small_parse_table[] = {
       sym__bgp_start,
       sym__address_family_start,
       ts_builtin_sym_end,
-  [1312] = 1,
-    ACTIONS(300), 6,
+  [533] = 2,
+    ACTIONS(304), 1,
+      sym__newline,
+    ACTIONS(302), 6,
       sym_prompt,
       sym__definition_start,
       sym__ordinary_start,
       sym__bgp_start,
       sym__address_family_start,
       ts_builtin_sym_end,
-  [1321] = 1,
-    ACTIONS(302), 1,
+  [545] = 1,
+    ACTIONS(306), 6,
+      sym_prompt,
+      sym__definition_start,
+      sym__ordinary_start,
+      sym__bgp_start,
+      sym__address_family_start,
+      ts_builtin_sym_end,
+  [554] = 1,
+    ACTIONS(308), 6,
+      sym_prompt,
+      sym__definition_start,
+      sym__ordinary_start,
+      sym__bgp_start,
+      sym__address_family_start,
+      ts_builtin_sym_end,
+  [563] = 1,
+    ACTIONS(310), 6,
+      sym_prompt,
+      sym__definition_start,
+      sym__ordinary_start,
+      sym__bgp_start,
+      sym__address_family_start,
+      ts_builtin_sym_end,
+  [572] = 1,
+    ACTIONS(282), 6,
+      sym_prompt,
+      sym__definition_start,
+      sym__ordinary_start,
+      sym__bgp_start,
+      sym__address_family_start,
+      ts_builtin_sym_end,
+  [581] = 1,
+    ACTIONS(312), 6,
+      sym_prompt,
+      sym__definition_start,
+      sym__ordinary_start,
+      sym__bgp_start,
+      sym__address_family_start,
+      ts_builtin_sym_end,
+  [590] = 1,
+    ACTIONS(292), 6,
+      sym_prompt,
+      sym__definition_start,
+      sym__ordinary_start,
+      sym__bgp_start,
+      sym__address_family_start,
+      ts_builtin_sym_end,
+  [599] = 1,
+    ACTIONS(314), 6,
+      sym_prompt,
+      sym__definition_start,
+      sym__ordinary_start,
+      sym__bgp_start,
+      sym__address_family_start,
+      ts_builtin_sym_end,
+  [608] = 1,
+    ACTIONS(302), 6,
+      sym_prompt,
+      sym__definition_start,
+      sym__ordinary_start,
+      sym__bgp_start,
+      sym__address_family_start,
+      ts_builtin_sym_end,
+  [617] = 1,
+    ACTIONS(316), 6,
+      sym_prompt,
+      sym__definition_start,
+      sym__ordinary_start,
+      sym__bgp_start,
+      sym__address_family_start,
+      ts_builtin_sym_end,
+  [626] = 1,
+    ACTIONS(286), 6,
+      sym_prompt,
+      sym__definition_start,
+      sym__ordinary_start,
+      sym__bgp_start,
+      sym__address_family_start,
+      ts_builtin_sym_end,
+  [635] = 1,
+    ACTIONS(318), 6,
+      sym_prompt,
+      sym__definition_start,
+      sym__ordinary_start,
+      sym__bgp_start,
+      sym__address_family_start,
+      ts_builtin_sym_end,
+  [644] = 1,
+    ACTIONS(320), 6,
+      sym_prompt,
+      sym__definition_start,
+      sym__ordinary_start,
+      sym__bgp_start,
+      sym__address_family_start,
+      ts_builtin_sym_end,
+  [653] = 1,
+    ACTIONS(322), 6,
+      sym_prompt,
+      sym__definition_start,
+      sym__ordinary_start,
+      sym__bgp_start,
+      sym__address_family_start,
+      ts_builtin_sym_end,
+  [662] = 1,
+    ACTIONS(298), 6,
+      sym_prompt,
+      sym__definition_start,
+      sym__ordinary_start,
+      sym__bgp_start,
+      sym__address_family_start,
+      ts_builtin_sym_end,
+  [671] = 1,
+    ACTIONS(324), 6,
+      sym_prompt,
+      sym__definition_start,
+      sym__ordinary_start,
+      sym__bgp_start,
+      sym__address_family_start,
+      ts_builtin_sym_end,
+  [680] = 1,
+    ACTIONS(326), 6,
+      sym_prompt,
+      sym__definition_start,
+      sym__ordinary_start,
+      sym__bgp_start,
+      sym__address_family_start,
+      ts_builtin_sym_end,
+  [689] = 1,
+    ACTIONS(328), 1,
       ts_builtin_sym_end,
 };
 
 static const uint32_t ts_small_parse_table_map[] = {
-  [SMALL_STATE(18)] = 0,
-  [SMALL_STATE(19)] = 45,
-  [SMALL_STATE(20)] = 98,
-  [SMALL_STATE(21)] = 151,
-  [SMALL_STATE(22)] = 196,
-  [SMALL_STATE(23)] = 249,
-  [SMALL_STATE(24)] = 302,
-  [SMALL_STATE(25)] = 344,
-  [SMALL_STATE(26)] = 386,
-  [SMALL_STATE(27)] = 428,
-  [SMALL_STATE(28)] = 470,
-  [SMALL_STATE(29)] = 512,
-  [SMALL_STATE(30)] = 552,
-  [SMALL_STATE(31)] = 592,
-  [SMALL_STATE(32)] = 632,
-  [SMALL_STATE(33)] = 675,
-  [SMALL_STATE(34)] = 718,
-  [SMALL_STATE(35)] = 755,
-  [SMALL_STATE(36)] = 792,
-  [SMALL_STATE(37)] = 829,
-  [SMALL_STATE(38)] = 853,
-  [SMALL_STATE(39)] = 877,
-  [SMALL_STATE(40)] = 901,
-  [SMALL_STATE(41)] = 925,
-  [SMALL_STATE(42)] = 949,
-  [SMALL_STATE(43)] = 973,
-  [SMALL_STATE(44)] = 991,
-  [SMALL_STATE(45)] = 1009,
-  [SMALL_STATE(46)] = 1027,
-  [SMALL_STATE(47)] = 1040,
-  [SMALL_STATE(48)] = 1051,
-  [SMALL_STATE(49)] = 1064,
-  [SMALL_STATE(50)] = 1075,
-  [SMALL_STATE(51)] = 1087,
-  [SMALL_STATE(52)] = 1099,
-  [SMALL_STATE(53)] = 1111,
-  [SMALL_STATE(54)] = 1121,
-  [SMALL_STATE(55)] = 1131,
-  [SMALL_STATE(56)] = 1141,
-  [SMALL_STATE(57)] = 1153,
-  [SMALL_STATE(58)] = 1165,
-  [SMALL_STATE(59)] = 1177,
-  [SMALL_STATE(60)] = 1186,
-  [SMALL_STATE(61)] = 1195,
-  [SMALL_STATE(62)] = 1204,
-  [SMALL_STATE(63)] = 1213,
-  [SMALL_STATE(64)] = 1222,
-  [SMALL_STATE(65)] = 1231,
-  [SMALL_STATE(66)] = 1240,
-  [SMALL_STATE(67)] = 1249,
-  [SMALL_STATE(68)] = 1258,
-  [SMALL_STATE(69)] = 1267,
-  [SMALL_STATE(70)] = 1276,
-  [SMALL_STATE(71)] = 1285,
-  [SMALL_STATE(72)] = 1294,
-  [SMALL_STATE(73)] = 1303,
-  [SMALL_STATE(74)] = 1312,
-  [SMALL_STATE(75)] = 1321,
+  [SMALL_STATE(36)] = 0,
+  [SMALL_STATE(37)] = 43,
+  [SMALL_STATE(38)] = 86,
+  [SMALL_STATE(39)] = 123,
+  [SMALL_STATE(40)] = 160,
+  [SMALL_STATE(41)] = 197,
+  [SMALL_STATE(42)] = 221,
+  [SMALL_STATE(43)] = 245,
+  [SMALL_STATE(44)] = 269,
+  [SMALL_STATE(45)] = 293,
+  [SMALL_STATE(46)] = 317,
+  [SMALL_STATE(47)] = 341,
+  [SMALL_STATE(48)] = 359,
+  [SMALL_STATE(49)] = 377,
+  [SMALL_STATE(50)] = 395,
+  [SMALL_STATE(51)] = 406,
+  [SMALL_STATE(52)] = 417,
+  [SMALL_STATE(53)] = 430,
+  [SMALL_STATE(54)] = 443,
+  [SMALL_STATE(55)] = 455,
+  [SMALL_STATE(56)] = 465,
+  [SMALL_STATE(57)] = 477,
+  [SMALL_STATE(58)] = 489,
+  [SMALL_STATE(59)] = 499,
+  [SMALL_STATE(60)] = 511,
+  [SMALL_STATE(61)] = 521,
+  [SMALL_STATE(62)] = 533,
+  [SMALL_STATE(63)] = 545,
+  [SMALL_STATE(64)] = 554,
+  [SMALL_STATE(65)] = 563,
+  [SMALL_STATE(66)] = 572,
+  [SMALL_STATE(67)] = 581,
+  [SMALL_STATE(68)] = 590,
+  [SMALL_STATE(69)] = 599,
+  [SMALL_STATE(70)] = 608,
+  [SMALL_STATE(71)] = 617,
+  [SMALL_STATE(72)] = 626,
+  [SMALL_STATE(73)] = 635,
+  [SMALL_STATE(74)] = 644,
+  [SMALL_STATE(75)] = 653,
+  [SMALL_STATE(76)] = 662,
+  [SMALL_STATE(77)] = 671,
+  [SMALL_STATE(78)] = 680,
+  [SMALL_STATE(79)] = 689,
 };
 
 static const TSParseActionEntry ts_parse_actions[] = {
@@ -11597,145 +15904,157 @@ static const TSParseActionEntry ts_parse_actions[] = {
   [1] = {.entry = {.count = 1, .reusable = false}}, RECOVER(),
   [3] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_source_file, 0, 0, 0),
   [5] = {.entry = {.count = 1, .reusable = true}}, SHIFT(7),
-  [7] = {.entry = {.count = 1, .reusable = true}}, SHIFT(5),
-  [9] = {.entry = {.count = 1, .reusable = true}}, SHIFT(6),
-  [11] = {.entry = {.count = 1, .reusable = true}}, SHIFT(3),
-  [13] = {.entry = {.count = 1, .reusable = true}}, SHIFT(4),
+  [7] = {.entry = {.count = 1, .reusable = true}}, SHIFT(4),
+  [9] = {.entry = {.count = 1, .reusable = true}}, SHIFT(3),
+  [11] = {.entry = {.count = 1, .reusable = true}}, SHIFT(6),
+  [13] = {.entry = {.count = 1, .reusable = true}}, SHIFT(5),
   [15] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_ordinary_line, 1, 0, 0),
   [17] = {.entry = {.count = 1, .reusable = false}}, SHIFT(24),
-  [19] = {.entry = {.count = 1, .reusable = false}}, SHIFT(22),
-  [21] = {.entry = {.count = 1, .reusable = false}}, SHIFT(19),
-  [23] = {.entry = {.count = 1, .reusable = false}}, SHIFT(20),
-  [25] = {.entry = {.count = 1, .reusable = false}}, SHIFT(18),
-  [27] = {.entry = {.count = 1, .reusable = false}}, SHIFT(21),
-  [29] = {.entry = {.count = 1, .reusable = true}}, SHIFT(55),
-  [31] = {.entry = {.count = 1, .reusable = true}}, SHIFT(9),
-  [33] = {.entry = {.count = 1, .reusable = false}}, SHIFT(25),
-  [35] = {.entry = {.count = 1, .reusable = false}}, SHIFT(26),
-  [37] = {.entry = {.count = 1, .reusable = true}}, SHIFT(66),
-  [39] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_bgp_definition_line, 1, 0, 0),
-  [41] = {.entry = {.count = 1, .reusable = true}}, SHIFT(60),
-  [43] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_address_family_definition_line, 1, 0, 0),
-  [45] = {.entry = {.count = 1, .reusable = true}}, SHIFT(67),
+  [19] = {.entry = {.count = 1, .reusable = false}}, SHIFT(21),
+  [21] = {.entry = {.count = 1, .reusable = false}}, SHIFT(20),
+  [23] = {.entry = {.count = 1, .reusable = false}}, SHIFT(18),
+  [25] = {.entry = {.count = 1, .reusable = false}}, SHIFT(19),
+  [27] = {.entry = {.count = 1, .reusable = false}}, SHIFT(23),
+  [29] = {.entry = {.count = 1, .reusable = false}}, SHIFT(27),
+  [31] = {.entry = {.count = 1, .reusable = false}}, SHIFT(26),
+  [33] = {.entry = {.count = 1, .reusable = true}}, SHIFT(58),
+  [35] = {.entry = {.count = 1, .reusable = true}}, SHIFT(10),
+  [37] = {.entry = {.count = 1, .reusable = false}}, SHIFT(28),
+  [39] = {.entry = {.count = 1, .reusable = false}}, SHIFT(25),
+  [41] = {.entry = {.count = 1, .reusable = true}}, SHIFT(66),
+  [43] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_top_level_line, 1, 0, 0),
+  [45] = {.entry = {.count = 1, .reusable = true}}, SHIFT(72),
   [47] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_definition_line, 1, 0, 0),
-  [49] = {.entry = {.count = 1, .reusable = true}}, SHIFT(59),
-  [51] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_top_level_line, 1, 0, 0),
-  [53] = {.entry = {.count = 1, .reusable = true}}, SHIFT(62),
-  [55] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_prompt_line, 1, 0, 1),
-  [57] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym__command_record, 1, 0, 7),
-  [59] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym__command_record, 1, 0, 7),
-  [61] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_generic_command, 1, 0, 4),
-  [63] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_generic_command, 1, 0, 4),
-  [65] = {.entry = {.count = 1, .reusable = true}}, SHIFT(28),
-  [67] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_interface_command, 2, 0, 9),
-  [69] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_interface_command, 2, 0, 9),
-  [71] = {.entry = {.count = 1, .reusable = true}}, REDUCE(aux_sym_generic_command_repeat1, 2, 0, 19),
-  [73] = {.entry = {.count = 2, .reusable = false}}, REDUCE(aux_sym_generic_command_repeat1, 2, 0, 19), SHIFT_REPEAT(24),
-  [76] = {.entry = {.count = 2, .reusable = false}}, REDUCE(aux_sym_generic_command_repeat1, 2, 0, 19), SHIFT_REPEAT(21),
-  [79] = {.entry = {.count = 1, .reusable = false}}, REDUCE(aux_sym_generic_command_repeat1, 2, 0, 19),
-  [81] = {.entry = {.count = 2, .reusable = true}}, REDUCE(aux_sym_generic_command_repeat1, 2, 0, 19), SHIFT_REPEAT(28),
-  [84] = {.entry = {.count = 2, .reusable = false}}, REDUCE(aux_sym_generic_command_repeat1, 2, 0, 19), SHIFT_REPEAT(25),
-  [87] = {.entry = {.count = 2, .reusable = false}}, REDUCE(aux_sym_generic_command_repeat1, 2, 0, 19), SHIFT_REPEAT(26),
-  [90] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_address_family_command, 2, 0, 9),
-  [92] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_address_family_command, 2, 0, 9),
-  [94] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_interface_command, 3, 0, 17),
-  [96] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_interface_command, 3, 0, 17),
-  [98] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_router_command, 4, 0, 20),
-  [100] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_router_command, 4, 0, 20),
-  [102] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_generic_command, 2, 0, 13),
-  [104] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_generic_command, 2, 0, 13),
-  [106] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_router_command, 3, 0, 18),
-  [108] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_router_command, 3, 0, 18),
-  [110] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_address_family_command, 3, 0, 17),
-  [112] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_address_family_command, 3, 0, 17),
-  [114] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_command_modifier, 1, 0, 0),
-  [116] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_command_modifier, 1, 0, 0),
-  [118] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_router_command, 1, 0, 3),
-  [120] = {.entry = {.count = 1, .reusable = false}}, SHIFT(31),
-  [122] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_router_command, 1, 0, 3),
-  [124] = {.entry = {.count = 1, .reusable = false}}, SHIFT(29),
-  [126] = {.entry = {.count = 1, .reusable = false}}, SHIFT(30),
-  [128] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_address_family_command, 1, 0, 3),
-  [130] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_address_family_command, 1, 0, 3),
-  [132] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_text, 1, 0, 3),
-  [134] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_text, 1, 0, 3),
-  [136] = {.entry = {.count = 1, .reusable = false}}, SHIFT(27),
-  [138] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_interface_command, 1, 0, 3),
-  [140] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_interface_command, 1, 0, 3),
-  [142] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_router_command, 2, 0, 10),
-  [144] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_router_command, 2, 0, 10),
-  [146] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym__cisco_atom, 1, 0, 0),
-  [148] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym__cisco_atom, 1, 0, 0),
-  [150] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym__cisco_interface_token, 1, 0, 0),
-  [152] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym__cisco_interface_token, 1, 0, 0),
-  [154] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym__cisco_address_token, 1, 0, 0),
-  [156] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym__cisco_address_token, 1, 0, 0),
-  [158] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_text, 2, 0, 11),
-  [160] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_text, 2, 0, 11),
-  [162] = {.entry = {.count = 1, .reusable = true}}, REDUCE(aux_sym_generic_command_repeat1, 1, 0, 12),
-  [164] = {.entry = {.count = 1, .reusable = false}}, REDUCE(aux_sym_generic_command_repeat1, 1, 0, 12),
-  [166] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_source_file, 1, 0, 0),
-  [168] = {.entry = {.count = 1, .reusable = true}}, REDUCE(aux_sym_source_file_repeat1, 2, 0, 0),
-  [170] = {.entry = {.count = 2, .reusable = true}}, REDUCE(aux_sym_source_file_repeat1, 2, 0, 0), SHIFT_REPEAT(7),
-  [173] = {.entry = {.count = 2, .reusable = true}}, REDUCE(aux_sym_source_file_repeat1, 2, 0, 0), SHIFT_REPEAT(5),
-  [176] = {.entry = {.count = 2, .reusable = true}}, REDUCE(aux_sym_source_file_repeat1, 2, 0, 0), SHIFT_REPEAT(6),
-  [179] = {.entry = {.count = 2, .reusable = true}}, REDUCE(aux_sym_source_file_repeat1, 2, 0, 0), SHIFT_REPEAT(3),
-  [182] = {.entry = {.count = 2, .reusable = true}}, REDUCE(aux_sym_source_file_repeat1, 2, 0, 0), SHIFT_REPEAT(4),
-  [185] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_prompt_block, 1, 0, 2),
-  [187] = {.entry = {.count = 1, .reusable = true}}, SHIFT(2),
-  [189] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_prompt_block, 2, 0, 2),
-  [191] = {.entry = {.count = 1, .reusable = true}}, REDUCE(aux_sym_prompt_block_repeat1, 2, 0, 0),
-  [193] = {.entry = {.count = 2, .reusable = true}}, REDUCE(aux_sym_prompt_block_repeat1, 2, 0, 0), SHIFT_REPEAT(5),
-  [196] = {.entry = {.count = 2, .reusable = true}}, REDUCE(aux_sym_prompt_block_repeat1, 2, 0, 0), SHIFT_REPEAT(2),
-  [199] = {.entry = {.count = 2, .reusable = true}}, REDUCE(aux_sym_prompt_block_repeat1, 2, 0, 0), SHIFT_REPEAT(3),
-  [202] = {.entry = {.count = 2, .reusable = true}}, REDUCE(aux_sym_prompt_block_repeat1, 2, 0, 0), SHIFT_REPEAT(4),
-  [205] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_bgp_definition, 2, 0, 2),
-  [207] = {.entry = {.count = 1, .reusable = true}}, REDUCE(aux_sym_simple_definition_repeat1, 2, 0, 0),
-  [209] = {.entry = {.count = 2, .reusable = true}}, REDUCE(aux_sym_simple_definition_repeat1, 2, 0, 0), SHIFT_REPEAT(2),
-  [212] = {.entry = {.count = 2, .reusable = true}}, REDUCE(aux_sym_simple_definition_repeat1, 2, 0, 0), SHIFT_REPEAT(4),
-  [215] = {.entry = {.count = 1, .reusable = true}}, REDUCE(aux_sym_bgp_definition_repeat1, 2, 0, 0),
-  [217] = {.entry = {.count = 2, .reusable = true}}, REDUCE(aux_sym_bgp_definition_repeat1, 2, 0, 0), SHIFT_REPEAT(2),
-  [220] = {.entry = {.count = 2, .reusable = true}}, REDUCE(aux_sym_bgp_definition_repeat1, 2, 0, 0), SHIFT_REPEAT(4),
-  [223] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_bgp_definition, 1, 0, 2),
-  [225] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_simple_definition, 2, 0, 2),
-  [227] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_simple_definition, 1, 0, 2),
-  [229] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_address_family_definition, 1, 0, 2),
-  [231] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_address_family_definition, 2, 0, 2),
-  [233] = {.entry = {.count = 1, .reusable = true}}, REDUCE(aux_sym_address_family_definition_repeat1, 2, 0, 0),
-  [235] = {.entry = {.count = 2, .reusable = true}}, REDUCE(aux_sym_address_family_definition_repeat1, 2, 0, 0), SHIFT_REPEAT(2),
-  [238] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_line, 1, 0, 8),
-  [240] = {.entry = {.count = 1, .reusable = true}}, SHIFT(53),
-  [242] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym__command_record, 2, 0, 15),
-  [244] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_prompt_line, 2, 0, 5),
-  [246] = {.entry = {.count = 1, .reusable = true}}, SHIFT(54),
-  [248] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym__command_record, 1, 0, 6),
-  [250] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_top_level_line, 2, 0, 0),
-  [252] = {.entry = {.count = 1, .reusable = true}}, SHIFT(63),
-  [254] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_definition_line, 2, 0, 0),
-  [256] = {.entry = {.count = 1, .reusable = true}}, SHIFT(61),
-  [258] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_prompt_record, 1, 0, 0),
-  [260] = {.entry = {.count = 1, .reusable = true}}, SHIFT(71),
-  [262] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_line, 2, 0, 16),
-  [264] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_prompt_line, 3, 0, 14),
-  [266] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_line, 1, 0, 0),
-  [268] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_bgp_definition_line, 2, 0, 0),
-  [270] = {.entry = {.count = 1, .reusable = true}}, SHIFT(64),
-  [272] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_address_family_definition_line, 2, 0, 0),
-  [274] = {.entry = {.count = 1, .reusable = true}}, SHIFT(65),
-  [276] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_ordinary_line, 2, 0, 0),
-  [278] = {.entry = {.count = 1, .reusable = true}}, SHIFT(73),
-  [280] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_definition_line, 3, 0, 0),
-  [282] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_top_level_line, 3, 0, 0),
-  [284] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_bgp_definition_line, 3, 0, 0),
-  [286] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_address_family_definition_line, 3, 0, 0),
-  [288] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_orphan_child_line, 1, 0, 0),
-  [290] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_prompt_body_line, 1, 0, 0),
-  [292] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_address_family_body_line, 1, 0, 0),
-  [294] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_prompt_record, 2, 0, 0),
-  [296] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_definition_body_line, 1, 0, 0),
-  [298] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_ordinary_line, 3, 0, 0),
-  [300] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_bgp_body_line, 1, 0, 0),
-  [302] = {.entry = {.count = 1, .reusable = true}},  ACCEPT_INPUT(),
+  [49] = {.entry = {.count = 1, .reusable = true}}, SHIFT(68),
+  [51] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_address_family_definition_line, 1, 0, 0),
+  [53] = {.entry = {.count = 1, .reusable = true}}, SHIFT(70),
+  [55] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_bgp_definition_line, 1, 0, 0),
+  [57] = {.entry = {.count = 1, .reusable = true}}, SHIFT(76),
+  [59] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_prompt_line, 1, 0, 1),
+  [61] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym__command_record, 1, 0, 7),
+  [63] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym__command_record, 1, 0, 7),
+  [65] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_address_family_command, 3, 0, 17),
+  [67] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_address_family_command, 3, 0, 17),
+  [69] = {.entry = {.count = 1, .reusable = true}}, SHIFT(30),
+  [71] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_generic_command, 1, 0, 4),
+  [73] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_generic_command, 1, 0, 4),
+  [75] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_router_command, 4, 0, 20),
+  [77] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_router_command, 4, 0, 20),
+  [79] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_interface_command, 2, 0, 9),
+  [81] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_interface_command, 2, 0, 9),
+  [83] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_router_command, 3, 0, 18),
+  [85] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_router_command, 3, 0, 18),
+  [87] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_address_family_command, 2, 0, 9),
+  [89] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_address_family_command, 2, 0, 9),
+  [91] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_generic_command, 2, 0, 13),
+  [93] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_generic_command, 2, 0, 13),
+  [95] = {.entry = {.count = 1, .reusable = true}}, REDUCE(aux_sym_generic_command_repeat1, 2, 0, 19),
+  [97] = {.entry = {.count = 2, .reusable = false}}, REDUCE(aux_sym_generic_command_repeat1, 2, 0, 19), SHIFT_REPEAT(24),
+  [100] = {.entry = {.count = 2, .reusable = false}}, REDUCE(aux_sym_generic_command_repeat1, 2, 0, 19), SHIFT_REPEAT(23),
+  [103] = {.entry = {.count = 2, .reusable = false}}, REDUCE(aux_sym_generic_command_repeat1, 2, 0, 19), SHIFT_REPEAT(27),
+  [106] = {.entry = {.count = 2, .reusable = false}}, REDUCE(aux_sym_generic_command_repeat1, 2, 0, 19), SHIFT_REPEAT(26),
+  [109] = {.entry = {.count = 1, .reusable = false}}, REDUCE(aux_sym_generic_command_repeat1, 2, 0, 19),
+  [111] = {.entry = {.count = 2, .reusable = true}}, REDUCE(aux_sym_generic_command_repeat1, 2, 0, 19), SHIFT_REPEAT(30),
+  [114] = {.entry = {.count = 2, .reusable = false}}, REDUCE(aux_sym_generic_command_repeat1, 2, 0, 19), SHIFT_REPEAT(28),
+  [117] = {.entry = {.count = 2, .reusable = false}}, REDUCE(aux_sym_generic_command_repeat1, 2, 0, 19), SHIFT_REPEAT(25),
+  [120] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_interface_command, 3, 0, 17),
+  [122] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_interface_command, 3, 0, 17),
+  [124] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_address_family_command, 1, 0, 3),
+  [126] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_address_family_command, 1, 0, 3),
+  [128] = {.entry = {.count = 1, .reusable = true}}, SHIFT(24),
+  [130] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_command_modifier, 1, 0, 0),
+  [132] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_command_modifier, 1, 0, 0),
+  [134] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_router_command, 1, 0, 3),
+  [136] = {.entry = {.count = 1, .reusable = false}}, SHIFT(34),
+  [138] = {.entry = {.count = 1, .reusable = false}}, SHIFT(32),
+  [140] = {.entry = {.count = 1, .reusable = false}}, SHIFT(33),
+  [142] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_router_command, 1, 0, 3),
+  [144] = {.entry = {.count = 1, .reusable = true}}, SHIFT(34),
+  [146] = {.entry = {.count = 1, .reusable = false}}, SHIFT(35),
+  [148] = {.entry = {.count = 1, .reusable = false}}, SHIFT(31),
+  [150] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_interface_command, 1, 0, 3),
+  [152] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_interface_command, 1, 0, 3),
+  [154] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_router_command, 2, 0, 10),
+  [156] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_router_command, 2, 0, 10),
+  [158] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_text, 1, 0, 3),
+  [160] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_text, 1, 0, 3),
+  [162] = {.entry = {.count = 1, .reusable = false}}, SHIFT(29),
+  [164] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym__cisco_atom, 1, 0, 0),
+  [166] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym__cisco_atom, 1, 0, 0),
+  [168] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym__cisco_address_token, 1, 0, 0),
+  [170] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym__cisco_address_token, 1, 0, 0),
+  [172] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym__cisco_numeric_literal, 1, 0, 0),
+  [174] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym__cisco_numeric_literal, 1, 0, 0),
+  [176] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym__cisco_keyword_token, 1, 0, 0),
+  [178] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym__cisco_keyword_token, 1, 0, 0),
+  [180] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym__cisco_interface_token, 1, 0, 0),
+  [182] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym__cisco_interface_token, 1, 0, 0),
+  [184] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_text, 2, 0, 11),
+  [186] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_text, 2, 0, 11),
+  [188] = {.entry = {.count = 1, .reusable = true}}, REDUCE(aux_sym_generic_command_repeat1, 1, 0, 12),
+  [190] = {.entry = {.count = 1, .reusable = false}}, REDUCE(aux_sym_generic_command_repeat1, 1, 0, 12),
+  [192] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_source_file, 1, 0, 0),
+  [194] = {.entry = {.count = 1, .reusable = true}}, REDUCE(aux_sym_source_file_repeat1, 2, 0, 0),
+  [196] = {.entry = {.count = 2, .reusable = true}}, REDUCE(aux_sym_source_file_repeat1, 2, 0, 0), SHIFT_REPEAT(7),
+  [199] = {.entry = {.count = 2, .reusable = true}}, REDUCE(aux_sym_source_file_repeat1, 2, 0, 0), SHIFT_REPEAT(4),
+  [202] = {.entry = {.count = 2, .reusable = true}}, REDUCE(aux_sym_source_file_repeat1, 2, 0, 0), SHIFT_REPEAT(3),
+  [205] = {.entry = {.count = 2, .reusable = true}}, REDUCE(aux_sym_source_file_repeat1, 2, 0, 0), SHIFT_REPEAT(6),
+  [208] = {.entry = {.count = 2, .reusable = true}}, REDUCE(aux_sym_source_file_repeat1, 2, 0, 0), SHIFT_REPEAT(5),
+  [211] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_prompt_block, 1, 0, 2),
+  [213] = {.entry = {.count = 1, .reusable = true}}, SHIFT(2),
+  [215] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_prompt_block, 2, 0, 2),
+  [217] = {.entry = {.count = 1, .reusable = true}}, REDUCE(aux_sym_prompt_block_repeat1, 2, 0, 0),
+  [219] = {.entry = {.count = 2, .reusable = true}}, REDUCE(aux_sym_prompt_block_repeat1, 2, 0, 0), SHIFT_REPEAT(4),
+  [222] = {.entry = {.count = 2, .reusable = true}}, REDUCE(aux_sym_prompt_block_repeat1, 2, 0, 0), SHIFT_REPEAT(2),
+  [225] = {.entry = {.count = 2, .reusable = true}}, REDUCE(aux_sym_prompt_block_repeat1, 2, 0, 0), SHIFT_REPEAT(6),
+  [228] = {.entry = {.count = 2, .reusable = true}}, REDUCE(aux_sym_prompt_block_repeat1, 2, 0, 0), SHIFT_REPEAT(5),
+  [231] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_bgp_definition, 2, 0, 2),
+  [233] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_simple_definition, 2, 0, 2),
+  [235] = {.entry = {.count = 1, .reusable = true}}, REDUCE(aux_sym_bgp_definition_repeat1, 2, 0, 0),
+  [237] = {.entry = {.count = 2, .reusable = true}}, REDUCE(aux_sym_bgp_definition_repeat1, 2, 0, 0), SHIFT_REPEAT(2),
+  [240] = {.entry = {.count = 2, .reusable = true}}, REDUCE(aux_sym_bgp_definition_repeat1, 2, 0, 0), SHIFT_REPEAT(5),
+  [243] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_simple_definition, 1, 0, 2),
+  [245] = {.entry = {.count = 1, .reusable = true}}, REDUCE(aux_sym_simple_definition_repeat1, 2, 0, 0),
+  [247] = {.entry = {.count = 2, .reusable = true}}, REDUCE(aux_sym_simple_definition_repeat1, 2, 0, 0), SHIFT_REPEAT(2),
+  [250] = {.entry = {.count = 2, .reusable = true}}, REDUCE(aux_sym_simple_definition_repeat1, 2, 0, 0), SHIFT_REPEAT(5),
+  [253] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_bgp_definition, 1, 0, 2),
+  [255] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_address_family_definition, 1, 0, 2),
+  [257] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_address_family_definition, 2, 0, 2),
+  [259] = {.entry = {.count = 1, .reusable = true}}, REDUCE(aux_sym_address_family_definition_repeat1, 2, 0, 0),
+  [261] = {.entry = {.count = 2, .reusable = true}}, REDUCE(aux_sym_address_family_definition_repeat1, 2, 0, 0), SHIFT_REPEAT(2),
+  [264] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym__command_record, 1, 0, 6),
+  [266] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym__command_record, 2, 0, 15),
+  [268] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_line, 1, 0, 8),
+  [270] = {.entry = {.count = 1, .reusable = true}}, SHIFT(55),
+  [272] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_prompt_line, 2, 0, 5),
+  [274] = {.entry = {.count = 1, .reusable = true}}, SHIFT(60),
+  [276] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_prompt_record, 1, 0, 0),
+  [278] = {.entry = {.count = 1, .reusable = true}}, SHIFT(77),
+  [280] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_line, 2, 0, 16),
+  [282] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_ordinary_line, 2, 0, 0),
+  [284] = {.entry = {.count = 1, .reusable = true}}, SHIFT(71),
+  [286] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_top_level_line, 2, 0, 0),
+  [288] = {.entry = {.count = 1, .reusable = true}}, SHIFT(64),
+  [290] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_line, 1, 0, 0),
+  [292] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_definition_line, 2, 0, 0),
+  [294] = {.entry = {.count = 1, .reusable = true}}, SHIFT(67),
+  [296] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_prompt_line, 3, 0, 14),
+  [298] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_bgp_definition_line, 2, 0, 0),
+  [300] = {.entry = {.count = 1, .reusable = true}}, SHIFT(63),
+  [302] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_address_family_definition_line, 2, 0, 0),
+  [304] = {.entry = {.count = 1, .reusable = true}}, SHIFT(65),
+  [306] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_bgp_definition_line, 3, 0, 0),
+  [308] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_top_level_line, 3, 0, 0),
+  [310] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_address_family_definition_line, 3, 0, 0),
+  [312] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_definition_line, 3, 0, 0),
+  [314] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_address_family_body_line, 1, 0, 0),
+  [316] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_ordinary_line, 3, 0, 0),
+  [318] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_bgp_body_line, 1, 0, 0),
+  [320] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_orphan_child_line, 1, 0, 0),
+  [322] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_prompt_body_line, 1, 0, 0),
+  [324] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_prompt_record, 2, 0, 0),
+  [326] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_definition_body_line, 1, 0, 0),
+  [328] = {.entry = {.count = 1, .reusable = true}},  ACCEPT_INPUT(),
 };
 
 enum ts_external_scanner_symbol_identifiers {

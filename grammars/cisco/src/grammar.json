@@ -849,6 +849,10 @@
         "members": [
           {
             "type": "SYMBOL",
+            "name": "_cisco_keyword_token"
+          },
+          {
+            "type": "SYMBOL",
             "name": "_cisco_interface_token"
           },
           {
@@ -857,7 +861,36 @@
           },
           {
             "type": "SYMBOL",
+            "name": "token_tag_cisco_logging_system_message"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "_cisco_numeric_literal"
+          },
+          {
+            "type": "SYMBOL",
             "name": "word"
+          }
+        ]
+      }
+    },
+    "_cisco_numeric_literal": {
+      "type": "PREC",
+      "value": -1,
+      "content": {
+        "type": "CHOICE",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "token_number_cisco_integer"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "token_number_cisco_range"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "token_number_cisco_hex"
           }
         ]
       }
@@ -984,6 +1017,135 @@
         ]
       }
     },
+    "_cisco_keyword_token": {
+      "type": "PREC",
+      "value": -1,
+      "content": {
+        "type": "CHOICE",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "token_keyword_cisco_encapsulation_dot1q"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "token_keyword_cisco_encapsulation_dot1q_tunnel"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "token_keyword_cisco_encapsulation_protocol_vlan"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "token_keyword_cisco_encapsulation_mac_vlan"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "token_keyword_cisco_switchport_mode_access"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "token_keyword_cisco_switchport_mode_trunk"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "token_keyword_cisco_add_remove_add"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "token_keyword_cisco_add_remove_remove"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "token_keyword_cisco_add_remove_except"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "token_keyword_cisco_allowed_native_allowed"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "token_keyword_cisco_allowed_native_native"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "token_keyword_cisco_any_all_any"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "token_keyword_cisco_any_all_all"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "token_keyword_cisco_permit_deny_permit"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "token_keyword_cisco_permit_deny_deny"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "token_keyword_cisco_match_match_any"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "token_keyword_cisco_match_match_all"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "token_keyword_cisco_in_out_in"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "token_keyword_cisco_in_out_out"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "token_keyword_cisco_input_output_input"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "token_keyword_cisco_input_output_output"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "token_keyword_cisco_inside_outside_inside"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "token_keyword_cisco_inside_outside_outside"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "token_keyword_cisco_shutdown"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "token_keyword_cisco_status_up"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "token_keyword_cisco_status_down"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "token_keyword_cisco_status_deleted"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "token_keyword_cisco_status_administratively_down"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "token_keyword_cisco_enable_disable_enable"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "token_keyword_cisco_enable_disable_disable"
+          }
+        ]
+      }
+    },
     "address_family_body_line": {
       "type": "CHOICE",
       "members": [
@@ -1012,6 +1174,147 @@
       "content": {
         "type": "PATTERN",
         "value": "[dD][eE][sS][cC][rR][iI][pP][tT][iI][oO][nN]|[dD][eE][sS][cC][rR][iI][pP][tT][iI][oO][nN]:|[rR][eE][mM][aA][rR][kK]"
+      }
+    },
+    "token_keyword_cisco_encapsulation_dot1q": {
+      "type": "PATTERN",
+      "value": "[dD][oO][tT]1[qQ]"
+    },
+    "token_keyword_cisco_encapsulation_dot1q_tunnel": {
+      "type": "PATTERN",
+      "value": "[dD][oO][tT]1[qQ]-[tT][uU][nN][nN][eE][lL]"
+    },
+    "token_keyword_cisco_encapsulation_protocol_vlan": {
+      "type": "PATTERN",
+      "value": "[pP][rR][oO][tT][oO][cC][oO][lL]-[vV][lL][aA][nN]"
+    },
+    "token_keyword_cisco_encapsulation_mac_vlan": {
+      "type": "PATTERN",
+      "value": "[mM][aA][cC]-[vV][lL][aA][nN]"
+    },
+    "token_keyword_cisco_switchport_mode_access": {
+      "type": "PATTERN",
+      "value": "[aA][cC][cC][eE][sS][sS]"
+    },
+    "token_keyword_cisco_switchport_mode_trunk": {
+      "type": "PATTERN",
+      "value": "[tT][rR][uU][nN][kK]"
+    },
+    "token_keyword_cisco_shutdown": {
+      "type": "PATTERN",
+      "value": "[sS][hH][uU][tT][dD][oO][wW][nN]"
+    },
+    "token_keyword_cisco_status_up": {
+      "type": "PATTERN",
+      "value": "[uU][pP]"
+    },
+    "token_keyword_cisco_status_down": {
+      "type": "PATTERN",
+      "value": "[dD][oO][wW][nN]"
+    },
+    "token_keyword_cisco_status_deleted": {
+      "type": "PATTERN",
+      "value": "[dD][eE][lL][eE][tT][eE][dD]"
+    },
+    "token_keyword_cisco_status_administratively_down": {
+      "type": "PATTERN",
+      "value": "[aA][dD][mM][iI][nN][iI][sS][tT][rR][aA][tT][iI][vV][eE][lL][yY](-[dD][oO][wW][nN])?"
+    },
+    "token_keyword_cisco_enable_disable_enable": {
+      "type": "PATTERN",
+      "value": "[eE][nN][aA][bB][lL][eE][dD]?"
+    },
+    "token_keyword_cisco_enable_disable_disable": {
+      "type": "PATTERN",
+      "value": "[dD][iI][sS][aA][bB][lL][eE][dD]?"
+    },
+    "token_keyword_cisco_match_match_any": {
+      "type": "PATTERN",
+      "value": "[mM][aA][tT][cC][hH]-[aA][nN][yY]"
+    },
+    "token_keyword_cisco_match_match_all": {
+      "type": "PATTERN",
+      "value": "[mM][aA][tT][cC][hH]-[aA][lL][lL]"
+    },
+    "token_keyword_cisco_add_remove_add": {
+      "type": "PATTERN",
+      "value": "[aA][dD][dD]"
+    },
+    "token_keyword_cisco_add_remove_remove": {
+      "type": "PATTERN",
+      "value": "[rR][eE][mM][oO][vV][eE]"
+    },
+    "token_keyword_cisco_add_remove_except": {
+      "type": "PATTERN",
+      "value": "[eE][xX][cC][eE][pP][tT]"
+    },
+    "token_keyword_cisco_allowed_native_allowed": {
+      "type": "PATTERN",
+      "value": "[aA][lL][lL][oO][wW][eE][dD]"
+    },
+    "token_keyword_cisco_allowed_native_native": {
+      "type": "PATTERN",
+      "value": "[nN][aA][tT][iI][vV][eE]"
+    },
+    "token_keyword_cisco_any_all_any": {
+      "type": "PATTERN",
+      "value": "[aA][nN][yY]"
+    },
+    "token_keyword_cisco_any_all_all": {
+      "type": "PATTERN",
+      "value": "[aA][lL][lL]"
+    },
+    "token_keyword_cisco_permit_deny_permit": {
+      "type": "PATTERN",
+      "value": "[pP][eE][rR][mM][iI][tT]"
+    },
+    "token_keyword_cisco_permit_deny_deny": {
+      "type": "PATTERN",
+      "value": "[dD][eE][nN][yY]"
+    },
+    "token_keyword_cisco_in_out_in": {
+      "type": "PATTERN",
+      "value": "[iI][nN]"
+    },
+    "token_keyword_cisco_in_out_out": {
+      "type": "PATTERN",
+      "value": "[oO][uU][tT]"
+    },
+    "token_keyword_cisco_input_output_input": {
+      "type": "PATTERN",
+      "value": "[iI][nN][pP][uU][tT]"
+    },
+    "token_keyword_cisco_input_output_output": {
+      "type": "PATTERN",
+      "value": "[oO][uU][tT][pP][uU][tT]"
+    },
+    "token_keyword_cisco_inside_outside_inside": {
+      "type": "PATTERN",
+      "value": "[iI][nN][sS][iI][dD][eE]"
+    },
+    "token_keyword_cisco_inside_outside_outside": {
+      "type": "PATTERN",
+      "value": "[oO][uU][tT][sS][iI][dD][eE]"
+    },
+    "token_number_cisco_integer": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "-?[0-9]+"
+      }
+    },
+    "token_number_cisco_range": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "[0-9]+([,-][0-9]+)+"
+      }
+    },
+    "token_number_cisco_hex": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "(0x[0-9a-fA-F]+|[0-9A-F]{2,})"
       }
     },
     "line_comment": {
@@ -1052,6 +1355,13 @@
           "type": "PATTERN",
           "value": "[^ \\t\\r\\n][^\\r\\n]*"
         }
+      }
+    },
+    "token_tag_cisco_logging_system_message": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "[^ \\t\\r\\n]*%[A-Za-z0-9_]+-[0-9]-[A-Za-z0-9_]+:[^ \\t\\r\\n]*"
       }
     },
     "token_type_cisco_interface_app_gigabitethernet": {
@@ -1290,6 +1600,8 @@
   "inline": [],
   "supertypes": [
     "_cisco_atom",
+    "_cisco_numeric_literal",
+    "_cisco_keyword_token",
     "_cisco_interface_token",
     "_cisco_address_token"
   ],

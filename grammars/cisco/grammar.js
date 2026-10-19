@@ -40,7 +40,10 @@ const keyword_pattern = pattern => new RegExp(
  */
 const argument_tail = $ => repeat(field('argument', $._argument));
 
-
+/**
+ * @description Generates hidden, case-insensitive keyword rules for command syntax.
+ *              Callers expose these tokens as command_keyword or context-specific nodes.
+ */
 const keyword_rules = Object.fromEntries(
   [
     'interface',
@@ -65,6 +68,8 @@ module.exports = grammar({
   ],
   supertypes: $ => [
     $._cisco_atom,
+    $._cisco_numeric_literal,
+    $._cisco_keyword_token,
     $._cisco_interface_token,
     $._cisco_address_token,
   ],
@@ -165,9 +170,17 @@ module.exports = grammar({
     )),
     
     _cisco_atom: $ => prec(-1, choice(
+      $._cisco_keyword_token,
       $._cisco_interface_token,
       $._cisco_address_token,
+      $.token_tag_cisco_logging_system_message,
+      $._cisco_numeric_literal,
       $.word,
+    )),
+    _cisco_numeric_literal: $ => prec(-1, choice(
+      $.token_number_cisco_integer,
+      $.token_number_cisco_range,
+      $.token_number_cisco_hex,
     )),
     _cisco_interface_token: $ => prec(-1, choice(
       $.token_type_cisco_interface_app_gigabitethernet,
@@ -199,6 +212,38 @@ module.exports = grammar({
       $.token_number_cisco_address_ipv6_full,
       $.token_number_cisco_address_mac,
     )),
+    _cisco_keyword_token: $ => prec(-1, choice(
+      $.token_keyword_cisco_encapsulation_dot1q,
+      $.token_keyword_cisco_encapsulation_dot1q_tunnel,
+      $.token_keyword_cisco_encapsulation_protocol_vlan,
+      $.token_keyword_cisco_encapsulation_mac_vlan,
+      $.token_keyword_cisco_switchport_mode_access,
+      $.token_keyword_cisco_switchport_mode_trunk,
+      $.token_keyword_cisco_add_remove_add,
+      $.token_keyword_cisco_add_remove_remove,
+      $.token_keyword_cisco_add_remove_except,
+      $.token_keyword_cisco_allowed_native_allowed,
+      $.token_keyword_cisco_allowed_native_native,
+      $.token_keyword_cisco_any_all_any,
+      $.token_keyword_cisco_any_all_all,
+      $.token_keyword_cisco_permit_deny_permit,
+      $.token_keyword_cisco_permit_deny_deny,
+      $.token_keyword_cisco_match_match_any,
+      $.token_keyword_cisco_match_match_all,
+      $.token_keyword_cisco_in_out_in,
+      $.token_keyword_cisco_in_out_out,
+      $.token_keyword_cisco_input_output_input,
+      $.token_keyword_cisco_input_output_output,
+      $.token_keyword_cisco_inside_outside_inside,
+      $.token_keyword_cisco_inside_outside_outside,
+      $.token_keyword_cisco_shutdown,
+      $.token_keyword_cisco_status_up,
+      $.token_keyword_cisco_status_down,
+      $.token_keyword_cisco_status_deleted,
+      $.token_keyword_cisco_status_administratively_down,
+      $.token_keyword_cisco_enable_disable_enable,
+      $.token_keyword_cisco_enable_disable_disable,
+    )),
     address_family_body_line: $ => choice(
       $.ordinary_line,
     ),
@@ -207,11 +252,51 @@ module.exports = grammar({
     default_modifier: $ => token(keyword_pattern('default')),
     text_keyword: $ => token(keyword_pattern('description|description:|remark')),
 
+    token_keyword_cisco_encapsulation_dot1q: $ => keyword_pattern('dot1q'),
+    token_keyword_cisco_encapsulation_dot1q_tunnel: $ => keyword_pattern('dot1q-tunnel'),
+    token_keyword_cisco_encapsulation_protocol_vlan: $ => keyword_pattern('protocol-vlan'),
+    token_keyword_cisco_encapsulation_mac_vlan: $ => keyword_pattern('mac-vlan'),
+
+    token_keyword_cisco_switchport_mode_access: $ => keyword_pattern('access'),
+    token_keyword_cisco_switchport_mode_trunk: $ => keyword_pattern('trunk'),
+
+    token_keyword_cisco_shutdown: $ => keyword_pattern('shutdown'),
+    token_keyword_cisco_status_up: $ => keyword_pattern('up'),
+    token_keyword_cisco_status_down: $ => keyword_pattern('down'),
+    token_keyword_cisco_status_deleted: $ => keyword_pattern('deleted'),
+    token_keyword_cisco_status_administratively_down: $ => keyword_pattern('administratively(-down)?'),
+
+    token_keyword_cisco_enable_disable_enable: $ => keyword_pattern('enabled?'),
+    token_keyword_cisco_enable_disable_disable: $ => keyword_pattern('disabled?'),
+    token_keyword_cisco_match_match_any: $ => keyword_pattern('match-any'),
+    token_keyword_cisco_match_match_all: $ => keyword_pattern('match-all'),
+    token_keyword_cisco_add_remove_add: $ => keyword_pattern('add'),
+    token_keyword_cisco_add_remove_remove: $ => keyword_pattern('remove'),
+    token_keyword_cisco_add_remove_except: $ => keyword_pattern('except'),
+    token_keyword_cisco_allowed_native_allowed: $ => keyword_pattern('allowed'),
+    token_keyword_cisco_allowed_native_native: $ => keyword_pattern('native'),
+    token_keyword_cisco_any_all_any: $ => keyword_pattern('any'),
+    token_keyword_cisco_any_all_all: $ => keyword_pattern('all'),
+    token_keyword_cisco_permit_deny_permit: $ => keyword_pattern('permit'),
+    token_keyword_cisco_permit_deny_deny: $ => keyword_pattern('deny'),
+    token_keyword_cisco_in_out_in: $ => keyword_pattern('in'),
+    token_keyword_cisco_in_out_out: $ => keyword_pattern('out'),
+    token_keyword_cisco_input_output_input: $ => keyword_pattern('input'),
+    token_keyword_cisco_input_output_output: $ => keyword_pattern('output'),
+    token_keyword_cisco_inside_outside_inside: $ => keyword_pattern('inside'),
+    token_keyword_cisco_inside_outside_outside: $ => keyword_pattern('outside'),
+
+    token_number_cisco_integer: $ => token(/-?[0-9]+/),
+    token_number_cisco_range: $ => token(/[0-9]+([,-][0-9]+)+/),
+    token_number_cisco_hex: $ => token(/(0x[0-9a-fA-F]+|[0-9A-F]{2,})/),
+
     line_comment: $ => token(prec(2, /[!#][^\r\n]*/)),
     _trailing_comment: $ => token(/[!#]+([ \t][^\r\n]*)?/),
     
     quoted_string: $ => token(prec(2, /"([^"\\\r\n]|\\[^\r\n])*"/)),
     text_value: $ => token(prec(1, /[^ \t\r\n][^\r\n]*/)),
+
+    token_tag_cisco_logging_system_message: $ => token(/[^ \t\r\n]*%[A-Za-z0-9_]+-[0-9]-[A-Za-z0-9_]+:[^ \t\r\n]*/),
 
     token_type_cisco_interface_app_gigabitethernet: $ => token(/((App[Gg](ig)?(abit)?)([Ee](th(ernet)?)?)?(((\d+[\./])*)?\d+(\.\d+)?)?)/),
     token_type_cisco_interface_async: $ => token(/(([Aa]sync)(\d+)?)/),
