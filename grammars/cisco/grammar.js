@@ -65,7 +65,8 @@ module.exports = grammar({
   ],
   supertypes: $ => [
     $._cisco_atom,
-    $._cisco_interface_token
+    $._cisco_interface_token,
+    $._cisco_address_token,
   ],
   word: $ => $.word,
 
@@ -123,6 +124,7 @@ module.exports = grammar({
       $.address_family_definition_line,
     ),
     _definition: $ => choice(
+      $.bgp_definition,
       $.simple_definition,
     ),
     simple_definition: $ => prec.right(seq(
@@ -164,10 +166,38 @@ module.exports = grammar({
     
     _cisco_atom: $ => prec(-1, choice(
       $._cisco_interface_token,
+      $._cisco_address_token,
       $.word,
     )),
     _cisco_interface_token: $ => prec(-1, choice(
+      $.token_type_cisco_interface_app_gigabitethernet,
+      $.token_type_cisco_interface_async,
+      $.token_type_cisco_interface_bdi,
+      $.token_type_cisco_interface_bri,
+      $.token_type_cisco_interface_bvi,
+      $.token_type_cisco_interface_cellular,
+      $.token_type_cisco_interface_dialer,
       $.token_type_cisco_interface_ethernet,
+      $.token_type_cisco_interface_loopback,
+      $.token_type_cisco_interface_management,
+      $.token_type_cisco_interface_null,
+      $.token_type_cisco_interface_nvi,
+      $.token_type_cisco_interface_port_channel,
+      $.token_type_cisco_interface_serial,
+      $.token_type_cisco_interface_tunnel,
+      $.token_type_cisco_interface_vasileft,
+      $.token_type_cisco_interface_vasiright,
+      $.token_type_cisco_interface_virtual_template,
+      $.token_type_cisco_interface_vlan,
+      $.token_type_cisco_interface_vmi,
+      $.token_type_cisco_interface_wireless,
+    )),
+    _cisco_address_token: $ => prec(-1, choice(
+      $.token_number_cisco_address_ipv4_cidr,
+      $.token_number_cisco_address_ipv4,
+      $.token_number_cisco_address_ipv6_condensed,
+      $.token_number_cisco_address_ipv6_full,
+      $.token_number_cisco_address_mac,
     )),
     address_family_body_line: $ => choice(
       $.ordinary_line,
@@ -183,8 +213,34 @@ module.exports = grammar({
     quoted_string: $ => token(prec(2, /"([^"\\\r\n]|\\[^\r\n])*"/)),
     text_value: $ => token(prec(1, /[^ \t\r\n][^\r\n]*/)),
 
+    token_type_cisco_interface_app_gigabitethernet: $ => token(/((App[Gg](ig)?(abit)?)([Ee](th(ernet)?)?)?(((\d+[\./])*)?\d+(\.\d+)?)?)/),
+    token_type_cisco_interface_async: $ => token(/(([Aa]sync)(\d+)?)/),
+    token_type_cisco_interface_bdi: $ => token(/((BDI|[Bb]ridge-?[Dd]omain)(\d+)?)/),
+    token_type_cisco_interface_bri: $ => token(/((BRI)(\d+)?)/),
+    token_type_cisco_interface_bvi: $ => token(/((BVI)(\d+)?)/),
+    token_type_cisco_interface_cellular: $ => token(/(([Cc]ellular)(((\d+[\./])*)?\d+(\.\d+)?)?)/),
+    token_type_cisco_interface_dialer: $ => token(/(([Dd]ialer)(\d+)?)/),
     token_type_cisco_interface_ethernet: $ => token(/((([Ff]ast|([Ff]ive|[Tt]en|[Tt]wenty[Ff]ive|[Ff](orty|ifty)|([Tt]wo)?[Hh]undred)?[Gg](ig)?(abit)?)[Ee](th(ernet)?)?|[Ee]th(ernet)?|Fa|Gi|Te|Fo|Fi)(((\d+[\./])*)?\d+(\.\d+)?)?)/),
+    token_type_cisco_interface_loopback: $ => token(/(([Ll]oopback|Lo)(\d+)?)/),
+    token_type_cisco_interface_management: $ => token(/((Management|[Mm]gmt)((\d+[\./])*)?(\d+)?)/),
+    token_type_cisco_interface_null: $ => token(/(([Nn]ull)(\d+)?)/),
+    token_type_cisco_interface_nvi: $ => token(/(([nN][vV][iI])(\d+)?)/),
+    token_type_cisco_interface_port_channel: $ => token(/(([Pp]ort-?[Cc]hannel|Po)(12[0-8]|1[0-1][0-9]|[1-9][0-9]|[1-9])?)/),
+    token_type_cisco_interface_serial: $ => token(/(([Ss]erial)(((\d+[\./])*)?\d+(\.\d+)?)?)/),
+    token_type_cisco_interface_tunnel: $ => token(/(([Tt]unnel|Tu)(\d+)?)/),
+    token_type_cisco_interface_vasileft: $ => token(/(([Vv]asi[Ll]eft)(\d+)?)/),
+    token_type_cisco_interface_vasiright: $ => token(/(([Vv]asi[Rr]ight)(\d+)?)/),
+    token_type_cisco_interface_virtual_template: $ => token(/(([Vv]irtual-[Tt]emplate)(\d+)?)/),
+    token_type_cisco_interface_vlan: $ => token(/((VLAN|[Vv]lan)(409[0-4]|40[0-8][0-9]|[1-3][0-9]{3}|[1-9][0-9]{1,2}|[1-9])?)/),
+    token_type_cisco_interface_vmi: $ => token(/(([vV][mM][iI])(\d+)?)/),
+    token_type_cisco_interface_wireless: $ => token(/(([Dd]ot11[Rr]adio)(([0-1]([\./]\d)?(\.\d+)?)(\.\d+)?)?)/),
     
+    token_number_cisco_address_ipv4_cidr: $ => token(/(((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]?[0-9])\.){3}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]?[0-9])\/(\d|[1-2]\d|3[0-2]))/),
+    token_number_cisco_address_ipv4: $ => token(/(((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]?[0-9])\.){3}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]?[0-9]))/),
+    token_number_cisco_address_ipv6_condensed: $ => token(/((([0-9a-fA-F]{1,4}:){6}(:[0-9a-fA-F]{1,4}|((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3})|:))|(([0-9a-fA-F]{1,4}:){5}(((:[0-9a-fA-F]{1,4}){1,2})|:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3})|:))|(([0-9a-fA-F]{1,4}:){4}(((:[0-9a-fA-F]{1,4}){1,3})|((:[0-9a-fA-F]{1,4})?:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9a-fA-F]{1,4}:){3}(((:[0-9a-fA-F]{1,4}){1,4})|((:[0-9a-fA-F]{1,4}){0,2}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9a-fA-F]{1,4}:){2}(((:[0-9a-fA-F]{1,4}){1,5})|((:[0-9a-fA-F]{1,4}){0,3}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9a-fA-F]{1,4}:){1}(((:[0-9a-fA-F]{1,4}){1,6})|((:[0-9a-fA-F]{1,4}){0,4}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(:(((:[0-9a-fA-F]{1,4}){1,7})|((:[0-9a-fA-F]{1,4}){0,5}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:)))(\/([0-9]|[1-9][0-9]|1[01][0-9]|12[0-8]))?/),
+    token_number_cisco_address_ipv6_full: $ => token(/(([0-9a-fA-F]{1,4}:){7}[0-9a-fA-F]{1,4})(\/([0-9]|[1-9][0-9]|1[01][0-9]|12[0-8]))?/),
+    token_number_cisco_address_mac: $ => token(choice(/(([a-fA-F0-9]{4}\.?){2}[a-fA-F0-9]{4})/, /(([a-fA-F0-9]{2}[:.-]?){5}[a-fA-F0-9]{2})/)),
+  
     word: $ => token(/[^ \t\r\n]+/),
   }
   
