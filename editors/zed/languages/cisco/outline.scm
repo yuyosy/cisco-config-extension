@@ -4,7 +4,8 @@
 ; SPDX-License-Identifier: MIT
 ;
 
-((prompt_block header: (prompt_record (line prompt: (prompt) @_prompt) @name)) @item
+; Require a command or modifier after the prompt; omit empty prompt lines.
+((prompt_block header: (prompt_record (line prompt: (prompt) @_prompt . (_)) @name)) @item
  (#not-match? @_prompt "\\([Cc][Oo][Nn][Ff][Ii][Gg]"))
 
 (simple_definition header: (definition_line (line command: (interface_command keyword: (_) @context name: (_) @name)))) @item
